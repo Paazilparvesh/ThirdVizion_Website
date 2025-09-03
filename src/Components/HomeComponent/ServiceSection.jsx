@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import service1 from "/src/Assets/service1.jpg";
-import service2 from "/src/Assets/service2.jpg";
-import service3 from "/src/Assets/service3.jpg";
+import service1 from "/src/assets/service1.jpg";
+import service2 from "/src/assets/service2.jpg";
+import service3 from "/src/assets/service3.jpg";
 
 const services = [
   { id: "01", title: "AR", img: service1 },

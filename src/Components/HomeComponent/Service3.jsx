@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Sample images (replace with actual paths or imports)
-import ARImage from "/src/Assets/AR.jpg";
-import VRImage from "/src/Assets/VR.jpg";
-import ThreeDImage from "/src/Assets/3D.jpg";
+import ARImage from "/src/assets/AR.jpg";
+import VRImage from "/src/assets/VR.jpg";
+import ThreeDImage from "/src/assets/3D.jpg";
 
 const services = [
   {
