@@ -58,7 +58,7 @@ const Header = () => {
                     Data & Cloud
                   </Link>
                   <Link
-                    to="/team"
+                    to="/software"
                     className="px-4 py-2 hover:bg-gray-100"
                     onClick={() => setDropdown(false)}
                   >
