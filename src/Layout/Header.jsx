@@ -8,7 +8,7 @@ import {
   FaYoutube,
   FaWordpress,
 } from "react-icons/fa";
-
+import  MainSoftware from "/src/Pages/Services/Software/MainSoftware.jsx"
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -189,6 +189,7 @@ const Header = () => {
             </div>
           )}
         </div>
+<MainSoftware />
       </div>
     </>
   );
