@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&family=Diphylleia&family=Michroma&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&display=swap");
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.font-michroma {
+  font-family: "Michroma", sans-serif;
+}
+
+.blurAnimated {
+  animation: blurFadeIn 1.5s ease forwards;
+}
+
+@keyframes blurFadeIn {
+  0% {
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+
+.autoBlur {
+  animation: blur linear both;
+  animation-timeline: view();
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(40px);
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  45%,
+  55% {
+    filter: blur(0px);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    filter: blur(40px);
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
