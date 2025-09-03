@@ -10,6 +10,8 @@ import Footer from "/src/Layout/Footer.jsx";
 import MainImmersive from "/src/Pages/Services/Immersive/MainImmersive";
 import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
+// import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
+import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
 
 function App() {
   return (
@@ -25,6 +27,10 @@ function App() {
           <Route path="/immersive" element={<MainImmersive />} />
           <Route path="/data" element={<MainData />} />
           <Route path="/software" element={<MainSoftware />} />
+          
+           <Route path="/ProjectGallery" element={<ProjectGallery />} />
+                
+         
         </Routes>
         <Footer />
       </BrowserRouter>
