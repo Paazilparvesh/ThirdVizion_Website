@@ -34,6 +34,9 @@ const Header = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Link to="/ame">game</Link>
+          </li>
           <li
             className="relative"
             onMouseEnter={() => setDropdown(true)}
