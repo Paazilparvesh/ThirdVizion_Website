@@ -12,6 +12,7 @@ import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
 // import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
+import Game from "./Pages/Services/Software/game";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route path="/software" element={<MainSoftware />} />
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
-                
+            <Route path="/game" element={<Game/>} />   
          
         </Routes>
         {/* <Footer /> */}

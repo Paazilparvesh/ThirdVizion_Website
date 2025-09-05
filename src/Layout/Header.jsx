@@ -455,17 +455,14 @@ const Header = () => {
         {
           name: "Virtual Reality",
           href: "/vr",
-          icon: <FaCube className="w-4 h-4" />,
         },
         {
           name: "Augmented Reality",
           href: "/ar",
-          icon: <FaBrain className="w-4 h-4" />,
         },
         {
           name: "3D Services",
           href: "/3d",
-          icon: <FaRocket className="w-4 h-4" />,
         },
       ],
     },
@@ -475,22 +472,18 @@ const Header = () => {
         {
           name: "CRM Solutions",
           href: "/crm",
-          icon: <FaCloud className="w-4 h-4" />,
         },
         {
           name: "IAM Solutions",
           href: "/iam",
-          icon: <FaDatabase className="w-4 h-4" />,
         },
         {
           name: "ERP Solutions",
           href: "/erp",
-          icon: <FaShieldAlt className="w-4 h-4" />,
         },
         {
           name: "Server Management",
           href: "/server",
-          icon: <FaShieldAlt className="w-4 h-4" />,
         },
       ],
     },
@@ -500,17 +493,14 @@ const Header = () => {
         {
           name: "Web Development",
           href: "/web",
-          icon: <FaCode className="w-4 h-4" />,
         },
         {
           name: "Mobile Apps",
           href: "/mobile",
-          icon: <FaMobile className="w-4 h-4" />,
         },
         {
           name: "Game Development",
           href: "/game",
-          icon: <FaRocket className="w-4 h-4" />,
         },
       ],
     },
@@ -643,7 +633,6 @@ const Header = () => {
                               onClick={closeMenu}
                               className="flex items-center gap-2 text-gray-300 hover:text-white transition"
                             >
-                              {page.icon}
                               {page.name}
                             </Link>
                           ))}
@@ -727,6 +716,7 @@ const Header = () => {
             >
               Home
             </Link>
+
             <Link
               to="/about"
               onClick={() => handleNavClick("/about")}
@@ -789,7 +779,6 @@ const Header = () => {
                                 onClick={() => handleNavClick(page.href)}
                                 className="flex items-center gap-2 text-gray-300 hover:text-white transition"
                               >
-                                {page.icon}
                                 {page.name}
                               </Link>
                             ))}
@@ -809,6 +798,7 @@ const Header = () => {
             >
               Contact
             </Link>
+
             <Link
               to="/blog"
               onClick={() => handleNavClick("/blog")}

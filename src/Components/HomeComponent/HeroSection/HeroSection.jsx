@@ -67,7 +67,7 @@ const Landing = () => {
   return (
     <div
       id="pattern"
-      className="pattern h-screen overflow-hidden relative z-0"
+      className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
     >
       {/* This section contains the background pattern */}
       {createDynamicLists(10, 10)}
