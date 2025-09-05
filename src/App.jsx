@@ -12,7 +12,9 @@ import MainData from "./Pages/Services/Data & Cloud/MainData";
 import MainSoftware from "./Pages/Services/Software/MainSoftware";
 // import WebDev from "/src/Pages/Services/Software/WebDev.jsx"
 import ProjectGallery from "./Pages/Services/Software/ProjectGallery";
-
+import CRM from "./Pages/Services/crm/CRM";
+import IAMHero from "./Pages/Services/IAM/IAMHero";
+import ITServices from "/src/Pages/Services/ITServices.jsx/IT.jsx";
 function App() {
   return (
     <>
@@ -29,7 +31,10 @@ function App() {
           <Route path="/software" element={<MainSoftware />} />
           
            <Route path="/ProjectGallery" element={<ProjectGallery />} />
-                
+                 <Route path="/crm" element={<CRM />} />
+                 <Route path="/iam" element={<IAMHero />} />
+         
+                 <Route path="/itservices" element={<ITServices />} />
          
         </Routes>
         <Footer />
