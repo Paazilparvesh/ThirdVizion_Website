@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import threed from "/src/assets/AboutImages/group.png";
@@ -10,6 +10,8 @@ export default function AboutHero() {
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
   const mobileHeaderRef = useRef(null);
+  const scrollButtonRef = useRef(null);
+  const [showScrollButton, setShowScrollButton] = useState(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -17,6 +19,7 @@ export default function AboutHero() {
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
       const mobileHeader = mobileHeaderRef.current;
+      const scrollButton = scrollButtonRef.current;
       
       if (!header || !wrapper || !imgHolder) return;
 
@@ -31,6 +34,24 @@ export default function AboutHero() {
           gsap.set([aboutText, thirdText, vizionText, imgHolder, innerImg], {
             clearProps: "transform,opacity,clipPath,borderRadius"
           });
+
+          // Scroll button animation - hide when scrolling starts
+          if (scrollButton) {
+            gsap.to(scrollButton, {
+              opacity: 0,
+              y: 20,
+              ease: "power2.out",
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: "top+=100 top",
+                onEnter: () => setShowScrollButton(false),
+                onLeaveBack: () => setShowScrollButton(true),
+                onEnterBack: () => setShowScrollButton(false),
+              }
+            });
+          }
 
           // Create a master timeline for smoother sequencing
           const masterTL = gsap.timeline({
@@ -109,6 +130,24 @@ export default function AboutHero() {
         },
 
         "(max-width: 1023px)": () => {
+          // Mobile scroll button animation
+          if (scrollButton) {
+            gsap.to(scrollButton, {
+              opacity: 0,
+              y: 20,
+              ease: "power2.out",
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: "top+=50 top",
+                onEnter: () => setShowScrollButton(false),
+                onLeaveBack: () => setShowScrollButton(true),
+                onEnterBack: () => setShowScrollButton(false),
+              }
+            });
+          }
+
           // Mobile animations
           if (mobileHeader) {
             gsap.to(mobileHeader, {
@@ -171,8 +210,33 @@ export default function AboutHero() {
     };
   }, []);
 
+  const handleScrollDown = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div className="relative w-full min-h-screen bg-black overflow-hidden">
+
+      {/* Scroll Down Button */}
+      {showScrollButton && (
+        <div
+          ref={scrollButtonRef}
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer"
+          onClick={handleScrollDown}
+        >
+          <div className="flex flex-col items-center justify-center">
+            <div className="text-white text-sm font-inter-tight mb-2 uppercase tracking-wider">
+              Scroll Down
+            </div>
+            <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Desktop Header - Fixed position for laptops */}
       <div

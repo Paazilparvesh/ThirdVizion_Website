@@ -182,12 +182,12 @@ const ContactForm = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen bg-black text-white overflow-hidden px-6 py-16"
+      className="relative min-h-screen bg-black text-white overflow-hidden px-4 sm:px-6 py-12 sm:py-16"
     >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -199,7 +199,7 @@ const ContactForm = () => {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.5, 0.3, 0.5],
@@ -212,118 +212,124 @@ const ContactForm = () => {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-12 lg:gap-16">
-        {/* LEFT SIDE */}
+      <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-8 sm:gap-12 lg:gap-16 items-stretch">
+        {/* LEFT SIDE - Same height as form */}
         <motion.div
-          className="lg:w-2/5 space-y-8"
+          className="lg:w-2/5 flex flex-col"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.div variants={itemVariants} className="space-y-6">
-            <motion.h1
-              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
-              variants={typingContainer}
-              initial="hidden"
-              animate="visible"
-               style={{ fontFamily: "Outfit, sans-serif" }} >
-              {text.split("").map((char, index) => (
-                <motion.span key={index} variants={typingText}>
-                  {char}
-                </motion.span>
-              ))}
-            </motion.h1>
+          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 shadow-2xl h-full flex flex-col">
+            <div className="space-y-6 sm:space-y-8 flex-1">
+              <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
+                <motion.h1
+                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
+                  variants={typingContainer}
+                  initial="hidden"
+                  animate="visible"
+                  style={{ fontFamily: "Outfit, sans-serif" }}
+                >
+                  {text.split("").map((char, index) => (
+                    <motion.span key={index} variants={typingText}>
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.h1>
 
-            <motion.p 
-              className="text-lg lg:text-xl text-gray-300 leading-relaxed"
-              variants={itemVariants}
-            >
-              If you are curious about what you saw, contact us or follow us{" "}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold">
-                on social media.
-              </span>
-            </motion.p>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div 
-            className="flex gap-6 text-2xl"
-            variants={itemVariants}
-          >
-            {socialLinks.map(({ Icon, href, color }, index) => (
-              <motion.a
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
-                whileHover={{ 
-                  scale: 1.2, 
-                  y: -5,
-                  color: color,
-                  backgroundColor: "rgba(255,255,255,0.1)"
-                }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
-              >
-                <Icon />
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Info Cards Grid */}
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
-            variants={containerVariants}
-          >
-            {infoCards.map(({ icon: Icon, title, content, color }, index) => (
-              <motion.div
-                key={index}
-                className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
-                variants={itemVariants}
-                whileHover={{ 
-                  y: -5,
-                  scale: 1.02,
-                  borderColor: color,
-                  boxShadow: `0 10px 30px -10px ${color}40`
-                }}
-              >
-                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
-                  <div 
-                    className="p-2 rounded-lg"
-                    style={{ backgroundColor: `${color}20` }}
-                  >
-                    <Icon className="text-xl" style={{ color }} />
-                  </div>
-                  <h3 className="font-bold text-white">{title}</h3>
-                </div>
-                <p className="text-gray-300 text-sm pl-11">{content}</p>
+                <motion.p 
+                  className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed"
+                  variants={itemVariants}
+                >
+                  If you are curious about what you saw, contact us or follow us{" "}
+                  <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold">
+                    on social media.
+                  </span>
+                </motion.p>
               </motion.div>
-            ))}
-          </motion.div>
+
+              {/* Social Links */}
+              <motion.div 
+                className="flex gap-4 sm:gap-6 text-xl sm:text-2xl justify-center sm:justify-start"
+                variants={itemVariants}
+              >
+                {socialLinks.map(({ Icon, href, color }, index) => (
+                  <motion.a
+                    key={index}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 sm:p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
+                    whileHover={{ 
+                      scale: 1.2, 
+                      y: -5,
+                      color: color,
+                      backgroundColor: "rgba(255,255,255,0.1)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <Icon />
+                  </motion.a>
+                ))}
+              </motion.div>
+
+              {/* Info Cards Grid */}
+              <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8"
+                variants={containerVariants}
+              >
+                {infoCards.map(({ icon: Icon, title, content, color }, index) => (
+                  <motion.div
+                    key={index}
+                    className="p-3 sm:p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
+                    variants={itemVariants}
+                    whileHover={{ 
+                      y: -5,
+                      scale: 1.02,
+                      borderColor: color,
+                      boxShadow: `0 10px 30px -10px ${color}40`
+                    }}
+                  >
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2" style={{ fontFamily: "work-sans, sans-serif" }}>
+                      <div 
+                        className="p-1 sm:p-2 rounded-lg"
+                        style={{ backgroundColor: `${color}20` }}
+                      >
+                        <Icon className="text-lg sm:text-xl" style={{ color }} />
+                      </div>
+                      <h3 className="font-bold text-white text-sm sm:text-base">{title}</h3>
+                    </div>
+                    <p className="text-gray-300 text-xs sm:text-sm pl-8 sm:pl-11">{content}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* RIGHT SIDE - Contact Form */}
+        {/* RIGHT SIDE - Contact Form - Same height as left side */}
         <motion.div
-          className="lg:w-3/5"
+          className="lg:w-3/5 flex flex-col mt-8 lg:mt-0"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={formVariants}
         >
-          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-gray-700 shadow-2xl">
+          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 shadow-2xl h-full flex flex-col">
             <motion.h2 
-              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
+              className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-            style={{ fontFamily: "Outfit, sans-serif" }} >
+              style={{ fontFamily: "Outfit, sans-serif" }}
+            >
               Send us a Message
             </motion.h2>
 
-            <form onSubmit={sendMail} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={sendMail} className="space-y-4 sm:space-y-6 flex-1 flex flex-col">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -335,7 +341,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
                     required
                   />
                 </motion.div>
@@ -350,7 +356,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
                     required
                   />
                 </motion.div>
@@ -367,7 +373,7 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
                 />
               </motion.div>
 
@@ -375,14 +381,15 @@ const ContactForm = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
+                className="flex-1"
               >
                 <textarea
-                  rows="6"
+                  rows="4"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none"
+                  className="w-full h-full min-h-[120px] sm:min-h-[150px] px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none text-sm sm:text-base"
                   required
                 ></textarea>
               </motion.div>
@@ -391,11 +398,12 @@ const ContactForm = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0 }}
+                className="pt-2 sm:pt-4"
               >
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group"
+                  className="w-full py-3 sm:py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group text-sm sm:text-base"
                   variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
@@ -410,13 +418,13 @@ const ContactForm = () => {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                          className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"
                         />
                         Sending...
                       </>
                     ) : (
                       <>
-                        <FaPaperPlane />
+                        <FaPaperPlane className="text-sm sm:text-base" />
                         Send Message
                       </>
                     )}
@@ -435,7 +443,7 @@ const ContactForm = () => {
 
             {status && (
               <motion.p 
-                className="mt-4 p-3 rounded-lg text-center font-medium"
+                className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg text-center font-medium text-sm sm:text-base"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 style={{
