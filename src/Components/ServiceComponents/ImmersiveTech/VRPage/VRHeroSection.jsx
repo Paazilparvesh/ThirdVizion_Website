@@ -30,6 +30,9 @@ function VRHeroSection() {
 
       setCanvasSize();
 
+      // -------------------------------------
+      // FRAME PATH
+      // -------------------------------------
       const currentFrame = (index) =>
         `/vr/Timeline 1_${(startFrame + index)
           .toString()
@@ -68,35 +71,30 @@ function VRHeroSection() {
         }
       };
 
+      // -------------------------------------
       // LOAD FIRST FRAME IMMEDIATELY
+      // -------------------------------------
       const firstImage = new Image();
       firstImage.src = currentFrame(0);
 
       firstImage.onload = () => {
         images[0] = firstImage;
         render();
-        setLoading(false);
+        setLoading(false); // remove loader instantly
       };
 
-      // SEQUENTIAL PRELOADING (FAST + LIGHT)
-      let loadedIndex = 1;
-
-      const loadNext = () => {
-        if (loadedIndex >= frameCount) return;
-
+      // -------------------------------------
+      // PRELOAD ALL FRAMES IN BACKGROUND (non-blocking)
+      // -------------------------------------
+      for (let i = 0; i < frameCount; i++) {
         const img = new Image();
-        img.src = currentFrame(loadedIndex);
+        img.src = currentFrame(i);
+        images[i] = img;
+      }
 
-        img.onload = () => {
-          images[loadedIndex] = img;
-          loadedIndex++;
-          loadNext();
-        };
-      };
-
-      loadNext();
-
+      // -------------------------------------
       // SCROLLTRIGGER
+      // -------------------------------------
       const setupScrollAnimations = () => {
         ScrollTrigger.create({
           trigger: mainRef.current,
@@ -116,7 +114,9 @@ function VRHeroSection() {
 
       setupScrollAnimations();
 
+      // -------------------------------------
       // RESIZE HANDLER
+      // -------------------------------------
       const handleResize = () => {
         setCanvasSize();
         render();
@@ -149,7 +149,9 @@ function VRHeroSection() {
             <h2
               className="text-4xl md:text-6xl font-bold mb-4"
               style={{ fontFamily: "Outfit, sans-serif" }}
-            ></h2>
+            >
+            
+            </h2>
           </div>
         </div>
       </section>
