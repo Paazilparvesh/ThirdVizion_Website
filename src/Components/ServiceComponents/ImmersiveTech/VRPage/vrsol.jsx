@@ -100,15 +100,15 @@ const Vrsol = () => {
 
     if (pinContainer && serviceCards.length === VrData.length) {
       // Calculate total height needed for pinning - reduced for slower scroll
-      const totalHeight = VrData.length * 120; // Increased for slower scroll
+      const totalHeight = VrData.length * 80; // Reduced height for slower scroll
 
       const scrollTrigger = ScrollTrigger.create({
         trigger: pinContainer,
         start: "top top",
-        end: `+=${totalHeight}vh`,
+        end: `+=${totalHeight}%`, // Using percentage instead of vh for better control
         pin: true,
         pinSpacing: true,
-        scrub: 1, // Increased scrub value for slower, smoother transitions
+        scrub: 1.5, // Increased scrub value for slower, smoother transitions
         onUpdate: (self) => {
           const progress = self.progress;
           const index = Math.min(
@@ -123,13 +123,13 @@ const Vrsol = () => {
         markers: false,
       });
 
-      // Individual card triggers with slower activation
+      // Individual card triggers with larger activation area for slower transitions
       VrData.forEach((service, index) => {
         const card = serviceCards[index];
         if (card) {
           ScrollTrigger.create({
             trigger: card,
-            start: "top 40%", // Increased trigger area for slower activation
+            start: "top 60%", // Increased trigger area for slower activation
             end: "bottom 40%", // Increased trigger area for slower activation
             onEnter: () => setActiveService(service.id),
             onEnterBack: () => setActiveService(service.id),
@@ -146,6 +146,7 @@ const Vrsol = () => {
 
       return () => {
         scrollTrigger.kill();
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
         window.removeEventListener('resize', syncHeights);
       };
     }
@@ -190,7 +191,7 @@ const Vrsol = () => {
         {/* Grid with equal height columns */}
         <div className="grid lg:grid-cols-2 gap-12 md:gap-16 w-full items-start">
           {/* Left: Cards */}
-          <div className="flex flex-col gap-6 w-full left-column">
+          <div className="flex flex-col gap-8 w-full left-column"> {/* Increased gap for better spacing */}
             {VrData.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -199,7 +200,7 @@ const Vrsol = () => {
                 }}
                 whileHover={{ scale: 1.02 }}
                 onClick={() => handleServiceClick(service.id)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 transform border relative min-h-[180px] flex flex-col justify-center w-full
+                className={`p-6 rounded-2xl cursor-pointer transition-all duration-500 transform border relative min-h-[200px] flex flex-col justify-center w-full
                   ${
                     activeService === service.id
                       ? "bg-violet-900/40 border-violet-600 shadow-xl shadow-violet-500/20"
@@ -216,7 +217,7 @@ const Vrsol = () => {
                   />
                 )}
                 
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">{service.icon}</span>
                   <h3 
                     className="text-xl md:text-2xl font-bold"   
@@ -237,7 +238,7 @@ const Vrsol = () => {
 
           {/* Right: Sticky Image & Details */}
           <div 
-            className="lg:sticky lg:top-4 w-full" 
+            className="lg:sticky lg:top-8 w-full" 
             ref={rightColumnRef}
           >
             <AnimatePresence mode="wait">
@@ -247,7 +248,7 @@ const Vrsol = () => {
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.7, ease: "easeOut" }} // Increased duration for smoother transition
                 className="bg-zinc-900/60 rounded-2xl p-6 md:p-8 border border-violet-700/50 backdrop-blur-md relative overflow-hidden w-full h-full"
               >
                 {/* Service Header */}
@@ -272,7 +273,7 @@ const Vrsol = () => {
                   initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                   transition={{ 
-                    duration: 0.7,
+                    duration: 0.8, // Increased duration
                     ease: "easeOut"
                   }}
                   className="relative overflow-hidden rounded-xl mb-6 w-full"
@@ -288,12 +289,12 @@ const Vrsol = () => {
                 </motion.div>
 
                 {/* Progress Indicator */}
-                <div className="flex justify-center space-x-2 mb-4">
+                <div className="flex justify-center space-x-3 mb-4"> {/* Increased spacing */}
                   {VrData.map((service, index) => (
                     <button
                       key={service.id}
                       onClick={() => handleServiceClick(service.id)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-3 h-3 rounded-full transition-all duration-500 ${
                         activeService === service.id
                           ? "bg-violet-500 scale-110 shadow-md shadow-violet-500/40"
                           : "bg-gray-600 hover:bg-gray-400 hover:scale-105"
@@ -307,14 +308,14 @@ const Vrsol = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1 }}
+                  transition={{ delay: 1.2 }} // Increased delay
                   className="text-center"
                 >
                   <p className="text-gray-400 text-xs flex items-center justify-center gap-2">
                     <span>Scroll to explore services</span>
                     <motion.span
-                      animate={{ y: [0, 3, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
+                      animate={{ y: [0, 4, 0] }} // Increased movement
+                      transition={{ duration: 2, repeat: Infinity }} // Slower animation
                     >
                       ↓
                     </motion.span>
@@ -326,7 +327,7 @@ const Vrsol = () => {
         </div>
 
         {/* Additional Spacing for better scroll experience */}
-        <div className="h-20"></div>
+        <div className="h-32"></div> {/* Increased spacing */}
       </div>
     </div>
   );
