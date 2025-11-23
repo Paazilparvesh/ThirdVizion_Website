@@ -12,7 +12,7 @@ import VrImage2 from "/src/assets/vr/VrImage2.jpeg";
 import VrImage3 from "/src/assets/vr/VrImage3.jpeg";
 // import VrImage4 from "/src/assets/vr/VrImage4.jpeg";
 
-// ✅ VR Services Data — each with one image
+// ✅ VR Services Data
 const VrData = [
   {
     id: "vrDevelopment",
@@ -35,300 +35,197 @@ const VrData = [
     title: "Architectural Visualization",
     icon: "🏗️",
     description:
-      "Bring designs to life with realistic 3D architectural visualization. Explore unbuilt spaces and experience your projects before construction begins",
+      "Bring designs to life with realistic 3D architectural visualization. Explore unbuilt spaces and experience your projects before construction begins.",
     image: VrImage3,
   },
-  // {
-  //   id: "entertainmentVR",
-  //   title: "Entertainment & Gaming",
-  //   icon: "🎮",
-  //   description:
-  //     "We design immersive VR games and experiences that combine creativity and technology to deliver interactive, unforgettable adventures.",
-  //   image: VrImage4,
-  // },
 ];
 
 const Vrsol = () => {
-  const [activeService, setActiveService] = useState("vrDevelopment");
+  const [activeService, setActiveService] = useState(VrData[0].id);
+  const containerRef = useRef(null);
+  const headerRef = useRef(null);
+
+  // Helper to get active data
   const activeServiceData = VrData.find((vr) => vr.id === activeService);
 
-  const headerRef = useRef(null);
-  const serviceCardsRef = useRef([]);
-  const detailsRef = useRef(null);
-  const containerRef = useRef(null);
-  const pinContainerRef = useRef(null);
-  const rightColumnRef = useRef(null);
-
-  // Reset refs on component mount
   useEffect(() => {
-    serviceCardsRef.current = serviceCardsRef.current.slice(0, VrData.length);
+    const ctx = gsap.context(() => {
+      // 1. Header Animation (Intro)
+      gsap.fromTo(
+        headerRef.current,
+        { opacity: 0, y: -50 },
+        { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }
+      );
+
+      // Only enable ScrollTrigger on desktop
+      if (window.innerWidth >= 1024) {
+        // 2. The Main ScrollTrigger Logic
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=2500",
+          pin: true,
+          scrub: 1,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            const totalServices = VrData.length;
+            const index = Math.min(
+              Math.floor(progress * totalServices),
+              totalServices - 1
+            );
+            
+            if (VrData[index].id !== activeService) {
+              setActiveService(VrData[index].id);
+            }
+          },
+        });
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    // Header animation
-    gsap.fromTo(
-      headerRef.current?.children || [],
-      { opacity: 0, y: -50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 1.5, 
-        stagger: 0.2, 
-        ease: "elastic.out(1, 0.5)" 
-      }
-    );
-
-    // Equal height synchronization
-    const syncHeights = () => {
-      const leftColumn = document.querySelector('.left-column');
-      const rightColumn = rightColumnRef.current;
-      
-      if (leftColumn && rightColumn) {
-        const leftHeight = leftColumn.scrollHeight;
-        const rightHeight = rightColumn.scrollHeight;
-        
-        // Set both to the maximum height
-        const maxHeight = Math.max(leftHeight, rightHeight);
-        leftColumn.style.minHeight = `${maxHeight}px`;
-        rightColumn.style.minHeight = `${maxHeight}px`;
-      }
-    };
-
-    // Setup ScrollTrigger with controlled speed
-    const pinContainer = pinContainerRef.current;
-    const serviceCards = serviceCardsRef.current;
-
-    if (pinContainer && serviceCards.length === VrData.length) {
-      // Calculate total height needed for pinning - reduced for slower scroll
-      const totalHeight = VrData.length * 80; // Reduced height for slower scroll
-
-      const scrollTrigger = ScrollTrigger.create({
-        trigger: pinContainer,
-        start: "top top",
-        end: `+=${totalHeight}%`, // Using percentage instead of vh for better control
-        pin: true,
-        pinSpacing: true,
-        scrub: 1.5, // Increased scrub value for slower, smoother transitions
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const index = Math.min(
-            Math.floor(progress * VrData.length),
-            VrData.length - 1
-          );
-          
-          if (VrData[index] && VrData[index].id !== activeService) {
-            setActiveService(VrData[index].id);
-          }
-        },
-        markers: false,
-      });
-
-      // Individual card triggers with larger activation area for slower transitions
-      VrData.forEach((service, index) => {
-        const card = serviceCards[index];
-        if (card) {
-          ScrollTrigger.create({
-            trigger: card,
-            start: "top 60%", // Increased trigger area for slower activation
-            end: "bottom 40%", // Increased trigger area for slower activation
-            onEnter: () => setActiveService(service.id),
-            onEnterBack: () => setActiveService(service.id),
-            markers: false,
-          });
-        }
-      });
-
-      // Sync heights after a brief delay to ensure DOM is ready
-      setTimeout(syncHeights, 100);
-      
-      // Also sync on window resize
-      window.addEventListener('resize', syncHeights);
-
-      return () => {
-        scrollTrigger.kill();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        window.removeEventListener('resize', syncHeights);
-      };
-    }
-  }, []);
-
-  const handleServiceClick = (serviceId) => {
-    setActiveService(serviceId);
-    
-    // Native smooth scroll without external libraries
-    const index = VrData.findIndex(vr => vr.id === serviceId);
-    const card = serviceCardsRef.current[index];
-    if (card) {
-      const elementPosition = card.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - 100;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+  // Manual Click Handler
+  const handleServiceClick = (id) => {
+    setActiveService(id);
   };
 
   return (
-    <div
-      className="min-h-screen text-white px-4 md:px-8 py-12 relative overflow-hidden w-full"
-      ref={containerRef}
-    >
-      {/* Background */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.1),transparent_70%)]"></div>
+    <div className="bg-black text-white relative">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.15),transparent_70%)] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10 w-full" ref={pinContainerRef}>
-        {/* Header - Only Title */}
-        <div ref={headerRef} className="text-center mb-12 md:mb-16 w-full">
-          <h1 
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 tracking-tight w-full"  
+      {/* Main Container - Responsive height */}
+      <div 
+        ref={containerRef} 
+        className="min-h-screen w-full flex flex-col justify-center items-center px-4 md:px-8 relative z-10 overflow-hidden py-8 lg:py-0"
+      >
+        
+        {/* Header */}
+        <div ref={headerRef} className="text-center mb-6 md:mb-8 lg:mb-10 lg:absolute lg:top-8 w-full">
+          <h1
+            className="text-3xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 tracking-tight"
             style={{ fontFamily: "Outfit, sans-serif" }}
           >
             Complete VR Solutions
           </h1>
         </div>
 
-        {/* Grid with equal height columns */}
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 w-full items-start">
-          {/* Left: Cards */}
-          <div className="flex flex-col gap-8 w-full left-column"> {/* Increased gap for better spacing */}
-            {VrData.map((service, index) => (
+        {/* Content Grid - Responsive layout */}
+        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-16 items-center lg:h-[70vh] mt-4 lg:mt-16">
+          
+          {/* LEFT COLUMN: The Service Cards */}
+          <div className="flex flex-col justify-center gap-3 md:gap-4 lg:h-full relative order-2 lg:order-1">
+            {VrData.map((service) => (
               <motion.div
                 key={service.id}
-                ref={(el) => {
-                  serviceCardsRef.current[index] = el;
-                }}
-                whileHover={{ scale: 1.02 }}
                 onClick={() => handleServiceClick(service.id)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-500 transform border relative min-h-[200px] flex flex-col justify-center w-full
+                className={`p-4 md:p-6 rounded-xl md:rounded-2xl cursor-pointer transition-all duration-500 border relative group
                   ${
                     activeService === service.id
-                      ? "bg-violet-900/40 border-violet-600 shadow-xl shadow-violet-500/20"
-                      : "bg-zinc-900/50 border-gray-700 hover:border-violet-500 hover:bg-zinc-800/50"
+                      ? "bg-violet-900/30 border-violet-500 shadow-lg shadow-violet-500/10 scale-100 opacity-100"
+                      : "bg-zinc-900/30 border-zinc-800 hover:border-zinc-600 opacity-50 scale-95 hover:opacity-80"
                   }`}
               >
-                {/* Active indicator */}
-                {activeService === service.id && (
-                  <motion.div
-                    className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-1.5 h-16 bg-violet-500 rounded-full"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  />
-                )}
-                
-                <div className="flex items-center mb-4">
-                  <span className="text-3xl mr-3">{service.icon}</span>
-                  <h3 
-                    className="text-xl md:text-2xl font-bold"   
-                    style={{ fontFamily: "Outfit, sans-serif" }}
-                  >
-                    {service.title}
-                  </h3>
+                <div className="flex items-center gap-3 md:gap-4">
+                  <span className="text-2xl md:text-3xl">{service.icon}</span>
+                  <div>
+                    <h3
+                      className={`text-lg md:text-xl font-bold transition-colors ${
+                        activeService === service.id ? "text-white" : "text-gray-400"
+                      }`}
+                      style={{ fontFamily: "Outfit, sans-serif" }}
+                    >
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
-                <p 
-                  className="text-gray-300 text-base leading-relaxed"   
-                  style={{ fontFamily: "work-sans, sans-serif" }}
-                >
-                  {service.description}
-                </p>
+                
+                {/* Show description on mobile, animated on desktop */}
+                <div className="block lg:hidden mt-3">
+                  <p className="text-gray-300 text-sm leading-relaxed pl-0 md:pl-12 border-l-0 md:border-l-2 border-violet-500/50">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Animated description for desktop */}
+                <div className="hidden lg:block">
+                  <AnimatePresence>
+                    {activeService === service.id && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="mt-3 text-gray-300 text-sm leading-relaxed pl-12 border-l-2 border-violet-500/50">
+                          {service.description.substring(0, 60)}...
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Right: Sticky Image & Details */}
-          <div 
-            className="lg:sticky lg:top-8 w-full" 
-            ref={rightColumnRef}
-          >
+          {/* RIGHT COLUMN: Large Image & Detail View */}
+          <div className="h-full w-full flex items-center justify-center order-1 lg:order-2 mb-6 lg:mb-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService}
-                ref={detailsRef}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                transition={{ duration: 0.7, ease: "easeOut" }} // Increased duration for smoother transition
-                className="bg-zinc-900/60 rounded-2xl p-6 md:p-8 border border-violet-700/50 backdrop-blur-md relative overflow-hidden w-full h-full"
+                initial={{ opacity: 0, x: 0, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                exit={{ opacity: 0, x: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "circOut" }}
+                className="w-full bg-zinc-900/80 rounded-2xl lg:rounded-3xl overflow-hidden border border-zinc-700/50 shadow-2xl p-2"
               >
-                {/* Service Header */}
-                <div className="mb-6">
-                  <h2 
-                    className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent"   
-                    style={{ fontFamily: "Outfit, sans-serif" }}
-                  >
+                {/* Image Area */}
+                <div className="relative h-48 md:h-64 lg:h-80 w-full overflow-hidden rounded-xl lg:rounded-2xl">
+                  <img 
+                    src={activeServiceData.image} 
+                    alt={activeServiceData.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  
+                  {/* Icon Overlay */}
+                  <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4 bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+                    <span className="text-xl md:text-2xl">{activeServiceData.icon}</span>
+                  </div>
+                </div>
+
+                {/* Text Details Area - Hidden on mobile since we show description in cards */}
+                <div className="hidden lg:block p-6 md:p-8">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
                     {activeServiceData.title}
                   </h2>
-                  <p 
-                    className="text-base text-gray-300 leading-relaxed"   
-                    style={{ fontFamily: "work-sans, sans-serif" }}
-                  >
+                  <p className="text-gray-400 leading-relaxed text-lg" style={{ fontFamily: "work-sans, sans-serif" }}>
                     {activeServiceData.description}
                   </p>
-                </div>
-
-                {/* Image with enhanced animation */}
-                <motion.div
-                  key={activeServiceData.image}
-                  initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  transition={{ 
-                    duration: 0.8, // Increased duration
-                    ease: "easeOut"
-                  }}
-                  className="relative overflow-hidden rounded-xl mb-6 w-full"
-                >
-                  <img
-                    src={activeServiceData.image}
-                    alt={activeServiceData.title}
-                    className="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg hover:scale-105 transition-transform duration-700"
-                  />
                   
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
-
-                {/* Progress Indicator */}
-                <div className="flex justify-center space-x-3 mb-4"> {/* Increased spacing */}
-                  {VrData.map((service, index) => (
-                    <button
-                      key={service.id}
-                      onClick={() => handleServiceClick(service.id)}
-                      className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                        activeService === service.id
-                          ? "bg-violet-500 scale-110 shadow-md shadow-violet-500/40"
-                          : "bg-gray-600 hover:bg-gray-400 hover:scale-105"
-                      }`}
-                      aria-label={`Go to ${service.title}`}
-                    />
-                  ))}
+                  {/* <button className="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-full text-sm font-medium transition-colors">
+                    Learn More
+                  </button> */}
                 </div>
-
-                {/* Scroll Hint */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }} // Increased delay
-                  className="text-center"
-                >
-                  <p className="text-gray-400 text-xs flex items-center justify-center gap-2">
-                    <span>Scroll to explore services</span>
-                    <motion.span
-                      animate={{ y: [0, 4, 0] }} // Increased movement
-                      transition={{ duration: 2, repeat: Infinity }} // Slower animation
-                    >
-                      ↓
-                    </motion.span>
-                  </p>
-                </motion.div>
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
 
-        {/* Additional Spacing for better scroll experience */}
-        <div className="h-32"></div> {/* Increased spacing */}
+        {/* Scroll Indicator - Hidden on mobile */}
+        <div className="hidden lg:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 flex-col items-center gap-2 opacity-60">
+          <span className="text-xs uppercase tracking-widest text-gray-500">Scroll to Explore</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="w-1 h-8 rounded-full bg-gradient-to-b from-violet-500 to-transparent"
+          />
+        </div>
       </div>
+      
+      {/* Spacer to allow scrolling past the pinned section - Only on desktop */}
+      <div className="hidden lg:block h-[20vh] w-full bg-black"></div>
     </div>
   );
 };
