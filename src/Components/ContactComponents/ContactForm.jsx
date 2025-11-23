@@ -10,16 +10,18 @@ import {
   FaPhone,
   FaEnvelope,
   FaGlobe,
-  FaPaperPlane,
+  FaPaperPlane
 } from "react-icons/fa";
 
+// SOCIAL LINKS
 const socialLinks = [
   { Icon: FaFacebookF, href: "https://facebook.com", color: "#1877F2" },
   { Icon: FaInstagram, href: "https://instagram.com", color: "#E4405F" },
   { Icon: FaLinkedinIn, href: "https://linkedin.com", color: "#0A66C2" },
-  { Icon: FaYoutube, href: "https://youtube.com", color: "#FF0000" },
+  { Icon: FaYoutube, href: "https://youtube.com", color: "#FF0000" }
 ];
 
+// INFO CARDS
 const infoCards = [
   {
     icon: FaMapMarkerAlt,
@@ -44,32 +46,24 @@ const infoCards = [
     title: "Support",
     content: "www.thirdvizion.com",
     color: "#3B82F6"
-  },
+  }
 ];
 
-// Animation variants
+// ANIMATION VARIANTS
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30 
-  },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.6, ease: "easeOut" }
   }
 };
 
@@ -77,28 +71,18 @@ const typingContainer = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: { 
-      staggerChildren: 0.05,
-      delayChildren: 0.3 
-    },
-  },
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
 };
 
 const typingText = {
-  hidden: { 
-    opacity: 0, 
-    y: 20,
-    scale: 0.8 
-  },
-  visible: { 
-    opacity: 1, 
+  hidden: { opacity: 0, y: 20, scale: 0.8 },
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100
-    }
-  },
+    transition: { type: "spring", stiffness: 100 }
+  }
 };
 
 const formVariants = {
@@ -106,33 +90,29 @@ const formVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.8, ease: "easeOut" }
   }
 };
 
 const buttonVariants = {
-  initial: { 
+  initial: {
     scale: 1,
     background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   },
-  hover: { 
+  hover: {
     scale: 1.05,
     background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
-    transition: {
-      duration: 0.3,
-      ease: "easeInOut"
-    }
+    transition: { duration: 0.3, ease: "easeInOut" }
   },
-  tap: { 
-    scale: 0.95 
+  tap: {
+    scale: 0.95
   }
 };
 
+// MAIN COMPONENT
 const ContactForm = () => {
   const text = "Let's create\nsomething unforgettable";
+
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -140,15 +120,14 @@ const ContactForm = () => {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    message: ""
   });
 
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const sendMail = async (e) => {
     e.preventDefault();
@@ -159,7 +138,7 @@ const ContactForm = () => {
       name: formData.name,
       email: formData.email,
       subject: formData.subject,
-      message: formData.message,
+      message: formData.message
     };
 
     try {
@@ -172,7 +151,7 @@ const ContactForm = () => {
       setStatus("✅ Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error("❌ Failed to send email:", error);
+      console.error("❌ Email Error:", error);
       setStatus("❌ Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -180,39 +159,26 @@ const ContactForm = () => {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative min-h-screen bg-black text-white overflow-hidden px-6 py-16"
     >
-      {/* Animated Background Elements */}
+      {/* BG GRADIENT ANIMATION */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-12 lg:gap-16">
+        
         {/* LEFT SIDE */}
         <motion.div
           className="lg:w-2/5 space-y-8"
@@ -220,21 +186,23 @@ const ContactForm = () => {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
+          {/* TITLE */}
           <motion.div variants={itemVariants} className="space-y-6">
             <motion.h1
-              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
+              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] whitespace-pre-line"
               variants={typingContainer}
               initial="hidden"
               animate="visible"
-               style={{ fontFamily: "Outfit, sans-serif" }} >
-              {text.split("").map((char, index) => (
-                <motion.span key={index} variants={typingText}>
+              style={{ fontFamily: "Outfit, sans-serif" }}
+            >
+              {text.split("").map((char, i) => (
+                <motion.span key={i} variants={typingText}>
                   {char}
                 </motion.span>
               ))}
             </motion.h1>
 
-            <motion.p 
+            <motion.p
               className="text-lg lg:text-xl text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
@@ -245,53 +213,53 @@ const ContactForm = () => {
             </motion.p>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div 
-            className="flex gap-6 text-2xl"
-            variants={itemVariants}
-          >
-            {socialLinks.map(({ Icon, href, color }, index) => (
+          {/* SOCIAL LINKS */}
+          <motion.div className="flex gap-6 text-2xl" variants={itemVariants}>
+            {socialLinks.map(({ Icon, href, color }, i) => (
               <motion.a
-                key={index}
+                key={i}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
-                whileHover={{ 
-                  scale: 1.2, 
+                whileHover={{
+                  scale: 1.2,
                   y: -5,
-                  color: color,
+                  color,
                   backgroundColor: "rgba(255,255,255,0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + index * 0.1 }}
+                transition={{ delay: 0.5 + i * 0.1 }}
               >
                 <Icon />
               </motion.a>
             ))}
           </motion.div>
 
-          {/* Info Cards Grid */}
-          <motion.div 
+          {/* INFO CARDS */}
+          <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
             variants={containerVariants}
           >
-            {infoCards.map(({ icon: Icon, title, content, color }, index) => (
+            {infoCards.map(({ icon: Icon, title, content, color }, i) => (
               <motion.div
-                key={index}
+                key={i}
                 className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
                 variants={itemVariants}
-                whileHover={{ 
+                whileHover={{
                   y: -5,
                   scale: 1.02,
                   borderColor: color,
                   boxShadow: `0 10px 30px -10px ${color}40`
                 }}
               >
-                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
-                  <div 
+                <div
+                  className="flex items-center gap-3 mb-2"
+                  style={{ fontFamily: "Work Sans, sans-serif" }}
+                >
+                  <div
                     className="p-2 rounded-lg"
                     style={{ backgroundColor: `${color}20` }}
                   >
@@ -305,7 +273,7 @@ const ContactForm = () => {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT SIDE - Contact Form */}
+        {/* RIGHT SIDE - FORM */}
         <motion.div
           className="lg:w-3/5"
           initial="hidden"
@@ -313,16 +281,19 @@ const ContactForm = () => {
           variants={formVariants}
         >
           <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-gray-700 shadow-2xl">
-            <motion.h2 
-              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
+            <motion.h2
+              className="text-2xl lg:text-3xl font-bold mb-6 text-amber-50"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-            style={{ fontFamily: "Outfit, sans-serif" }} >
+              style={{ fontFamily: "Outfit, sans-serif" }}
+            >
               Send us a Message
             </motion.h2>
 
             <form onSubmit={sendMail} className="space-y-6">
+              
+              {/* NAME + EMAIL */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -335,10 +306,11 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                     required
                   />
                 </motion.div>
+
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -350,12 +322,13 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                     required
                   />
                 </motion.div>
               </div>
 
+              {/* SUBJECT */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -367,10 +340,11 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
                 />
               </motion.div>
 
+              {/* MESSAGE */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -382,11 +356,12 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none resize-none transition-all"
                   required
-                ></textarea>
+                />
               </motion.div>
 
+              {/* SUBMIT BUTTON */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -395,21 +370,22 @@ const ContactForm = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group"
+                  className="w-full py-4 rounded-lg font-bold text-white relative overflow-hidden"
                   variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
                   whileTap="tap"
-                  style={{
-                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                  }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? (
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
                           className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                         />
                         Sending...
@@ -421,27 +397,32 @@ const ContactForm = () => {
                       </>
                     )}
                   </span>
-                  
-                  {/* Button shine effect */}
+
+                  {/* SHINE EFFECT */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.8 }}
                   />
                 </motion.button>
               </motion.div>
             </form>
 
+            {/* STATUS MESSAGE */}
             {status && (
-              <motion.p 
+              <motion.p
                 className="mt-4 p-3 rounded-lg text-center font-medium"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 style={{
-                  backgroundColor: status.includes("✅") ? "#10B98120" : "#EF444420",
+                  backgroundColor: status.includes("✅")
+                    ? "#10B98120"
+                    : "#EF444420",
                   color: status.includes("✅") ? "#10B981" : "#EF4444",
-                  border: `1px solid ${status.includes("✅") ? "#10B98140" : "#EF444440"}`
+                  border: `1px solid ${
+                    status.includes("✅") ? "#10B98140" : "#EF444440"
+                  }`
                 }}
               >
                 {status}
