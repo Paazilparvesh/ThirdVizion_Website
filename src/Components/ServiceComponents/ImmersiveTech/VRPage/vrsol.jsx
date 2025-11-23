@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 import VrImage1 from "/src/assets/vr/VrImage1.jpeg";
 import VrImage2 from "/src/assets/vr/VrImage2.jpeg";
 import VrImage3 from "/src/assets/vr/VrImage3.jpeg";
-import VrImage4 from "/src/assets/vr/VrImage4.jpeg";
+// import VrImage4 from "/src/assets/vr/VrImage4.jpeg";
 
 // ✅ VR Services Data — each with one image
 const VrData = [
@@ -38,14 +38,14 @@ const VrData = [
       "Bring designs to life with realistic 3D architectural visualization. Explore unbuilt spaces and experience your projects before construction begins",
     image: VrImage3,
   },
-  {
-    id: "entertainmentVR",
-    title: "Entertainment & Gaming",
-    icon: "🎮",
-    description:
-      "We design immersive VR games and experiences that combine creativity and technology to deliver interactive, unforgettable adventures.",
-    image: VrImage4,
-  },
+  // {
+  //   id: "entertainmentVR",
+  //   title: "Entertainment & Gaming",
+  //   icon: "🎮",
+  //   description:
+  //     "We design immersive VR games and experiences that combine creativity and technology to deliver interactive, unforgettable adventures.",
+  //   image: VrImage4,
+  // },
 ];
 
 const Vrsol = () => {
@@ -57,6 +57,12 @@ const Vrsol = () => {
   const detailsRef = useRef(null);
   const containerRef = useRef(null);
   const pinContainerRef = useRef(null);
+  const rightColumnRef = useRef(null);
+
+  // Reset refs on component mount
+  useEffect(() => {
+    serviceCardsRef.current = serviceCardsRef.current.slice(0, VrData.length);
+  }, []);
 
   useEffect(() => {
     // Header animation
@@ -72,13 +78,29 @@ const Vrsol = () => {
       }
     );
 
-    // Setup ScrollTrigger with pinning for the entire section
+    // Equal height synchronization
+    const syncHeights = () => {
+      const leftColumn = document.querySelector('.left-column');
+      const rightColumn = rightColumnRef.current;
+      
+      if (leftColumn && rightColumn) {
+        const leftHeight = leftColumn.scrollHeight;
+        const rightHeight = rightColumn.scrollHeight;
+        
+        // Set both to the maximum height
+        const maxHeight = Math.max(leftHeight, rightHeight);
+        leftColumn.style.minHeight = `${maxHeight}px`;
+        rightColumn.style.minHeight = `${maxHeight}px`;
+      }
+    };
+
+    // Setup ScrollTrigger with controlled speed
     const pinContainer = pinContainerRef.current;
     const serviceCards = serviceCardsRef.current;
 
     if (pinContainer && serviceCards.length === VrData.length) {
-      // Calculate total height needed for pinning
-      const totalHeight = VrData.length * 100; // 100vh per section
+      // Calculate total height needed for pinning - reduced for slower scroll
+      const totalHeight = VrData.length * 120; // Increased for slower scroll
 
       const scrollTrigger = ScrollTrigger.create({
         trigger: pinContainer,
@@ -86,7 +108,7 @@ const Vrsol = () => {
         end: `+=${totalHeight}vh`,
         pin: true,
         pinSpacing: true,
-        scrub: 0.5,
+        scrub: 1, // Increased scrub value for slower, smoother transitions
         onUpdate: (self) => {
           const progress = self.progress;
           const index = Math.min(
@@ -101,14 +123,14 @@ const Vrsol = () => {
         markers: false,
       });
 
-      // Individual card triggers for precise activation
+      // Individual card triggers with slower activation
       VrData.forEach((service, index) => {
         const card = serviceCards[index];
         if (card) {
           ScrollTrigger.create({
             trigger: card,
-            start: "top 30%",
-            end: "bottom 30%",
+            start: "top 40%", // Increased trigger area for slower activation
+            end: "bottom 40%", // Increased trigger area for slower activation
             onEnter: () => setActiveService(service.id),
             onEnterBack: () => setActiveService(service.id),
             markers: false,
@@ -116,8 +138,15 @@ const Vrsol = () => {
         }
       });
 
+      // Sync heights after a brief delay to ensure DOM is ready
+      setTimeout(syncHeights, 100);
+      
+      // Also sync on window resize
+      window.addEventListener('resize', syncHeights);
+
       return () => {
         scrollTrigger.kill();
+        window.removeEventListener('resize', syncHeights);
       };
     }
   }, []);
@@ -158,10 +187,10 @@ const Vrsol = () => {
           </h1>
         </div>
 
-        {/* Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 w-full">
+        {/* Grid with equal height columns */}
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16 w-full items-start">
           {/* Left: Cards */}
-          <div className="flex flex-col gap-6 w-full">
+          <div className="flex flex-col gap-6 w-full left-column">
             {VrData.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -207,7 +236,10 @@ const Vrsol = () => {
           </div>
 
           {/* Right: Sticky Image & Details */}
-          <div className="lg:sticky lg:top-4 self-start w-full">
+          <div 
+            className="lg:sticky lg:top-4 w-full" 
+            ref={rightColumnRef}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService}
@@ -216,7 +248,7 @@ const Vrsol = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.95 }}
                 transition={{ duration: 0.5 }}
-                className="bg-zinc-900/60 rounded-2xl p-6 md:p-8 border border-violet-700/50 backdrop-blur-md relative overflow-hidden w-full"
+                className="bg-zinc-900/60 rounded-2xl p-6 md:p-8 border border-violet-700/50 backdrop-blur-md relative overflow-hidden w-full h-full"
               >
                 {/* Service Header */}
                 <div className="mb-6">
