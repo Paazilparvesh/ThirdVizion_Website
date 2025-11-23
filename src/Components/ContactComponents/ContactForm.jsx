@@ -161,48 +161,59 @@ const ContactForm = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-black text-white overflow-hidden px-6 py-16"
+      className="relative min-h-screen bg-black text-white overflow-hidden px-4 sm:px-6 py-12 sm:py-16"
     >
       {/* BG GRADIENT ANIMATION */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
         <motion.div
           className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
       </div>
 
       <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-12 lg:gap-16">
-        
         {/* LEFT SIDE */}
         <motion.div
-          className="lg:w-2/5 space-y-8"
+          className="lg:w-2/5 flex flex-col"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          {/* TITLE */}
           <motion.div variants={itemVariants} className="space-y-6">
             <motion.h1
-              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] whitespace-pre-line"
+              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
               variants={typingContainer}
               initial="hidden"
               animate="visible"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              {text.split("").map((char, i) => (
-                <motion.span key={i} variants={typingText}>
+               style={{ fontFamily: "Outfit, sans-serif" }} >
+              {text.split("").map((char, index) => (
+                <motion.span key={index} variants={typingText}>
                   {char}
                 </motion.span>
               ))}
             </motion.h1>
 
-            <motion.p
+            <motion.p 
               className="text-lg lg:text-xl text-gray-300 leading-relaxed"
               variants={itemVariants}
             >
@@ -213,53 +224,53 @@ const ContactForm = () => {
             </motion.p>
           </motion.div>
 
-          {/* SOCIAL LINKS */}
-          <motion.div className="flex gap-6 text-2xl" variants={itemVariants}>
-            {socialLinks.map(({ Icon, href, color }, i) => (
+          {/* Social Links */}
+          <motion.div 
+            className="flex gap-6 text-2xl"
+            variants={itemVariants}
+          >
+            {socialLinks.map(({ Icon, href, color }, index) => (
               <motion.a
-                key={i}
+                key={index}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
-                whileHover={{
-                  scale: 1.2,
+                whileHover={{ 
+                  scale: 1.2, 
                   y: -5,
-                  color,
+                  color: color,
                   backgroundColor: "rgba(255,255,255,0.1)"
                 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
               >
                 <Icon />
               </motion.a>
             ))}
           </motion.div>
 
-          {/* INFO CARDS */}
-          <motion.div
+          {/* Info Cards Grid */}
+          <motion.div 
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
             variants={containerVariants}
           >
-            {infoCards.map(({ icon: Icon, title, content, color }, i) => (
+            {infoCards.map(({ icon: Icon, title, content, color }, index) => (
               <motion.div
-                key={i}
+                key={index}
                 className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
                 variants={itemVariants}
-                whileHover={{
+                whileHover={{ 
                   y: -5,
                   scale: 1.02,
                   borderColor: color,
                   boxShadow: `0 10px 30px -10px ${color}40`
                 }}
               >
-                <div
-                  className="flex items-center gap-3 mb-2"
-                  style={{ fontFamily: "Work Sans, sans-serif" }}
-                >
-                  <div
+                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
+                  <div 
                     className="p-2 rounded-lg"
                     style={{ backgroundColor: `${color}20` }}
                   >
@@ -273,16 +284,16 @@ const ContactForm = () => {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT SIDE - FORM */}
+        {/* RIGHT SIDE - Contact Form */}
         <motion.div
-          className="lg:w-3/5"
+          className="lg:w-3/5 flex flex-col mt-8 lg:mt-0"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={formVariants}
         >
           <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-gray-700 shadow-2xl">
-            <motion.h2
-              className="text-2xl lg:text-3xl font-bold mb-6 text-amber-50"
+            <motion.h2 
+              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -292,8 +303,6 @@ const ContactForm = () => {
             </motion.h2>
 
             <form onSubmit={sendMail} className="space-y-6">
-              
-              {/* NAME + EMAIL */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -306,7 +315,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                     required
                   />
                 </motion.div>
@@ -322,7 +331,7 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                     required
                   />
                 </motion.div>
@@ -340,7 +349,7 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                 />
               </motion.div>
 
@@ -349,14 +358,15 @@ const ContactForm = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9 }}
+                className="flex-1"
               >
                 <textarea
-                  rows="6"
+                  rows="4"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none resize-none transition-all"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none"
                   required
                 />
               </motion.div>
@@ -366,11 +376,12 @@ const ContactForm = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0 }}
+                className="pt-2 sm:pt-4"
               >
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg font-bold text-white relative overflow-hidden"
+                  className="w-full py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group"
                   variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
@@ -381,18 +392,14 @@ const ContactForm = () => {
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                           className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                         />
                         Sending...
                       </>
                     ) : (
                       <>
-                        <FaPaperPlane />
+                        <FaPaperPlane className="text-sm sm:text-base" />
                         Send Message
                       </>
                     )}
@@ -411,7 +418,7 @@ const ContactForm = () => {
 
             {/* STATUS MESSAGE */}
             {status && (
-              <motion.p
+              <motion.p 
                 className="mt-4 p-3 rounded-lg text-center font-medium"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

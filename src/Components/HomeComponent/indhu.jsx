@@ -8,6 +8,7 @@ import gam from "/src/assets/indh/second.png";
 import are from "/src/assets/indh/tool.png";
 import wih from "/src/assets/indh/dounload.png";
 import bit from "/src/assets/indh/succes.png";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Indhu() {
@@ -17,59 +18,48 @@ export default function Indhu() {
   const svgRef = useRef(null);
   const pathRef = useRef(null);
   const containerRef = useRef(null);
-  const circleRefs = useRef([]);
-  const textRefs = useRef([]);
-  const descRefs = useRef([]);
-  const imageRefs = useRef([]);
-  const animationRefs = useRef([]);
 
   // PRECISE COLOR TRANSITION CONTROL
   const colorTransitions = {
-    // Define exactly when colors change during scroll (0 to 1 progress)
     transitions: [
       {
-        startProgress: 0.0,    // Start of scroll
-        endProgress: 0.25,     // End at 25% scroll
-        color: "#fb923c",      // Orange
+        startProgress: 0.0,
+        endProgress: 0.25,
+        color: "#fb923c",
         label: "DISCOVER Phase"
       },
       {
-        startProgress: 0.25,   // Start at 25% scroll
-        endProgress: 0.50,     // End at 45% scroll
-        color: "#f472b6",      // Pink
+        startProgress: 0.25,
+        endProgress: 0.50,
+        color: "#f472b6",
         label: "ARCHITECT Phase"
       },
       {
-        startProgress: 0.45,   // Start at 45% scroll
-        endProgress: 0.75,     // End at 65% scroll
-        color: "#4ade80",      // Green
+        startProgress: 0.45,
+        endProgress: 0.75,
+        color: "#4ade80",
         label: "BUILD Phase"
       },
       {
-        startProgress: 0.65,   // Start at 65% scroll
-        endProgress: 0.85,     // End at 85% scroll
-        color: "#f87171",      // Red
+        startProgress: 0.65,
+        endProgress: 0.85,
+        color: "#f87171",
         label: "ELEVATE Phase"
       },
       {
-        startProgress: 0.85,   // Start at 85% scroll
-        endProgress: 1.0,      // End at 100% scroll
-        color: "#FFC016",      // Yellow
+        startProgress: 0.85,
+        endProgress: 1.0,
+        color: "#FFC016",
         label: "SUCCESS Phase"
       }
     ],
     
-    // Alternative: Single color for entire line
     useSingleColor: false,
     singleColor: "#FFC016",
-    
-    // Visual effects
     pulseEffect: true,
     pulseIntensity: 0.2,
     glowEffect: true,
     glowIntensity: 0.3,
-    
-    // Line style
     strokeWidth: 5,
     strokeOpacity: 1
   };
@@ -142,7 +132,7 @@ export default function Indhu() {
     },
     {
       id: 5,
-      label: "SUCCEES",
+      label: "SUCCESS",
       description:
         "Success isn't a destination—it's a journey of constant growth. We empower your business to achieve measurable results through strategic execution, data-driven insights, and relentless improvement—ensuring your goals aren't just met, but exceeded.",
       img: bit,
@@ -179,7 +169,6 @@ export default function Indhu() {
     const gradientStops = [];
     
     colorTransitions.transitions.forEach((transition, index) => {
-      // Add start point of this transition
       gradientStops.push(
         <stop 
           key={`start-${index}`}
@@ -188,7 +177,6 @@ export default function Indhu() {
         />
       );
       
-      // Add end point of this transition
       gradientStops.push(
         <stop 
           key={`end-${index}`}
@@ -200,9 +188,6 @@ export default function Indhu() {
 
     return gradientStops;
   };
-
-  // Force update helper
-  const [, forceUpdate] = useState();
 
   // Function to apply pulse animation
   const applyPulseEffect = () => {
@@ -329,13 +314,18 @@ export default function Indhu() {
 
   useEffect(() => {
     if (isMobile) return;
+    
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
+    
     if (!section || !svg || !path) return;
 
+    // Clean up any existing ScrollTriggers
     ScrollTrigger.getAll().forEach((st) => {
-      if (st.trigger === section || st.trigger === svg) st.kill();
+      if (st.trigger === section || st.trigger === svg || st.vars?.trigger === section) {
+        st.kill();
+      }
     });
 
     const totalLength = path.getTotalLength();
@@ -350,17 +340,26 @@ export default function Indhu() {
     applyPulseEffect();
     applyGlowEffect();
 
+    // FIXED: Proper scroll distance calculation to avoid white space
+    const getScrollAmount = () => {
+      const svgWidth = svg.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      return -(svgWidth - viewportWidth);
+    };
+
     const scrollTween = gsap.to(svg, {
-      x: () => -(svg.scrollWidth - window.innerWidth),
+      x: getScrollAmount,
       ease: "none",
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.65}`,
-        scrub: true,
+        end: () => `+=${Math.abs(getScrollAmount())}`,
+        scrub: 1,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        pinSpacing: true,
+        markers: false,
       },
     });
 
@@ -370,8 +369,8 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.5}`,
-        scrub: true,
+        end: () => `+=${Math.abs(getScrollAmount())}`,
+        scrub: 1,
         invalidateOnRefresh: true,
       },
     });
@@ -382,8 +381,8 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.5}`,
-        scrub: 0.1, // Smooth color transitions
+        end: () => `+=${Math.abs(getScrollAmount())}`,
+        scrub: 0.1,
         onUpdate: (self) => {
           const progress = self.progress;
           const currentColor = getCurrentColor(progress);
@@ -394,9 +393,8 @@ export default function Indhu() {
           }
           
           // Update circle colors based on progress
-          circles.forEach((circle, index) => {
+          circles.forEach((circle) => {
             if (progress >= circle.progressStart && progress <= circle.progressEnd) {
-              // This circle is active - you could add highlight effects here
               const circleElement = document.querySelector(`circle[cx="${circle.cx}"]`);
               if (circleElement) {
                 circleElement.style.strokeWidth = "3";
@@ -408,12 +406,28 @@ export default function Indhu() {
       },
     });
 
-    return () => {
-      scrollTween.kill();
-      pathAnimation.kill();
-      colorAnimation.kill();
+    // Refresh ScrollTrigger on window resize
+    const handleResize = () => {
+      ScrollTrigger.refresh();
     };
-  }, [isMobile, colorTransitions]);
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      scrollTween?.kill();
+      pathAnimation?.kill();
+      colorAnimation?.kill();
+      
+      // Kill all ScrollTriggers associated with this section
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === section || st.vars?.trigger === section) {
+          st.kill();
+        }
+      });
+    };
+  }, [isMobile]);
 
   return (
     <section
@@ -426,7 +440,7 @@ export default function Indhu() {
         className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
-        <p className="text-xs sm:text-sm text-black tracking-wide uppercase mb-2">
+        <p className="text-xs sm:text-sm text-[#FFC016] tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
@@ -437,7 +451,7 @@ export default function Indhu() {
         </h1>
       </div>
 
-      <div className="relative flex-shrink-0 w-[11000px] h-[600px] lg:h-[700px] 2xl:h-[800px] mx-auto z-10">
+      <div className="relative flex-shrink-0 w-full h-[600px] lg:h-[700px] 2xl:h-[800px] z-10 overflow-visible">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${svgWidth} 600`}
@@ -484,7 +498,7 @@ export default function Indhu() {
             )}
           </defs>
 
-          {circles.map((c, idx) => {
+          {circles.map((c) => {
             const labelY = c.cy + radius + 70;
             const descStartY = labelY + 50;
             const lineHeight = 28;
