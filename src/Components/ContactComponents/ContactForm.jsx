@@ -302,7 +302,7 @@ const ContactForm = () => {
                       </div>
                       <h3 className="font-bold text-white text-sm sm:text-base">{title}</h3>
                     </div>
-                    <p className="text-gray-300 text-xs sm:text-sm pl-8 sm:pl-11">{content}</p>
+                    <p className="text-gray-300 text-xs sm:text-sm pl-10 sm:pl-11">{content}</p>
                   </motion.div>
                 ))}
               </motion.div>

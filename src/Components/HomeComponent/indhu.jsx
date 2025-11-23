@@ -201,9 +201,6 @@ export default function Indhu() {
     return gradientStops;
   };
 
-  // Force update helper
-  const [, forceUpdate] = useState();
-
   // Function to apply pulse animation
   const applyPulseEffect = () => {
     if (!colorTransitions.pulseEffect || !pathRef.current) return;
@@ -329,13 +326,18 @@ export default function Indhu() {
 
   useEffect(() => {
     if (isMobile) return;
+    
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
+    
     if (!section || !svg || !path) return;
 
+    // Clean up any existing ScrollTriggers
     ScrollTrigger.getAll().forEach((st) => {
-      if (st.trigger === section || st.trigger === svg) st.kill();
+      if (st.trigger === section || st.trigger === svg || st.vars?.trigger === section) {
+        st.kill();
+      }
     });
 
     const totalLength = path.getTotalLength();
@@ -350,17 +352,21 @@ export default function Indhu() {
     applyPulseEffect();
     applyGlowEffect();
 
+    // Calculate proper scroll distance - FIXED: Reduced multiplier for smoother end
+    const scrollDistance = svg.scrollWidth * 1.3; // Reduced from 1.65 to 1.3
+
     const scrollTween = gsap.to(svg, {
       x: () => -(svg.scrollWidth - window.innerWidth),
       ease: "none",
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.65}`,
+        end: `+=${scrollDistance}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
+        markers: false, // Set to true for debugging
       },
     });
 
@@ -370,7 +376,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.5}`,
+        end: `+=${scrollDistance}`,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -382,8 +388,8 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${svg.scrollWidth * 1.5}`,
-        scrub: 0.1, // Smooth color transitions
+        end: `+=${scrollDistance}`,
+        scrub: 0.1,
         onUpdate: (self) => {
           const progress = self.progress;
           const currentColor = getCurrentColor(progress);
@@ -396,7 +402,6 @@ export default function Indhu() {
           // Update circle colors based on progress
           circles.forEach((circle, index) => {
             if (progress >= circle.progressStart && progress <= circle.progressEnd) {
-              // This circle is active - you could add highlight effects here
               const circleElement = document.querySelector(`circle[cx="${circle.cx}"]`);
               if (circleElement) {
                 circleElement.style.strokeWidth = "3";
@@ -405,13 +410,29 @@ export default function Indhu() {
             }
           });
         },
+        onEnter: () => {
+          // Reset any previous animations
+          gsap.set(svg, { x: 0 });
+        },
+        onLeave: () => {
+          // Ensure smooth transition when leaving the section
+          gsap.to(svg, { x: -(svg.scrollWidth - window.innerWidth), duration: 0.5 });
+        },
       },
     });
 
+    // Cleanup function
     return () => {
-      scrollTween.kill();
-      pathAnimation.kill();
-      colorAnimation.kill();
+      scrollTween?.kill();
+      pathAnimation?.kill();
+      colorAnimation?.kill();
+      
+      // Kill all ScrollTriggers associated with this section
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === section || st.vars?.trigger === section) {
+          st.kill();
+        }
+      });
     };
   }, [isMobile, colorTransitions]);
 
@@ -426,7 +447,7 @@ export default function Indhu() {
         className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
-        <p className="text-xs sm:text-sm text-black tracking-wide uppercase mb-2">
+        <p className="text-xs sm:text-sm text-[#FFC016] tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
