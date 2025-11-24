@@ -206,13 +206,10 @@ function DragGame() {
 
 export default function GameLanding() {
   return (
-    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden text-white font-inter-tight">
+    <section className="relative isolate min-h-[100dvh] pt-30 w-full overflow-hidden text-white font-inter-tight">
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 md:grid-cols-2 md:gap-10 md:py-16">
         <div>
-          <div className="w-full md:w-auto mt-12 mb-4 sm:mt-12 md:mt-5 inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-            <Sparkles className="h-4 w-4 mr-2 inline" />
-            <span>Premium Web-Game Services</span>
-          </div>
+          
 
           <h1 className=" text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center md:text-start font-medium leading-[1.05] tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
             Build Interactive WebSite Games Players  

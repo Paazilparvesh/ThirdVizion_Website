@@ -23,7 +23,7 @@ const ServerHero = () => {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="text-gray-300 max-w-3xl mb-8 leading-relaxed FONT-MEDIUM"
+            className="text-gray-300 max-w-3xl hidden sm:block mb-8 leading-relaxed FONT-MEDIUM"
            style={{ fontFamily: "work-sans, sans-serif" }}>
             We provide comprehensive server management services, ensuring your
             servers are secure, reliable, and perform optimally. This includes

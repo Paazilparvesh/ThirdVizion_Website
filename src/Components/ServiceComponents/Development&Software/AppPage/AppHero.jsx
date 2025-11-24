@@ -88,7 +88,7 @@ export default function AppHero() {
         </h1>
 
         <p
-          className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
+          className="text-gray-400 text-sm hidden sm:block sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
           style={{ fontFamily: "Work Sans, sans-serif" }}
         >
           Transforming ideas into intuitive and engaging mobile applications

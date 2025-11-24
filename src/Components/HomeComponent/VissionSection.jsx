@@ -124,77 +124,82 @@ const MissionVision = () => {
     return () => ctx.revert();
   }, [isMobile]);
 
-  // ---------- MOBILE VIEW (NO ANIMATIONS) ----------
-  if (isMobile) {
-    return (
-      <section
-        className="bg-black text-white py-16 px-6 flex flex-col space-y-16"
-        style={{ fontFamily: "'Work Sans', sans-serif" }}
-      >
+  // ---------- MOBILE VIEW (MINIMAL & PROFESSIONAL) ----------
+  // ---------- MOBILE VIEW (MINIMAL GEOMETRIC) ----------
+if (isMobile) {
+  return (
+    <section
+      className="bg-black text-white py-20 px-6"
+      style={{ fontFamily: "'Work Sans', sans-serif" }}
+    >
+      <div className="max-w-lg mx-auto space-y-16">
         {/* Vision */}
-        <div className="text-center">
-          <h2
-            className="text-4xl font-bold mb-4 text-[#FFC016]"
-            style={{ fontFamily: "Outfit, sans-serif" }}
-          >
-            VISION
-          </h2>
-          <p className="text-gray-300 text-base leading-relaxed max-w-md mx-auto">
-            To become a global leader in immersive 3D and digital innovation,
-            creating experiences that inspire, connect, and transform the way
-            people and businesses interact with technology.
-          </p>
+        <div className="relative">
+          <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC016]/10 to-transparent rounded-3xl transform -skew-y-3"></div>
+          <div className="relative bg-black rounded-2xl p-8 border-l-4 border-[#FFC016]">
+            <div className="flex items-center mb-6">
+              <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
+              <h2
+                className="text-4xl font-bold text-[#FFC016]"
+                style={{ fontFamily: "Outfit, sans-serif" }}
+              >
+                VISION
+              </h2>
+            </div>
+            <p className="text-gray-300 text-base leading-relaxed pl-7">
+              To become a global leader in immersive 3D and digital innovation,
+              creating experiences that inspire, connect, and transform the way
+              people and businesses interact with technology.
+            </p>
+          </div>
         </div>
 
         {/* Mission */}
-        <div className="text-center">
-          <h2
-            className="text-4xl font-bold mb-4 text-[#FFC016]"
-            style={{ fontFamily: "Outfit, sans-serif" }}
-          >
-            MISSION
-          </h2>
-          <p className="text-gray-300 text-base leading-relaxed max-w-md mx-auto mb-2">
-            At ThirdVizion Labs, our mission is to empower brands and creators
-            with AR, VR, and 3D web technologies that make digital experiences
-            more interactive and impactful.
-          </p>
+        <div className="relative">
+          <div className="absolute -inset-4 bg-gradient-to-l from-[#FFC016]/10 to-transparent rounded-3xl transform skew-y-3"></div>
+          <div className="relative bg-black rounded-2xl p-8 border-r-4 border-[#FFC016]">
+            <div className="flex items-center justify-end mb-6">
+              <h2
+                className="text-4xl font-bold text-[#FFC016] mr-4"
+                style={{ fontFamily: "Outfit, sans-serif" }}
+              >
+                MISSION
+              </h2>
+              <div className="w-3 h-8 bg-[#FFC016] rounded-full"></div>
+            </div>
+            
+            <p className="text-gray-300 text-base leading-relaxed text-right mb-6">
+              At ThirdVizion Labs, our mission is to empower brands and creators
+              with AR, VR, and 3D web technologies that make digital experiences
+              more interactive and impactful.
+            </p>
 
-          <p className="text-gray-300 text-base leading-relaxed max-w-md mx-auto mb-2">
-            <span
-              className="text-[#FFC016] font-medium"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INNOVATE
-            </span>{" "}
-            immersive solutions that change how people learn, work, and connect.
-          </p>
-
-          <p className="text-gray-300 text-base leading-relaxed max-w-md mx-auto mb-2">
-            <span
-              className="text-[#FFC016] font-medium"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INTEGRATE
-            </span>{" "}
-            smooth 3D experiences across platforms for better access and
-            engagement.
-          </p>
-
-          <p className="text-gray-300 text-base leading-relaxed max-w-md mx-auto">
-            <span
-              className="text-[#FFC016] font-medium"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INSPIRE
-            </span>{" "}
-            creativity by combining design, technology, and storytelling to
-            build a future driven by imagination.
-          </p>
+            <div className="space-y-4">
+              {[
+                { title: "INNOVATE", text: "immersive solutions that change how people learn, work, and connect." },
+                { title: "INTEGRATE", text: "smooth 3D experiences across platforms for better access and engagement." },
+                { title: "INSPIRE", text: "creativity by combining design, technology, and storytelling." }
+              ].map((item, index) => (
+                <div key={index} className="text-right group">
+                  <span
+                    className="text-[#FFC016] font-bold text-lg block mb-1"
+                    style={{ fontFamily: "Outfit, sans-serif" }}
+                  >
+                    {item.title}
+                  </span>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.text}
+                  </p>
+                  {index < 2 && <div className="w-16 h-0.5 bg-[#FFC016]/30 mx-auto mt-3"></div>}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
   // ---------- DESKTOP VIEW (WITH ANIMATIONS) ----------
   return (

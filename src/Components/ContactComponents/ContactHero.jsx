@@ -9,16 +9,47 @@ export default function ContactHero() {
   const headerRef = useRef(null);
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
-  const mobileHeaderRef = useRef(null);
+  const mobileImageRef = useRef(null);
+  const mobileImageContainerRef = useRef(null);
   const scrollButtonRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // useEffect to center the image on mount and resize
+  useEffect(() => {
+    const centerImage = () => {
+      if (mobileImageContainerRef.current) {
+        const container = mobileImageContainerRef.current;
+        const scrollWidth = container.scrollWidth;
+        const containerWidth = container.clientWidth;
+        const centerPosition = (scrollWidth - containerWidth) / 2;
+        
+        container.scrollLeft = centerPosition;
+      }
+    };
+
+    // Center on initial mount
+    centerImage();
+
+    // Also center on window resize
+    const handleResize = () => {
+      centerImage();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const header = headerRef.current;
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
-      const mobileHeader = mobileHeaderRef.current;
       const scrollButton = scrollButtonRef.current;
       
       if (!header || !wrapper || !imgHolder) return;
@@ -29,7 +60,6 @@ export default function ContactHero() {
       const innerImg = imgHolder.querySelector("img");
 
       ScrollTrigger.matchMedia({
-        // Desktop - Smooth scroll animations like AboutHero
         "(min-width: 1024px)": () => {
           // Reset all transforms before animation
           gsap.set([contactText, getText, touchText, imgHolder, innerImg], {
@@ -54,7 +84,7 @@ export default function ContactHero() {
             });
           }
 
-          // Create a master timeline for smoother sequencing like AboutHero
+          // Create a master timeline for smoother sequencing
           const masterTL = gsap.timeline({
             scrollTrigger: {
               trigger: wrapper,
@@ -67,7 +97,7 @@ export default function ContactHero() {
             }
           });
 
-          // Text animations with better timing like AboutHero
+          // Text animations with better timing
           if (contactText) {
             masterTL.to(contactText, {
               y: -200,
@@ -96,7 +126,7 @@ export default function ContactHero() {
             }, 0);
           }
 
-          // Image holder animation - smooth like AboutHero
+          // Image holder animation
           masterTL.fromTo(imgHolder, 
             {
               scale: 0,
@@ -113,14 +143,14 @@ export default function ContactHero() {
             0
           );
 
-          // Inner image animation with better timing - smooth like AboutHero
+          // Inner image animation with better timing
           if (innerImg) {
             masterTL.fromTo(innerImg, 
               {
-                scale: 2, // Start with zoomed in like AboutHero
+                scale: 2,
               },
               {
-                scale: 0.8, // End with normal scale
+                scale: 0.8,
                 y: 60,
                 borderRadius: "5rem",
                 ease: "power2.inOut",
@@ -130,7 +160,6 @@ export default function ContactHero() {
           }
         },
 
-        // Mobile - Simple scroll away animation
         "(max-width: 1023px)": () => {
           // Mobile scroll button animation
           if (scrollButton) {
@@ -149,43 +178,6 @@ export default function ContactHero() {
               }
             });
           }
-
-          // Mobile header scrolls away normally
-          if (mobileHeader) {
-            gsap.to(mobileHeader, {
-              opacity: 0,
-              y: -50,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "top+=100 top",
-                scrub: 1,
-              },
-            });
-          }
-
-          // Mobile image animation - smooth like AboutHero
-          const mobileImg = document.querySelector('.lg\\:hidden img');
-          if (mobileImg) {
-            gsap.fromTo(mobileImg, 
-              {
-                scale: 0.8,
-                opacity: 0.8,
-              },
-              {
-                scale: 1,
-                opacity: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                  trigger: mobileImg,
-                  start: "top bottom",
-                  end: "top center",
-                  scrub: 1,
-                }
-              }
-            );
-          }
         },
       });
     }, wrapperRef);
@@ -194,7 +186,7 @@ export default function ContactHero() {
       ScrollTrigger.refresh();
     };
 
-    // Debounced resize handler for better performance like AboutHero
+    // Debounced resize handler for better performance
     let resizeTimeout;
     const debouncedResize = () => {
       clearTimeout(resizeTimeout);
@@ -210,6 +202,48 @@ export default function ContactHero() {
     };
   }, []);
 
+  // Mobile image drag handlers
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    const touch = e.touches[0];
+    setStartX(touch.clientX);
+    setScrollLeft(mobileImageContainerRef.current.scrollLeft);
+    e.preventDefault();
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    const x = touch.clientX;
+    const walk = (x - startX) * 1.5;
+    mobileImageContainerRef.current.scrollLeft = scrollLeft - walk;
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Mouse handlers for desktop testing
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollLeft(mobileImageContainerRef.current.scrollLeft);
+    mobileImageContainerRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    const x = e.pageX;
+    const walk = (x - startX) * 1.5;
+    mobileImageContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    mobileImageContainerRef.current.style.cursor = 'grab';
+  };
+
   const handleScrollDown = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -218,12 +252,13 @@ export default function ContactHero() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black font-contrail overflow-hidden text-white">
+    <div className="relative w-full min-h-screen bg-black overflow-hidden">
+
       {/* Scroll Down Button */}
       {showScrollButton && (
         <div
           ref={scrollButtonRef}
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer"
+          className="fixed bottom-8 left-1/2 hidden sm:block transform -translate-x-1/2 z-50 cursor-pointer"
           onClick={handleScrollDown}
         >
           <div className="flex flex-col items-center justify-center">
@@ -241,58 +276,28 @@ export default function ContactHero() {
       <div
         ref={headerRef}
         className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
-        aria-hidden
-      >
-        <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]"  style={{ fontFamily: "Outfit, sans-serif" }}>
-          Contact
-        </div>
-        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] "  style={{ fontFamily: "Outfit, sans-serif" }}>
-         <div 
-  className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
-  style={{
-    backgroundImage:
-      "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
-  }}
->
-  Get in
-</div>
-
-<div 
-  className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
-  style={{
-    backgroundImage:
-      "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)"
-  }}
->
-  Touch
-</div>
-
-        </div>
-      </div>
-
-      {/* Mobile Header - Normal scroll position (not fixed) */}
-      <div 
-        ref={mobileHeaderRef}
-        className="lg:hidden relative z-30 w-full pt-20 pb-10 flex flex-col justify-center items-center px-4"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
-        <div className="text-lg mb-4 font-semibold text-center uppercase">
+        <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]">
           Contact
         </div>
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] ">
           <div 
-            className="text-5xl font-bold uppercase bg-clip-text text-transparent text-center"
+            className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%,  #4facfe 100%)"
+              backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
+              fontFamily: "Outfit, sans-serif"
+           
             }}
           >
             Get in
           </div>
           <div 
-            className="text-5xl font-bold uppercase bg-clip-text text-transparent text-center"
+            className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%)"
-            }}
+              backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
+           
+             fontFamily: "Outfit, sans-serif" }}
           >
             Touch
           </div>
@@ -316,17 +321,82 @@ export default function ContactHero() {
           </div>
         </div>
 
-        {/* Mobile simple section */}
-        <div className="lg:hidden w-full bg-black flex items-center justify-center px-4 pb-20">
-          <div className="w-full max-w-md">
-            <img
-              src={ContactHeroimg}
-              alt="Contact Visual"
-              className="w-full h-auto object-cover rounded-2xl shadow-lg"
-            />
+        {/* Mobile Layout - Same as About Page */}
+        <div className="lg:hidden w-full bg-black min-h-screen">
+          {/* Hero Image Section - Full Screen with Horizontal Drag */}
+          <div 
+            ref={mobileImageContainerRef}
+            className="relative w-full h-[60vh] bg-gradient-to-br from-gray-900 to-black overflow-x-auto overflow-y-hidden"
+            style={{ 
+              cursor: 'grab',
+              WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'smooth'
+            }}
+          >
+            <div className="w-[200vw] h-full flex">
+              <img
+                ref={mobileImageRef}
+                src={ContactHeroimg}
+                alt="Contact Visual"
+                className="w-[200vw] h-full object-cover opacity-90 min-w-0 flex-shrink-0"
+                style={{ 
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none'
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              />
+            </div>
+         
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+          </div>
+
+          {/* Content Section - Same as About Page */}
+          <div className="relative -mt-20 bg-black rounded-t-3xl pt-12 px-6 pb-16">
+            {/* Company Badge */}
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+              <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-6 py-3 rounded-full">
+                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}> Contact Us</span>
+              </div>
+            </div>
+
+            {/* Minimal Header */}
+            <div className="text-center mb-12">
+           
+              <h1 className="text-4xl font-light text-white mb-4"  style={{ fontFamily: "'outfit', sans-serif" }}>
+                Get In <span className="font-semilight">Touch</span>
+              </h1>
+              <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
+            </div>
+
+            {/* Core Description */}
+            <div className="max-w-md mx-auto space-y-6 text-center">
+              <p className="text-gray-300 text-lg leading-relaxed font-light"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+                Ready to bring your vision to life? Let's start a conversation about 
+                your next project and create something extraordinary together.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Hide scrollbar styles */}
+      <style jsx>{`
+        .overflow-x-auto::-webkit-scrollbar {
+          display: none;
+        }
+        .overflow-x-auto {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

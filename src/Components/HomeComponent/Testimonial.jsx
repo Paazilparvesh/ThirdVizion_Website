@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 // --- Testimonials Data ---
 const testimonials = [
@@ -53,18 +52,86 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="relative bg-black text-white py-24 overflow-hidden">
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
+    <section className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
           What People Say <span className="text-[#FFC016]" style={{ fontFamily: "Outfit, sans-serif" }}> About Us</span>
         </h2>
 
-        <p className="text-white text-xs md:text-lg mb-16 max-w-2xl mx-auto" style={{ fontFamily: "Work Sans, sans-serif" }}>
+        <p className="text-white text-sm md:text-lg mb-12 md:mb-16 max-w-2xl mx-auto px-4" style={{ fontFamily: "Work Sans, sans-serif" }}>
           Hear from companies and developers who trust ThirdVizion for premium digital solutions.
         </p>
 
-        {/* --- Carousel Container --- */}
-        <div className="relative max-w-6xl mx-auto">
+        {/* --- Mobile View --- */}
+        <div className="block md:hidden">
+          <div 
+            className="max-w-md mx-auto"
+            onTouchStart={() => setPaused(true)}
+            onTouchEnd={() => setPaused(false)}
+          >
+            {/* Main Testimonial Card */}
+            <div className=" border border-gray-800 rounded-2xl shadow-lg p-6 mb-8">
+              <div className="flex flex-col items-center text-center">
+                {/* Rating Stars */}
+                <div className="flex space-x-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="w-5 h-5 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                
+                {/* Review Text */}
+                <p className="text-gray-300 leading-relaxed text-base mb-6 px-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                  "{testimonials[activeIndex].review}"
+                </p>
+                
+                {/* Client Info */}
+                <div className="mb-4">
+                  <h4 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                    {testimonials[activeIndex].name}
+                  </h4>
+                  <p className="text-[#FFC016] text-sm font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                    {testimonials[activeIndex].role}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="flex justify-center space-x-3 mb-8">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === activeIndex ? "bg-[#FFC016] w-6" : "bg-gray-600"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-center items-center space-x-6">
+              <button
+                onClick={prev}
+                className="w-12 h-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+              >
+                <span className="group-hover:text-black">‹</span>
+              </button>
+
+              <button
+                onClick={next}
+                className="w-12 h-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+              >
+                <span className="group-hover:text-black">›</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* --- Desktop View --- */}
+        <div className="hidden md:block relative max-w-6xl mx-auto">
           <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             onMouseEnter={() => setPaused(true)}
@@ -72,41 +139,34 @@ export default function TestimonialsSection() {
           >
             {/* Main Featured Card */}
             <div className="lg:col-span-2">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="w-full  border border-gray-800 rounded-2xl shadow-2xl p-10 h-full relative"
-                >
-                  {/* Quote Icon */}
-                  
-                  <div className="flex flex-col items-center text-center relative z-10">
-                    <div className="mb-8">
-                      <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                        {testimonials[activeIndex].name}
-                      </h4>
-                      <p className="text-[#FFC016] text-base font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                        {testimonials[activeIndex].role}
-                      </p>
-                    </div>
-                    <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "Work Sans, sans-serif" }}>
-                      "{testimonials[activeIndex].review}"
+              <div
+                key={activeIndex}
+                className="w-full border border-gray-800 rounded-2xl shadow-2xl p-10 h-full relative"
+              >
+                {/* Quote Icon */}
+                <div className="flex flex-col items-center text-center relative z-10">
+                  <div className="mb-8">
+                    <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                      {testimonials[activeIndex].name}
+                    </h4>
+                    <p className="text-[#FFC016] text-base font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                      {testimonials[activeIndex].role}
                     </p>
-                    
-                    {/* Rating Stars */}
-                    <div className="flex space-x-1 mt-8">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <svg key={star} className="w-6 h-6 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                        </svg>
-                      ))}
-                    </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                  <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                    "{testimonials[activeIndex].review}"
+                  </p>
+                  
+                  {/* Rating Stars */}
+                  <div className="flex space-x-1 mt-8">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <svg key={star} className="w-6 h-6 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Side Cards */}
@@ -115,12 +175,9 @@ export default function TestimonialsSection() {
                 .filter((_, index) => index !== activeIndex)
                 .slice(0, 2)
                 .map((testimonial, index) => (
-                  <motion.div
+                  <div
                     key={testimonial.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className=" border border-gray-800 rounded-xl shadow-lg p-6 hover:border-[#FFC016] transition-all duration-300 cursor-pointer group"
+                    className="border border-gray-800 rounded-xl shadow-lg p-6 hover:border-[#FFC016] transition-all duration-300 cursor-pointer group"
                     onClick={() => setActiveIndex(testimonials.indexOf(testimonial))}
                   >
                     <div className="text-left">
@@ -145,7 +202,7 @@ export default function TestimonialsSection() {
                         "{testimonial.review}"
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
             </div>
           </div>

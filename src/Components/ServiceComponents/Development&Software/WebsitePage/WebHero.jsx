@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 
 const WebHero = () => {
   return (
-    <section className="relative isolate pt-50 md:pt-0 md:min-h-screen flex mb-70   items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
+    <section className="relative isolate pt-50 md:pt-0 md:min-h-screen flex mb-90   items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         {/* Main Heading */}
         <h1
@@ -15,19 +15,22 @@ const WebHero = () => {
         </h1>
 
         {/* Subtitle */}
-        <p
-          className="mt-4 sm:mt-5 max-w-lg md:max-w-1xl lg:max-w-xl mx-auto text-sm sm:text-base md:text-lg text-white/70 px-2 font-inter-tight"
-        >
-          At{" "}
-          <span
-            className="font-semibold text-[#00d3f3] capitalize"
-            style={{ fontFamily: "work-sans, sans-serif" }}
-          >
-            ThirdVizion
-          </span>
-          , we craft scalable, performant, and visually stunning web experiences
-          tailored to the users.
-        </p>
+       <p
+  className="mt-4 sm:mt-5 max-w-sm hidden sm:block  sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto 
+             text-xs sm:text-sm md:text-base lg:text-lg text-white/70 px-2 
+             font-inter-tight leading-relaxed"
+>
+  At{" "}
+  <span
+    className="font-semibold text-[#00d3f3] capitalize inline-block"
+    style={{ fontFamily: "work-sans, sans-serif" }}
+  >
+    ThirdVizion
+  </span>
+  , we craft scalable, performant, and visually stunning web experiences
+  tailored to the users.
+</p>
+
 
         {/* CTA Button */}
         <div className="mt-8 sm:mt-10">

@@ -14,7 +14,7 @@ export default function VrLanding() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
+        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
         Transform Your World with{" "}
@@ -29,7 +29,7 @@ export default function VrLanding() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1 }}
-        className="mt-6 text-xs md:text-lg text-gray-300 max-w-2xl text-center px-6"
+        className="mt-6 hidden sm:block text-xs md:text-lg text-gray-300 max-w-2xl text-center px-6"
         style={{ fontFamily: "work-sans, sans-serif" }}
       >
         At ThirdVizion Labs, we create immersive VR experiences that enhance learning, training, and engagement.

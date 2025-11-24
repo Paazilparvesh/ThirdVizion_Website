@@ -90,18 +90,34 @@ const Landing = () => {
   return (
     <div
       id="pattern"
-      className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
+  className="pattern h-[20vh] md:h-[130vh] lg:h-[140vh] xl:h-[150vh] 2xl:h-[170vh] overflow-hidden relative z-0"
     >
       {/* This section contains the background pattern */}
-      {createDynamicLists(10, 10)}
+      {(() => {
+  const height = window.innerHeight;
+  const width = window.innerWidth;
+
+  // 📱 Mobile (up to 640px width)
+  if (width <= 640) {
+    return createDynamicLists(17, 19);
+  }
+
+  // 📲 Tablet (641px – 1024px width)
+  if (width > 640 && width <= 1024) {
+    return createDynamicLists(10, 10);
+  }
+
+  // 💻 Laptop & Desktop (above 1024px width)
+  return createDynamicLists(10, 10);
+})()}
 
       {/* ✅ Centered text + button */}
       <div className="flex flex-col items-center justify-center gap- z-20 text-white pointer-events-none">
-        <h2 className="w-full absolute top-130 md:top-120 lg:top-128 xl:top-125  left-1/2 -translate-x-1/2 z-50  leading-snug text-center text-3xl md:text-3xl lg:text-3xl xl:text-4xl xl:max-w-4xl  font-michroma font-extrabold px-5  pt-[45px] pointer-events-none">
+        <h2 className="w-full absolute top-230 md:top-120 lg:top-128 xl:top-125  left-1/2 -translate-x-1/2 z-50  leading-snug text-center text-[72px] md:text-3xl lg:text-3xl xl:text-4xl xl:max-w-4xl  font-michroma font-extrabold px-5  pt-[45px] pointer-events-none">
           Engineering the Future, Innovating the Present
         </h2>
 
-        <p className="w-full absolute top-170 md:top-128 lg:top-155 xl:top-157 2xl:top-145 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
+        <p className="w-full absolute  top-300   max-[380px]:top-320   max-[375px]:top-320         md:top-128 lg:top-155 xl:top-157 2xl:top-152 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-[20px] md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
           We combine cutting-edge technology with visionary ideas to deliver
           solutions that shape tomorrow while empowering businesses today.
         </p>

@@ -9,16 +9,49 @@ export default function AboutHero() {
   const headerRef = useRef(null);
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
-  const mobileHeaderRef = useRef(null);
   const scrollButtonRef = useRef(null);
+  const mobileImageRef = useRef(null);
+  const mobileImageContainerRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  // New useEffect to center the image on mount and resize
+  useEffect(() => {
+    const centerImage = () => {
+      if (mobileImageContainerRef.current) {
+        const container = mobileImageContainerRef.current;
+        // Calculate the center position (scroll to 25% of total scrollable width)
+        // Since image is 200vw, container is 100vw, so center is at 50vw which is 25% of 200vw
+        const scrollWidth = container.scrollWidth;
+        const containerWidth = container.clientWidth;
+        const centerPosition = (scrollWidth - containerWidth) / 2;
+        
+        container.scrollLeft = centerPosition;
+      }
+    };
+
+    // Center on initial mount
+    centerImage();
+
+    // Also center on window resize
+    const handleResize = () => {
+      centerImage();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       const header = headerRef.current;
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
-      const mobileHeader = mobileHeaderRef.current;
       const scrollButton = scrollButtonRef.current;
       
       if (!header || !wrapper || !imgHolder) return;
@@ -147,45 +180,6 @@ export default function AboutHero() {
               }
             });
           }
-
-          // Mobile animations
-          if (mobileHeader) {
-            gsap.to(mobileHeader, {
-              opacity: 0,
-              y: -50,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: wrapper,
-                start: "top top",
-                end: "top+=150 top",
-                scrub: 1,
-              },
-            });
-          }
-
-          // Mobile image animation - FULL WIDTH
-          const mobileImg = document.querySelector('.lg\\:hidden img');
-          if (mobileImg) {
-            gsap.fromTo(mobileImg, 
-              {
-                scale: 0.8,
-                opacity: 0.8,
-                width: "100%", // Full width on mobile
-              },
-              {
-                scale: 1,
-                opacity: 1,
-                width: "100%", // Maintain full width
-                ease: "power2.out",
-                scrollTrigger: {
-                  trigger: mobileImg,
-                  start: "top bottom",
-                  end: "top center",
-                  scrub: 1,
-                }
-              }
-            );
-          }
         },
       });
     }, wrapperRef);
@@ -210,6 +204,48 @@ export default function AboutHero() {
     };
   }, []);
 
+  // Mobile image drag handlers - FIXED VERSION
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    const touch = e.touches[0];
+    setStartX(touch.clientX);
+    setScrollLeft(mobileImageContainerRef.current.scrollLeft);
+    e.preventDefault();
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    const x = touch.clientX;
+    const walk = (x - startX) * 1.5; // Adjust sensitivity
+    mobileImageContainerRef.current.scrollLeft = scrollLeft - walk;
+    e.preventDefault();
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Mouse handlers for desktop testing
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollLeft(mobileImageContainerRef.current.scrollLeft);
+    mobileImageContainerRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    const x = e.pageX;
+    const walk = (x - startX) * 1.5;
+    mobileImageContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    mobileImageContainerRef.current.style.cursor = 'grab';
+  };
+
   const handleScrollDown = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -224,13 +260,11 @@ export default function AboutHero() {
       {showScrollButton && (
         <div
           ref={scrollButtonRef}
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 cursor-pointer"
+          className="fixed bottom-8 left-1/2 hidden sm:block transform -translate-x-1/2 z-50 cursor-pointer"
           onClick={handleScrollDown}
         >
           <div className="flex flex-col items-center justify-center">
-            <div className="text-white text-sm font-inter-tight mb-2 uppercase tracking-wider">
-              Scroll Down
-            </div>
+           
             <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
             </div>
@@ -258,26 +292,6 @@ export default function AboutHero() {
         </div>
       </div>
 
-      {/* Mobile Header - Normal scroll position (not fixed) */}
-      <div 
-        ref={mobileHeaderRef}
-        className="lg:hidden relative z-30 w-full pt-20 pb-10 flex flex-col justify-center items-center px-4"
-        style={{ fontFamily: "Outfit, sans-serif" }}
-      >
-        <div className="font-inter-tight text-lg mb-3 font-medium text-white text-center uppercase">
-          About
-        </div>
-
-        <div className="flex flex-col items-center gap-0">
-          <div className="font-inter-tight text-6xl font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent text-center">
-            Third
-          </div>
-          <div className="font-inter-tight text-6xl font-bold uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent text-center">
-            Vizion
-          </div>
-        </div>
-      </div>
-
       <div ref={wrapperRef} className="w-full relative">
         {/* Desktop scroll section */}
         <div className="hidden lg:block min-h-[100vh]">
@@ -289,23 +303,111 @@ export default function AboutHero() {
               <img
                 src={threed}
                 alt="3d visual"
-                className="w-full h-full object-contain transform-gpu" // Full width and height
+                className="w-full h-full object-contain transform-gpu"
               />
             </div>
           </div>
         </div>
 
-        {/* Mobile simple section - FULL WIDTH */}
-        <div className="lg:hidden w-full bg-black flex items-center justify-center px-0 pb-20 pt-10"> {/* Removed horizontal padding */}
-          <div className="w-full"> {/* Full width container */}
-            <img
-              src={threed}
-              alt="3d visual"
-              className="w-full h-auto object-cover transform-gpu" // Full width image
-            />
+        {/* Mobile Layout - Ultra Minimal & Professional */}
+        <div className="lg:hidden w-full bg-black min-h-screen">
+          {/* Hero Image Section - Full Screen with Horizontal Drag */}
+          <div 
+            ref={mobileImageContainerRef}
+            className="relative w-full h-[60vh] bg-gradient-to-br from-gray-900 to-black overflow-x-auto overflow-y-hidden"
+            style={{ 
+              cursor: 'grab',
+              WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'smooth'
+            }}
+          >
+            <div 
+              className="w-[200vw] h-full flex" // Double width for horizontal scroll
+            >
+              <img
+                ref={mobileImageRef}
+                src={threed}
+                alt="Third Vizion"
+                className="w-[200vw] h-full object-cover opacity-90 min-w-0 flex-shrink-0"
+                style={{ 
+                  pointerEvents: 'none',
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none'
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              />
+            </div>
+            
+          
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+          </div>
+
+          {/* Content Section */}
+          <div className="relative -mt-20 bg-black rounded-t-4xl pt-12 px-6 pb-16">
+            {/* Company Badge */}
+            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+  <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-4 py-5 rounded-full">
+    <div className="flex items-center gap-3">
+      {/* Left (same) SVG */}
+      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+
+      {/* Center text */}
+      <span className="text-black font-semibold text-sm tracking-wider whitespace-nowrap"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+        Drag to explore
+      </span>
+
+      {/* Right (same) SVG */}
+      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+            {/* Minimal Header */}
+            <div className="text-center mb-12">
+              <div className="text-gray-400 text-sm font-light tracking-widest uppercase mb-2"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+                About Us
+              </div>
+              <h1 className="text-4xl font-light text-white mb-4"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+                Third <span className="font-lightbold">Vizion</span>
+              </h1>
+              <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
+            </div>
+
+            {/* Core Description */}
+            <div className="max-w-md mx-auto space-y-6 text-center">
+              <p className="text-gray-300 text-lg leading-relaxed font-light"  style={{ fontFamily: "'outfit', sans-serif" }}>
+                 Blending innovation with clarity to create digital experiences that feel effortless, 
+  intuitive, and undeniably modern
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Hide scrollbar styles */}
+      <style jsx>{`
+        .overflow-x-auto::-webkit-scrollbar {
+          display: none;
+        }
+        .overflow-x-auto {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </div>
   );
 }

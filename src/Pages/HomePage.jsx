@@ -22,7 +22,8 @@ export default function Home() {
       <About/>
       {/* <VisionMission /> */}
       <Industries />
-      <Newservice />
+        <div className="hidden sm:block">
+      <Newservice /> </div>
       <Partners className="bg-black" />
       <Indhu />
       <Testimonial />
