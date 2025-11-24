@@ -159,14 +159,14 @@ const Industries = () => {
           </p>
 
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
             style={{ fontFamily: "Outfit, sans-serif" }}
           >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
 
-        <div className="flex-1 font-worksans text-gray-300 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8 leading-relaxed max-w-xl">
+        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl">
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
           strategic collaboration, we enable industries to thrive. Our goal is to
@@ -174,8 +174,54 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* LIST */}
-      <div className="relative flex flex-col font-work-sans  border-t border-gray-700">
+      {/* MOBILE VIEW */}
+      <div className="block md:hidden">
+        <div className="space-y-4">
+          {industries.map((industry, index) => (
+            <div
+              key={industry.id}
+              className=" border border-gray-700 rounded-2xl p-6 hover:border-gray-500 transition-all duration-300"
+            >
+              <div className="flex items-start space-x-4">
+                {/* Number */}
+                <div className="flex-shrink-0">
+                  <h3 className="text-lg font-semibold text-gray-300">
+                    {industry.number}
+                  </h3>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-1">
+                  <h4 className="text-xl font-semibold text-white mb-2">
+                    {industry.name}
+                  </h4>
+                  
+                  {/* Mobile Image */}
+                  <div className="mt-4 rounded-lg overflow-hidden border border-gray-600">
+                    <img
+                      src={industryImages[index]}
+                      alt={industry.name}
+                      className="w-full h-32 object-cover"
+                      style={{ objectPosition: imagePositions[index] }}
+                    />
+                  </div>
+                  
+                  {/* Color Indicator */}
+                  <div 
+                    className="h-1 w-16 mt-3 rounded-full"
+                    style={{
+                      background: colorGradients[industry.color].split(' ')[2]
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* DESKTOP VIEW */}
+      <div className="hidden md:block relative flex flex-col font-work-sans border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
@@ -187,7 +233,7 @@ const Industries = () => {
             {/* Color overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
-              className="absolute inset-0 z-10 hidden md:block"
+              className="absolute inset-0 z-10"
               style={{
                 width: "0%",
                 transform: "translateX(0%)",
@@ -198,16 +244,13 @@ const Industries = () => {
             {/* Right image overlay with background color added */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
-              className="absolute top-0 right-0 h-full w-1/2 z-20 hidden md:block"
+              className="absolute top-0 right-0 h-full w-1/2 z-20"
               style={{
                 backgroundImage: `${colorGradients[industry.color]}, url(${industryImages[index]})`,
                 backgroundSize: "cover",
                 backgroundPosition: imagePositions[index],
                 backgroundBlendMode: "multiply",
-
                 transform: "translateX(100%)",
-              
-                
               }}
             ></div>
 

@@ -220,16 +220,14 @@ export default function Indhu() {
           className="text-center mb-10"
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
-          <p className="text-sm uppercase tracking-wide text-[#FFC016]">
-            Our Process
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white">
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  capitalize text-white">
             how we <span className="text-[#FFC016]">deliver</span> excellence
           </h1>
         </div>
 
         {/* Horizontal scroll cards */}
-        <div className="w-full flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
+        <div className="w-[280px] flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
           {circles.map((c) => (
             <div
               key={c.id}
@@ -262,8 +260,24 @@ export default function Indhu() {
                 {c.description}
               </p>
             </div>
+            
           ))}
         </div>
+        {/* Scroll hint at bottom */}
+<div className="mt-6 text-center flex items-center justify-center gap-2 opacity-70 animate-pulse">
+  <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+  </svg>
+
+  <span className="text-gray-300 text-sm">Scroll left to know more</span>
+
+  <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+  </svg>
+</div>
+
       </section>
     );
   }
@@ -444,7 +458,7 @@ export default function Indhu() {
           Our Process
         </p>
         <h1
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight text-[#ffffff] capitalize"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  leading-tight text-[#ffffff] capitalize"
           style={{ textShadow: "none" }}
         >
           how we <span className="text-[#FFC016]">deliver</span> excellence

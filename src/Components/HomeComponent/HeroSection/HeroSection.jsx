@@ -93,7 +93,7 @@ const Landing = () => {
       className="pattern 2xl:h-[112vh] overflow-hidden relative z-0"
     >
       {/* This section contains the background pattern */}
-      {createDynamicLists(10, 10)}
+      {createDynamicLists(10, 15)}
 
       {/* ✅ Centered text + button */}
       <div className="flex flex-col items-center justify-center gap- z-20 text-white pointer-events-none">
@@ -101,7 +101,7 @@ const Landing = () => {
           Engineering the Future, Innovating the Present
         </h2>
 
-        <p className="w-full absolute top-170 md:top-128 lg:top-155 xl:top-157 2xl:top-145 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
+        <p className="w-full absolute top-155 md:top-128 lg:top-155 xl:top-157 2xl:top-151 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
           We combine cutting-edge technology with visionary ideas to deliver
           solutions that shape tomorrow while empowering businesses today.
         </p>

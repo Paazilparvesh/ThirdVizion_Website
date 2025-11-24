@@ -10,16 +10,18 @@ import {
   FaPhone,
   FaEnvelope,
   FaGlobe,
-  FaPaperPlane,
+  FaPaperPlane
 } from "react-icons/fa";
 
+// SOCIAL LINKS
 const socialLinks = [
   { Icon: FaFacebookF, href: "https://facebook.com", color: "#1877F2" },
   { Icon: FaInstagram, href: "https://instagram.com", color: "#E4405F" },
   { Icon: FaLinkedinIn, href: "https://linkedin.com", color: "#0A66C2" },
-  { Icon: FaYoutube, href: "https://youtube.com", color: "#FF0000" },
+  { Icon: FaYoutube, href: "https://youtube.com", color: "#FF0000" }
 ];
 
+// INFO CARDS
 const infoCards = [
   {
     icon: FaMapMarkerAlt,
@@ -44,32 +46,24 @@ const infoCards = [
     title: "Support",
     content: "www.thirdvizion.com",
     color: "#3B82F6"
-  },
+  }
 ];
 
-// Animation variants
+// ANIMATION VARIANTS
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+    transition: { staggerChildren: 0.1 }
   }
 };
 
 const itemVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 30 
-  },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.6, ease: "easeOut" }
   }
 };
 
@@ -77,28 +71,18 @@ const typingContainer = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: { 
-      staggerChildren: 0.05,
-      delayChildren: 0.3 
-    },
-  },
+    transition: { staggerChildren: 0.05, delayChildren: 0.3 }
+  }
 };
 
 const typingText = {
-  hidden: { 
-    opacity: 0, 
-    y: 20,
-    scale: 0.8 
-  },
-  visible: { 
-    opacity: 1, 
+  hidden: { opacity: 0, y: 20, scale: 0.8 },
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100
-    }
-  },
+    transition: { type: "spring", stiffness: 100 }
+  }
 };
 
 const formVariants = {
@@ -106,33 +90,29 @@ const formVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut"
-    }
+    transition: { duration: 0.8, ease: "easeOut" }
   }
 };
 
 const buttonVariants = {
-  initial: { 
+  initial: {
     scale: 1,
     background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
   },
-  hover: { 
+  hover: {
     scale: 1.05,
     background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
-    transition: {
-      duration: 0.3,
-      ease: "easeInOut"
-    }
+    transition: { duration: 0.3, ease: "easeInOut" }
   },
-  tap: { 
-    scale: 0.95 
+  tap: {
+    scale: 0.95
   }
 };
 
+// MAIN COMPONENT
 const ContactForm = () => {
   const text = "Let's create\nsomething unforgettable";
+
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
@@ -140,15 +120,14 @@ const ContactForm = () => {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    message: ""
   });
 
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const sendMail = async (e) => {
     e.preventDefault();
@@ -159,7 +138,7 @@ const ContactForm = () => {
       name: formData.name,
       email: formData.email,
       subject: formData.subject,
-      message: formData.message,
+      message: formData.message
     };
 
     try {
@@ -172,7 +151,7 @@ const ContactForm = () => {
       setStatus("✅ Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error("❌ Failed to send email:", error);
+      console.error("❌ Email Error:", error);
       setStatus("❌ Failed to send message. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -180,14 +159,14 @@ const ContactForm = () => {
   };
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative min-h-screen bg-black text-white overflow-hidden px-4 sm:px-6 py-12 sm:py-16"
     >
-      {/* Animated Background Elements */}
+      {/* BG GRADIENT ANIMATION */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-60 h-60 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -199,7 +178,7 @@ const ContactForm = () => {
           }}
         />
         <motion.div
-          className="absolute -bottom-40 -left-40 w-60 h-60 sm:w-80 sm:h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
+          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-green-500/20 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.5, 0.3, 0.5],
@@ -212,114 +191,109 @@ const ContactForm = () => {
         />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-8 sm:gap-12 lg:gap-16 items-stretch">
-        {/* LEFT SIDE - Same height as form */}
+      <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-12 lg:gap-16">
+        {/* LEFT SIDE */}
         <motion.div
           className="lg:w-2/5 flex flex-col"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 shadow-2xl h-full flex flex-col">
-            <div className="space-y-6 sm:space-y-8 flex-1">
-              <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
-                <motion.h1
-                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
-                  variants={typingContainer}
-                  initial="hidden"
-                  animate="visible"
-                  style={{ fontFamily: "Outfit, sans-serif" }}
-                >
-                  {text.split("").map((char, index) => (
-                    <motion.span key={index} variants={typingText}>
-                      {char}
-                    </motion.span>
-                  ))}
-                </motion.h1>
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.h1
+              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-[#FFC016] bg-clip-text whitespace-pre-line"
+              variants={typingContainer}
+              initial="hidden"
+              animate="visible"
+               style={{ fontFamily: "Outfit, sans-serif" }} >
+              {text.split("").map((char, index) => (
+                <motion.span key={index} variants={typingText}>
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
 
-                <motion.p 
-                  className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed"
-                  variants={itemVariants}
-                >
-                  If you are curious about what you saw, contact us or follow us{" "}
-                  <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold">
-                    on social media.
-                  </span>
-                </motion.p>
-              </motion.div>
+            <motion.p 
+              className="text-lg lg:text-xl text-gray-300 leading-relaxed"
+              variants={itemVariants}
+            >
+              If you are curious about what you saw, contact us or follow us{" "}
+              <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold">
+                on social media.
+              </span>
+            </motion.p>
+          </motion.div>
 
-              {/* Social Links */}
-              <motion.div 
-                className="flex gap-4 sm:gap-6 text-xl sm:text-2xl justify-center sm:justify-start"
+          {/* Social Links */}
+          <motion.div 
+            className="flex gap-6 text-2xl"
+            variants={itemVariants}
+          >
+            {socialLinks.map(({ Icon, href, color }, index) => (
+              <motion.a
+                key={index}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
+                whileHover={{ 
+                  scale: 1.2, 
+                  y: -5,
+                  color: color,
+                  backgroundColor: "rgba(255,255,255,0.1)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
+                <Icon />
+              </motion.a>
+            ))}
+          </motion.div>
+
+          {/* Info Cards Grid */}
+          <motion.div 
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
+            variants={containerVariants}
+          >
+            {infoCards.map(({ icon: Icon, title, content, color }, index) => (
+              <motion.div
+                key={index}
+                className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
                 variants={itemVariants}
+                whileHover={{ 
+                  y: -5,
+                  scale: 1.02,
+                  borderColor: color,
+                  boxShadow: `0 10px 30px -10px ${color}40`
+                }}
               >
-                {socialLinks.map(({ Icon, href, color }, index) => (
-                  <motion.a
-                    key={index}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 sm:p-3 rounded-xl bg-gray-900/50 backdrop-blur-sm border border-gray-700 hover:border-gray-500 transition-colors"
-                    whileHover={{ 
-                      scale: 1.2, 
-                      y: -5,
-                      color: color,
-                      backgroundColor: "rgba(255,255,255,0.1)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
+                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
+                  <div 
+                    className="p-2 rounded-lg"
+                    style={{ backgroundColor: `${color}20` }}
                   >
-                    <Icon />
-                  </motion.a>
-                ))}
+                    <Icon className="text-xl" style={{ color }} />
+                  </div>
+                  <h3 className="font-bold text-white">{title}</h3>
+                </div>
+                <p className="text-gray-300 text-sm pl-11">{content}</p>
               </motion.div>
-
-              {/* Info Cards Grid */}
-              <motion.div 
-                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 sm:mt-8"
-                variants={containerVariants}
-              >
-                {infoCards.map(({ icon: Icon, title, content, color }, index) => (
-                  <motion.div
-                    key={index}
-                    className="p-3 sm:p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
-                    variants={itemVariants}
-                    whileHover={{ 
-                      y: -5,
-                      scale: 1.02,
-                      borderColor: color,
-                      boxShadow: `0 10px 30px -10px ${color}40`
-                    }}
-                  >
-                    <div className="flex items-center gap-2 sm:gap-3 mb-2" style={{ fontFamily: "work-sans, sans-serif" }}>
-                      <div 
-                        className="p-1 sm:p-2 rounded-lg"
-                        style={{ backgroundColor: `${color}20` }}
-                      >
-                        <Icon className="text-lg sm:text-xl" style={{ color }} />
-                      </div>
-                      <h3 className="font-bold text-white text-sm sm:text-base">{title}</h3>
-                    </div>
-                    <p className="text-gray-300 text-xs sm:text-sm pl-10 sm:pl-11">{content}</p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
+            ))}
+          </motion.div>
         </motion.div>
 
-        {/* RIGHT SIDE - Contact Form - Same height as left side */}
+        {/* RIGHT SIDE - Contact Form */}
         <motion.div
           className="lg:w-3/5 flex flex-col mt-8 lg:mt-0"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={formVariants}
         >
-          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 shadow-2xl h-full flex flex-col">
+          <div className="bg-gray-900/30 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-gray-700 shadow-2xl">
             <motion.h2 
-              className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
+              className="text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r text-amber-50 bg-clip-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -328,8 +302,8 @@ const ContactForm = () => {
               Send us a Message
             </motion.h2>
 
-            <form onSubmit={sendMail} className="space-y-4 sm:space-y-6 flex-1 flex flex-col">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <form onSubmit={sendMail} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -341,10 +315,11 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                     required
                   />
                 </motion.div>
+
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -356,12 +331,13 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
+                    className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                     required
                   />
                 </motion.div>
               </div>
 
+              {/* SUBJECT */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -373,10 +349,11 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Subject"
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none text-sm sm:text-base"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                 />
               </motion.div>
 
+              {/* MESSAGE */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -389,11 +366,12 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Your Message"
-                  className="w-full h-full min-h-[120px] sm:min-h-[150px] px-3 sm:px-4 py-2 sm:py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none text-sm sm:text-base"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 resize-none outline-none"
                   required
-                ></textarea>
+                />
               </motion.div>
 
+              {/* SUBMIT BUTTON */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -403,14 +381,11 @@ const ContactForm = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 sm:py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group text-sm sm:text-base"
+                  className="w-full py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group"
                   variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
                   whileTap="tap"
-                  style={{
-                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                  }}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {isSubmitting ? (
@@ -418,7 +393,7 @@ const ContactForm = () => {
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"
+                          className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                         />
                         Sending...
                       </>
@@ -429,27 +404,32 @@ const ContactForm = () => {
                       </>
                     )}
                   </span>
-                  
-                  {/* Button shine effect */}
+
+                  {/* SHINE EFFECT */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    transition={{ duration: 0.8 }}
                   />
                 </motion.button>
               </motion.div>
             </form>
 
+            {/* STATUS MESSAGE */}
             {status && (
               <motion.p 
-                className="mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg text-center font-medium text-sm sm:text-base"
+                className="mt-4 p-3 rounded-lg text-center font-medium"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 style={{
-                  backgroundColor: status.includes("✅") ? "#10B98120" : "#EF444420",
+                  backgroundColor: status.includes("✅")
+                    ? "#10B98120"
+                    : "#EF444420",
                   color: status.includes("✅") ? "#10B981" : "#EF4444",
-                  border: `1px solid ${status.includes("✅") ? "#10B98140" : "#EF444440"}`
+                  border: `1px solid ${
+                    status.includes("✅") ? "#10B98140" : "#EF444440"
+                  }`
                 }}
               >
                 {status}

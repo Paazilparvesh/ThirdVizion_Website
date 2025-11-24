@@ -26,7 +26,7 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p
-          className="mt-5 max-w-2xl mx-auto text-[#c7cbff] text-lg leading-relaxed"
+          className="mt-5 max-w-2xl mx-auto text-[#c7cbff] hidden sm:block text-lg leading-relaxed"
           style={{ fontFamily: "Work Sans, sans-serif" }}
         >
           Streamline operations, enhance decision-making, and improve

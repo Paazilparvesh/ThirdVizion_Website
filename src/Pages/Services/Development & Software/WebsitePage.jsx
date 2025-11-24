@@ -1,26 +1,27 @@
 import { useEffect } from "react";
 
-
 import WebProjects from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProjects.jsx";
 import WebHero from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebHero";
 import WebDesignScroll from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebDesignScroll.jsx";
 import WebCTA from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebCTA";
 import WebAbt from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebAbt.jsx";
-// import WebProc from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebProc.jsx";
 import WebSer from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebSer.jsx";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
 const WebsitePage = () => {
-  
-
   return (
     <div className="bg-black">
       <SparkleBg count={20} color="0, 211, 243" speed={0.8} />
       <WebHero />
-      <WebDesignScroll />
+
+      {/* Hide on mobile, show on tablet & laptop */}
+      
+        <WebDesignScroll />
+      
       <WebAbt />
-      <WebSer />
-      {/* <WebProc /> */}
+            <div className="hidden sm:block">
+
+      <WebSer /> </div>
       <WebProjects />
       <WebCTA />
     </div>

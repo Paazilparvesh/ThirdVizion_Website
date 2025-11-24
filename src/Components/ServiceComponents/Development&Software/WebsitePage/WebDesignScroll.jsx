@@ -15,7 +15,7 @@ import image10 from "/src/assets/AboutImages/weeeeeeeeee.png";
 const WebDesignScroll = () => {
   return (
     <motion.div
-      className="w-full lg:min-h-screen flex flex-col-reverse md:flex-row justify-center items-center overflow-hidden gap-15"
+      className="w-full lg:min-h-screen pt-15 flex flex-col-reverse md:flex-row justify-center items-center overflow-hidden gap-15"
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}

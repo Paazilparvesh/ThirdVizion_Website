@@ -55,7 +55,7 @@ const App = () => {
       </div>
 
       {/* 🔹 Responsive AI Brain Animation */}
-      <div className="absolute bottom-[-110px]   lg:-bottom-52 xl:-bottom-47  2xl:-bottom-60 left-1/2 -translate-x-1/2 -translate-y-1/2  w-full md:bottom-[-160px] xl:w-[78vh] md:w-[70vw]  lg:w-[70vw] z-20">
+      <div className="absolute bottom-[-220px]   lg:-bottom-52 xl:-bottom-47  2xl:-bottom-60 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[790px] md:bottom-[-160px]   xl:w-[78vh] md:w-[70vw]  lg:w-[70vw] z-20">
         <Lottie animationData={aiBrain} loop={true} />
       </div>
 

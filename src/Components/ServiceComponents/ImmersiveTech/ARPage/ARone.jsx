@@ -260,7 +260,7 @@ export default function ArPage() {
 </h1>
 
 
-          <p className="text-xs md:text-lg text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
+          <p className="text-xs hidden sm:block md:text-lg text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
             Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
           </p>
         </div>
