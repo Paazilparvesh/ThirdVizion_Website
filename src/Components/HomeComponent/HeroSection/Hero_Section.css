@@ -434,64 +434,22 @@
   }
 }
 
-/* ----------------------------------------- */
-/*  🔹 Mobile Devices (Small Phones)         */
-/* ----------------------------------------- */
-
-/* Extra Small Phones (<= 480px height) */
-@media (max-height: 480px) {
-  .pattern {
-    height: 500px;
-  }
-}
-
-/* Normal Phones (481px – 700px height) */
-@media (min-height: 481px) and (max-height: 700px) {
-  .pattern {
-    height: 650px;
-  }
-}
-
-/* Large Phones (701px – 850px height) */
-@media (min-height: 701px) and (max-height: 850px) {
-  .pattern {
-    height: 2000px;
-  }
-}
-
-
-/* ----------------------------------------- */
-/*  🔹 Tablets                               */
-/* ----------------------------------------- */
-
-@media (min-height: 851px) and (max-height: 1100px) {
+/* Specific height adjustment for 800px screens */
+@media (min-height: 800px) and (max-height: 900px) {
   .pattern {
     height: 900px;
   }
 }
 
-
-/* ----------------------------------------- */
-/*  🔹 Laptops & Desktops                    */
-/* ----------------------------------------- */
-
-/* Small Laptops (1101px – 1300px height) */
-@media (min-height: 1101px) and (max-height: 1300px) {
+/* Height adjustment for very tall screens */
+@media (min-height: 850px) and (max-height: 1000px) {
   .pattern {
-    height: 950px;
+    height: 900px;
   }
 }
 
-/* Large Screens (1301px – 1600px height) */
-@media (min-height: 1301px) and (max-height: 1600px) {
+@media (min-height: 1201px) {
   .pattern {
-    height: 1000px;
-  }
-}
-
-/* Ultra-Wide / Very Tall Screens */
-@media (min-height: 1601px) {
-  .pattern {
-    height: 1100px;
+    height: 900px;
   }
 }
