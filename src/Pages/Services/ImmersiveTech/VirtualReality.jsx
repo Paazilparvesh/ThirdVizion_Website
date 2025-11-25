@@ -5,6 +5,7 @@ import VrLanding from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/Vr
 import Vrbike from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrbike.jsx";
 import Vrsol from "/src/Components/ServiceComponents/ImmersiveTech/VRPage/vrsol.jsx";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
+import VRIndustries from "../../../Components/ServiceComponents/ImmersiveTech/VRPage/vrindustries";
 
 function VirtualReality() {
 
@@ -27,7 +28,9 @@ function VirtualReality() {
       <SparkleBg count={20} speed={0.8} color="194, 122, 255" />
       <VrLanding />
       <VRHeroSection /> 
+       <VRIndustries/>
       <Vrbike />
+     
       <Vrsol />
     </div>
   );

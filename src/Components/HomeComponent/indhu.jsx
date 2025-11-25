@@ -218,7 +218,7 @@ export default function Indhu() {
         {/* Heading */}
         <div
           className="text-center mb-10"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  capitalize text-white">
@@ -452,7 +452,7 @@ export default function Indhu() {
       
       <div
         className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
-        style={{ fontFamily: "Outfit, sans-serif" }}
+        style={{ fontFamily: "DeaconTest, sans-serif" }}
       >
         <p className="text-xs sm:text-sm text-[#FFC016] tracking-wide uppercase mb-2">
           Our Process

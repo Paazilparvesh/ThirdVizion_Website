@@ -12,8 +12,9 @@ const CRMPage = () => {
     <div className="bg-black relative overflow-hidden">
       <SparkleBg count={20} speed={0.8} color="255, 100, 103" />
       <CrmHero />
-      <CRMChallenges />
       <CrmVideo />
+      <CRMChallenges />
+      
     </div>
   );
 };

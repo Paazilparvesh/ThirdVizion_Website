@@ -9,7 +9,7 @@ export default function About() {
       <div className="text-center mb-8">
         <h2
           className="text-4xl lg:text-5xl font-bold tracking-wide"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           WHO ARE WE
         </h2>
