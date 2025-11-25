@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
@@ -14,16 +13,27 @@ import Aws from "/src/assets/home/erp.png";
 import Azure from "/src/assets/home/game.jpg";
 import GoogleCloud from "/src/assets/home/web.jpg";
 
+//icons - updated with proper variable names
+import arIcon from "/src/assets/ourserviceicons/ar.png";
+import crmIcon from "/src/assets/ourserviceicons/crm.png";
+import iamIcon from "/src/assets/ourserviceicons/iam.png";
+import vrIcon from "/src/assets/ourserviceicons/vr.png";
+import threedIcon from "/src/assets/ourserviceicons/3d.png";
+import erpIcon from "/src/assets/ourserviceicons/erp.png";
+import gameIcon from "/src/assets/ourserviceicons/game.png"; // Add these if available
+import webIcon from "/src/assets/ourserviceicons/website.png";
+import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
+
 const capabilitiesData = [
   {
     id: "emerging-tech",
     title: "emerging tech",
-    desc: " We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
+    desc: "We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
     children: [
       {
         name: "AR",
         img: DesignTool,
-        emojis: ["👓"], // AR-related emojis
+        icon: arIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -35,7 +45,7 @@ const capabilitiesData = [
       {
         name: "3D",
         img: Layout,
-        emojis: ["📐"], // 3D-related emojis
+        icon: threedIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -47,7 +57,7 @@ const capabilitiesData = [
       {
         name: "VIRTUAL REALITY",
         img: Component,
-        emojis: ["🥽"], // VR-related emojis
+        icon: vrIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -60,13 +70,13 @@ const capabilitiesData = [
   },
   {
     id: "data-cloud",
-    title: "data and  Cloud",
+    title: "data and cloud",
     desc: "Empower your business with secure, scalable, and data-driven cloud solutions designed to boost performance and reliability. At ThirdVizion Labs, we create innovative digital applications that help brands manage data smarter, automate workflows, and drive growth.",
     children: [
       {
         name: "CRM",
         img: Portal,
-        emojis: ["📊"], // CRM-related emojis
+        icon: crmIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -78,7 +88,7 @@ const capabilitiesData = [
       {
         name: "IAM",
         img: Dashboard,
-        emojis: ["🔒"], // IAM-related emojis
+        icon: iamIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -90,7 +100,7 @@ const capabilitiesData = [
       {
         name: "ERP",
         img: Aws,
-        emojis: ["📈"], // ERP-related emojis
+        icon: erpIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -99,7 +109,6 @@ const capabilitiesData = [
         size: "h-100",
         link: "/enterprise_resource_planning"
       },
-      // Removed "SERVER MANAGEMENT" from images but kept in tags
     ],
   },
   {
@@ -110,7 +119,7 @@ const capabilitiesData = [
       {
         name: "GAME DEVELOPMENT",
         img: Azure,
-        emojis: ["🎮"], // Game development-related emojis
+        icon: gameIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -122,7 +131,7 @@ const capabilitiesData = [
       {
         name: "WEBSITE",
         img: GoogleCloud,
-        emojis: ["💻"], // Website-related emojis
+        icon: webIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -134,7 +143,7 @@ const capabilitiesData = [
       {
         name: "MOBILE APP",
         img: Por,
-        emojis: ["📱"], // Mobile-related emojis
+        icon: mobileIcon, // Use icon instead of emojis
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -151,11 +160,11 @@ const capabilitiesData = [
 const FloatingParticles = ({ isScrolling }) => {
   const particles = Array.from({ length: 8 }, (_, i) => ({
     id: i,
-    size: Math.random() * 4 + 2, // Random size between 2-6px
-    left: Math.random() * 80 + 10, // Random position between 10-90%
-    delay: Math.random() * 0.5, // Random delay
-    duration: Math.random() * 1 + 2, // Random duration between 2-5s
-    opacity: Math.random() * 0.7 + 0.3, // Random opacity between 0.3-1
+    size: Math.random() * 4 + 2,
+    left: Math.random() * 80 + 10,
+    delay: Math.random() * 0.5,
+    duration: Math.random() * 1 + 2,
+    opacity: Math.random() * 0.7 + 0.3,
   }));
 
   return (
@@ -193,14 +202,14 @@ const FloatingParticles = ({ isScrolling }) => {
   );
 };
 
-// Emoji Animation Component - Rolling from left
-const RollingEmojis = ({ emojis, isInView }) => {
+// Icon Animation Component (Updated from RollingEmojis)
+const RollingIcons = ({ icons, isInView }) => {
   return (
-    <div className="flex space-x-3 mt-4 justify-start flex-wrap">
-      {emojis.map((emoji, index) => (
-        <motion.span
+    <div className="flex space-x-3 mt-4 justify-start flex-wrap gap-2">
+      {icons.map((icon, index) => (
+        <motion.div
           key={index}
-          className="text-[40px]"
+          className="flex items-center justify-center"
           initial={{ 
             opacity: 0, 
             x: -80,
@@ -231,15 +240,56 @@ const RollingEmojis = ({ emojis, isInView }) => {
             transition: { duration: 0.3 }
           }}
         >
-          {emoji}
-        </motion.span>
+          <img 
+            src={icon} 
+            alt="service icon" 
+            className="w-10 h-10 object-contain" // Adjusted size from w-12 h-12 to w-10 h-10
+          />
+        </motion.div>
       ))}
     </div>
   );
 };
 
-// Image Slide In Component
-const SlideInImage = ({ src, alt, delay = 0, isInView }) => {
+// Slide Down Image Component (for first row - single image)
+const SlideDownImage = ({ src, alt, delay = 0, isInView }) => {
+  return (
+    <motion.div
+      initial={{ 
+        opacity: 0, 
+        y: -100,
+        scale: 0.8
+      }}
+      animate={isInView ? { 
+        opacity: 1, 
+        y: 0,
+        scale: 1
+      } : {
+        opacity: 0,
+        y: -100,
+        scale: 0.8
+      }}
+      transition={{
+        duration: 0.8,
+        delay: delay,
+        type: "spring",
+        stiffness: 80,
+        damping: 15
+      }}
+      className="w-full h-full"
+    >
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+        style={{ borderRadius: '18px' }}
+      />
+    </motion.div>
+  );
+};
+
+// Slide Up Image Component (for second row - two images)
+const SlideUpImage = ({ src, alt, delay = 0, isInView }) => {
   return (
     <motion.div
       initial={{ 
@@ -272,6 +322,113 @@ const SlideInImage = ({ src, alt, delay = 0, isInView }) => {
         style={{ borderRadius: '18px' }}
       />
     </motion.div>
+  );
+};
+
+// New Component for Structured Image Layout with Directional Animations
+const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
+  const children = category.children;
+  
+  return (
+    <div className="flex flex-col space-y-4">
+      {/* First row - single full width image - SLIDE DOWN */}
+      {children[0] && (
+        <div className="w-full">
+          <ImageCard 
+            service={children[0]} 
+            category={category}
+            index={0}
+            inViewImages={inViewImages}
+            imageRefs={imageRefs}
+            fullWidth={true}
+            animationType="slideDown"
+          />
+        </div>
+      )}
+      
+      {/* Second row - two images side by side - SLIDE UP */}
+      {children.slice(1, 3).length > 0 && (
+        <div className="grid grid-cols-2 gap-4">
+          {children.slice(1, 3).map((service, index) => (
+            <ImageCard 
+              key={index + 1}
+              service={service} 
+              category={category}
+              index={index + 1}
+              inViewImages={inViewImages}
+              imageRefs={imageRefs}
+              fullWidth={false}
+              animationType="slideUp"
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Updated Image Card Component with Directional Animation
+const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidth, animationType }) => {
+  const imageId = `${category.id}-${service.name}-image`;
+  
+  return (
+    <div className="block relative">
+      <Link to={service.link}>
+        <motion.div
+          className="group cursor-pointer relative"
+          whileHover={{
+            scale: 1.03,
+          }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+        >
+          {/* IMAGE BOX */}
+          <div className="p-1 relative z-10">
+            <div
+              className={`${fullWidth ? 'h-72' : 'h-60'} overflow-hidden border border-gray-600/30 shadow-2xl relative group`}
+              style={{ borderRadius: service.imageSettings.borderRadius }}
+            >
+              <div 
+                className="w-full h-full"
+                ref={el => imageRefs.current[imageId] = el}
+              >
+                {animationType === "slideDown" ? (
+                  <SlideDownImage 
+                    src={service.img}
+                    alt={service.name}
+                    delay={index * 0.2}
+                    isInView={inViewImages[imageId]}
+                  />
+                ) : (
+                  <SlideUpImage 
+                    src={service.img}
+                    alt={service.name}
+                    delay={index * 0.2}
+                    isInView={inViewImages[imageId]}
+                  />
+                )}
+              </div>
+              <div className="absolute inset-0 bg-black/40 opacity-70 group-hover:opacity-30 transition-all duration-500"></div>
+
+              {/* TITLE OVERLAY */}
+              <div className="absolute bottom-3 left-3 right-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <h4 className="text-white text-base font-semibold mb-1">
+                      {service.name}
+                    </h4>
+                  </div>
+                  <div className="text-yellow-500 transform group-hover:translate-x-1 transition-transform duration-300">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </Link>
+    </div>
   );
 };
 
@@ -340,7 +497,7 @@ export default function Categories() {
     };
   }, []);
 
-  // Intersection Observer for individual items (emojis)
+  // Intersection Observer for individual items (icons)
   useEffect(() => {
     const itemObserver = new IntersectionObserver(
       (entries) => {
@@ -414,7 +571,6 @@ export default function Categories() {
 
   const getCategoryTags = (category) => {
     if (category.id === "data-cloud") {
-      // For data-cloud section, include SERVER MANAGEMENT in tags but not in images
       return [
         ...category.children.map(child => child.name),
         "SERVER MANAGEMENT"
@@ -430,7 +586,7 @@ export default function Categories() {
       return "px-4 py-2 border border-yellow-500 bg-yellow-500 rounded-full text-black text-sm font-medium hover:bg-black hover:text-yellow-500 transition-all duration-300";
     }
 
-    return "px-4 py-3 border border-white rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
+    return "px-4 py-2 border border-white/40 rounded-full text-white text-sm font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300";
   };
 
   const getTagLink = (tag, category) => {
@@ -446,36 +602,41 @@ export default function Categories() {
     return childItem?.link || "#";
   };
 
+  // Get icons for the active category
+  const getCategoryIcons = (category) => {
+    return category.children.map(child => child.icon).filter(icon => icon);
+  };
+
   return (
     <>
       <h1
-        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl bg-[#000000] text-center uppercase pt-8"
-        style={{ fontFamily: "Outfit, sans-serif" }}
+        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl bg-[#000000] text-center uppercase pt-8 font-bold "
+        style={{ fontFamily: "DeaconTest, sans-serif" }}
       >
         <span className="text-white">OUR</span>{" "}
         <span className="text-yellow-500">SERVICE</span>
       </h1>
       
-      <section className="bg-black text-white min-h-screen px-4 py-8 md:px-12 md:py-16" ref={scrollContainerRef}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+      <section className="bg-black text-white min-h-screen px-4 py-6 md:px-12 md:py-12" ref={scrollContainerRef}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
           {/* MOBILE VIEW */}
           <div className="block md:hidden">
             {capabilitiesData.map((category, index) => (
-              <div key={category.id} className="mb-12">
+              <div key={category.id} className="mb-8">
                 {/* Category Header */}
-                <div className="text-center mb-6">
+                <div className="text-center mb-4">
                   <h3 
-                    className="text-2xl font-semibold tracking-wide text-yellow-500 mb-3 uppercase"
+                    className="text-xl font-semibold tracking-wide text-yellow-500 mb-2 uppercase"
                     style={{ fontFamily: "Outfit, sans-serif" }}
                   >
                     {category.title}
                   </h3>
                   
-                  <div className="h-px w-16 mx-auto bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-3"></div>
+                  <div className="h-px w-12 mx-auto bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-2"></div>
                   
                   <p
-                    className="text-white/80 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto px-2"
+                    className="text-white/80 text-xs leading-relaxed font-light tracking-wide max-w-md mx-auto px-2"
                     style={{ fontFamily: "Work Sans, sans-serif" }}
                   >
                     {category.desc.split('. ')[0]}.
@@ -483,33 +644,33 @@ export default function Categories() {
                 </div>
 
                 {/* Service Cards */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {category.children.map((service, serviceIndex) => (
                     <Link
                       key={serviceIndex}
                       to={service.link}
                       className="block"
                     >
-                      <div className="group cursor-pointer relative border border-gray-700 rounded-2xl p-4 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
-                        <div className="flex items-center space-x-4">
-                          {/* Service Image */}
-                          <div className="flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border border-gray-600">
+                      <div className="group cursor-pointer relative border border-gray-700 rounded-xl p-3 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
+                        <div className="flex items-center space-x-3">
+                          {/* Service Icon */}
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden border border-gray-600 flex items-center justify-center bg-gray-800">
                             <img
-                              src={service.img}
+                              src={service.icon}
                               alt={service.name}
-                              className="w-full h-full object-cover"
+                              className="w-6 h-6 object-contain" // Adjusted icon size
                             />
                           </div>
                           
                           {/* Service Info */}
                           <div className="flex-1">
                             <h4 
-                              className="text-white text-base font-semibold tracking-wide mb-1"
+                              className="text-white text-sm font-semibold tracking-wide mb-1"
                               style={{ fontFamily: "Outfit, sans-serif" }}
                             >
                               {service.name}
                             </h4>
-                            <div className="h-px w-10 bg-gradient-to-r from-yellow-500 to-transparent mb-1"></div>
+                            <div className="h-px w-8 bg-gradient-to-r from-yellow-500 to-transparent mb-1"></div>
                             <p className="text-white/60 text-xs font-light">
                               Explore {service.name.toLowerCase()} services
                             </p>
@@ -517,7 +678,7 @@ export default function Categories() {
                           
                           {/* Arrow Indicator */}
                           <div className="text-yellow-500 transform group-hover:translate-x-1 transition-transform duration-300">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                           </div>
@@ -528,14 +689,14 @@ export default function Categories() {
                 </div>
 
                 {/* Category Tags */}
-                <div className="mt-6 flex flex-wrap gap-2 justify-center">
+                <div className="mt-4 flex flex-wrap gap-1 justify-center">
                   {getCategoryTags(category).map((tag, tagIndex) => (
                     <Link
                       to={getTagLink(tag, category)}
                       key={tagIndex}
                     >
                       <span
-                        className="px-4 py-2 border border-white/40 rounded-full text-white text-xs font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
+                        className="px-3 py-1 border border-white/40 rounded-full text-white text-xs font-medium hover:bg-yellow-500 hover:text-black hover:border-yellow-500 transition-all duration-300"
                         style={{ fontFamily: "Outfit, sans-serif" }}
                       >
                         {tag}
@@ -546,14 +707,14 @@ export default function Categories() {
 
                 {/* Section Divider */}
                 {index < capabilitiesData.length - 1 && (
-                  <div className="h-px w-full  mt-8"></div>
+                  <div className="h-px w-full bg-gray-800 mt-6"></div>
                 )}
               </div>
             ))}
           </div>
 
-          {/* DESKTOP VIEW - Keep your existing desktop code */}
-          <div className="hidden md:block md:sticky md:top-60 h-fit mt-8 md:mt-16">
+          {/* DESKTOP VIEW */}
+          <div className="hidden md:block md:sticky md:top-40 h-fit mt-6 md:mt-12">
             <motion.div
               key={activeCategory.id}
               initial={{ opacity: 0, y: 50 }}
@@ -564,31 +725,31 @@ export default function Categories() {
               <div className="flex flex-col">
                 <div>
                   <h3 
-                    className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-wider text-yellow-500 mb-4 md:mb-6 uppercase text-center md:text-left"
-                    style={{ fontFamily: "Outfit, sans-serif" }}
+                    className="text-2xl md:text-3xl lg:text-3xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
+                    style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {activeCategory.title}
                   </h3>
                   
-                  <div className="mt-4 md:mt-6 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
+                  <div className="mt-3 md:mt-4 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                   <div className="relative">
                     <p
-                      className="text-white/90 mt-4 md:mt-6 max-w-md leading-relaxed text-xs md:text-lg font-light tracking-wide text-center md:text-left"
-                      style={{ fontFamily: "Work Sans, sans-serif" }}
+                      className="text-white/90 mt-3 md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
+                      style={{ fontFamily: "anta, sans-serif" }}
                     >
                       {activeCategory.desc.split('. ')[0]}.
                     </p>
                     
                     {/* BUTTONS SECTION */}
-                    <div className="mt-6 md:mt-8 flex flex-wrap gap-2 md:gap-3 justify-center md:justify-start">
+                    <div className="mt-4 md:mt-5 flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
                       {getCategoryTags(activeCategory).map((tag, index) => (
                         <Link
                           to={getTagLink(tag, activeCategory)}
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer inline-block text-xs sm:text-sm`}
-                            style={{ fontFamily: "outfit, sans-serif" }}
+                            className={`${getTagStyle(tag)} cursor-pointer inline-block text-xs`}
+                            style={{ fontFamily: "Outfit, sans-serif" }}
                           >
                             {tag}
                           </span>
@@ -596,10 +757,10 @@ export default function Categories() {
                       ))}
                     </div>
 
-                    {/* EMOJIS BELOW BUTTONS on LEFT SIDE */}
-                    <div className="mt-6 md:mt-8">
-                      <RollingEmojis 
-                        emojis={activeCategory.children.flatMap(child => child.emojis).slice(0, 6)} 
+                    {/* ICONS BELOW BUTTONS on LEFT SIDE - Updated to use RollingIcons */}
+                    <div className="mt-4 md:mt-5">
+                      <RollingIcons 
+                        icons={getCategoryIcons(activeCategory)} 
                         isInView={inViewItems[activeCategory.id]} 
                       />
                     </div>
@@ -609,91 +770,21 @@ export default function Categories() {
             </motion.div>
           </div>
 
-          {/* RIGHT SCROLLING SECTION - Desktop only */}
+          {/* RIGHT SCROLLING SECTION - Desktop only with NEW STRUCTURE */}
           <div className="hidden md:flex flex-col">
             {capabilitiesData.map((cap, index) => (
               <div
                 key={cap.id}
                 ref={sectionRefs.current[index]}
                 data-category-id={cap.id}
-                className={`relative ${index < capabilitiesData.length - 1 ? 'mb-92' : ''}`}
+                className={`relative ${index < capabilitiesData.length - 1 ? 'mb-40' : ''}`}
               >
                 <div className="relative">
-                  <div className={`hidden md:grid gap-6 ${cap.children.length === 3
-                      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
-                    }`}>
-                    {cap.children.map((child, i) => {
-                      const itemId = `${cap.id}-${child.name}`;
-                      const imageId = `${cap.id}-${child.name}-image`;
-                      return (
-                        <div
-                          key={i}
-                          ref={el => {
-                            itemRefs.current[itemId] = el;
-                            imageRefs.current[imageId] = el;
-                          }}
-                          data-item-id={itemId}
-                          data-image-id={imageId}
-                          className={`block relative ${index === 0 && i === 0 ? 'mt-16' :
-                              index === 0 && i === 1 ? 'mt-25' :
-                                index === 0 && i === 2 ? 'mt-35' :
-                                  index === 1 && i === 0 ? 'mt-20' :
-                                    index === 1 && i === 1 ? 'mt-30' :
-                                      index === 1 && i === 2 ? 'mt-40' :
-                                        index === 2 && i === 0 ? 'mt-12' :
-                                          index === 2 && i === 1 ? 'mt-20' :
-                                            index === 2 && i === 2 ? 'mt-30' : ''
-                            }`}
-                        >
-                          <Link
-                            to={child.link}
-                          >
-                            <motion.div
-                              className="group cursor-pointer relative"
-                              whileHover={{
-                                scale: 1.03,
-                              }}
-                              transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                            >
-                              {/* IMAGE BOX */}
-                              <div className="p-1 relative z-10">
-                                <div
-                                  className={`${child.size} overflow-hidden border border-gray-600/30 shadow-2xl relative group`}
-                                  style={{ borderRadius: child.imageSettings.borderRadius }}
-                                >
-                                  <div 
-                                    className="w-full h-full"
-                                    ref={el => imageRefs.current[imageId] = el}
-                                  >
-                                    <SlideInImage 
-                                      src={child.img}
-                                      alt={child.name}
-                                      delay={i * 0.2}
-                                      isInView={inViewImages[imageId]}
-                                    />
-                                  </div>
-                                  <div className="absolute inset-0 bg-black/40 opacity-70 group-hover:opacity-30 transition-all duration-500"></div>
-
-                                  {/* TITLE OVERLAY - NO EMOJIS HERE */}
-                                  <div className="absolute bottom-4 left-4 right-4">
-                                    <div className="flex items-center justify-between">
-                                      <div className="flex-1">
-                                        <h4 className="text-white text-lg font-semibold mb-1">
-                                          {child.name}
-                                        </h4>
-                                      </div>
-                                    
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </motion.div>
-                          </Link>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  <StructuredImageLayout 
+                    category={cap}
+                    inViewImages={inViewImages}
+                    imageRefs={imageRefs}
+                  />
                 </div>
               </div>
             ))}
@@ -705,7 +796,7 @@ export default function Categories() {
           <FloatingParticles isScrolling={isScrolling} />
         </div>
 
-        <div className="text-center mt-20 md:mt-40">
+        <div className="text-center mt-16 md:mt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

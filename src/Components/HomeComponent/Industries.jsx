@@ -166,14 +166,15 @@ const Industries = () => {
           </p>
 
           <h2
-            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-Outfit"
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight font-Outfit"
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
           >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
 
-        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl">
+        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl" 
+         style={{ fontFamily: "anta, sans-serif" }}>
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
           strategic collaboration, we enable industries to thrive. Our goal is to

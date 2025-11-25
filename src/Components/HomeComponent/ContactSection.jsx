@@ -42,7 +42,8 @@ Let’s Build Something Great
           </div>
 
           {/* RIGHT SIDE — form */}
-          <div className="w-full max-w-md md:ml-auto border-[#]">
+          <div className="w-full max-w-md md:ml-auto border-[#] text-3xl" 
+           style={{ fontFamily: "anta, Outfit" }}>
             <form className="space-y-4">
               <GradientInput placeholder="Name" />
               <GradientInput placeholder="E-mail" type="email" />
