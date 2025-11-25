@@ -214,7 +214,7 @@ export default function Indhu() {
   // --- MOBILE SIMPLE HORIZONTAL SCROLL VERSION ---
   if (isMobile) {
     return (
-      <section className="bg-black text-white w-full py-16 px-4 flex flex-col items-center">
+      <section className="bg-black text-white w-full py-18 px-4 flex flex-col items-center">
         {/* Heading */}
         <div
           className="text-center mb-10"
@@ -227,7 +227,7 @@ export default function Indhu() {
         </div>
 
         {/* Horizontal scroll cards */}
-        <div className="w-[280px] flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
+        <div className="w-[280px] pl-20 flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
           {circles.map((c) => (
             <div
               key={c.id}

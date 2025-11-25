@@ -39,6 +39,13 @@ const colorGradients = {
   "purple-400": "linear-gradient(to right, #c084fc 80%, transparent 100%)",
 };
 
+const mobileColorOverlays = {
+  "indigo-400": "linear-gradient(135deg, rgba(129, 140, 248, 0.3) 0%, rgba(129, 140, 248, 0.1) 100%)",
+  "green-400": "linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(74, 222, 128, 0.1) 100%)",
+  "red-400": "linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(248, 113, 113, 0.1) 100%)",
+  "purple-400": "linear-gradient(135deg, rgba(192, 132, 252, 0.3) 0%, rgba(192, 132, 252, 0.1) 100%)",
+};
+
 const Industries = () => {
   const overlayRefs = useRef([]);
   const numberTextRefs = useRef([]);
@@ -180,7 +187,7 @@ const Industries = () => {
           {industries.map((industry, index) => (
             <div
               key={industry.id}
-              className=" border border-gray-700 rounded-2xl p-6 hover:border-gray-500 transition-all duration-300"
+              className="border border-gray-700 rounded-2xl p-6 hover:border-gray-500 transition-all duration-300"
             >
               <div className="flex items-start space-x-4">
                 {/* Number */}
@@ -196,12 +203,18 @@ const Industries = () => {
                     {industry.name}
                   </h4>
                   
-                  {/* Mobile Image */}
-                  <div className="mt-4 rounded-lg overflow-hidden border border-gray-600">
+                  {/* Mobile Image with Color Overlay */}
+                  <div className="mt-4 rounded-lg overflow-hidden border border-gray-600 relative">
+                    <div 
+                      className="absolute inset-0 z-10"
+                      style={{
+                        background: mobileColorOverlays[industry.color]
+                      }}
+                    ></div>
                     <img
                       src={industryImages[index]}
                       alt={industry.name}
-                      className="w-full h-32 object-cover"
+                      className="w-full h-32 object-cover relative z-0"
                       style={{ objectPosition: imagePositions[index] }}
                     />
                   </div>
