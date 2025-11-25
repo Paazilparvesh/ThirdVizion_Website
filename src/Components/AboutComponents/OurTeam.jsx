@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // ---------- IMPORT ALL 18 IMAGES ----------
 import img1 from "/src/assets/AboutImages/Artboard 1 copy.jpg";
-import img2 from "/src/assets/AboutImages/DHILIP.jpg";
+import img2 from "/src/assets/AboutImages/dhilip.jpg";
 import img3 from "/src/assets/AboutImages/JANA.jpg";
 import img4 from "/src/assets/AboutImages/JERO.jpg";
 import img5 from "/src/assets/AboutImages/KARTHICK.jpg";
