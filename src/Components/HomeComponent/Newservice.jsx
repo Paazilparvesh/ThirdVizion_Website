@@ -12,11 +12,14 @@ import Dashboard from "/src/assets/newserviceehome/server.png";
 import Aws from "/src/assets/home/erp.png";
 import Azure from "/src/assets/home/game.jpg";
 import GoogleCloud from "/src/assets/home/web.jpg";
+
 //icons
-import air from "/src/assets/ourserviceicons/airicon.webp";
-import crm from "/src/assets/ourserviceicons/crm.webp";
-import iam from "/src/assets/ourserviceicons/iam.webp";
-import vr from "/src/assets/ourserviceicons/vr.webp";
+import air from "/src/assets/ourserviceicons/ar.png";
+import crm from "/src/assets/ourserviceicons/crm.png";
+import iam from "/src/assets/ourserviceicons/iam.png";
+import vr from "/src/assets/ourserviceicons/vr.png";
+import threed from "/src/assets/ourserviceicons/3d.png";
+import erp from "/src/assets/ourserviceicons/erp.png";
 
 const capabilitiesData = [
   {
@@ -27,7 +30,7 @@ const capabilitiesData = [
       {
         name: "AR",
         img: DesignTool,
-        emojis: [air],
+        emojis: {air},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -39,7 +42,7 @@ const capabilitiesData = [
       {
         name: "3D",
         img: Layout,
-        emojis: ["📐"],
+        emojis: {threed},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -51,7 +54,7 @@ const capabilitiesData = [
       {
         name: "VIRTUAL REALITY",
         img: Component,
-        emojis: [vr],
+        emojis: {vr},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -70,7 +73,7 @@ const capabilitiesData = [
       {
         name: "CRM",
         img: Portal,
-        emojis: [crm],
+        emojis: {crm},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -82,7 +85,7 @@ const capabilitiesData = [
       {
         name: "IAM",
         img: Dashboard,
-        emojis: [iam],
+        emojis: {iam},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -94,7 +97,7 @@ const capabilitiesData = [
       {
         name: "ERP",
         img: Aws,
-        emojis: ["📈"],
+        emojis: {erp},
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -199,11 +202,11 @@ const FloatingParticles = ({ isScrolling }) => {
 // Emoji Animation Component
 const RollingEmojis = ({ emojis, isInView }) => {
   return (
-    <div className="flex space-x-3 mt-4 justify-start flex-wrap">
+    <div className="flex space-x-3 mt-4 justify-start flex-wrap gap-2">
       {emojis.map((emoji, index) => (
-        <motion.span
+        <motion.div
           key={index}
-          className="text-[40px]"
+          className="flex items-center justify-center"
           initial={{ 
             opacity: 0, 
             x: -80,
@@ -234,8 +237,16 @@ const RollingEmojis = ({ emojis, isInView }) => {
             transition: { duration: 0.3 }
           }}
         >
-          {typeof emoji === 'string' ? emoji : <img src={emoji} alt="" className="w-10 h-10" />}
-        </motion.span>
+          {typeof emoji === 'string' ? (
+            <span className="text-[40px]">{emoji}</span>
+          ) : (
+            <img 
+              src={emoji} 
+              alt="service icon" 
+              className="w-12 h-12 object-contain"
+            />
+          )}
+        </motion.div>
       ))}
     </div>
   );
@@ -362,7 +373,7 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
   const imageId = `${category.id}-${service.name}-image`;
   
   return (
-    <div className={`block relative ${getPositionClass(category.id, index)}`}>
+    <div className="block relative">
       <Link to={service.link}>
         <motion.div
           className="group cursor-pointer relative"
@@ -420,17 +431,6 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
       </Link>
     </div>
   );
-};
-
-// Helper function for positioning with reduced margins
-const getPositionClass = (categoryId, index) => {
-  const positions = {
-    "emerging-tech": ["mt-12", "mt-6", "mt-6"],
-    "data-cloud": ["mt-16", "mt-8", "mt-8"],
-    "software-dev": ["mt-10", "mt-4", "mt-4"]
-  };
-  
-  return positions[categoryId]?.[index] || "";
 };
 
 export default function Categories() {
