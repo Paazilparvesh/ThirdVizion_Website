@@ -1,37 +1,39 @@
 import { motion } from "framer-motion";
 import { Shield, Zap, Target, Users } from "lucide-react";
 
+
 const IAMBenefits = () => {
   const benefits = [
     {
       icon: Shield,
       metric: "10X",
-      title: "Boost in Security Posture",
-      description: "IAM reduced unauthorized access by 80% with zero-trust policies and advanced authentication methods.",
+      title: "Enhanced Security Infrastructure",
+      description: "ThirdVizion implements zero-trust architecture and multi-factor authentication, reducing security breaches by 80%.",
       gradient: "from-yellow-500 to-amber-400",
     },
     {
       icon: Zap,
       metric: "5X",
-      title: "Faster User Onboarding",
-      description: "Automated provisioning cut onboarding from days to minutes, improving efficiency across teams.",
+      title: "Rapid IAM Deployment",
+      description: "Our expert team deploys complete IAM solutions in weeks, not months, with automated provisioning and seamless integration.",
       gradient: "from-orange-500 to-yellow-400",
     },
     {
       icon: Target,
       metric: "3X",
-      title: "Improved Compliance",
-      description: "IAM simplified audits and access reviews, helping achieve compliance milestones ahead of schedule.",
+      title: "Compliance Acceleration",
+      description: "ThirdVizion ensures GDPR, HIPAA, and SOX compliance with built-in audit trails, access reviews, and automated reporting.",
       gradient: "from-amber-500 to-yellow-300",
     },
     {
       icon: Users,
       metric: "70%",
-      title: "Reduction in IT Workload",
-      description: "Centralized access management and SSO reduced password resets and manual admin tasks drastically.",
+      title: "IT Operations Efficiency",
+      description: "Our managed IAM services reduce password reset tickets and manual tasks, freeing your IT team for strategic work.",
       gradient: "from-lime-500 to-yellow-300",
     },
   ];
+
 
   return (
     <section className="w-full min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-20 font-inter-tight relative overflow-hidden">
@@ -46,13 +48,14 @@ const IAMBenefits = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl       font-font-semibold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
-            IAM Benefits
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+            How ThirdVizion Helps
           </h2>
-          <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
-            Discover how Identity and Access Management transforms security, efficiency, and compliance for your organization.
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
+            We deliver comprehensive IAM solutions that strengthen security, streamline operations, and ensure compliance for your business.
           </p>
         </motion.div>
+
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -78,20 +81,24 @@ const IAMBenefits = () => {
                   <benefit.icon className="w-8 h-8 text-white" />
                 </div>
 
+
                 {/* Metric */}
                 <div className="text-2xl md:text-3xl lg:text-4xl font-inter-tight font-black text-yellow-500 mb-4 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.3)] transition-all duration-500">
                   {benefit.metric}
                 </div>
 
+
                 {/* Title */}
-                <h3 className="text-2xl font-inter-tight font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+                <h3 className="text-2xl font-inter-tight font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
                   {benefit.title}
                 </h3>
 
+
                 {/* Description */}
-                <p className="text-lg text-gray-300 leading-relaxed flex-1" style={{ fontFamily: "work-sans, sans-serif" }}>
+                <p className="text-lg text-gray-300 leading-relaxed flex-1" style={{ fontFamily: "work-sans, sans-serif" }}>
                   {benefit.description}
                 </p>
+
 
                 {/* Progress bar */}
                 <div className="mt-6 w-full h-1 bg-yellow-500/20 rounded-full overflow-hidden">
@@ -105,12 +112,14 @@ const IAMBenefits = () => {
                 </div>
               </div>
 
+
               {/* Decorative corners */}
               <div className="absolute top-4 right-4 w-2 h-2 border-t border-r border-yellow-500/40 group-hover:border-yellow-500 transition-colors duration-500" />
               <div className="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-yellow-500/40 group-hover:border-yellow-500 transition-colors duration-500" />
             </motion.div>
           ))}
         </div>
+
 
         {/* Bottom CTA */}
         <motion.div
@@ -126,5 +135,6 @@ const IAMBenefits = () => {
     </section>
   );
 };
+
 
 export default IAMBenefits;

@@ -21,7 +21,8 @@ const WebsitePage = () => {
       <WebAbt />
             <div className="hidden sm:block">
 
-      <WebSer /> </div>
+      <WebSer /> 
+      </div>
       <WebProjects />
       <WebCTA />
     </div>

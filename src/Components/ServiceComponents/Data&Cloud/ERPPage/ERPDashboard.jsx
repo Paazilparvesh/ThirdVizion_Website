@@ -125,7 +125,7 @@ export default function WebProject() {
           transition={{ duration: 0.6 }}
           style={{ fontFamily: "Outfit, sans-serif" }}
         >
-          ERP Project Showcase
+          ERP Dashboard
         </motion.h2>
 
         {ProjectsData.map((project, index) => (
@@ -182,7 +182,14 @@ export default function WebProject() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ amount: 0 }}
-      ></motion.div>
+      >
+        <h1 
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
+          ERP Dashboard
+        </h1>
+      </motion.div>
 
       <div className="h-[400vh] text-white">
         {ProjectsData.map((project, index) => (

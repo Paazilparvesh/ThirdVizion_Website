@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import vid from "/src/assets/Crm/1.9.1_CRM.mp4";
 
+
 function CrmVideo() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
     const videoRef = useRef(null);
+
 
     useEffect(() => {
         // Auto play video when component mounts
@@ -17,6 +19,7 @@ function CrmVideo() {
         }
     }, []);
 
+
     const handlePlayPause = () => {
         if (videoRef.current) {
             if (isPlaying) {
@@ -28,12 +31,14 @@ function CrmVideo() {
         }
     };
 
+
     const handleMuteUnmute = () => {
         if (videoRef.current) {
             videoRef.current.muted = !videoRef.current.muted;
             setIsMuted(!isMuted);
         }
     };
+
 
     return (
         <section className="w-full min-h-screen text-white py-8 md:py-16 px-4 sm:px-6 font-sans">
@@ -48,6 +53,7 @@ function CrmVideo() {
                     Complete guide to Customer Relationship Management and how it transforms business operations
                 </p>
             </div>
+
 
             {/* Enhanced Video Player Section */}
             <div className="max-w-6xl mx-auto mb-12 md:mb-20">
@@ -130,7 +136,9 @@ function CrmVideo() {
                 </div>
             </div>
 
-            {/* Who Needs CRM Section */}
+
+            {/* WHO NEEDS CRM SECTION - COMMENTED OUT */}
+            {/* 
             <div className="max-w-7xl mx-auto">
                 <div className="bg-gradient-to-br from-gray-800/30 to-gray-900/30 backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 border border-[#FF646730] hover:border-[#FF646760] transition-all duration-500">
                     <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
@@ -197,6 +205,8 @@ function CrmVideo() {
                     </div>
                 </div>
             </div>
+            */}
+
 
             {/* Custom CSS */}
             <style jsx>{`
@@ -222,5 +232,6 @@ function CrmVideo() {
         </section>
     );
 }
+
 
 export default CrmVideo;
