@@ -218,7 +218,7 @@ export default function Indhu() {
         {/* Heading */}
         <div
           className="text-center mb-10"
-          style={{ fontFamily: "DeaconTest, sans-serif" }}
+   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
         >
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  capitalize text-white">
@@ -451,14 +451,14 @@ export default function Indhu() {
       <div className="absolute inset-0 bg-black" />
       
       <div
-        className="absolute top-24 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4"
-        style={{ fontFamily: "DeaconTest, sans-serif" }}
+        className="absolute top-24 left-1/2 -translate-x-1/2 uppercase text-center z-10 w-full px-4"
+   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
       >
         <p className="text-xs sm:text-sm text-[#FFC016] tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  leading-tight text-[#ffffff] capitalize"
+          className="text-4xl md:text-5xl uppercase lg:text-6xl xl:text-7xl  leading-tight text-[#ffffff] capitalize"
           style={{ textShadow: "none" }}
         >
           how we <span className="text-[#FFC016]">deliver</span> excellence
@@ -561,9 +561,7 @@ export default function Indhu() {
                   fill={c.color}
                   fontSize={fontSize * 1.7}
                   fontWeight={400}
-                  style={{ fontFamily: "Outfit, sans-serif" }}
-                >
-                  {c.label}
+style={{ fontFamily: "anta, sans-serif" }}>                  {c.label}
                 </text>
                 {descriptionLines.map((line, i) => (
                   <text
@@ -574,10 +572,8 @@ export default function Indhu() {
                     fill="#FFFFFF"
                     fontSize={fontSize * 0.65}
                     fontWeight={400}
-                    style={{
-                      fontFamily: "Work Sans, sans-serif",
-                    }}
-                  >
+                    style={{ fontFamily: "anta, sans-serif" }}>
+                  
                     {line}
                   </text>
                 ))}

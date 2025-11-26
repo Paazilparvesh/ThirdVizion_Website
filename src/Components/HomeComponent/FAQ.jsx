@@ -117,12 +117,12 @@ const FAQHeader = () => (
   <h2
   id="faq-heading"
   className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
- style={{ fontFamily: "Outfit, sans-serif" }}
+  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
 >
   Frequently Asked Questions
 </h2>
 
-    <p className="mt-4 text-lg text-yellow-500 max-w-2xl mx-auto font-work-sans font-normal tracking-wide">
+    <p className="mt-4 text-lg text-yellow-500 max-w-2xl mx-auto  tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
@@ -359,9 +359,8 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-work-sans overflow-hidden"
-      aria-labelledby="faq-heading"
-    >
+      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-work-sans overflow-hidden" style={{ fontFamily: "anta, sans-serif" }}>
+   
       <div className="max-w-5xl mx-auto">
         <FAQHeader />
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12 justify-center">
@@ -394,7 +393,7 @@ export default function FAQSection() {
                 ))
               ) : (
                 <div className="rounded-2xl border border-amber-400/20 bg-white/5 backdrop-blur-sm p-10 text-center">
-                  <p className="text-lg text-amber-200/80 font-work-sans font-normal">No questions match your search.</p>
+                  <p className="text-lg text-amber-200/80 font-work-sans font-normal" style={{ fontFamily: "anta, sans-serif" }}>No questions match your search.</p>
                 </div>
               )}
             </div>

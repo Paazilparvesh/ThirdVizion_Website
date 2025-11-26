@@ -198,7 +198,7 @@ const BlogPage = () => {
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
           <span className="bg-gradient-to-r from-[#FF700A] font-medium via-orange-400 to-yellow-400 bg-clip-text text-transparent"
-            style={{ fontFamily: "Outfit, sans-serif" }}>
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
             Welcome to Our Blog
           </span>
         </motion.h1>
@@ -230,7 +230,7 @@ const BlogPage = () => {
               >
                 🔍
               </motion.div>
-              <p className="text-gray-400 text-xs md:text-lg">No blogs found. Try a different search term.</p>
+              <p className="text-gray-400 text-xs md:text-lg" style={{ fontFamily: "anta, sans-serif" }}>No blogs found. Try a different search term.</p>
             </motion.div>
           ) : (
             filteredBlogs.map((blog, i) => (
@@ -289,14 +289,13 @@ const BlogPage = () => {
                     </motion.div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex-1 flex flex-col" style={{ fontFamily: "Outfit, sans-serif" }}>
+                    <div className="relative z-10 flex-1 flex flex-col"style={{ fontFamily: "anta, sans-serif" }}>
                       {/* Title with animated underline */}
                       <div className="mb-4">
                         <motion.h2
                           className="text-2xl md:text-3xl font-bold mb-3 inline-block"
                           layoutId={`title-${blog.id}`}
-                          style={{ fontFamily: "Outfit, sans-serif" }}
-                         >
+                         style={{ fontFamily: "anta, sans-serif" }}>
                           {blog.title}
                         </motion.h2>
                         <motion.div

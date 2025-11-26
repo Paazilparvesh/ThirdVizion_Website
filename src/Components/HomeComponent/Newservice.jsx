@@ -156,51 +156,7 @@ const capabilitiesData = [
   },
 ];
 
-// Floating Particles Component
-const FloatingParticles = ({ isScrolling }) => {
-  const particles = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    size: Math.random() * 4 + 2,
-    left: Math.random() * 80 + 10,
-    delay: Math.random() * 0.5,
-    duration: Math.random() * 1 + 2,
-    opacity: Math.random() * 0.7 + 0.3,
-  }));
 
-  return (
-    <div className="absolute -bottom-4 left-0 right-0 h-20 pointer-events-none z-0">
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full bg-yellow-400"
-          style={{
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            left: `${particle.left}%`,
-            bottom: '0%',
-            opacity: 0,
-            filter: 'blur(0.5px)',
-            boxShadow: '0 0 8px 2px rgba(255, 255, 0, 0.6)',
-          }}
-          animate={isScrolling ? {
-            y: [0, -40, 0],
-            opacity: [0, particle.opacity, 0],
-            scale: [0.8, 1.2, 0.8],
-          } : {
-            opacity: 0,
-            scale: 0
-          }}
-          transition={{
-            duration: particle.duration,
-            delay: particle.delay,
-            repeat: isScrolling ? Infinity : 0,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 // Icon Animation Component (Updated from RollingEmojis)
 const RollingIcons = ({ icons, isInView }) => {
@@ -243,7 +199,7 @@ const RollingIcons = ({ icons, isInView }) => {
           <img 
             src={icon} 
             alt="service icon" 
-            className="w-10 h-10 object-contain" // Adjusted size from w-12 h-12 to w-10 h-10
+            className="w-20 h-20 object-contain" // Adjusted size from w-12 h-12 to w-10 h-10
           />
         </motion.div>
       ))}
@@ -725,7 +681,7 @@ export default function Categories() {
               <div className="flex flex-col">
                 <div>
                   <h3 
-                    className="text-2xl md:text-3xl lg:text-3xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
+                    className="text-2xl md:text-3xl lg:text-6xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
                     style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {activeCategory.title}
@@ -734,23 +690,23 @@ export default function Categories() {
                   <div className="mt-3 md:mt-4 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                   <div className="relative">
                     <p
-                      className="text-white/90 mt-3 md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
+                      className="text-white/90 mt-3   text-2xl md:text-3xl lg:text-[19px]  md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
                       style={{ fontFamily: "anta, sans-serif" }}
                     >
                       {activeCategory.desc.split('. ')[0]}.
                     </p>
                     
                     {/* BUTTONS SECTION */}
-                    <div className="mt-4 md:mt-5 flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
+                    <div className="mt-4 md:mt-5     flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
                       {getCategoryTags(activeCategory).map((tag, index) => (
                         <Link
                           to={getTagLink(tag, activeCategory)}
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer inline-block text-xs`}
-                            style={{ fontFamily: "Outfit, sans-serif" }}
-                          >
+                            className={`${getTagStyle(tag)} cursor-pointer  px-[25px]  py-[9px] text-2xl md:text-3xl lg:text-[22px] inline-block text-xs`}
+            style={{ fontFamily: "anta, sans-serif" }}>
+                          
                             {tag}
                           </span>
                         </Link>
@@ -791,10 +747,7 @@ export default function Categories() {
           </div>
         </div>
 
-        {/* Floating Particles for Desktop */}
-        <div className="hidden md:block">
-          <FloatingParticles isScrolling={isScrolling} />
-        </div>
+       
 
         <div className="text-center mt-16 md:mt-32">
           <motion.div

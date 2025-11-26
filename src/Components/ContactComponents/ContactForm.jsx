@@ -194,8 +194,10 @@ const ContactForm = () => {
       <div className="relative z-10 flex flex-col lg:flex-row max-w-7xl mx-auto gap-12 lg:gap-16">
         {/* LEFT SIDE */}
         <motion.div
-          className="lg:w-2/5 flex flex-col"
+          className="lg:w-2/5 flex flex-col" 
           initial="hidden"
+          style={{ fontFamily: "anta, sans-serif" }}            
+
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
@@ -205,7 +207,7 @@ const ContactForm = () => {
               variants={typingContainer}
               initial="hidden"
               animate="visible"
-               style={{ fontFamily: "Outfit, sans-serif" }} >
+              style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 800 }} >
               {text.split("").map((char, index) => (
                 <motion.span key={index} variants={typingText}>
                   {char}
@@ -254,7 +256,8 @@ const ContactForm = () => {
 
           {/* Info Cards Grid */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8" style={{ fontFamily: "anta, sans-serif" }}            
+
             variants={containerVariants}
           >
             {infoCards.map(({ icon: Icon, title, content, color }, index) => (
@@ -262,6 +265,7 @@ const ContactForm = () => {
                 key={index}
                 className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
                 variants={itemVariants}
+                
                 whileHover={{ 
                   y: -5,
                   scale: 1.02,
@@ -269,7 +273,7 @@ const ContactForm = () => {
                   boxShadow: `0 10px 30px -10px ${color}40`
                 }}
               >
-                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: ", work-sans" }}>
+                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: "anta, sans-serif" }}>
                   <div 
                     className="p-2 rounded-lg"
                     style={{ backgroundColor: `${color}20` }}
@@ -297,8 +301,7 @@ const ContactForm = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
+style={{ fontFamily: "anta, sans-serif" }}            >
               Send us a Message
             </motion.h2>
 
@@ -315,6 +318,7 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your Name"
+                    style={{ fontFamily: "anta, sans-serif" }}
                     className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 outline-none"
                     required
                   />

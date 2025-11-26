@@ -58,13 +58,15 @@ export default function Partners() {
   return (
     <div className="bg-black text-white py-12 relative font-['Outfit']">
      <h2
-  className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-3"
-  style={{ fontFamily: "DeaconTest, sans-serif" }}
+  className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-center mb-3"
+   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+
 >
   <spam  className="font-bold" >Our </spam> <span className="text-yellow-500 font-bold ">Clients</span>
 </h2>
 
-      <p className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8">
+      <p className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8"         style={{ fontFamily: "anta, sans-serif" }}
+>
         Creating impact alongside our valued clients.
       </p>
 

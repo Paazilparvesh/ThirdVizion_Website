@@ -9,13 +9,20 @@ if (typeof window !== "undefined") {
 
 const MissionVision = () => {
   const sectionRef = useRef(null);
-  const visionHeadingRef = useRef(null);
-  const visionLineRef = useRef(null);
-  const visionTextRef = useRef(null);
-  const missionHeadingRef = useRef(null);
-  const missionLineRef = useRef(null);
-  const missionTextRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Refs for first vision-mission pair
+  const visionHeadingRef1 = useRef(null);
+  const visionLineRef1 = useRef(null);
+  const visionTextRef1 = useRef(null);
+  const missionHeadingRef1 = useRef(null);
+  const missionLineRef1 = useRef(null);
+  const missionTextRef1 = useRef(null);
+
+  // Refs for second vision
+  const visionHeadingRef2 = useRef(null);
+  const visionLineRef2 = useRef(null);
+  const visionTextRef2 = useRef(null);
 
   // Detect mobile view
   useEffect(() => {
@@ -30,275 +37,360 @@ const MissionVision = () => {
     if (isMobile) return;
 
     const ctx = gsap.context(() => {
-      // Vision Animation Timeline
-      const visionTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: visionHeadingRef.current,
-          start: "top 70%",
-          end: "bottom 10%",
-          toggleActions: "play reverse play reverse",
-          markers: false,
-        },
-      });
+      // Animation function for vision sections
+      const createVisionAnimations = (visionHeading, visionLine, visionText) => {
+        const visionTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: visionHeading,
+            start: "top 70%",
+            end: "bottom 10%",
+            toggleActions: "play reverse play reverse",
+            markers: false,
+          },
+        });
 
-      visionTimeline
-        .fromTo(
-          visionLineRef.current,
-          { scaleX: 0, transformOrigin: "left center" },
-          { scaleX: 1, duration: 0.2,  }
-        )
-        .fromTo(
-          visionHeadingRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.2,  },
-          "-=0.3"
-        )
-        .fromTo(
-          visionTextRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.2,  },
-          "-=0.2"
-        );
+        visionTimeline
+          .fromTo(
+            visionLine,
+            { scaleX: 0, transformOrigin: "left center" },
+            { scaleX: 1, duration: 0.2 }
+          )
+          .fromTo(
+            visionHeading,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.2 },
+            "-=0.3"
+          )
+          .fromTo(
+            visionText,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.2 },
+            "-=0.2"
+          );
+      };
 
-      // Mission Animation Timeline
-      const missionTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: missionHeadingRef.current,
-          start: "top 60%",
-          end: "bottom 20%",
-          toggleActions: "play reverse play reverse",
-          markers: false,
-        },
-      });
+      // Animation function for mission section
+      const createMissionAnimations = (missionHeading, missionLine, missionText) => {
+        const missionTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: missionHeading,
+            start: "top 60%",
+            end: "bottom 20%",
+            toggleActions: "play reverse play reverse",
+            markers: false,
+          },
+        });
 
-      missionTimeline
-        .fromTo(
-          missionLineRef.current,
-          { scaleX: 0, transformOrigin: "right center" },
-          { scaleX: 1, duration: 0.2,  }
-        )
-        .fromTo(
-          missionHeadingRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.2,  },
-          "-=0.3"
-        )
-        .fromTo(
-          missionTextRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.2,  },
-          "-=0.2"
-        );
+        missionTimeline
+          .fromTo(
+            missionLine,
+            { scaleX: 0, transformOrigin: "right center" },
+            { scaleX: 1, duration: 0.2 }
+          )
+          .fromTo(
+            missionHeading,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.2 },
+            "-=0.3"
+          )
+          .fromTo(
+            missionText,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.2 },
+            "-=0.2"
+          );
+      };
 
-      // Hide Animation for both sections when scrolling past the entire section
-      const hideTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 20%",
-          end: "top 10%",
-          toggleActions: "play reverse play reverse",
-          markers: false,
-        },
-      });
-
-      // Hide Vision elements
-      hideTimeline.to([
-        visionHeadingRef.current,
-        visionLineRef.current,
-        visionTextRef.current
-      ], {
+      // Create animations for all sections
+      createVisionAnimations(
+        visionHeadingRef1.current, visionLineRef1.current, visionTextRef1.current
+      );
       
-      }, 0);
-
-      // Hide Mission elements at the same time
-      hideTimeline.to([
-        missionHeadingRef.current,
-        missionLineRef.current,
-        missionTextRef.current
-      ], {
+      createMissionAnimations(
+        missionHeadingRef1.current, missionLineRef1.current, missionTextRef1.current
+      );
       
-      }, 0);
+      createVisionAnimations(
+        visionHeadingRef2.current, visionLineRef2.current, visionTextRef2.current
+      );
 
     }, sectionRef);
 
     return () => ctx.revert();
   }, [isMobile]);
 
-  // ---------- MOBILE VIEW (MINIMAL & PROFESSIONAL) ----------
-  // ---------- MOBILE VIEW (MINIMAL GEOMETRIC) ----------
-if (isMobile) {
-  return (
-    <section
-      className="bg-black text-white py-20 px-6"
-      style={{ fontFamily: "'Work Sans', sans-serif" }}
-    >
-      <div className="max-w-lg mx-auto space-y-16">
-        {/* Vision */}
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC016]/10 to-transparent rounded-3xl transform -skew-y-3"></div>
-          <div className="relative bg-black rounded-2xl p-8 border-l-4 border-[#FFC016]">
-            <div className="flex items-center mb-6">
-              <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
-              <h2
-                className="text-4xl font-bold text-[#FFC016]"
-                style={{ fontFamily: "Outfit, sans-serif" }}
-              >
-                VISION
-              </h2>
+  // Mobile View
+  if (isMobile) {
+    const sections = [
+      {
+        type: "vision",
+        id: 1,
+        title: "VISION",
+        content: "To become a global leader in immersive 3D and digital innovation, creating experiences that inspire, connect, and transform the way people and businesses interact with technology."
+      },
+      {
+        type: "mission",
+        id: 2,
+        title: "MISSION",
+        content: "At ThirdVizion Labs, our mission is to empower brands and creators with AR, VR, and 3D web technologies that make digital experiences more interactive and impactful."
+      },
+      {
+        type: "values",
+        id: 3,
+        title: "OUR VALUES",
+        content: {
+          points: [
+            { 
+              title: "INTEGRATE", 
+              text: "To lead the way in creating groundbreaking technologies that shape the future and redefine industry standards." 
+            },
+            { 
+              title: "INNOVATE", 
+              text: "To bring together diverse solutions, creating cohesive experiences that bridge gaps and drive interconnected growth across industries." 
+            },
+            { 
+              title: "INSPIRE", 
+              text: "To inspire a culture of continuous innovation, fostering creativity and pushing the boundaries of what's possible." 
+            }
+          ]
+        }
+      }
+    ];
+
+    return (
+      <section
+        className="bg-black text-white py-20 px-6"
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}      >
+        <div className="max-w-lg mx-auto space-y-16">
+          {sections.map((section) => (
+            <div key={section.id} className="relative">
+              {section.type === "vision" ? (
+                // Vision Card
+                <>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC016]/10 to-transparent rounded-3xl transform -skew-y-3"></div>
+                  <div className="relative bg-black rounded-2xl p-8 border-l-4 border-[#FFC016]">
+                    <div className="flex items-center mb-6">
+                      <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
+                      <h2
+                        className="text-4xl font-bold text-[#FFC016]"
+                       style={{ fontFamily: "anta, sans-serif" }}>
+                        {section.title}
+                      </h2>
+                    </div>
+                    <p className="text-gray-300 text-base leading-relaxed pl-7">
+                      {section.content}
+                    </p>
+                  </div>
+                </>
+              ) : section.type === "mission" ? (
+                // Mission Card
+                <>
+                  <div className="absolute -inset-4 bg-gradient-to-l from-[#FFC016]/10 to-transparent rounded-3xl transform skew-y-3"></div>
+                  <div className="relative bg-black rounded-2xl p-8 border-r-4 border-[#FFC016]">
+                    <div className="flex items-center justify-end mb-6">
+                      <h2
+                        className="text-4xl font-bold text-[#FFC016] mr-4"
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                      >
+                        {section.title}
+                      </h2>
+                      <div className="w-3 h-8 bg-[#FFC016] rounded-full"></div>
+                    </div>
+                    
+                    <p className="text-gray-300 text-base leading-relaxed text-right">
+                      {section.content}
+                    </p>
+                  </div>
+                </>
+              ) : (
+                // Values Card (Vision style but with points)
+                <>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC016]/10 to-transparent rounded-3xl transform -skew-y-3"></div>
+                  <div className="relative bg-black rounded-2xl p-8 border-l-4 border-[#FFC016]">
+                    <div className="flex items-center mb-6">
+                      <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
+                      <h2
+                        className="text-4xl font-bold text-[#FFC016]"
+                      style={{ fontFamily: "anta, sans-serif" }}>
+                        {section.title}
+                      </h2>
+                    </div>
+                    
+                    <div className="space-y-6 pl-7">
+                      {section.content.points.map((item, index) => (
+                        <div key={index} className="group">
+                          <span
+                            className="text-[#FFC016] font-bold text-lg block mb-2"
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                          >
+                            {item.title}
+                          </span>
+                          <p className="text-gray-300 text-base leading-relaxed">
+                            {item.text}
+                          </p>
+                          {index < section.content.points.length - 1 && <div className="w-16 h-0.5 bg-[#FFC016]/30 mt-4"></div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-            <p className="text-gray-300 text-base leading-relaxed pl-7">
-              To become a global leader in immersive 3D and digital innovation,
-              creating experiences that inspire, connect, and transform the way
-              people and businesses interact with technology.
-            </p>
-          </div>
+          ))}
         </div>
+      </section>
+    );
+  }
 
-        {/* Mission */}
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-l from-[#FFC016]/10 to-transparent rounded-3xl transform skew-y-3"></div>
-          <div className="relative bg-black rounded-2xl p-8 border-r-4 border-[#FFC016]">
-            <div className="flex items-center justify-end mb-6">
-              <h2
-                className="text-4xl font-bold text-[#FFC016] mr-4"
-                style={{ fontFamily: "Outfit, sans-serif" }}
-              >
-                MISSION
-              </h2>
-              <div className="w-3 h-8 bg-[#FFC016] rounded-full"></div>
-            </div>
-            
-            <p className="text-gray-300 text-base leading-relaxed text-right mb-6">
-              At ThirdVizion Labs, our mission is to empower brands and creators
-              with AR, VR, and 3D web technologies that make digital experiences
-              more interactive and impactful.
-            </p>
+  // Desktop View with Vision, Mission, Our Values
+  const sections = [
+    {
+      type: "vision",
+      id: 1,
+      title: "VISION",
+      headingRef: visionHeadingRef1,
+      lineRef: visionLineRef1,
+      textRef: visionTextRef1,
+      content: "To become a global leader in immersive 3D and digital innovation, creating experiences that inspire, connect, and transform the way people and businesses interact with technology."
+    },
+    {
+      type: "mission",
+      id: 2,
+      title: "MISSION",
+      headingRef: missionHeadingRef1,
+      lineRef: missionLineRef1,
+      textRef: missionTextRef1,
+      content: "At ThirdVizion Labs, our mission is to empower brands and creators with AR, VR, and 3D web technologies that make digital experiences more interactive and impactful."
+    },
+    {
+      type: "values",
+      id: 3,
+      title: "OUR VALUES",
+      headingRef: visionHeadingRef2,
+      lineRef: visionLineRef2,
+      textRef: visionTextRef2,
+      content: {
+        points: [
+          { 
+            title: "INTEGRATE", 
+            text: "To lead the way in creating groundbreaking technologies that shape the future and redefine industry standards." 
+          },
+          { 
+            title: "INNOVATE", 
+            text: "To bring together diverse solutions, creating cohesive experiences that bridge gaps and drive interconnected growth across industries." 
+          },
+          { 
+            title: "INSPIRE", 
+            text: "To inspire a culture of continuous innovation, fostering creativity and pushing the boundaries of what's possible." 
+          }
+        ]
+      }
+    }
+  ];
 
-            <div className="space-y-4">
-              {[
-                { title: "INNOVATE", text: "immersive solutions that change how people learn, work, and connect." },
-                { title: "INTEGRATE", text: "smooth 3D experiences across platforms for better access and engagement." },
-                { title: "INSPIRE", text: "creativity by combining design, technology, and storytelling." }
-              ].map((item, index) => (
-                <div key={index} className="text-right group">
-                  <span
-                    className="text-[#FFC016] font-bold text-lg block mb-1"
-                    style={{ fontFamily: "Outfit, sans-serif" }}
-                  >
-                    {item.title}
-                  </span>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {item.text}
-                  </p>
-                  {index < 2 && <div className="w-16 h-0.5 bg-[#FFC016]/30 mx-auto mt-3"></div>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-  // ---------- DESKTOP VIEW (WITH ANIMATIONS) ----------
   return (
     <section
       ref={sectionRef}
-      className="bg-black pt-35 text-white py-16 px-6 md:px-20"
-      style={{ fontFamily: "'Work Sans', sans-serif" }}
-    >
-      {/* Vision section */}
-      <div className="relative">
-        {/* Decorative left gold line */}
-        <div className="absolute -left-14 top-9 hidden md:block">
-          <div
-            ref={visionLineRef}
-            className="h-[2.5px] w-70 bg-yellow-500 ml-[58px] relative"
-          >
-            <div className="absolute -right-1 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
-            <div className="absolute -left-12 top-[-20.5px] w-[2px] h-34 bg-yellow-500 rotate-46"></div>
-          </div>
+      className="bg-black text-white py-16 px-6 md:px-20 space-y-32"
+style={{ fontFamily: "anta, sans-serif" }}>    
+      {sections.map((section, index) => (
+        <div key={section.id} className="relative">
+          {section.type === "vision" ? (
+            // Vision Section (Left aligned)
+            <>
+              {/* Decorative left gold line */}
+              <div className="absolute -left-14 top-9 hidden md:block">
+                <div
+                  ref={section.lineRef}
+                  className="h-[2.5px] w-70 bg-yellow-500 ml-[58px] relative"
+                >
+                  <div className="absolute -right-1 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="absolute -left-12 top-[-20.5px] w-[2px] h-34 bg-yellow-500 rotate-46"></div>
+                </div>
+              </div>
+
+              <h2
+                ref={section.headingRef}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                {section.title}
+              </h2>
+
+              <div ref={section.textRef}>
+                <p className="text-gray-300 text-xs md:text-lg ml-30 leading-relaxed max-w-4xl">
+                  {section.content}
+                </p>
+              </div>
+            </>
+          ) : section.type === "mission" ? (
+            // Mission Section (Right aligned) - FIXED ALIGNMENT
+            <>
+              {/* Decorative right gold line - FIXED POSITION */}
+              <div className="absolute -right-14 top-9 hidden md:block">
+                <div
+                  ref={section.lineRef}
+                  className="h-[2.5px] w-70 bg-yellow-500 mr-[58px] relative ml-auto"
+                >
+                  <div className="absolute -left-2 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="absolute -right-12 top-[-20.5px] w-[2px] h-34 bg-yellow-500 -rotate-46"></div>
+                </div>
+              </div>
+
+              <h2
+                ref={section.headingRef}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider mb-6 flex justify-end text-[#FFC016] pr-76"
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                {section.title}
+              </h2>
+
+              <div ref={section.textRef} className="flex justify-end">
+                <div className="max-w-4xl text-right mr-30">
+                  <p className="text-gray-300 text-xs md:text-lg leading-relaxed">
+                    {section.content}
+                  </p>
+                </div>
+              </div>
+            </>
+          ) : (
+            // Values Section (Left aligned - Vision style)
+            <>
+              {/* Decorative left gold line */}
+              <div className="absolute -left-14 top-9 hidden md:block">
+                <div
+                  ref={section.lineRef}
+                  className="h-[2.5px] w-70 bg-yellow-500 ml-[58px] relative"
+                >
+                  <div className="absolute -right-1 mt-[-2.3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="absolute -left-12 top-[-20.5px] w-[2px] h-34 bg-yellow-500 rotate-46"></div>
+                </div>
+              </div>
+
+              <h2
+                ref={section.headingRef}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                {section.title}
+              </h2>
+
+              <div ref={section.textRef} className="ml-30 max-w-4xl">
+                {section.content.points.map((point, pointIndex) => (
+                  <div key={pointIndex} className="mb-6">
+                    <p className="text-gray-300 text-[18px] leading-relaxed">
+                      <span
+                        className="text-yellow-500 font-light"
+        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                      >
+                        {point.title}
+                      </span>{" "}
+                      {point.text}
+                    </p>
+                    {pointIndex < section.content.points.length - 1 && (
+                      <div className="w-16 h-0.5 bg-[#FFC016]/30 mt-4"></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
-
-        <h2
-          ref={visionHeadingRef}
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
-          style={{ fontFamily: "Outfit, sans-serif" }}
-        >
-          VISION
-        </h2>
-
-        <div ref={visionTextRef}>
-          <p className="text-gray-300 text-xs md:text-lg ml-30 leading-relaxed max-w-4xl">
-            To become a global leader in immersive 3D and digital innovation,
-            creating experiences that inspire, connect, and transform the way
-            people and businesses interact with technology.
-          </p>
-        </div>
-      </div>
-
-      {/* Mission section */}
-      <div className="relative md:text-left text-right -mt-38 mb-40">
-        {/* Decorative right gold line */}
-        <div className="absolute -right-[-17px] h-9 top-94 hidden md:block">
-          <div
-            ref={missionLineRef}
-            className="h-[2.5px] w-70 bg-yellow-500 relative ml-[-15px]"
-          >
-            <div className="absolute -left-2 mt-[-3px] w-2 h-2 bg-yellow-500 rounded-full"></div>
-            <div className="absolute -right-[49px] top-[-18.8px] w-[2px] h-34 bg-yellow-500 -rotate-45"></div>
-          </div>
-        </div>
-
-        <h2
-          ref={missionHeadingRef}
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl pt-86 font-bold tracking-wider mb-6 flex justify-end md:justify-start text-[#FFC016] pl-10 md:pl-24 lg:pl-70 xl:pl-162 2xl:pl-178"
-          style={{ fontFamily: "Outfit, sans-serif" }}
-        >
-          MISSION
-        </h2>
-
-        <div ref={missionTextRef} className="pl-[200px]">
-          <p className="text-gray-300 text-xs md:text-lg md:text-lg leading-relaxed pl-[155px]">
-            At ThirdVizion Labs, our mission is to empower brands and creators
-            with AR, VR, and 3D web technologies that make digital experiences
-            more interactive and impactful.
-          </p>
-
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span
-              className="text-yellow-500 font-light"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INNOVATE
-            </span>{" "}
-            immersive solutions that change how people learn, work, and connect.
-          </p>
-
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span
-              className="text-yellow-500 font-light"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INTEGRATE
-            </span>{" "}
-            smooth 3D experiences across platforms for better access and
-            engagement.
-          </p>
-
-          <p className="text-gray-300 text-[18px] leading-relaxed pl-[155px] mt-2">
-            <span
-              className="text-yellow-500 font-light"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
-              INSPIRE
-            </span>{" "}
-            creativity by combining design, technology, and storytelling to
-            build a future driven by imagination.
-          </p>
-        </div>
-      </div>
+      ))}
     </section>
   );
 };
