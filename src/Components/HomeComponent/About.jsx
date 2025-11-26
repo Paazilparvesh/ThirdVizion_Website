@@ -4,20 +4,22 @@ import img2 from "/src/assets/AboutImages/about2.png";
 
 export default function About() {
   return (
-    <div className="w-full min-h-screen bg-black pt-40  text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
+    <div className="w-full min-h-screen bg-black pt-40 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
       {/* Top Title Section */}
-      <div className="text-center mb-20">
+      <div className="text-center mb-10">
         <h2
           className="text-4xl lg:text-6xl font-bold tracking-wide"
-         
-          style={{ fontFamily: "Outfit, sans-serif" }}>
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
+        >
           WHO ARE WE
         </h2>
       </div>
 
       {/* First Row */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24"
-        style={{ fontFamily: "worksans, sans-serif" }}>
+      <div
+        className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24"
+        style={{ fontFamily: "anta, sans-serif" }}
+      >
         {/* Content */}
         <motion.div
           className="flex-1 text-center md:text-left max-w-2xl"
@@ -34,7 +36,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Floating Image */}
+        {/* Floating Image - Smaller Size with Height Control */}
         <motion.div
           className="flex-1 flex justify-center md:justify-end"
           initial={{ opacity: 0, x: 100 }}
@@ -42,7 +44,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="relative w-full max-w-xl"
+            className="relative w-full max-w-sm"
             animate={{
               y: [0, -20, 0],
             }}
@@ -55,7 +57,7 @@ export default function About() {
             <img
               src={img}
               alt="About Visual 1"
-              className="rounded-xl shadow-2xl w-full object-cover"
+              className="rounded-xl shadow-2xl w-full  object-cover"
             />
           </motion.div>
         </motion.div>
@@ -63,7 +65,7 @@ export default function About() {
 
       {/* Second Row */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Floating Image */}
+        {/* Floating Image - Smaller Size with Height Control */}
         <motion.div
           className="flex-1 flex justify-center md:justify-start"
           initial={{ opacity: 0, x: -100 }}
@@ -71,7 +73,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="relative w-full max-w-xl"
+            className="relative w-full max-w-sm"
             animate={{
               y: [0, -15, 0],
             }}
@@ -85,7 +87,7 @@ export default function About() {
             <img
               src={img2}
               alt="About Visual 2"
-              className="rounded-xl shadow-2xl w-full object-cover"
+              className="rounded-xl shadow-2xl w-full  object-cover"
             />
           </motion.div>
         </motion.div>
@@ -96,7 +98,8 @@ export default function About() {
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ fontFamily: "worksans, sans-serif" }} >
+          style={{ fontFamily: "anta, sans-serif" }}
+        >
           <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-medium">
             We pride ourselves on being a dynamic team of forward-thinkers, dedicated
             to addressing complex challenges with innovative, tailor-made solutions.
