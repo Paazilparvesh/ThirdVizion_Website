@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // ---------- IMPORT ALL 18 IMAGES ----------
 import img1 from "/src/assets/AboutImages/Artboard 1 copy.jpg";
-import img2 from "/src/assets/AboutImages/DHILIP.jpg";
+import img2 from "/src/assets/AboutImages/dhilip.jpg";
 import img3 from "/src/assets/AboutImages/JANA.jpg";
 import img4 from "/src/assets/AboutImages/JERO.jpg";
 import img5 from "/src/assets/AboutImages/KARTHICK.jpg";
@@ -21,6 +21,8 @@ import img14 from "/src/assets/AboutImages/SHAMMI.jpg";
 import img15 from "/src/assets/AboutImages/THARUN.jpg";
 import img16 from "/src/assets/AboutImages/vishnu priya.jpg";
 import img17 from "/src/assets/AboutImages/yeshwant.jpg";
+import img18 from "/src/assets/AboutImages/THARUN copy.jpg";
+
 
 // ---------- TEAM DATA (18 MEMBERS) ----------
 const teamData = [
@@ -43,6 +45,8 @@ const teamData = [
   { img: img15, name: "Member 15", role: "Role 15" },
   { img: img16, name: "Member 16", role: "Role 16" },
   { img: img17, name: "Member 17", role: "Role 17" },
+    { img: img18, name: "Member 18", role: "Role 18" },
+
 ];
 
 export default function OurTeam() {
@@ -82,7 +86,7 @@ export default function OurTeam() {
       className="flex flex-row w-full h-[350px] lg:h-[420px] gap-4 overflow-hidden"
     >
       {teamData
-        .slice(row === 0 ? 0 : 8, row === 0 ? 8 : 17)
+        .slice(row === 0 ? 0 : 8, row === 0 ? 8 : 18)
         .map((member, index) => {
           const actualIndex = row === 0 ? index : 8 + index;
           const isActive = active === actualIndex;
