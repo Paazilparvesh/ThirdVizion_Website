@@ -54,11 +54,13 @@ export default function TestimonialsSection() {
   return (
     <section className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
-          What People Say <span className="text-[#FFC016]" style={{ fontFamily: "Outfit, sans-serif" }}> About Us</span>
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+>
+          What People Say <span className="text-[#FFC016]"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+> About Us</span>
         </h2>
 
-        <p className="text-white text-sm md:text-lg mb-12 md:mb-16 max-w-2xl mx-auto px-4" style={{ fontFamily: "Work Sans, sans-serif" }}>
+        <p className="text-white text-sm md:text-lg mb-12 md:mb-16 max-w-2xl mx-auto px-4" style={{ fontFamily: "anta, sans-serif" }}>
           Hear from companies and developers who trust ThirdVizion for premium digital solutions.
         </p>
 
@@ -82,16 +84,16 @@ export default function TestimonialsSection() {
                 </div>
                 
                 {/* Review Text */}
-                <p className="text-gray-300 leading-relaxed text-base mb-6 px-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                <p className="text-gray-300 leading-relaxed text-base mb-6 px-2" style={{ fontFamily: "anta, sans-serif" }}>
                   "{testimonials[activeIndex].review}"
                 </p>
                 
                 {/* Client Info */}
                 <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                  <h4 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: "anta, sans-serif" }}>
                     {testimonials[activeIndex].name}
                   </h4>
-                  <p className="text-[#FFC016] text-sm font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                  <p className="text-[#FFC016] text-sm font-medium" style={{ fontFamily: "anta, sans-serif" }}>
                     {testimonials[activeIndex].role}
                   </p>
                 </div>
@@ -146,14 +148,14 @@ export default function TestimonialsSection() {
                 {/* Quote Icon */}
                 <div className="flex flex-col items-center text-center relative z-10">
                   <div className="mb-8">
-                    <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                    <h4 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: "anta, sans-serif" }}>
                       {testimonials[activeIndex].name}
                     </h4>
-                    <p className="text-[#FFC016] text-base font-medium" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                    <p className="text-[#FFC016] text-base font-medium" style={{ fontFamily: "anta, sans-serif" }}>
                       {testimonials[activeIndex].role}
                     </p>
                   </div>
-                  <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                  <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "anta, sans-serif" }}>
                     "{testimonials[activeIndex].review}"
                   </p>
                   
@@ -183,10 +185,10 @@ export default function TestimonialsSection() {
                     <div className="text-left">
                       <div className="flex justify-between items-start mb-4">
                         <div>
-                          <h5 className="font-semibold text-white text-lg group-hover:text-[#FFC016] transition-colors" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                          <h5 className="font-semibold text-white text-lg group-hover:text-[#FFC016] transition-colors" style={{ fontFamily: "anta, sans-serif" }}>
                             {testimonial.name}
                           </h5>
-                          <p className="text-gray-400 text-sm" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                          <p className="text-gray-400 text-sm" style={{ fontFamily: "anta, sans-serif" }}>
                             {testimonial.role}
                           </p>
                         </div>
@@ -198,7 +200,7 @@ export default function TestimonialsSection() {
                           ))}
                         </div>
                       </div>
-                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-4" style={{ fontFamily: "Work Sans, sans-serif" }}>
+                      <p className="text-gray-300 text-sm leading-relaxed line-clamp-4" style={{ fontFamily: "anta, sans-serif" }}>
                         "{testimonial.review}"
                       </p>
                     </div>

@@ -26,26 +26,27 @@ import img18 from "/src/assets/AboutImages/THARUN copy.jpg";
 
 // ---------- TEAM DATA (18 MEMBERS) ----------
 const teamData = [
-  { img: img1, name: "Member 1", role: "Role 1" },
-  { img: img2, name: "Member 2", role: "Role 2" },
-  { img: img3, name: "Member 3", role: "Role 3" },
-  { img: img4, name: "Member 4", role: "Role 4" },
-  { img: img5, name: "Member 5", role: "Role 5" },
-  { img: img6, name: "Member 6", role: "Role 6" },
+  { img: img8, name: "RAJESH", role: "GAME DEVELOPER" },
+  { img: img4, name: "JERO", role: "SOFTWARE DEVELOPER" },
+  { img: img2, name: "DHILIP", role: "SOFTWARE DEVELOPER" },
+  { img: img14, name: "SHAMMIKUMAR", role: "SOFTWARE DEVELOPER" },
+  { img: img15, name: "THARUN", role: "3D GENERALIST" },
+  { img: img18, name: "SANTHOSH", role: "UI & UX DESIGNER" },
 
-  { img: img7, name: "Member 7", role: "Role 7" },
-  { img: img8, name: "Member 8", role: "Role 8" },
-  { img: img9, name: "Member 9", role: "Role 9" },
-  { img: img10, name: "Member 10", role: "Role 10" },
-  { img: img11, name: "Member 11", role: "Role 11" },
-  { img: img12, name: "Member 12", role: "Role 12" },
+  { img: img6, name: "PAAZIL", role: "SOFTWARE DEVELOPER" },
+  { img: img17, name: "YESWANTH", role: "SOFTWARE DEVELOPER" },
+  { img: img10, name: "ARULWIN REX", role: "SALES & AUTOMATION" },
+  { img: img13, name: "SATHIYA", role: "SOFTWARE DEVELOPER" },
+  { img: img11, name: "SANTHOUSH REDDY", role: "DIGITAL MARKETING SPECIALIST" },
+  { img: img16, name: "VISHNU PRIYA", role: "SOFTWARE DEVELOPER" },
 
-  { img: img13, name: "Member 13", role: "Role 13" },
-  { img: img14, name: "Member 14", role: "Role 14" },
-  { img: img15, name: "Member 15", role: "Role 15" },
-  { img: img16, name: "Member 16", role: "Role 16" },
-  { img: img17, name: "Member 17", role: "Role 17" },
-    { img: img18, name: "Member 18", role: "Role 18" },
+  { img: img5, name: "KARTHICK", role: "SOFTWARE DEVELOPER" },
+  { img: img1, name: "AKASH CHARLES", role: "GAME DEVELOPER" },
+    { img: img7, name: "RAGUL", role: "UI & UX DESIGNER" },
+
+  { img: img12, name: "SARVANA PRIYA", role: "SOFTWARE DEVELOPER" },
+  { img: img3, name: "JANARTHANAN", role: "UI & UX DESIGNER" },
+    { img: img9, name: "RAKESH", role: "3D GENERALIST" },
 
 ];
 
@@ -58,27 +59,27 @@ export default function OurTeam() {
       <div className="text-center mb-16 px-6 max-w-3xl">
         <h2
           className="text-yellow-400 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6"
-          style={{ fontFamily: "Outfit, sans-serif" }}
-        >
+style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}        >
           OUR TEAM
         </h2>
-        <p className="text-white text-base text-xs md:text-lg leading-relaxed">
+        <p className="text-white text-base text-xs md:text-lg leading-relaxed" style={{ fontFamily: "anta, sans-serif" }}>
           Meet the passionate innovators who power ThirdVizion with creativity
           and expertise. Our team blends technology and vision to deliver
-          solutions that inspire and transform.
+          solutions that inspire.
         </p>
 
         <div
           className="h-1 w-2/3 mx-auto mt-6"
           style={{
             background:
-              "linear-gradient(to right, rgba(255,255,255,0) 0%, white 20%, white 80%, rgba(255,255,255,0) 100%)",
+              "linear-gradient(to right, rgba(255,255,255,0) 0%, white 20%, white 80%, (255,255,255,0) 100%)",
           }}
         />
       </div>
 
       {/* 18 CARDS — 3 ROWS (6 per row) */}
       {/* 2 ROWS: Row1 = 8 members, Row2 = 9 members */}
+{/* 18 CARDS — 2 ROWS (9 per row) */}
 <div className="grid grid-cols-1 md:grid-cols-1 gap-8 w-full max-w-7xl px-6">
   {[0, 1].map((row) => (
     <div
@@ -86,9 +87,9 @@ export default function OurTeam() {
       className="flex flex-row w-full h-[350px] lg:h-[420px] gap-4 overflow-hidden"
     >
       {teamData
-        .slice(row === 0 ? 0 : 8, row === 0 ? 8 : 18)
+        .slice(row === 0 ? 0 : 9, row === 0 ? 9 : 18)
         .map((member, index) => {
-          const actualIndex = row === 0 ? index : 8 + index;
+          const actualIndex = row === 0 ? index : 9 + index;
           const isActive = active === actualIndex;
 
           return (
@@ -121,6 +122,7 @@ export default function OurTeam() {
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.4 }}
                         className="text-lg md:text-xl font-bold text-yellow-400 mb-1"
+                        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 900 }}
                       >
                         {member.name}
                       </motion.p>
@@ -131,7 +133,7 @@ export default function OurTeam() {
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.4, delay: 0.1 }}
                         className="text-gray-200 text-sm md:text-base leading-relaxed"
-                      >
+                    style={{ fontFamily: "anta, sans-serif",fontWeight: 100 }}>
                         {member.role}
                       </motion.p>
                     </>
@@ -144,6 +146,7 @@ export default function OurTeam() {
     </div>
   ))}
 </div>
+
 
     </section>
   );

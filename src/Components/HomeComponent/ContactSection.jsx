@@ -25,9 +25,9 @@ export default function ContactHero() {
           {/* LEFT SIDE — heading + paragraph */}
           <div className="space-y-6">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-outfit"
-              style={{ fontFamily: "Outfit, sans-serif" }}
-            >
+              className="text-4xl md:text-5xl lg:text-6xl uppercase xl:text-7xl font-medium leading-tight font-outfit"
+   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+     >
              
 Let’s Build Something Great 
 {" "}
@@ -35,8 +35,7 @@ Let’s Build Something Great
             </h1>
             <p
               className="max-w-lg text-gray-300 text-xs md:text-lg leading-7 font-work-sans tracking-wide"
-              style={{ fontFamily: "Work Sans, Outfit" }}
-            >
+style={{ fontFamily: "anta, sans-serif" }}      >
              Ready to take your ideas to the next level? Our team is here to collaborate, innovate, and build custom digital solutions for your business. Whether you need AI-powered platforms, immersive AR/VR experiences, or scalable cloud services, we’re ready to help you grow. Let’s create something amazing together!
             </p>
           </div>
@@ -79,7 +78,7 @@ function GradientInput({ placeholder, type = "text" }) {
       <input
         type={type}
         placeholder={placeholder}
-        className="relative z-10 w-full rounded-full bg-transparent px-4 sm:px-5 py-3 text-sm sm:text-base text-white placeholder-amber-400/60 outline-none focus:border-none font-work-sans"
+        className="relative z-10 w-full rounded-full bg-transparent px-4 sm:px-5 py-3 text-sm sm:text-base text-white placeholder-yellow-400 outline-none focus:border-none font-work-sans"
       />
     </div>
   );
@@ -95,7 +94,7 @@ function GradientTextarea({ placeholder }) {
       <textarea
         rows={4}
         placeholder={placeholder}
-        className="relative z-10 w-full resize-none rounded-xl bg-transparent px-4 py-3 text-sm sm:text-base text-white  border-[#9f9f9f]  placeholder-amber-400/60 outline-none focus:border-none font-work-sans"
+        className="relative z-10 w-full resize-none rounded-xl bg-transparent px-4 py-3 text-sm sm:text-base text-white  border-[#9f9f9f]  placeholder-yellow-400 outline-none focus:border-none font-work-sans"
       />
     </div>
   );

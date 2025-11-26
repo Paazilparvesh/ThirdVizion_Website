@@ -7,12 +7,13 @@ export default function About() {
     <div className="w-full min-h-screen bg-black pt-40 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
       {/* Top Title Section */}
       <div className="text-center mb-10">
-        <h2
-          className="text-4xl lg:text-6xl font-bold tracking-wide"
-          style={{ fontFamily: "DeaconTest, sans-serif" }}
-        >
-          WHO ARE WE
-        </h2>
+       <h2
+  className="text-4xl lg:text-7xl tracking-wide"
+  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+>
+  WHO ARE WE
+</h2>
+
       </div>
 
       {/* First Row */}

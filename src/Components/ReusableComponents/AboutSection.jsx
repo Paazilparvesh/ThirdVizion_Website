@@ -3,11 +3,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { motion } from "framer-motion";
+import Logo from "/src/assets/Logo_5.png";
 
 export default function About() {
   const containerRef = useRef(null);
   const capsuleRef = useRef(null);
-  const brandRef = useRef(null);
+  const logoRef = useRef(null);
   const itemsRef = useRef([]);
 
   useEffect(() => {
@@ -30,12 +31,13 @@ export default function About() {
       yoyo: true,
     });
 
-    // Brand fade-in
+    // Logo fade-in and scale animation
     gsap.fromTo(
-      brandRef.current,
-      { opacity: 0, y: 30 },
+      logoRef.current,
+      { opacity: 0, scale: 0.8, y: 30 },
       {
         opacity: 1,
+        scale: 1,
         y: 0,
         duration: 1.2,
         ease: "power3.out",
@@ -112,8 +114,9 @@ export default function About() {
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.3 }}
             className="text-4xl md:text-5xl xl:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-orange-400 md:text-center lg:text-left font-inter-tight"
-          >
-Transforming Businesses with Innovative Digital Technology.          </motion.h2>
+      style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}    >
+            Transforming Businesses with Innovative Digital Technology.
+          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 40 }}
@@ -121,31 +124,30 @@ Transforming Businesses with Innovative Digital Technology.          </motion.h2
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ amount: 0.3 }}
             className="text-gray-300 md:text-center lg:text-left text-md xl:text-lg leading-snug"
-          >
-          We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.
+       style={{ fontFamily: "anta, sans-serif" }}   >
+            We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.
           </motion.p>
 
           {/* Buttons removed from here */}
         </div>
 
-        {/* CENTER CAPSULE */}
+        {/* CENTER CAPSULE WITH LOGO */}
         <div className="flex justify-center items-center">
           <div
             ref={capsuleRef}
             className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[45vw] lg:h-[50vh] xl:w-full xl:h-[70vh] 2xl:h-[55vh] rounded-full bg-gradient-to-tr from-indigo-500/20 via-pink-500/20 to-orange-500/20 backdrop-blur-md border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.1)] flex flex-col items-center justify-center"
           >
-            <h3
-              ref={brandRef}
-              className="text-3xl md:text-5xl lg:text-4xl font-extrabold text-white z-10 drop-shadow-lg"
-            >
-              Thirdvizion
-            </h3>
+            <img
+              ref={logoRef}
+              src={Logo}
+              className="w-48 h-48 md:w-56 md:h-56 lg:w-54 lg:h-54 xl:w-35 xl:h-35 z-10 drop-shadow-lg object-contain"
+            />
             <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500/10 to-orange-500/10 animate-pulse blur-3xl" />
           </div>
         </div>
 
         {/* RIGHT HIGHLIGHTS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12 px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12 px-6"      >
           {highlights.map((item, i) => (
             <div
               key={i}
@@ -154,11 +156,10 @@ Transforming Businesses with Innovative Digital Technology.          </motion.h2
             >
               <span
                 className="highlight-num text-4xl md:text-5xl font-bold text-pink-400"
-                data-value={item.num}
-              >
+                data-value={item.num} style={{ fontFamily: "anta, sans-serif" }}>
                 0
               </span>
-              <p className="text-gray-300 text-lg text-center">{item.text}</p>
+              <p className="text-gray-300 text-lg    text-center"  style={{ fontFamily: "anta, sans-serif" }}    >{item.text}</p>
             </div>
           ))}
         </div>
