@@ -11,12 +11,30 @@ import Client10 from "/src/assets/partners/c4.png";
 import Client11 from "/src/assets/home/Clients/kt-10 (1).png";
 import Client12 from "/src/assets/partners/c6.png";
 import Client13 from "/src/assets/partners/c7.png";
+import Client14 from "/src/assets/partners/cc.jpeg";
+import Client15 from "/src/assets/partners/cc2.jpeg";
+import Client16 from "/src/assets/partners/cc3.jpeg";
+import Client17 from "/src/assets/partners/cc4.png";
 
-const slides = [Client1, Client2, Client3, Client4, Client5, Client6, Client7, Client8, Client9, Client10, Client11, Client12, Client13];
+// ---------------------------
+// NEW: SEPARATE ARRAYS
+// ---------------------------
+const topSlides = [Client14, Client15, Client16, Client17];
 
-const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
+const bottomSlides = [
+  Client1, Client2, Client3, Client4,
+  Client5, Client6, Client7, Client8,
+  Client9, Client10, Client11, Client12,
+  Client13
+];
+
+// ---------------------------
+// The Carousal Component
+// ---------------------------
+const CarousalRow = ({ slides, reverse = false, duration = 14, compact = false }) => {
   return (
     <div className="relative w-full overflow-hidden my-2">
+      
       {/* Fade overlays */}
       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-20 pointer-events-none"></div>
       <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-20 pointer-events-none"></div>
@@ -33,8 +51,8 @@ const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
           <div
             key={idx}
             className={`flex-shrink-0 ${
-              compact 
-                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3" 
+              compact
+                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3"
                 : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
             } flex justify-center items-center group`}
           >
@@ -44,8 +62,6 @@ const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
                 alt={`slide-${idx}`}
                 className="w-full h-full object-contain object-center filter grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out"
               />
-              {/* Optional overlay for better hover effect */}
-              <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"></div>
             </div>
           </div>
         ))}
@@ -54,29 +70,39 @@ const CarousalRow = ({ reverse = false, duration = 14, compact = false }) => {
   );
 };
 
+// ---------------------------
+// Main Component
+// ---------------------------
 export default function Partners() {
   return (
     <div className="bg-black text-white py-12 relative font-['Outfit']">
-     <h2
-  className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-center mb-3"
-   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+      
+      <h2
+        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-center mb-3"
+        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+      >
+        <span className="font-bold">Our </span>
+        <span className="text-yellow-500 font-bold">Clients</span>
+      </h2>
 
->
-  <spam  className="font-bold" >Our </spam> <span className="text-yellow-500 font-bold ">Clients</span>
-</h2>
-
-      <p className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8"         style={{ fontFamily: "anta, sans-serif" }}
->
+      <p
+        className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8"
+        style={{ fontFamily: "anta, sans-serif" }}
+      >
         Creating impact alongside our valued clients.
       </p>
 
-      {/* Multiple rows with different directions and speeds */}
-      <CarousalRow duration={12} />
-<div className="mt-15"> {/* adjust spacing here */}
-  <CarousalRow reverse={true} duration={14} />
-</div>
+      {/* --------------------------- */}
+      {/* TOP ROW — ONLY 14, 15, 16, 17 */}
+      {/* --------------------------- */}
+      <CarousalRow slides={topSlides} duration={6 } />
 
-     
+      {/* --------------------------- */}
+      {/* BOTTOM ROW — All other logos */}
+      {/* --------------------------- */}
+      <div className="mt-15">
+        <CarousalRow slides={bottomSlides} reverse={true} duration={14} />
+      </div>
 
       {/* Tailwind animations */}
       <style>{`
