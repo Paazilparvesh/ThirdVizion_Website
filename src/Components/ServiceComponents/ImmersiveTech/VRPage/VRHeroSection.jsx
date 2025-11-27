@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -7,9 +7,11 @@ gsap.registerPlugin(ScrollTrigger);
 function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
 
   const frameCount = 192;
   const startFrame = 86400;
+  const priorityFrames = 20; // Load first 20 frames quickly
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -67,24 +69,54 @@ function VRHeroSection() {
         }
       };
 
-      // Load first frame immediately
+      // Priority loading - load first frame immediately
       const firstImage = new Image();
       firstImage.src = currentFrame(0);
       firstImage.onload = () => {
         images[0] = firstImage;
         render();
+        setIsReady(true); // Show component immediately after first frame
+
+        // Load priority frames (first 20) quickly in batches
+        const loadPriorityBatch = async () => {
+          const batchSize = 5;
+          for (let i = 1; i < priorityFrames; i += batchSize) {
+            const promises = [];
+            for (let j = i; j < Math.min(i + batchSize, priorityFrames); j++) {
+              promises.push(
+                new Promise((resolve) => {
+                  const img = new Image();
+                  img.src = currentFrame(j);
+                  img.onload = () => {
+                    images[j] = img;
+                    resolve();
+                  };
+                  img.onerror = resolve;
+                })
+              );
+            }
+            await Promise.all(promises);
+          }
+
+          // Load remaining frames in background with lower priority
+          for (let i = priorityFrames; i < frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            img.onload = () => {
+              images[i] = img;
+            };
+          }
+        };
+
+        loadPriorityBatch();
       };
 
-      // Preload remaining images in background (silent loading)
-      for (let i = 1; i < frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(i);
-        img.onload = () => {
-          images[i] = img;
-        };
-      }
+      firstImage.onerror = () => {
+        console.error("Failed to load first frame");
+        setIsReady(true); // Show component anyway
+      };
 
-      // Setup ScrollTrigger immediately
+      // Setup ScrollTrigger
       ScrollTrigger.create({
         trigger: mainRef.current,
         start: "top 510",
@@ -120,9 +152,14 @@ function VRHeroSection() {
   return (
     <div ref={mainRef}>
       <section className="relative w-full h-[100svh] flex overflow-hidden bg-black">
-        <canvas ref={canvasRef} className="z-10"></canvas>
+        <canvas
+          ref={canvasRef}
+          className={`z-10 transition-opacity duration-500 ${
+            isReady ? "opacity-100" : "opacity-0"
+          }`}
+        ></canvas>
 
-        {/* Main Content - Always visible */}
+        {/* Main Content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="text-center text-white">
             <h2
@@ -134,14 +171,9 @@ function VRHeroSection() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Always visible */}
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-          {/* <div className="text-center text-white/70">
-            <p className="text-sm mb-2">Scroll to explore</p>
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
-              <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce"></div>
-            </div>
-          </div> */}
+          {/* Commented out as per your original code */}
         </div>
       </section>
     </div>
