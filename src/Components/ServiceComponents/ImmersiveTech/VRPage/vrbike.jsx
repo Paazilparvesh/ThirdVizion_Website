@@ -17,7 +17,7 @@ export default function Vrbike() {
                      bg-gradient-to-r from-violet-400 to-indigo-500 
                      bg-clip-text text-transparent 
                      tracking-wide transform translate-y-10"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           VR Fire Safety <br /> Training
         </motion.h1>
@@ -28,7 +28,7 @@ export default function Vrbike() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
           className="text-xs md:text-lg text-gray-300 mb-12 max-w-3xl"
-          style={{ fontFamily: "work-sans, sans-serif" }}
+          style={{ fontFamily: "anta, sans-serif" }}
         >
           ThirdVizion creates realistic fire extinguisher training simulations in virtual reality. Practice emergency response procedures in a safe, controlled environment without real fire risks or equipment costs.
         </motion.p>

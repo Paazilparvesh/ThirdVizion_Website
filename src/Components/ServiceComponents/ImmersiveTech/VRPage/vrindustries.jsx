@@ -66,7 +66,7 @@ function VRIndustries() {
                     </h2>
                     <p 
                         className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" 
-                        style={{ fontFamily: "work-sans, sans-serif" }}
+                        style={{ fontFamily: "anta, sans-serif" }}
                     >
                         Virtual Reality transforms how we work, learn, and innovate across multiple industries with measurable results.
                     </p>
@@ -97,7 +97,8 @@ function VRIndustries() {
                                 </div>
 
                                 {/* Metric */}
-                                <div className="text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent mb-4 group-hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.3)] transition-all duration-500">
+                                <div className="text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent mb-4 group-hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.3)] transition-all duration-500"
+                                 style={{ fontFamily: "DeaconTest, sans-serif" }}>
                                     {industry.metric}
                                 </div>
 
@@ -112,7 +113,7 @@ function VRIndustries() {
                                 {/* Description */}
                                 <p 
                                     className="text-base text-gray-300 leading-relaxed flex-1" 
-                                    style={{ fontFamily: "work-sans, sans-serif" }}
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
                                     {industry.description}
                                 </p>
@@ -152,7 +153,7 @@ function VRIndustries() {
                     </h2>
                     <p 
                         className="text-lg leading-relaxed text-gray-300" 
-                        style={{ fontFamily: "work-sans, sans-serif" }}
+                        style={{ fontFamily: "anta, sans-serif" }}
                     >
                         As VR technology continues to evolve, it's revolutionizing industries by reducing costs, 
                         improving safety, enhancing training programs, and creating unprecedented opportunities 

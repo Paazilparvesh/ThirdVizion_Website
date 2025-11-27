@@ -13,7 +13,7 @@ function Whaterp() {
                 {/* Subheading */}
                 <p 
                     className="text-xl md:text-2xl text-[#c7cbff] text-center mb-12 max-w-4xl mx-auto"
-                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                    style={{ fontFamily: 'anta, sans-serif' }}
                 >
                     Enterprise Resource Planning connects all your business processes in one intelligent system for seamless operations
                 </p>
@@ -25,7 +25,7 @@ function Whaterp() {
                     <div className="text-center mb-10">
                         <p 
                             className="text-xl md:text-2xl text-gray-200 leading-relaxed"
-                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                            style={{ fontFamily: 'anta, sans-serif' }}
                         >
                             <span className="font-bold bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent">
                                 Enterprise Resource Planning (ERP)
@@ -48,7 +48,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Handle accounting, budgeting, invoicing, and financial reporting in real-time
                             </p>
@@ -65,7 +65,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Manage payroll, recruitment, attendance, performance reviews, and employee data
                             </p>
@@ -82,7 +82,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Track inventory, procurement, warehousing, and logistics across locations
                             </p>
@@ -99,7 +99,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Plan production, manage workflows, quality control, and equipment maintenance
                             </p>
@@ -116,7 +116,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Monitor sales pipelines, customer relationships, and order fulfillment
                             </p>
@@ -133,7 +133,7 @@ function Whaterp() {
                             </h3>
                             <p 
                                 className="text-[#c7cbff] text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Generate insights with real-time dashboards, reports, and predictive analytics
                             </p>
@@ -167,7 +167,7 @@ function Whaterp() {
                                         </h3>
                                         <p 
                                             className="text-[#c7cbff] text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             All departments input data into a single unified system, eliminating data silos
                                         </p>
@@ -190,7 +190,7 @@ function Whaterp() {
                                         </h3>
                                         <p 
                                             className="text-[#c7cbff] text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             System processes transactions instantly and updates all connected modules automatically
                                         </p>
@@ -213,7 +213,7 @@ function Whaterp() {
                                         </h3>
                                         <p 
                                             className="text-[#c7cbff] text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             Analytics tools generate reports enabling data-driven decisions across your organization
                                         </p>
@@ -246,7 +246,7 @@ function Whaterp() {
                                     </h4>
                                     <p 
                                         className="text-[#c7cbff] text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Break down departmental barriers with integrated data accessible across your organization
                                     </p>
@@ -264,7 +264,7 @@ function Whaterp() {
                                     </h4>
                                     <p 
                                         className="text-[#c7cbff] text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Automate repetitive tasks and streamline workflows to save time and reduce errors
                                     </p>
@@ -282,7 +282,7 @@ function Whaterp() {
                                     </h4>
                                     <p 
                                         className="text-[#c7cbff] text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Access accurate, real-time data to make informed strategic business decisions
                                     </p>
@@ -300,7 +300,7 @@ function Whaterp() {
                                     </h4>
                                     <p 
                                         className="text-[#c7cbff] text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         ERP systems grow with your business, supporting expansion without system changes
                                     </p>

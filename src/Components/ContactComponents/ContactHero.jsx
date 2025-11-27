@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ContactHeroimg from "/src/assets/home/pex.jpg";
+import ContactForm from "/src/Components/ContactComponents/ContactForm.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ export default function ContactHero() {
   const mobileImageRef = useRef(null);
   const mobileImageContainerRef = useRef(null);
   const scrollButtonRef = useRef(null);
+  const contactFormRef = useRef(null);
   const [showScrollButton, setShowScrollButton] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -30,10 +32,8 @@ export default function ContactHero() {
       }
     };
 
-    // Center on initial mount
     centerImage();
 
-    // Also center on window resize
     const handleResize = () => {
       centerImage();
     };
@@ -51,22 +51,22 @@ export default function ContactHero() {
       const wrapper = wrapperRef.current;
       const imgHolder = imgHolderRef.current;
       const scrollButton = scrollButtonRef.current;
+      const contactForm = contactFormRef.current;
       
-      if (!header || !wrapper || !imgHolder) return;
+      if (!header || !wrapper) return;
 
       const contactText = header.querySelector(".contact-text");
       const getText = header.querySelector(".get-text");
       const touchText = header.querySelector(".touch-text");
-      const innerImg = imgHolder.querySelector("img");
 
       ScrollTrigger.matchMedia({
         "(min-width: 1024px)": () => {
           // Reset all transforms before animation
-          gsap.set([contactText, getText, touchText, imgHolder, innerImg], {
-            clearProps: "transform,opacity,clipPath,borderRadius"
+          gsap.set([contactText, getText, touchText], {
+            clearProps: "transform,opacity"
           });
 
-          // Scroll button animation - hide when scrolling starts
+          // Scroll button animation
           if (scrollButton) {
             gsap.to(scrollButton, {
               opacity: 0,
@@ -84,22 +84,19 @@ export default function ContactHero() {
             });
           }
 
-          // Create a master timeline for smoother sequencing
-          const masterTL = gsap.timeline({
+          // Text animations
+          const textTL = gsap.timeline({
             scrollTrigger: {
               trigger: wrapper,
               start: "top top",
-              end: "+=300%",
+              end: "+=100%",
               scrub: 1.5,
-              pin: imgHolder,
-              anticipatePin: 1,
               markers: false,
             }
           });
 
-          // Text animations with better timing
           if (contactText) {
-            masterTL.to(contactText, {
+            textTL.to(contactText, {
               y: -200,
               opacity: 0,
               ease: "power2.inOut",
@@ -107,7 +104,7 @@ export default function ContactHero() {
           }
 
           if (getText) {
-            masterTL.to(getText, {
+            textTL.to(getText, {
               x: -window.innerWidth * 1.5,
               scale: 3,
               opacity: 0,
@@ -117,7 +114,7 @@ export default function ContactHero() {
           }
 
           if (touchText) {
-            masterTL.to(touchText, {
+            textTL.to(touchText, {
               x: window.innerWidth * 1.5,
               scale: 3,
               opacity: 0,
@@ -126,36 +123,26 @@ export default function ContactHero() {
             }, 0);
           }
 
-          // Image holder animation
-          masterTL.fromTo(imgHolder, 
-            {
-              scale: 0,
-              rotate: 30,
-              clipPath: "polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%)",
-            },
-            {
-              scale: 1,
-              rotate: 0,
-              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              ease: "power2.inOut",
-              duration: 1,
-            },
-            0
-          );
-
-          // Inner image animation with better timing
-          if (innerImg) {
-            masterTL.fromTo(innerImg, 
+          // ContactForm reveal animation
+          if (contactForm) {
+            gsap.fromTo(contactForm,
               {
-                scale: 2,
+                opacity: 0,
+                y: 100,
               },
               {
-                scale: 0.8,
-                y: 60,
-                borderRadius: "5rem",
-                ease: "power2.inOut",
-              }, 
-              0.5
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: contactForm,
+                  start: "top 80%",
+                  end: "top 50%",
+                  scrub: 1,
+                  markers: false,
+                }
+              }
             );
           }
         },
@@ -178,6 +165,29 @@ export default function ContactHero() {
               }
             });
           }
+
+          // ContactForm mobile reveal
+          if (contactForm) {
+            gsap.fromTo(contactForm,
+              {
+                opacity: 0,
+                y: 50,
+              },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                  trigger: contactForm,
+                  start: "top 85%",
+                  end: "top 60%",
+                  scrub: 1,
+                  markers: false,
+                }
+              }
+            );
+          }
         },
       });
     }, wrapperRef);
@@ -186,7 +196,6 @@ export default function ContactHero() {
       ScrollTrigger.refresh();
     };
 
-    // Debounced resize handler for better performance
     let resizeTimeout;
     const debouncedResize = () => {
       clearTimeout(resizeTimeout);
@@ -224,7 +233,6 @@ export default function ContactHero() {
     setIsDragging(false);
   };
 
-  // Mouse handlers for desktop testing
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setStartX(e.pageX);
@@ -241,7 +249,9 @@ export default function ContactHero() {
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    mobileImageContainerRef.current.style.cursor = 'grab';
+    if (mobileImageContainerRef.current) {
+      mobileImageContainerRef.current.style.cursor = 'grab';
+    }
   };
 
   const handleScrollDown = () => {
@@ -252,7 +262,7 @@ export default function ContactHero() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-black overflow-hidden">
+    <div className="relative w-full bg-black overflow-hidden">
 
       {/* Scroll Down Button */}
       {showScrollButton && (
@@ -275,19 +285,18 @@ export default function ContactHero() {
       {/* Desktop Header - Fixed position for laptops */}
       <div
         ref={headerRef}
-        className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
+        className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none min-h-screen"
         style={{ fontFamily: "Outfit, sans-serif" }}
       >
         <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]">
           Contact
         </div>
-        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight] ">
+        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
           <div 
             className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
               backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
               fontFamily: "Outfit, sans-serif"
-           
             }}
           >
             Get in
@@ -296,8 +305,8 @@ export default function ContactHero() {
             className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
               backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
-           
-             fontFamily: "Outfit, sans-serif" }}
+              fontFamily: "Outfit, sans-serif"
+            }}
           >
             Touch
           </div>
@@ -305,8 +314,8 @@ export default function ContactHero() {
       </div>
 
       <div ref={wrapperRef} className="w-full relative">
-        {/* Desktop scroll section */}
-        <div className="hidden lg:block min-h-[300vh]">
+        {/* Desktop scroll section - IMAGE SECTION COMMENTED OUT FOR DESKTOP ONLY */}
+        {/* <div className="hidden lg:block min-h-[300vh]">
           <div className="sticky top-0 w-full min-h-screen z-10">
             <div
               ref={imgHolderRef}
@@ -319,11 +328,14 @@ export default function ContactHero() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* Mobile Layout - Same as About Page */}
+        {/* Desktop spacer to allow scroll */}
+        <div className="hidden lg:block min-h-screen"></div>
+
+        {/* Mobile Layout - IMAGE IS ACTIVE FOR MOBILE */}
         <div className="lg:hidden w-full bg-black min-h-screen">
-          {/* Hero Image Section - Full Screen with Horizontal Drag */}
+          {/* Hero Image Section - ACTIVE FOR MOBILE */}
           <div 
             ref={mobileImageContainerRef}
             className="relative w-full h-[60vh] bg-gradient-to-br from-gray-900 to-black overflow-x-auto overflow-y-hidden"
@@ -353,24 +365,21 @@ export default function ContactHero() {
                 onTouchEnd={handleTouchEnd}
               />
             </div>
-         
-
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
           </div>
 
-          {/* Content Section - Same as About Page */}
-          <div className="relative -mt-20 bg-black rounded-t-3xl pt-12 px-6 pb-16">
+          {/* Content Section */}
+          <div className="relative bg-black rounded-t-3xl pt-12 px-6 pb-16 -mt-20">
             {/* Company Badge */}
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-6 py-3 rounded-full">
-                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}> Contact Us</span>
+                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}>Contact Us</span>
               </div>
             </div>
 
             {/* Minimal Header */}
             <div className="text-center mb-12">
-           
-              <h1 className="text-4xl font-light text-white mb-4"  style={{ fontFamily: "'outfit', sans-serif" }}>
+              <h1 className="text-4xl font-light text-white mb-4" style={{ fontFamily: "'outfit', sans-serif" }}>
                 Get In <span className="font-semilight">Touch</span>
               </h1>
               <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
@@ -378,13 +387,21 @@ export default function ContactHero() {
 
             {/* Core Description */}
             <div className="max-w-md mx-auto space-y-6 text-center">
-              <p className="text-gray-300 text-lg leading-relaxed font-light"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+              <p className="text-gray-300 text-lg leading-relaxed font-light" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 Ready to bring your vision to life? Let's start a conversation about 
                 your next project and create something extraordinary together.
               </p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Gap/Spacing before ContactForm - Responsive */}
+      <div className="w-full bg-black py-12 lg:py-20"></div>
+
+      {/* ContactForm Component with scroll reveal */}
+      <div ref={contactFormRef} className="w-full bg-black">
+        <ContactForm />
       </div>
 
       {/* Hide scrollbar styles */}

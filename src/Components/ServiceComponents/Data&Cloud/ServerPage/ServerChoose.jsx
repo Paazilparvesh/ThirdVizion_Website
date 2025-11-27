@@ -49,7 +49,7 @@ export default function ServerChoose() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-12 text-[#05df72] text-center drop-shadow-lg"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           Server Management Excellence
         </motion.h2>
@@ -72,7 +72,7 @@ export default function ServerChoose() {
               {/* Content */}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
+                  <h3 className="text-lg font-semibold text-[#05df72]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
                     {f.title}
                   </h3>
                   
@@ -87,7 +87,7 @@ export default function ServerChoose() {
                   </div>
                 </div>
                 
-                <p className="text-sm text-white/70" style={{ fontFamily: "work-sans, sans-serif" }}>
+                <p className="text-sm text-white/70" style={{ fontFamily: "anta, sans-serif" }}>
                   {f.desc}
                 </p>
               </div>

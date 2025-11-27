@@ -48,10 +48,10 @@ const IAMBenefits = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold tracking-tight text-yellow-500 mb-6 leading-tight" style={{ fontFamily: "DeaconTest, sans-serif" }}>
             How ThirdVizion Helps
           </h2>
-          <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "work-sans, sans-serif" }}>
+          <p className="text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: "anta, sans-serif" }}>
             We deliver comprehensive IAM solutions that strengthen security, streamline operations, and ensure compliance for your business.
           </p>
         </motion.div>
@@ -89,13 +89,13 @@ const IAMBenefits = () => {
 
 
                 {/* Title */}
-                <h3 className="text-2xl font-inter-tight font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
+                <h3 className="text-2xl font-inter-tight font-bold text-white mb-4 tracking-tight" style={{ fontFamily: "DeaconTest, sans-serif" }}>
                   {benefit.title}
                 </h3>
 
 
                 {/* Description */}
-                <p className="text-lg text-gray-300 leading-relaxed flex-1" style={{ fontFamily: "work-sans, sans-serif" }}>
+                <p className="text-lg text-gray-300 leading-relaxed flex-1" style={{ fontFamily: "anta, sans-serif" }}>
                   {benefit.description}
                 </p>
 

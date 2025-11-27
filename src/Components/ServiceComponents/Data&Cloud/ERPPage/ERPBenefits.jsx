@@ -43,7 +43,7 @@ export default function ERPBenefits() {
           transition={{ duration: 0.9 }}
           viewport={{ amount: 0.3 }}
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight text-center bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent mb-12"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           ERP Solutions Delivered
         </motion.h2>
@@ -55,7 +55,7 @@ export default function ERPBenefits() {
           transition={{ delay: 0.2, duration: 0.7 }}
           viewport={{ amount: 0.8 }}
           className="mt-5 max-w-3xl mx-auto text-[#c7cbff] text-xl leading-relaxed text-center mb-16"
-          style={{ fontFamily: "work-sans, sans-serif" }}
+          style={{ fontFamily: "anta, sans-serif" }}
         >
           Complete ERP implementation services with measurable outcomes and continuous support for business excellence.
         </motion.p>
@@ -92,7 +92,7 @@ export default function ERPBenefits() {
                 {/* Title */}
                 <h3 
                   className="text-xl font-semibold text-white mb-3" 
-                  style={{ fontFamily: "Outfit, sans-serif" }}
+                  style={{ fontFamily: "DeaconTest, sans-serif" }}
                 >
                   {b.title}
                 </h3>
@@ -100,7 +100,7 @@ export default function ERPBenefits() {
                 {/* Description */}
                 <p 
                   className="text-[#c7cbff] text-sm leading-relaxed flex-1" 
-                  style={{ fontFamily: "work-sans, sans-serif" }}
+                  style={{ fontFamily: "anta, sans-serif" }}
                 >
                   {b.text}
                 </p>

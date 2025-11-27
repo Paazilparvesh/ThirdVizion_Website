@@ -15,7 +15,7 @@ function Whoneed() {
                     
                     <p 
                         className="text-lg text-gray-200 text-center mb-10 max-w-3xl mx-auto"
-                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                        style={{ fontFamily: 'anta, sans-serif' }}
                     >
                         CRM systems benefit businesses of all sizes across diverse sectors, helping build long-term customer relationships
                     </p>
@@ -36,7 +36,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Track leads, manage pipelines, automate follow-ups, and close deals faster with organized workflows
                             </p>
@@ -55,7 +55,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Segment audiences, track multichannel campaigns, and measure ROI with data-driven insights
                             </p>
@@ -74,7 +74,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Provide personalized service with complete customer history and interaction context
                             </p>
@@ -93,7 +93,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Manage complex sales cycles with multiple decision-makers and long-term contracts
                             </p>
@@ -112,7 +112,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Organize customer data and automate follow-ups to scale operations efficiently
                             </p>
@@ -131,7 +131,7 @@ function Whoneed() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm mb-3"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Manage dealer networks, track multi-phase contracts, and streamline quote-to-order
                             </p>
@@ -145,7 +145,7 @@ function Whoneed() {
                             <span className="text-2xl">⚖️</span>
                             <span 
                                 className="text-gray-200 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 <span className="font-semibold text-white" style={{ fontFamily: 'DeaconTest, sans-serif' }}>Law Firms:</span> Maintain client records and track case progress
                             </span>
@@ -154,7 +154,7 @@ function Whoneed() {
                             <span className="text-2xl">💰</span>
                             <span 
                                 className="text-gray-200 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 <span className="font-semibold text-white" style={{ fontFamily: 'DeaconTest, sans-serif' }}>Financial Services:</span> Track transactions and provide personalized advice
                             </span>

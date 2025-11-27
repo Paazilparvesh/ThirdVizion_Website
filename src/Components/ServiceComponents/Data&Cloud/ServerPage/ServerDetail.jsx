@@ -143,7 +143,7 @@ export default function ServerDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium  text-[#05df72] drop-shadow-lg"
-         style={{ fontFamily: "Outfit, sans-serif" }}  >
+         style={{ fontFamily: "DeaconTest, sans-serif" }}  >
             Server{" "} Management
           </motion.h1>
         </TextReveal>
@@ -153,7 +153,7 @@ export default function ServerDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mt-4 text-gray-300 max-w-2xl mx-auto"
-        style={{ fontFamily: "work-sans, sans-serif" }}   >
+        style={{ fontFamily: "anta, sans-serif" }}   >
             Secure • Scalable • Reliable <br /> Empowering your business with
             next-gen server solutions.
           </motion.p>
@@ -180,11 +180,11 @@ export default function ServerDetail() {
             transition={{ duration: 0.5, delay: idx * 0.1 }}
             className="p-6 rounded-2xl bg-[#05df72]/5 border border-[#05df72]/30 shadow-[0_0_20px_rgba(5,223,114,0.05)] backdrop-blur-md hover:bg-[#05df72]/10 hover:shadow-[0_0_30px_rgba(5,223,114,0.15)] transition"
           >
-            <h3 className="flex items-center gap-3 text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
+            <h3 className="flex items-center gap-3 text-lg font-semibold text-[#05df72]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
               {section.icon}
               {section.title}
             </h3>
-            <p className="mt-2 text-sm text-white/70" style={{ fontFamily: "work-sans, sans-serif" }}>{section.desc}</p>
+            <p className="mt-2 text-sm text-white/70" style={{ fontFamily: "anta, sans-serif" }}>{section.desc}</p>
           </motion.div>
         ))}
       </div>

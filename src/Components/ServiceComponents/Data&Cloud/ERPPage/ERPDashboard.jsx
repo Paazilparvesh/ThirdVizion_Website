@@ -123,7 +123,7 @@ export default function WebProject() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           ERP Dashboard
         </motion.h2>
@@ -147,13 +147,13 @@ export default function WebProject() {
             <div className="p-5 text-center">
               <h3
                 className="text-2xl font-bold text-[#7C86FF] mb-3"
-                style={{ fontFamily: "Outfit, sans-serif" }}
+                style={{ fontFamily: "DeaconTest, sans-serif" }}
               >
                 {project.title}
               </h3>
               <p
                 className="text-[#c7cbff] text-base leading-relaxed mb-4"
-                style={{ fontFamily: "Work Sans, sans-serif" }}
+                style={{ fontFamily: "anta, sans-serif" }}
               >
                 {project.description}
               </p>
@@ -185,7 +185,7 @@ export default function WebProject() {
       >
         <h1 
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           ERP Dashboard
         </h1>
@@ -220,14 +220,14 @@ export default function WebProject() {
             >
               <h2
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-[#7C86FF] drop-shadow-[0_0_10px_rgba(124,134,255,0.3)] mb-4"
-                style={{ fontFamily: "Outfit, sans-serif" }}
+                style={{ fontFamily: "DeaconTest, sans-serif" }}
               >
                 {project.title}
               </h2>
 
               <p
                 className="text-base sm:text-lg md:text-xl lg:text-lg xl:text-xl max-w-lg mx-auto mb-6 text-[#c7cbff] leading-relaxed"
-                style={{ fontFamily: "Work Sans, sans-serif" }}
+                style={{ fontFamily: "anta, sans-serif" }}
               >
                 {project.description}
               </p>

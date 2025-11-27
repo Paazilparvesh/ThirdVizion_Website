@@ -262,11 +262,11 @@ export default function CRMShowcase() {
         <div className="relative z-40 pt-16 px-4">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-medium text-[#FF6467] mb-3"
-              style={{ fontFamily: "Outfit, sans-serif" }}>
+              style={{ fontFamily: "DeaconTest, sans-serif" }}>
               Your CRM Universe
             </h2>
             <p className="text-white/60 text-xs max-w-sm mx-auto"
-              style={{ fontFamily: "work-sans, sans-serif" }}>
+              style={{ fontFamily: "anta, sans-serif" }}>
               All your platforms connected in one powerful CRM hub
             </p>
           </div>
@@ -275,7 +275,7 @@ export default function CRMShowcase() {
         {/* Simple CRM Core */}
         <div className="flex justify-center mb-8">
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(255,100,103,0.4)]"
-            style={{ fontFamily: "Outfit, sans-serif" }}>
+            style={{ fontFamily: "DeaconTest, sans-serif" }}>
             CRM
           </div>
         </div>
@@ -292,18 +292,18 @@ export default function CRMShowcase() {
                   {platform.icon}
                 </div>
                 <h3 className="text-base font-bold text-[#FF6467]"
-                  style={{ fontFamily: "Outfit, sans-serif" }}>
+                  style={{ fontFamily: "DeaconTest, sans-serif" }}>
                   {platform.label}
                 </h3>
               </div>
               
               <h4 className="text-sm font-semibold text-white mb-2"
-                style={{ fontFamily: "Outfit, sans-serif" }}>
+                style={{ fontFamily: "DeaconTest, sans-serif" }}>
                 {cardData[index].title}
               </h4>
               
               <p className="text-xs text-white/70 leading-relaxed"
-                style={{ fontFamily: "work-sans, sans-serif" }}>
+                style={{ fontFamily: "anta, sans-serif" }}>
                 {cardData[index].desc}
               </p>
             </div>
@@ -331,11 +331,11 @@ export default function CRMShowcase() {
               <span className="text-sm text-[#FF6467] font-medium">Tablet View</span>
             </div>
             <h2 className="text-3xl font-bold text-[#FF6467] mb-3"
-              style={{ fontFamily: "Outfit, sans-serif" }}>
+              style={{ fontFamily: "DeaconTest, sans-serif" }}>
               Your CRM Universe
             </h2>
             <p className="text-white/60 text-sm max-w-md mx-auto"
-              style={{ fontFamily: "work-sans, sans-serif" }}>
+              style={{ fontFamily: "anta, sans-serif" }}>
               Scroll to see how every platform connects into one powerful CRM hub.
             </p>
           </div>
@@ -379,7 +379,7 @@ export default function CRMShowcase() {
 
             {/* CRM Core */}
             <div className="absolute w-40 h-40 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-3xl shadow-[0_0_50px_rgba(255,100,103,0.7)] z-20"
-              style={{ fontFamily: "Outfit, sans-serif" }}>
+              style={{ fontFamily: "DeaconTest, sans-serif" }}>
               CRM
               <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
             </div>
@@ -438,11 +438,11 @@ export default function CRMShowcase() {
                   }}
                 >
                   <h3 className="text-sm font-bold text-[#FF6467] mb-2"
-                    style={{ fontFamily: "Outfit, sans-serif" }}>
+                    style={{ fontFamily: "DeaconTest, sans-serif" }}>
                     {cardData[i].title}
                   </h3>
                   <p className="text-xs text-white/70 leading-relaxed"
-                    style={{ fontFamily: "work-sans, sans-serif" }}>
+                    style={{ fontFamily: "anta, sans-serif" }}>
                     {cardData[i].desc}
                   </p>
                 </div>
@@ -475,11 +475,11 @@ export default function CRMShowcase() {
         {/* Header - Not Pinned */}
         <div className="relative z-40 pt-16 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-[#FF6467] mb-2"
-                style={{ fontFamily: "Outfit, sans-serif" }} >
+                style={{ fontFamily: "DeaconTest, sans-serif" }} >
             Your CRM Universe
           </h2>
           <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1"
-            style={{ fontFamily: "work-sans, sans-serif" }}>
+            style={{ fontFamily: "anta, sans-serif" }}>
             Scroll down to see how every platform connects into one powerful CRM hub.
           </p>
         </div>
@@ -523,7 +523,7 @@ export default function CRMShowcase() {
 
             {/* CRM Core */}
             <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(255,100,103,0.8)] z-20"
-              style={{ fontFamily: "Outfit, sans-serif" }}>
+              style={{ fontFamily: "DeaconTest, sans-serif" }}>
               CRM
               <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
             </div>
@@ -582,11 +582,11 @@ export default function CRMShowcase() {
                   }}
                 >
                   <h3 className="text-base font-bold text-[#FF6467] mb-2"
-                    style={{ fontFamily: "Outfit, sans-serif" }}>
+                    style={{ fontFamily: "DeaconTest, sans-serif" }}>
                     {cardData[i].title}
                   </h3>
                   <p className="text-xs text-white/70 leading-relaxed"
-                    style={{ fontFamily: "work-sans, sans-serif" }}>
+                    style={{ fontFamily: "anta, sans-serif" }}>
                     {cardData[i].desc}
                   </p>
                 </div>
@@ -614,11 +614,11 @@ export default function CRMShowcase() {
           <span className="text-sm text-[#FF6467] font-medium">Desktop View</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-2"
-          style={{ fontFamily: "Outfit, sans-serif" }}>
+          style={{ fontFamily: "DeaconTest, sans-serif" }}>
           Your CRM Universe
         </h2>
         <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1"
-          style={{ fontFamily: "work-sans, sans-serif" }}>
+          style={{ fontFamily: "anta, sans-serif" }}>
           Scroll down to see how every platform connects into one powerful CRM hub.
         </p>
       </div>
@@ -662,7 +662,7 @@ export default function CRMShowcase() {
 
           {/* CRM Core */}
           <div className="absolute w-48 h-48 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF6467] flex items-center justify-center font-bold text-4xl shadow-[0_0_60px_rgba(255,100,103,0.8)] z-20"
-            style={{ fontFamily: "Outfit, sans-serif" }}>
+            style={{ fontFamily: "DeaconTest, sans-serif" }}>
             CRM
             <div className="absolute inset-0 rounded-full border-2 border-[#FF6467] animate-ping opacity-20"></div>
           </div>
@@ -721,11 +721,11 @@ export default function CRMShowcase() {
                 }}
               >
                 <h3 className="text-base font-bold text-[#FF6467] mb-2"
-                  style={{ fontFamily: 'Outfit, sans-serif' }}>
+                  style={{ fontFamily: 'DeaconTest, sans-serif' }}>
                   {cardData[i].title}
                 </h3>
                 <p className="text-xs text-white/70 leading-relaxed"
-                  style={{ fontFamily: 'work-sans, sans-serif' }}>
+                  style={{ fontFamily: 'anta, sans-serif' }}>
                   {cardData[i].desc}
                 </p>
               </div>

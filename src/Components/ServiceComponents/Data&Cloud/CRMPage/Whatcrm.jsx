@@ -1,6 +1,7 @@
 function Whatcrm() {
     return (
-        <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden">
+        <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden"
+        >
             {/* Animated Background Effects */}
             <div className="absolute inset-0">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467]/20 via-black to-[#FF6467]/10"></div>
@@ -29,7 +30,7 @@ function Whatcrm() {
                         <div className="text-center mb-10">
                             <p 
                                 className="text-xl md:text-2xl text-gray-200 leading-relaxed"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 <span className="font-bold bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent">
                                     Customer Relationship Management (CRM)
@@ -51,7 +52,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Store customer contact info, purchase history, and interactions in one secure location accessible to your entire team
                                 </p>
@@ -68,7 +69,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Automate repetitive tasks like data entry, lead routing, and follow-up emails to focus on closing deals
                                 </p>
@@ -85,7 +86,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Use AI to predict customer behavior, automate workflows, and generate actionable insights from your data
                                 </p>
@@ -105,7 +106,7 @@ function Whatcrm() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Track leads, opportunities, and deals through every stage
                                     </p>
@@ -122,7 +123,7 @@ function Whatcrm() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Segment audiences and track campaign performance
                                     </p>
@@ -139,7 +140,7 @@ function Whatcrm() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Manage support tickets with complete customer context
                                     </p>
@@ -156,7 +157,7 @@ function Whatcrm() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Generate insights for data-driven decisions
                                     </p>
@@ -180,7 +181,7 @@ function Whatcrm() {
                         
                         <p 
                             className="text-lg text-gray-200 text-center mb-10 max-w-3xl mx-auto"
-                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                            style={{ fontFamily: 'anta, sans-serif' }}
                         >
                             CRM systems benefit businesses of all sizes across diverse sectors, helping build long-term customer relationships
                         </p>
@@ -199,7 +200,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Track leads, manage pipelines, automate follow-ups, and close deals faster with organized workflows
                                 </p>
@@ -217,7 +218,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Segment audiences, track multichannel campaigns, and measure ROI with data-driven insights
                                 </p>
@@ -235,7 +236,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Provide personalized service with complete customer history and interaction context
                                 </p>
@@ -253,7 +254,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Manage complex sales cycles with multiple decision-makers and long-term contracts
                                 </p>
@@ -271,7 +272,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Organize customer data and automate follow-ups to scale operations efficiently
                                 </p>
@@ -289,7 +290,7 @@ function Whatcrm() {
                                 </h3>
                                 <p 
                                     className="text-gray-300 text-sm mb-3"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     Manage dealer networks, track multi-phase contracts, and streamline quote-to-order
                                 </p>
@@ -302,7 +303,7 @@ function Whatcrm() {
                                 <span className="text-2xl">⚖️</span>
                                 <span 
                                     className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     <span className="font-semibold text-white" style={{ fontFamily: 'DeaconTest, sans-serif' }}>Law Firms:</span> Maintain client records and track case progress
                                 </span>
@@ -311,7 +312,7 @@ function Whatcrm() {
                                 <span className="text-2xl">💰</span>
                                 <span 
                                     className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    style={{ fontFamily: 'anta, sans-serif' }}
                                 >
                                     <span className="font-semibold text-white" style={{ fontFamily: 'DeaconTest, sans-serif' }}>Financial Services:</span> Track transactions and provide personalized advice
                                 </span>
