@@ -45,11 +45,11 @@ function CrmVideo() {
             {/* Header Section */}
             <div className="max-w-7xl mx-auto text-center mb-16">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 font-sans">
-                    <span className="bg-gradient-to-r from-[#FF6467] via-[#FF6467] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "Outfit, sans-serif" }} >
+                    <span className="bg-gradient-to-r from-[#FF6467] via-[#FF6467] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "DeaconTest, sans-serif" }} >
                         Understanding CRM Software
                     </span>
                 </h1>
-                <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans" style={{ fontFamily: "work-sans, sans-serif" }}>
+                <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans" style={{ fontFamily: "anta, sans-serif" }}>
                     Complete guide to Customer Relationship Management and how it transforms business operations
                 </p>
             </div>
@@ -102,8 +102,8 @@ function CrmVideo() {
                             {/* Video Overlay Info */}
                             <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-3 md:gap-0">
                                 <div className="bg-black/60 backdrop-blur-sm rounded-xl md:rounded-2xl p-3 md:p-4 border border-white/10 flex-1 md:flex-none">
-                                    <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2 font-sans" style={{ fontFamily: "Outfit, sans-serif" }}>Understanding CRM Software</h3>
-                                    <p className="text-gray-300 text-xs md:text-sm font-sans" style={{ fontFamily: "work-sans, sans-serif" }}>Complete guide to Customer Relationship Management</p>
+                                    <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2 font-sans" style={{ fontFamily: "DeaconTest, sans-serif" }}>Understanding CRM Software</h3>
+                                    <p className="text-gray-300 text-xs md:text-sm font-sans" style={{ fontFamily: "anta, sans-serif" }}>Complete guide to Customer Relationship Management</p>
                                 </div>
                                 <div className="flex gap-2 md:gap-3 self-end">
                                     {/* Audio Control Button */}

@@ -133,7 +133,7 @@ export default function WebProject() {
         <TextReveal>
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-60 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent"
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            style={{ fontFamily: "DeconTest, sans-serif" }}
           >
             Our Portfolio
           </motion.h1>
@@ -164,14 +164,14 @@ export default function WebProject() {
             >
               <h2
                 className="text-3xl md:text-5xl font-bold text-cyan-300"
-                style={{ fontFamily: "Outfit, sans-serif" }}
+                style={{ fontFamily: "DeconTest, sans-serif" }}
               >
                 {project.title}
               </h2>
 
               <p
                 className="text-base md:text-lg text-cyan-100/90 max-w-xl mx-auto mb-4"
-                style={{ fontFamily: "Work Sans, sans-serif" }}
+                style={{ fontFamily: "anta, sans-serif" }}
               >
                 {project.description}
               </p>

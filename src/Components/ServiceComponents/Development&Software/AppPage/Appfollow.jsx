@@ -113,7 +113,7 @@ const ProcessCard = ({ step }) => {
         <div className="flex items-center mb-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-[#ff8904]/20 flex items-center justify-center border border-[#ff8904]/30 group-hover:bg-[#ff8904]/30 group-hover:border-[#ff8904]/50 transition-all duration-500">
-              <span className="text-xl font-bold text-[#ff8904]" style={{ fontFamily: "Outfit, sans-serif" }}>
+              <span className="text-xl font-bold text-[#ff8904]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
                 {step.id}
               </span>
             </div>
@@ -123,12 +123,12 @@ const ProcessCard = ({ step }) => {
         </div>
         
         {/* Title */}
-        <h3 className="text-2xl font-medium text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500" style={{ fontFamily: "Outfit, sans-serif" }}>
+        <h3 className="text-2xl font-medium text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500" style={{ fontFamily: "DeaconTest, sans-serif" }}>
           {step.title}
         </h3>
         
         {/* Description */}
-        <p className="text-gray-300 leading-relaxed text-base flex-1 group-hover:text-gray-200 transition-colors duration-500" style={{ fontFamily: "Work Sans, sans-serif" }}>
+        <p className="text-gray-300 leading-relaxed text-base flex-1 group-hover:text-gray-200 transition-colors duration-500" style={{ fontFamily: "anta, sans-serif" }}>
           {step.description}
         </p>
       </div>
@@ -153,7 +153,7 @@ const App = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
           >
             Our <span className="text-white">Mobile App Development</span> Process
           </motion.h2>
@@ -164,7 +164,7 @@ const App = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            style={{ fontFamily: "Work Sans, sans-serif" }}
+            style={{ fontFamily: "anta, sans-serif" }}
           >
             Serving top industries including <span className="text-[#ff8904] font-semibold">E-commerce, Healthcare, Fintech, Education, Real Estate, Travel & Hospitality, Logistics, and Entertainment</span> with cutting-edge mobile solutions that drive growth in the global $800B+ app market.
           </motion.p>

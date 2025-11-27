@@ -15,10 +15,12 @@ export default function Vrtwo() {
         {/* Left: Text + VR Man */}
         <div className="flex flex-col items-center md:items-start gap-8 md:gap-12 text-center md:text-left">
           <div className="space-y-4 sm:space-y-6">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent"
+             style={{ fontFamily: "DeaconTest, sans-serif" }}>
               Easy to Wear <br className="hidden sm:block" /> and Comfortable
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md leading-relaxed">
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md leading-relaxed"
+              style={{ fontFamily: "anta, sans-serif" }}>
               Pellentesque dictum sem non nibh egestas mattis. Vivamus vel
               scelerisque ex. Ut varius sollicitudin libero, sed finibus lectus
               ultrices vitae. Nam aliquam eu magna ac facilisis.

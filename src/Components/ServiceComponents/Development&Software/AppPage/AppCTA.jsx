@@ -21,13 +21,15 @@ const AppCTA = () => {
           className="mb-12"
         >
           <TextReveal>
-            <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight">
+            <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight"
+             style={{ fontFamily: "DeaconTest, sans-serif" }} >
               Ready to Build Your Next Big App?
             </motion.h2>
           </TextReveal>
 
           <TextReveal delay={0.2}>
-            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto"
+             style={{ fontFamily: "anta, sans-serif" }} >
               Let's collaborate and turn your vision into reality. Our team specializes in crafting premium, scalable, and user-centric applications that stand out in the market.
             </motion.p>
           </TextReveal>
@@ -48,7 +50,8 @@ const AppCTA = () => {
               className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border border-[#ff8904]/40 px-10 py-5 font-medium tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 bg-black text-[#ff8904] shadow-[0_0_15px_rgba(255,137,4,0.3)] hover:shadow-[0_0_30px_rgba(255,137,4,0.5)] hover:border-[#ff8904]/60"
               style={{
                 backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)'
+                WebkitBackdropFilter: 'blur(16px)',
+                fontFamily: "anta, sans-serif" 
               }}
             >
               Get in Touch
@@ -71,6 +74,7 @@ const AppCTA = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true, amount: 0.3 }}
           className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8 text-gray-400 text-sm"
+          style={{ fontFamily: "anta, sans-serif" }}
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>

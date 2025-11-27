@@ -56,7 +56,7 @@ const WebCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
           >
             Transform Your Digital Presence
           </motion.h2>
@@ -68,7 +68,7 @@ const WebCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            style={{ fontFamily: "Work Sans, sans-serif" }}
+            style={{ fontFamily: "anta, sans-serif" }}
           >
             With ThirdVizion, your website won't just look stunning—it will be{" "}
             <span className="text-[#00d3f3] font-semibold">
@@ -84,7 +84,7 @@ const WebCTA = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ fontFamily: "Work Sans, sans-serif" }}
+            style={{ fontFamily: "anta, sans-serif" }}
           >
             Join industry leaders who trust us to build innovative,
             high-performance web solutions that elevate their business.
@@ -116,7 +116,7 @@ const WebCTA = () => {
                 </div>
                 <div
                   className="text-gray-300 text-sm md:text-base font-medium"
-                  style={{ fontFamily: "Work Sans, sans-serif" }}
+                  style={{ fontFamily: "anta, sans-serif" }}
                 >
                   {stat.label}
                 </div>

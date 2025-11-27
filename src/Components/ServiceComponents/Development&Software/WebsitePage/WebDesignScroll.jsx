@@ -32,7 +32,7 @@ const WebDesignScroll = () => {
             transition={{ duration: 0.5 }}
             viewport={{ amount: 0 }}
             className="w-full text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xlfont-bold leading-tight mb-6 "
-          style={{ fontFamily: "Outfit, sans-serif" }} >
+          style={{ fontFamily: "DeconTest, sans-serif" }} >
             Stunning Designs for <span className="text-[#00d3f3]">Modern Web</span>
           </motion.h1>
         </TextReveal>
@@ -43,7 +43,7 @@ const WebDesignScroll = () => {
           transition={{ duration: 0.5 }}
           viewport={{ amount: 0.8 }}
           className="text-gray-300 text-sm md:text-lg leading-relaxed mb-8 md:max-w-lg "
-       style={{ fontFamily: "work-sans, sans-serif" }} >
+       style={{ fontFamily: "anta, sans-serif" }} >
           This section is all about the design work we craft with passion. The
           right side showcases real designs created by our designers,
           reflecting creativity, detail, and a modern approach to UI/UX.
@@ -56,6 +56,7 @@ const WebDesignScroll = () => {
           viewport={{ amount: 0 }}
           href="/contact"
           className="font-inter-tight flex items-center justify-center md:mr-9 lg:mr-36 xl:mr-50 2xl:mr-60 gap-2 rounded-xl md:rounded-2xl border border-[#00d3f3]/40 bg-black px-5 md:px-6 xl:px-10 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(0,211,243,0.5)] hover:scale-105 text-[#00d3f3] w-fit"
+             style={{ fontFamily: "DeconTest, sans-serif" }}
         >
           Let's Craft Together
         </motion.a>
