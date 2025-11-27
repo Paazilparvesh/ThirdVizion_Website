@@ -64,15 +64,15 @@ const App = () => {
         {/* First Line with Typing Animation */}
         <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2 xs:px-3 sm:px-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-semimedium leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   style={{ fontFamily: "Outfit, sans-serif" }}>
-            Transform your project
+            99% AR accuracy delivered
           </h1>
         </div>
         
         {/* Second Line with Character Stagger Animation */}
         <div className="overflow-hidden mb-4 xs:mb-5 sm:mb-6 md:mb-7 lg:mb-8 px-2 xs:px-3 sm:px-4">
-          <h1 className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-light leading-tight xs:leading-tight sm:leading-tight md:leading-tight">
+          <h1 className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-light leading-tight xs:leading-tight sm:leading-tight md:leading-tight" style={{ fontFamily: "work-sans, sans-serif" }}>
             <span className="animate-stagger-chars">
-              {splitText("into AR reality")}
+              {splitText("by ThirdVizion")}
             </span>
           </h1>
         </div>
@@ -84,6 +84,7 @@ const App = () => {
     <button
       onClick={() => setShowForm(true)}
       className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
+      style={{ fontFamily: "Outfit, sans-serif" }}
     >
       Get in Touch
     </button>
@@ -249,6 +250,7 @@ const App = () => {
         .animate-stagger-chars span:nth-child(12) { animation-delay: 0.65s; }
         .animate-stagger-chars span:nth-child(13) { animation-delay: 0.7s; }
         .animate-stagger-chars span:nth-child(14) { animation-delay: 0.75s; }
+        .animate-stagger-chars span:nth-child(15) { animation-delay: 0.8s; }
 
         /* Responsive text animation adjustments */
         @media (max-width: 480px) {

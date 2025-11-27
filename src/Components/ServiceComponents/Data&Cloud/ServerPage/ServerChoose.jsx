@@ -13,26 +13,30 @@ export default function ServerChoose() {
   const features = [
     {
       id: 1,
-      title: "Lifetime Guarantee",
-      desc: "We ensure your servers are always backed by a reliable guarantee and replacement support.",
+      title: "Enterprise-Grade Infrastructure",
+      metric: "99.9%",
+      desc: "ThirdVizion deploys high-performance servers with redundancy, backup solutions, and disaster recovery planning.",
       icon: <FaShieldAlt className="text-4xl text-[#05df72]/80" />,
     },
     {
       id: 2,
-      title: "Good Price",
-      desc: "Affordable server management packages designed to fit startups and enterprises alike.",
+      title: "Server Migration & Setup",
+      metric: "0 Downtime",
+      desc: "Our experts handle complete server migration, configuration, and optimization with zero downtime guarantee.",
       icon: <FaPiggyBank className="text-4xl text-[#05df72]/80" />,
     },
     {
       id: 3,
-      title: "Free Software Updates",
-      desc: "All managed servers include regular patches and security updates at no extra cost.",
+      title: "Proactive Monitoring",
+      metric: "24/7",
+      desc: "We provide continuous server health monitoring, security patching, and performance optimization services.",
       icon: <FaLaptopCode className="text-4xl text-[#05df72]/80" />,
     },
     {
       id: 4,
-      title: "24/7 Support",
-      desc: "Round-the-clock monitoring and support so your business never faces downtime.",
+      title: "Managed Support Services",
+      metric: "3X",
+      desc: "ThirdVizion offers 24/7 technical support, incident response, and server administration for your peace of mind.",
       icon: <FaHeadset className="text-4xl text-[#05df72]/80" />,
     },
   ];
@@ -45,8 +49,9 @@ export default function ServerChoose() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-12 text-[#05df72] text-center drop-shadow-lg"
-        style={{ fontFamily: "Outfit, sans-serif" }} >
-          Why Choose Us?
+          style={{ fontFamily: "Outfit, sans-serif" }}
+        >
+          Server Management Excellence
         </motion.h2>
       </TextReveal>
 
@@ -59,14 +64,32 @@ export default function ServerChoose() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="flex items-start gap-4 bg-[#05df72]/5 p-6 rounded-2xl border border-[#05df72]/30 backdrop-blur-md shadow-[0_0_20px_rgba(5,223,114,0.05)] hover:bg-[#05df72]/10 hover:shadow-[0_0_35px_rgba(5,223,114,0.15)] transition"
+              className="flex items-start gap-4 bg-[#05df72]/5 p-6 rounded-2xl border border-[#05df72]/30 backdrop-blur-md shadow-[0_0_20px_rgba(5,223,114,0.05)] hover:bg-[#05df72]/10 hover:shadow-[0_0_35px_rgba(5,223,114,0.15)] transition group"
             >
+              {/* Icon */}
               <div className="flex-shrink-0">{f.icon}</div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
-                  {f.title}
-                </h3>
-                <p className="text-sm text-white/70 mt-2" style={{ fontFamily: "work-sans, sans-serif" }}>{f.desc}</p>
+              
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-lg font-semibold text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
+                    {f.title}
+                  </h3>
+                  
+                  {/* Metric Badge */}
+                  <div className="relative flex-shrink-0 ml-3">
+                    <div className="absolute inset-0 bg-[#05df72] blur-md opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                    <div className="relative px-3 py-1 bg-gradient-to-r from-[#05df72] to-[#04c563] rounded-full border border-white/20">
+                      <span className="text-base font-black text-white whitespace-nowrap">
+                        {f.metric}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-white/70" style={{ fontFamily: "work-sans, sans-serif" }}>
+                  {f.desc}
+                </p>
               </div>
             </motion.div>
           ))}

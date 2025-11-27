@@ -5,39 +5,39 @@ import { motion } from 'framer-motion';
 // Data structure for the process steps
 const processSteps = [
   {
-    id: ">",
-    title: "Brainstorming and Strategy",
-    description: "In the beginning, we explore the market and understand the trends in the target area, understand your requirements and build a strategy around these aspects.",
+    id: "01",
+    title: "Ideation and Planning",
+    description: "We define your app's purpose, target audience, and core features through comprehensive market research. We analyze competitors and identify gaps in industries like e-commerce, healthcare, fintech, and logistics to create a solid foundation.",
     icon: RefreshCcw,
   },
   {
-    id: ">",
-    title: "Planning and Designing",
-    description: "These two processes go hand in hand as we outline milestones, choose platforms and design user-friendly intuitive architecture while concentrating on its aesthetic appeal.",
+    id: "02",
+    title: "UI/UX Design and Wireframing",
+    description: "We create intuitive visual blueprints outlining your app's structure, layout, and navigation flow. Our designs focus on user-friendly interfaces that enhance engagement across retail, education, travel, and hospitality sectors.",
     icon: Layout,
   },
   {
-    id: ">",
-    title: "Developing the Ecosystem",
-    description: "This is the most exciting phase as we present a library of tools for you to select from that will define the front-end and back-end coding along with the various functionalities as we integrate APIs.",
+    id: "03",
+    title: "Native and Cross-Platform Development",
+    description: "Using cutting-edge technologies like Flutter, React Native, Swift, and Kotlin, we build high-performance mobile apps for iOS and Android. We integrate APIs, cloud services (AWS, Azure, Firebase), and backend systems tailored to your industry.",
     icon: Code,
   },
   {
-    id: ">",
-    title: "Pre-Launch Testing",
-    description: "This is the stage where we run all the processes to find any errors in the source code, test app stability, and potential security threats and give it to a small group of users for UI/UX testing.",
+    id: "04",
+    title: "Quality Assurance and Testing",
+    description: "We conduct rigorous testing for functionality, performance, security, and UI/UX across devices. Our QA process ensures your app meets industry standards for healthcare compliance, banking security, and e-commerce reliability.",
     icon: Zap,
   },
   {
-   id: ">",
-    title: "Launching and Marketing",
-    description: "While we submit the app to the app stores and manage the launch process our marketing team starts its campaigns to generate the interest of the potential users.",
+    id: "05",
+    title: "Deployment and Launch",
+    description: "We handle the complete app store submission process for Google Play and Apple App Store. Our marketing team executes strategic campaigns to generate user interest in sectors like real estate, entertainment, and on-demand services.",
     icon: Rocket,
   },
   {
-   id: ">",
-    title: "Support and Maintenance",
-    description: "We keep a close eye on the performance of your app and keep updating it with bug fixes and incorporating the feedback obtained from the user experience data.",
+    id: "06",
+    title: "Maintenance and Optimization",
+    description: "We provide 24/7 support with regular updates, bug fixes, and feature enhancements. We monitor app performance, analyze user data, and implement improvements to keep your app competitive in the $800B+ global mobile app market.",
     icon: LifeBuoy,
   },
 ];
@@ -99,7 +99,7 @@ const ProcessCard = ({ step }) => {
     <motion.div
       variants={cardVariants}
       whileHover="hover"
-      className="relative p-8 rounded-2xl border border-[#ff8904]/20 bg-black/40 backdrop-blur-2xl min-h-[280px] flex flex-col transition-all duration-500 hover:border-[#ff8904]/40 hover:shadow-[0_0_25px_rgba(255,137,4,0.3)] group"
+      className="relative p-8 rounded-2xl border border-[#ff8904]/20 bg-black/40 backdrop-blur-2xl min-h-[320px] flex flex-col transition-all duration-500 hover:border-[#ff8904]/40 hover:shadow-[0_0_25px_rgba(255,137,4,0.3)] group"
       style={{
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)'
@@ -112,8 +112,8 @@ const ProcessCard = ({ step }) => {
         {/* Header with number and icon */}
         <div className="flex items-center mb-6">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-[#ff8904]/20 flex items-center justify-center border border-[#ff8904]/30 group-hover:bg-[#ff8904]/30 group-hover:border-[#ff8904]/50 transition-all duration-500">
-              <span className="text-lg font-bold text-[#ff8904]">
+            <div className="w-12 h-12 rounded-full bg-[#ff8904]/20 flex items-center justify-center border border-[#ff8904]/30 group-hover:bg-[#ff8904]/30 group-hover:border-[#ff8904]/50 transition-all duration-500">
+              <span className="text-xl font-bold text-[#ff8904]" style={{ fontFamily: "Outfit, sans-serif" }}>
                 {step.id}
               </span>
             </div>
@@ -123,12 +123,12 @@ const ProcessCard = ({ step }) => {
         </div>
         
         {/* Title */}
-        <h3 className="text-2xl font-inter-tight font-medium text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500"  style={{ fontFamily: "Outfit, sans-serif" }} >
+        <h3 className="text-2xl font-medium text-[#ff8904] mb-4 tracking-tight group-hover:drop-shadow-[0_0_8px_rgba(255,137,4,0.3)] transition-all duration-500" style={{ fontFamily: "Outfit, sans-serif" }}>
           {step.title}
         </h3>
         
         {/* Description */}
-        <p className="text-gray-300 leading-relaxed text-lg flex-1 group-hover:text-gray-200 transition-colors duration-500" style={{ fontFamily: "work-sans, sans-serif" }} >
+        <p className="text-gray-300 leading-relaxed text-base flex-1 group-hover:text-gray-200 transition-colors duration-500" style={{ fontFamily: "Work Sans, sans-serif" }}>
           {step.description}
         </p>
       </div>
@@ -144,22 +144,30 @@ const ProcessCard = ({ step }) => {
 const App = () => {
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
-      
-      {/* Header Section */}
-    
-
       {/* Process Section */}
       <main className="relative bg-black py-20 px-4 sm:px-6 md:px-10 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl md:text-6xl font-inter-tight font-extrabold text-center text-[#ff8904] mb-20 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-center text-[#ff8904] mb-6 tracking-tight"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            style={{ fontFamily: "Outfit, sans-serif" }}
           >
-            Our <span className="text-white"  style={{ fontFamily: "Outfit, sans-serif" }} >6-Step Digital Mastery</span> Process
+            Our <span className="text-white">Mobile App Development</span> Process
           </motion.h2>
+
+          <motion.p
+            className="text-gray-400 text-lg md:text-xl text-center max-w-4xl mx-auto mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            style={{ fontFamily: "Work Sans, sans-serif" }}
+          >
+            Serving top industries including <span className="text-[#ff8904] font-semibold">E-commerce, Healthcare, Fintech, Education, Real Estate, Travel & Hospitality, Logistics, and Entertainment</span> with cutting-edge mobile solutions that drive growth in the global $800B+ app market.
+          </motion.p>
 
           {/* Process Grid */}
           <motion.div

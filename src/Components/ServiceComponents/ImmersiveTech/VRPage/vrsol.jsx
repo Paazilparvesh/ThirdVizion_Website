@@ -10,32 +10,31 @@ gsap.registerPlugin(ScrollTrigger);
 import VrImage1 from "/src/assets/vr/VrImage1.jpeg";
 import VrImage2 from "/src/assets/vr/VrImage2.jpeg";
 import VrImage3 from "/src/assets/vr/VrImage3.jpeg";
-// import VrImage4 from "/src/assets/vr/VrImage4.jpeg";
 
-// ✅ VR Services Data
+// ✅ VR Services Data - ThirdVizion Content
 const VrData = [
   {
     id: "vrDevelopment",
-    title: "Next-Gen VR Development",
+    title: "Custom VR Application Development",
     description:
-      "We create custom VR solutions that blend creativity and technology to deliver immersive experiences and boost user engagement.",
+      "ThirdVizion builds tailored VR applications for training, marketing, and entertainment using Unity and Unreal Engine with seamless cross-platform deployment.",
     icon: "🛠️",
     image: VrImage1,
   },
   {
     id: "trainingVR",
-    title: "VR Training & Simulation",
+    title: "Enterprise VR Training Solutions",
     icon: "🎯",
     description:
-      "Transform workforce learning with realistic, risk-free VR simulations that enhance skill development and improve training efficiency.",
+      "We design immersive VR training programs for industries like healthcare, manufacturing, and aviation with real-time performance tracking and analytics.",
     image: VrImage2,
   },
   {
     id: "architecturalVR",
-    title: "Architectural Visualization",
+    title: "VR Visualization & Walkthroughs",
     icon: "🏗️",
     description:
-      "Bring designs to life with realistic 3D architectural visualization. Explore unbuilt spaces and experience your projects before construction begins.",
+      "ThirdVizion creates photorealistic 3D architectural walkthroughs and virtual property tours enabling clients to explore spaces before construction.",
     image: VrImage3,
   },
 ];
@@ -44,6 +43,7 @@ const Vrsol = () => {
   const [activeService, setActiveService] = useState(VrData[0].id);
   const containerRef = useRef(null);
   const headerRef = useRef(null);
+  const scrollTriggerRef = useRef(null);
 
   // Helper to get active data
   const activeServiceData = VrData.find((vr) => vr.id === activeService);
@@ -59,31 +59,46 @@ const Vrsol = () => {
 
       // Only enable ScrollTrigger on desktop
       if (window.innerWidth >= 1024) {
-        // 2. The Main ScrollTrigger Logic
-        ScrollTrigger.create({
+        // 2. The Main ScrollTrigger Logic - Fixed for scroll up/down
+        scrollTriggerRef.current = ScrollTrigger.create({
           trigger: containerRef.current,
           start: "top top",
           end: "+=2500",
           pin: true,
           scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             const progress = self.progress;
             const totalServices = VrData.length;
+            // Smooth calculation for transitions
             const index = Math.min(
               Math.floor(progress * totalServices),
               totalServices - 1
             );
             
-            if (VrData[index].id !== activeService) {
-              setActiveService(VrData[index].id);
-            }
+            const newServiceId = VrData[index].id;
+            // Use callback to avoid stale state
+            setActiveService(prevService => {
+              if (newServiceId !== prevService) {
+                return newServiceId;
+              }
+              return prevService;
+            });
           },
         });
       }
     }, containerRef);
 
-    return () => ctx.revert();
-  }, []);
+    return () => {
+      ctx.revert();
+      // Cleanup ScrollTrigger
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+    };
+  }, []); // Empty dependency array - runs once
 
   // Manual Click Handler
   const handleServiceClick = (id) => {
@@ -104,11 +119,17 @@ const Vrsol = () => {
         {/* Header */}
         <div ref={headerRef} className="text-center mb-6 md:mb-8 lg:mb-10 lg:absolute lg:top-8 w-full">
           <h1
-            className="text-3xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 tracking-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 tracking-tight "
             style={{ fontFamily: "Outfit, sans-serif" }}
           >
-            Complete VR Solutions
+            How ThirdVizion Transforms VR
           </h1>
+          <p 
+            className="text-gray-400 text-base md:text-lg mt-3 max-w-2xl mx-auto"
+            style={{ fontFamily: "work-sans, sans-serif" }}
+          >
+            We deliver cutting-edge virtual reality solutions from concept to deployment
+          </p>
         </div>
 
         {/* Content Grid - Responsive layout */}
@@ -116,7 +137,7 @@ const Vrsol = () => {
           
           {/* LEFT COLUMN: The Service Cards */}
           <div className="flex flex-col justify-center gap-3 md:gap-4 lg:h-full relative order-2 lg:order-1">
-            {VrData.map((service) => (
+            {VrData.map((service, index) => (
               <motion.div
                 key={service.id}
                 onClick={() => handleServiceClick(service.id)}
@@ -126,6 +147,9 @@ const Vrsol = () => {
                       ? "bg-violet-900/30 border-violet-500 shadow-lg shadow-violet-500/10 scale-100 opacity-100"
                       : "bg-zinc-900/30 border-zinc-800 hover:border-zinc-600 opacity-50 scale-95 hover:opacity-80"
                   }`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
                 <div className="flex items-center gap-3 md:gap-4">
                   <span className="text-2xl md:text-3xl">{service.icon}</span>
@@ -143,7 +167,10 @@ const Vrsol = () => {
                 
                 {/* Show description on mobile, animated on desktop */}
                 <div className="block lg:hidden mt-3">
-                  <p className="text-gray-300 text-sm leading-relaxed pl-0 md:pl-12 border-l-0 md:border-l-2 border-violet-500/50">
+                  <p 
+                    className="text-gray-300 text-sm leading-relaxed pl-0 md:pl-12 border-l-0 md:border-l-2 border-violet-500/50"
+                    style={{ fontFamily: "work-sans, sans-serif" }}
+                  >
                     {service.description}
                   </p>
                 </div>
@@ -156,10 +183,14 @@ const Vrsol = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-3 text-gray-300 text-sm leading-relaxed pl-12 border-l-2 border-violet-500/50">
-                          {service.description.substring(0, 60)}...
+                        <p 
+                          className="mt-3 text-gray-300 text-sm leading-relaxed pl-12 border-l-2 border-violet-500/50"
+                          style={{ fontFamily: "work-sans, sans-serif" }}
+                        >
+                          {service.description.substring(0, 80)}...
                         </p>
                       </motion.div>
                     )}
@@ -174,10 +205,10 @@ const Vrsol = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService}
-                initial={{ opacity: 0, x: 0, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, x: 0, y: -20 }}
-                transition={{ duration: 0.5, ease: "circOut" }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="w-full bg-zinc-900/80 rounded-2xl lg:rounded-3xl overflow-hidden border border-zinc-700/50 shadow-2xl p-2"
               >
                 {/* Image Area */}
@@ -197,16 +228,18 @@ const Vrsol = () => {
 
                 {/* Text Details Area - Hidden on mobile since we show description in cards */}
                 <div className="hidden lg:block p-6 md:p-8">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
+                  <h2 
+                    className="text-2xl md:text-3xl font-bold mb-4 text-white" 
+                    style={{ fontFamily: "Outfit, sans-serif" }}
+                  >
                     {activeServiceData.title}
                   </h2>
-                  <p className="text-gray-400 leading-relaxed text-lg" style={{ fontFamily: "work-sans, sans-serif" }}>
+                  <p 
+                    className="text-gray-400 leading-relaxed text-lg" 
+                    style={{ fontFamily: "work-sans, sans-serif" }}
+                  >
                     {activeServiceData.description}
                   </p>
-                  
-                  {/* <button className="mt-6 px-6 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-full text-sm font-medium transition-colors">
-                    Learn More
-                  </button> */}
                 </div>
               </motion.div>
             </AnimatePresence>

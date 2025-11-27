@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 import AppHero from "/src/Components/ServiceComponents/Development&Software/AppPage/AppHero.jsx";
 import AppAbout from "/src/Components/ServiceComponents/Development&Software/AppPage/AppAbout.jsx";
-import Appvideo from "/src/Components/ServiceComponents/Development&Software/AppPage/Appvideo.jsx";
+
 import Appc from "/src/Components/ServiceComponents/Development&Software/AppPage/Appc.jsx";
 import AppService from "/src/Components/ServiceComponents/Development&Software/AppPage/AppService.jsx";
 import AppCTA from "/src/Components/ServiceComponents/Development&Software/AppPage/AppCTA.jsx";
