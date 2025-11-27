@@ -7,11 +7,11 @@ gsap.registerPlugin(ScrollTrigger);
 function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
-  const [isReady, setIsReady] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
 
   const frameCount = 192;
   const startFrame = 86400;
-  const priorityFrames = 20; // Load first 20 frames quickly
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -69,55 +69,69 @@ function VRHeroSection() {
         }
       };
 
-      // Priority loading - load first frame immediately
-      const firstImage = new Image();
-      firstImage.src = currentFrame(0);
-      firstImage.onload = () => {
-        images[0] = firstImage;
-        render();
-        setIsReady(true); // Show component immediately after first frame
+      // Preload single image with promise
+      const preloadImage = (index) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = currentFrame(index);
+          
+          img.onload = () => {
+            images[index] = img;
+            resolve(img);
+          };
+          
+          img.onerror = () => {
+            console.error(`Failed to load frame ${index}`);
+            reject(new Error(`Failed to load frame ${index}`));
+          };
+        });
+      };
 
-        // Load priority frames (first 20) quickly in batches
-        const loadPriorityBatch = async () => {
-          const batchSize = 5;
-          for (let i = 1; i < priorityFrames; i += batchSize) {
-            const promises = [];
-            for (let j = i; j < Math.min(i + batchSize, priorityFrames); j++) {
-              promises.push(
-                new Promise((resolve) => {
-                  const img = new Image();
-                  img.src = currentFrame(j);
-                  img.onload = () => {
-                    images[j] = img;
-                    resolve();
-                  };
-                  img.onerror = resolve;
-                })
-              );
+      // Load ALL images with progress tracking
+      const loadAllImages = async () => {
+        try {
+          // Load first frame immediately and show it
+          await preloadImage(0);
+          render();
+          setLoadingProgress(1);
+
+          // Load remaining images in optimized batches
+          const batchSize = 10; // Load 10 images at a time
+          let loadedCount = 1;
+
+          for (let i = 1; i < frameCount; i += batchSize) {
+            const batchPromises = [];
+            
+            // Create batch of promises
+            for (let j = i; j < Math.min(i + batchSize, frameCount); j++) {
+              batchPromises.push(preloadImage(j));
             }
-            await Promise.all(promises);
+
+            // Wait for current batch to complete
+            await Promise.all(batchPromises);
+            
+            // Update progress
+            loadedCount += batchPromises.length;
+            setLoadingProgress(loadedCount);
+            
+            console.log(`Loaded ${loadedCount}/${frameCount} images`);
           }
 
-          // Load remaining frames in background with lower priority
-          for (let i = priorityFrames; i < frameCount; i++) {
-            const img = new Image();
-            img.src = currentFrame(i);
-            img.onload = () => {
-              images[i] = img;
-            };
-          }
-        };
-
-        loadPriorityBatch();
+          // All images loaded successfully
+          console.log("✅ All images loaded successfully!");
+          setAllImagesLoaded(true);
+          
+        } catch (error) {
+          console.error("Error loading images:", error);
+          setAllImagesLoaded(true); // Show content anyway
+        }
       };
 
-      firstImage.onerror = () => {
-        console.error("Failed to load first frame");
-        setIsReady(true); // Show component anyway
-      };
+      // Start loading all images
+      loadAllImages();
 
       // Setup ScrollTrigger
-      ScrollTrigger.create({
+      const scrollTriggerInstance = ScrollTrigger.create({
         trigger: mainRef.current,
         start: "top 510",
         end: `+=${frameCount * 3}`,
@@ -127,8 +141,12 @@ function VRHeroSection() {
             frameCount - 1,
             Math.floor(self.progress * (frameCount - 1))
           );
-          videoFrames.frame = targetFrame;
-          render();
+          
+          // Only update if frame exists and is loaded
+          if (images[targetFrame]) {
+            videoFrames.frame = targetFrame;
+            render();
+          }
         },
       });
 
@@ -143,6 +161,7 @@ function VRHeroSection() {
 
       return () => {
         window.removeEventListener("resize", handleResize);
+        scrollTriggerInstance.kill();
       };
     }, mainRef);
 
@@ -154,10 +173,27 @@ function VRHeroSection() {
       <section className="relative w-full h-[100svh] flex overflow-hidden bg-black">
         <canvas
           ref={canvasRef}
-          className={`z-10 transition-opacity duration-500 ${
-            isReady ? "opacity-100" : "opacity-0"
-          }`}
+          className="z-10"
         ></canvas>
+
+        {/* Loading Progress Indicator */}
+        {!allImagesLoaded && (
+          <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/80">
+            <div className="text-center text-white">
+              <div className="mb-4">
+                <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-white transition-all duration-300"
+                    style={{ width: `${(loadingProgress / frameCount) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+              <p className="text-sm">
+                Loading {loadingProgress}/{frameCount} frames
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Main Content */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
