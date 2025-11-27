@@ -123,6 +123,7 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
             isSelected
               ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
               : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
+              
           }`}
         >
           {service.title}

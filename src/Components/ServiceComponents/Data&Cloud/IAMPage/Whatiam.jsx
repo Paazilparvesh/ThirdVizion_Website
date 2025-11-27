@@ -13,7 +13,7 @@ function Whatiam() {
                 {/* Subheading */}
                 <p 
                     className="text-xl md:text-2xl text-gray-200 text-center mb-12 max-w-4xl mx-auto"
-                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                    style={{ fontFamily: 'anta, sans-serif' }}
                 >
                     Identity and Access Management ensures the right people have secure access to the right resources at the right time
                 </p>
@@ -25,7 +25,7 @@ function Whatiam() {
                     <div className="text-center mb-10">
                         <p 
                             className="text-xl md:text-2xl text-gray-200 leading-relaxed"
-                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                            style={{ fontFamily: 'anta, sans-serif' }}
                         >
                             <span className="font-bold bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent">
                                 Identity and Access Management (IAM)
@@ -48,7 +48,7 @@ function Whatiam() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Verify user identity through passwords, biometrics, or multi-factor authentication
                             </p>
@@ -65,7 +65,7 @@ function Whatiam() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Control what authenticated users can access based on roles and permissions
                             </p>
@@ -82,7 +82,7 @@ function Whatiam() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Create, modify, and delete user accounts throughout their lifecycle
                             </p>
@@ -99,7 +99,7 @@ function Whatiam() {
                             </h3>
                             <p 
                                 className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Track access logs and generate reports for regulatory compliance
                             </p>
@@ -133,7 +133,7 @@ function Whatiam() {
                                         </h3>
                                         <p 
                                             className="text-gray-300 text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             User requests access by providing credentials like username, password, or biometric data
                                         </p>
@@ -156,7 +156,7 @@ function Whatiam() {
                                         </h3>
                                         <p 
                                             className="text-gray-300 text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             IAM system validates credentials and checks permissions against policies and roles
                                         </p>
@@ -179,7 +179,7 @@ function Whatiam() {
                                         </h3>
                                         <p 
                                             className="text-gray-300 text-sm"
-                                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                                            style={{ fontFamily: 'anta, sans-serif' }}
                                         >
                                             System grants access to authorized resources or denies if permissions don't match
                                         </p>
@@ -212,7 +212,7 @@ function Whatiam() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Prevent unauthorized access and reduce security breaches with multi-layered protection
                                     </p>
@@ -230,7 +230,7 @@ function Whatiam() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Single sign-on enables quick access to multiple applications without repeated logins
                                     </p>
@@ -248,7 +248,7 @@ function Whatiam() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Meet GDPR, HIPAA, SOX requirements with automated audit trails and reporting
                                     </p>
@@ -266,7 +266,7 @@ function Whatiam() {
                                     </h4>
                                     <p 
                                         className="text-gray-300 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Automate user provisioning and reduce IT help desk tickets for password resets
                                     </p>

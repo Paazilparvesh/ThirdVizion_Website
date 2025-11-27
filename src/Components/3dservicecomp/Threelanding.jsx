@@ -231,7 +231,7 @@ export default function Threelanding() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
           {/* Left column — text */}
           <div className="w-full lg:w-1/2">
-            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
+            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight"   style={{ fontFamily: "DeaconTest, sans-serif" }}>
               <span className="block overflow-hidden">
                 <span className="word block transform translate-y-0">ThirdVizion</span>
               </span>
@@ -243,7 +243,7 @@ export default function Threelanding() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg text-slate-300 max-w-2xl"   style={{ fontFamily: "worksans, sans-serif" }}>ThirdVizion delivers cinematic 3D assets, product visualizations and immersive scenes — modelled and textured for realtime and offline rendering. We craft optimized models, bake realistic materials, and export production-ready assets for web, games, and film.</p>
+            <p className="mt-6 text-lg text-slate-300 max-w-2xl"   style={{ fontFamily: "anta, sans-serif" }}>ThirdVizion delivers cinematic 3D assets, product visualizations and immersive scenes — modelled and textured for realtime and offline rendering. We craft optimized models, bake realistic materials, and export production-ready assets for web, games, and film.</p>
 
             <div className="mt-8 flex items-center gap-4">
               <button className="cta-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-lg">Discover our work</button>
@@ -377,7 +377,7 @@ useEffect(() => {
       <section className="relative z-20 py-20">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-4xl font-extrabold"style={{ fontFamily: "Outfit, sans-serif" }}>Work with ThirdVizion</h2>
+            <h2 className="text-4xl font-extrabold"style={{ fontFamily: "DeaconTest, sans-serif" }}>Work with ThirdVizion</h2>
             <p className="mt-4 text-slate-300">Send us references, target platform and budgets — we'll reply with a scoped plan and asset pipeline.</p>
             <div className="mt-8 flex items-center justify-center gap-4">
               <button className="cta-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-black font-semibold shadow-2xl">Start a project</button>

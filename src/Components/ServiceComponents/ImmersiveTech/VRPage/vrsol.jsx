@@ -120,13 +120,13 @@ const Vrsol = () => {
         <div ref={headerRef} className="text-center mb-6 md:mb-8 lg:mb-10 lg:absolute lg:top-8 w-full">
           <h1
             className="text-3xl md:text-5xl lg:text-6xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500 tracking-tight "
-            style={{ fontFamily: "Outfit, sans-serif" }}
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
           >
             How ThirdVizion Transforms VR
           </h1>
           <p 
             className="text-gray-400 text-base md:text-lg mt-3 max-w-2xl mx-auto"
-            style={{ fontFamily: "work-sans, sans-serif" }}
+            style={{ fontFamily: "anta, sans-serif" }}
           >
             We deliver cutting-edge virtual reality solutions from concept to deployment
           </p>
@@ -158,7 +158,7 @@ const Vrsol = () => {
                       className={`text-lg md:text-xl font-bold transition-colors ${
                         activeService === service.id ? "text-white" : "text-gray-400"
                       }`}
-                      style={{ fontFamily: "Outfit, sans-serif" }}
+                      style={{ fontFamily: "DeaconTest, sans-serif" }}
                     >
                       {service.title}
                     </h3>
@@ -169,7 +169,7 @@ const Vrsol = () => {
                 <div className="block lg:hidden mt-3">
                   <p 
                     className="text-gray-300 text-sm leading-relaxed pl-0 md:pl-12 border-l-0 md:border-l-2 border-violet-500/50"
-                    style={{ fontFamily: "work-sans, sans-serif" }}
+                    style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {service.description}
                   </p>
@@ -188,7 +188,7 @@ const Vrsol = () => {
                       >
                         <p 
                           className="mt-3 text-gray-300 text-sm leading-relaxed pl-12 border-l-2 border-violet-500/50"
-                          style={{ fontFamily: "work-sans, sans-serif" }}
+                          style={{ fontFamily: "anta, sans-serif" }}
                         >
                           {service.description.substring(0, 80)}...
                         </p>
@@ -230,13 +230,13 @@ const Vrsol = () => {
                 <div className="hidden lg:block p-6 md:p-8">
                   <h2 
                     className="text-2xl md:text-3xl font-bold mb-4 text-white" 
-                    style={{ fontFamily: "Outfit, sans-serif" }}
+                    style={{ fontFamily: "DeaconTest, sans-serif" }}
                   >
                     {activeServiceData.title}
                   </h2>
                   <p 
                     className="text-gray-400 leading-relaxed text-lg" 
-                    style={{ fontFamily: "work-sans, sans-serif" }}
+                    style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {activeServiceData.description}
                   </p>

@@ -224,7 +224,8 @@ export default function CrmHero() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ amount: 0 }}
-                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]"
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]" 
+                style={{ fontFamily: "DeaconTest, sans-serif" }}
               >
                 Enterprise-Grade CRM
               </motion.h1>
@@ -236,6 +237,7 @@ export default function CrmHero() {
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ amount: 0 }}
               className="text-sm sm:text-base lg:text-lg text-white/70 mb-6 lg:mb-8 leading-relaxed"
+              style={{ fontFamily: "anta, sans-serif" }}
             >
               Boost growth with an AI-powered CRM that unites sales, marketing, and support. 
               Manage pipelines, automate workflows, and build stronger customer relationships.
@@ -247,6 +249,7 @@ export default function CrmHero() {
                 initial={{ opacity: 0, y: 40, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 className="hover:bg-[#FF6467] text-white shadow-[0_0_20px_rgba(255,100,103,0.4)] hover:shadow-[0_0_35px_rgba(255,100,103,0.6)] hover:scale-[1.02] transition-all duration-500 border border-[#FF6467]/30 px-5 py-2.5 sm:px-6 sm:py-3 font-semibold backdrop-blur-md rounded-xl sm:rounded-2xl md:px-8 text-sm sm:text-base lg:text-lg xl:text-xl mb-6 lg:mb-8"
+                  style={{ fontFamily: "anta, sans-serif" }}
               >
                 Request a demo
               </motion.button>

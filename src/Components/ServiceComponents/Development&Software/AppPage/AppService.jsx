@@ -79,6 +79,7 @@ const AppService = () => {
             <motion.h2
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-6 leading-tight"
+              style={{ fontFamily: "DeaconTest, sans-serif" }}
             >
               Our Services
             </motion.h2>
@@ -88,6 +89,7 @@ const AppService = () => {
             <motion.p
               variants={itemVariants}
               className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              style={{ fontFamily: "anta, sans-serif" }}
             >
               At <span className="text-[#ff8904] font-semibold">ThirdVizion</span>, we deliver premium end-to-end solutions from designing stunning interfaces to providing long-term support for your growth.
             </motion.p>
@@ -129,12 +131,14 @@ const AppService = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-inter-tight font-bold text-[#ff8904] mb-4 tracking-tight">
+                <h3 className="text-2xl font-inter-tight font-bold text-[#ff8904] mb-4 tracking-tight"
+                 style={{ fontFamily: "DeaconTest, sans-serif" }} >
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-300 leading-relaxed flex-1">
+                <p className="text-gray-300 leading-relaxed flex-1"
+                 style={{ fontFamily: "anta, sans-serif" }} >
                   {service.description}
                 </p>
               </div>

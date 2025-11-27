@@ -10,19 +10,34 @@ export default function VrLanding() {
 
       {/* Neon Glow Blobs */}
      
-      <motion.h1
+      {/* <motion.h1
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
-        style={{ fontFamily: "Outfit, sans-serif" }}
+        style={{ fontFamily: "DeaconTest, sans-serif" }}
       >
         Transform Your World with{" "}
         <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-medium mt-2 ">
-          Virtual Reality
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-medium mt-2 gap-5 ">
+          VIRTUAL REALITY
         </span>
-      </motion.h1>
+      </motion.h1> */}
+
+      <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
+>
+  Transform Your World with
+  <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-medium mt-6 inline-block">
+    VIRTUAL REALITY
+  </span>
+</motion.h1>
+
 
       {/* Subtext */}
       <motion.p
@@ -30,7 +45,7 @@ export default function VrLanding() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1 }}
         className="mt-6 hidden sm:block text-xs md:text-lg text-gray-300 max-w-2xl text-center px-6"
-        style={{ fontFamily: "work-sans, sans-serif" }}
+        style={{ fontFamily: "anta, sans-serif" }}
       >
         At ThirdVizion Labs, we create immersive VR experiences that enhance learning, training, and engagement.
       </motion.p>

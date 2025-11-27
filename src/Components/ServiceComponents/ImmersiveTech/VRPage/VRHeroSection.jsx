@@ -127,7 +127,8 @@ function VRHeroSection() {
           <div className="text-center text-white">
             <h2
               className="text-4xl md:text-6xl font-bold mb-4"
-              style={{ fontFamily: "Outfit, sans-serif" }}
+              // style={{ fontFamily: "Outfit, sans-serif" }}
+               style={{ fontFamily: "DeaconTest, sans-serif" }}
             >
               Experience Virtual Reality
             </h2>

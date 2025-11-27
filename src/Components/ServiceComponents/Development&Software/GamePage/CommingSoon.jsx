@@ -20,7 +20,7 @@ export default function ComingSoon() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.8 }}
             className="mt-6 font-inter-tight text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] tracking-tight "
-          style={{ fontFamily: "Outfit, sans-serif" }} >
+          style={{ fontFamily: "DeaconTest, sans-serif" }} >
             Coming Soon
           </motion.h2>
         </TextReveal>
@@ -32,7 +32,7 @@ export default function ComingSoon() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mt-4 max-w-xl text-white/70"
-         style={{ fontFamily: "worksans, sans-serif" }}  >
+         style={{ fontFamily: "anta, sans-serif" }}  >
             We’re crafting something special. Stay tuned for the launch and be
             the first to experience our next-gen web games.
           </motion.p>

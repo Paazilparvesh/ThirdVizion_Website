@@ -82,14 +82,14 @@ export default function AppHero() {
         
         <h1
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#ff8904]"
-          style={{ fontFamily: "Outfit, sans-serif" }}
+          style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           We Craft Seamless Mobile Experiences
         </h1>
 
         <p
           className="text-gray-400 text-sm hidden sm:block sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
-          style={{ fontFamily: "Work Sans, sans-serif" }}
+          style={{ fontFamily: "anta, sans-serif" }}
         >
           Transforming ideas into intuitive and engaging mobile applications
           that drive success.
@@ -101,7 +101,8 @@ export default function AppHero() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true, amount: 0.3 }}
-            className="font-inter-tight inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#ff8904]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,137,4,0.5)] hover:scale-105 text-[#ff8904]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-[#ff8904]/40 bg-black px-5 sm:px-6 md:px-8 py-3 sm:py-4 font-medium sm:font-semibold tracking-wide text-sm sm:text-base md:text-lg shadow-[0_0_10px_rgba(0,211,243,0.3)] backdrop-blur-md transition-all duration-500 hover:shadow-[0_0_25px_rgba(255,137,4,0.5)] hover:scale-105 text-[#ff8904]"
+            style={{ fontFamily: "anta, sans-serif" }}
           >
             Get Started
           </motion.button>

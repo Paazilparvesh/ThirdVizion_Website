@@ -57,14 +57,16 @@ const AppCTA = () => {
           className="mb-12"
         >
           <TextReveal>
-            <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight">
-              Choose ThirdVizion for Your Best App
+            <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight"
+             style={{ fontFamily: "DeaconTest, sans-serif" }} >
+              Ready to Build Your Next Big App?
             </motion.h2>
           </TextReveal>
 
           <TextReveal delay={0.2}>
-            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              Partner with <span className="text-[#ff8904] font-semibold">ThirdVizion</span> to transform your ideas into exceptional mobile and web applications. We deliver premium, scalable solutions that drive success.
+            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto"
+             style={{ fontFamily: "anta, sans-serif" }} >
+              Let's collaborate and turn your vision into reality. Our team specializes in crafting premium, scalable, and user-centric applications that stand out in the market.
             </motion.p>
           </TextReveal>
         </motion.div>
@@ -111,7 +113,8 @@ const AppCTA = () => {
               className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#ff8904] bg-[#ff8904] px-10 py-5 font-semibold tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 text-black shadow-[0_0_20px_rgba(255,137,4,0.4)] hover:shadow-[0_0_35px_rgba(255,137,4,0.6)]"
               style={{
                 backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)'
+                WebkitBackdropFilter: 'blur(16px)',
+                fontFamily: "anta, sans-serif" 
               }}
             >
               Start Your Project
@@ -125,6 +128,31 @@ const AppCTA = () => {
               </svg>
             </motion.button>
           </Link>
+        </motion.div>
+
+        {/* Additional info */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8 text-gray-400 text-sm"
+          style={{ fontFamily: "anta, sans-serif" }}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
+            <span>No upfront costs</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
+            <span>Free consultation</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
+            <span>24/7 support</span>
+          </div>
         </motion.div>
 
       </div>

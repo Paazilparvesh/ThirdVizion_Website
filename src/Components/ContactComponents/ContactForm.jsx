@@ -220,7 +220,8 @@ const ContactForm = () => {
               variants={itemVariants}
             >
               If you are curious about what you saw, contact us or follow us{" "}
-              <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold">
+              <span className="bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent font-semibold"
+              >
                 on social media.
               </span>
             </motion.p>
