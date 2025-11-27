@@ -5,7 +5,7 @@ import { Html, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Lottie from "lottie-react";
-import aiBrain from "../../../../assets/Animations/voice.json";
+
 
 /**
  * Single-file component that:
@@ -16,7 +16,7 @@ import aiBrain from "../../../../assets/Animations/voice.json";
  */
 
 // ------------ Config ------------
-const MODEL_URL = "/models/canon_at-1_retro_camera/scene.gltf";
+const MODEL_URL = "/models/buster_drone/scene.gltf";
 
 // ------------ Helpers ------------
 function isMobile() {
