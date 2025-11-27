@@ -5,18 +5,20 @@ import { Html, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Lottie from "lottie-react";
-
+import aiBrain from "../../../../assets/Animations/voice.json";
 
 /**
  * Single-file component that:
  * - Shows a minimal interface with only AR functionality
  * - On mobile, opens a WebXR immersive-ar session with hit-test placement
+ * - Places only one model at a time with enhanced lighting
+ * - Supports zoom in/out for placed models using pinch gesture
  *
  * Usage: <ArPage />
  */
 
 // ------------ Config ------------
-const MODEL_URL = "/models/buster_drone/scene.gltf";
+const MODEL_URL = "/models/canon_at-1_retro_camera/scene.gltf";
 
 // ------------ Helpers ------------
 function isMobile() {
@@ -30,6 +32,9 @@ export default function ArPage() {
   const [isHovered, setIsHovered] = useState(false);
   const xrRendererRef = useRef(null);
   const xrSessionRef = useRef(null);
+  const currentModelRef = useRef(null);
+  const initialDistanceRef = useRef(null);
+  const initialScaleRef = useRef(1.4); // Default scale
 
   // Start the WebXR session and create a Three.js XR-renderer world
   const startAR = async () => {
@@ -75,8 +80,23 @@ export default function ArPage() {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera();
 
-      const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-      scene.add(light);
+      // Enhanced lighting setup
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+      scene.add(ambientLight);
+
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(5, 10, 5);
+      directionalLight.castShadow = true;
+      directionalLight.shadow.mapSize.width = 2048;
+      directionalLight.shadow.mapSize.height = 2048;
+      scene.add(directionalLight);
+
+      const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.4);
+      scene.add(hemisphereLight);
+
+      const pointLight = new THREE.PointLight(0xffffff, 0.5, 100);
+      pointLight.position.set(0, 5, 0);
+      scene.add(pointLight);
 
       const reticle = new THREE.Mesh(
         new THREE.RingGeometry(0.08, 0.12, 32).rotateX(-Math.PI / 2),
@@ -101,8 +121,108 @@ export default function ArPage() {
 
       const createModelInstance = () => {
         const clone = THREE.SkeletonUtils ? THREE.SkeletonUtils.clone(gltf.scene) : gltf.scene.clone(true);
-        clone.scale.setScalar(0.5);
+        clone.scale.setScalar(initialScaleRef.current);
+        
+        // Enhanced model materials and properties
+        clone.traverse((child) => {
+          if (child.isMesh) {
+            // Enable shadows
+            child.castShadow = true;
+            child.receiveShadow = true;
+            
+            // Enhance materials
+            if (child.material) {
+              child.material.metalness = 0.4;
+              child.material.roughness = 0.5;
+              child.material.envMapIntensity = 1.0;
+              
+              // Make materials more responsive to lighting
+              if (child.material.isMeshStandardMaterial) {
+                child.material.needsUpdate = true;
+              }
+            }
+          }
+        });
+        
         return clone;
+      };
+
+      const placeModel = () => {
+        if (!reticle.visible) return;
+        
+        // Remove existing model if any
+        if (currentModelRef.current) {
+          placed.remove(currentModelRef.current);
+        }
+        
+        const model = createModelInstance();
+        const matrix = new THREE.Matrix4();
+        matrix.copy(reticle.matrix);
+        model.applyMatrix4(matrix);
+        model.position.y += 0.0;
+        
+        // Add enhanced lighting specifically for the model
+        const modelLight = new THREE.SpotLight(0xffffff, 0.3, 10, Math.PI / 8, 0.5);
+        modelLight.position.set(0, 3, 2);
+        model.add(modelLight);
+        
+        const fillLight = new THREE.PointLight(0xffffff, 0.2, 8);
+        fillLight.position.set(2, 1, 0);
+        model.add(fillLight);
+        
+        placed.add(model);
+        currentModelRef.current = model;
+        
+        // Hide the reticle after placing the object
+        reticle.visible = false;
+      };
+
+      const onSelect = (ev) => {
+        placeModel();
+      };
+
+      // Handle pinch zoom for placed model
+      const handleTouchStart = (e) => {
+        if (e.touches.length === 2 && currentModelRef.current) {
+          // Calculate initial distance between two touches
+          const touch1 = e.touches[0];
+          const touch2 = e.touches[1];
+          initialDistanceRef.current = Math.hypot(
+            touch1.clientX - touch2.clientX,
+            touch1.clientY - touch2.clientY
+          );
+        }
+      };
+
+      const handleTouchMove = (e) => {
+        if (e.touches.length === 2 && currentModelRef.current && initialDistanceRef.current) {
+          // Calculate current distance between two touches
+          const touch1 = e.touches[0];
+          const touch2 = e.touches[1];
+          const currentDistance = Math.hypot(
+            touch1.clientX - touch2.clientX,
+            touch1.clientY - touch2.clientY
+          );
+
+          // Calculate scale factor
+          const scaleFactor = currentDistance / initialDistanceRef.current;
+          
+          // Apply scaling with constraints (min: 0.5x, max: 3x)
+          const newScale = Math.max(0.5, Math.min(3, initialScaleRef.current * scaleFactor));
+          
+          // Apply scale to the model
+          currentModelRef.current.scale.setScalar(newScale);
+        }
+      };
+
+      const handleTouchEnd = (e) => {
+        if (e.touches.length < 2) {
+          // Update initial scale for next pinch gesture
+          if (currentModelRef.current) {
+            initialScaleRef.current = currentModelRef.current.scale.x;
+          }
+          initialDistanceRef.current = null;
+        }
       };
 
       const session = await navigator.xr.requestSession("immersive-ar", {
@@ -117,41 +237,32 @@ export default function ArPage() {
       const viewerRefSpace = await session.requestReferenceSpace("viewer");
       const hitTestSource = await session.requestHitTestSource({ space: viewerRefSpace });
 
-      const onSelect = (ev) => {
-        if (!reticle.visible) return;
-        const model = createModelInstance();
-        const matrix = new THREE.Matrix4();
-        matrix.copy(reticle.matrix);
-        model.applyMatrix4(matrix);
-        model.position.y += 0.0;
-        placed.add(model);
-      };
-
       session.addEventListener("select", onSelect);
 
       const touchPlace = (e) => {
-        if (!reticle.visible) return;
-        const model = createModelInstance();
-        const matrix = new THREE.Matrix4();
-        matrix.copy(reticle.matrix);
-        model.applyMatrix4(matrix);
-        model.position.y += 0.0;
-        placed.add(model);
+        if (e.touches.length === 1) {
+          placeModel();
+        }
       };
 
+      // Add event listeners for touch interactions
       renderer.domElement.addEventListener("touchend", touchPlace);
+      renderer.domElement.addEventListener("touchstart", handleTouchStart);
+      renderer.domElement.addEventListener("touchmove", handleTouchMove);
+      renderer.domElement.addEventListener("touchend", handleTouchEnd);
 
       renderer.setAnimationLoop((timestamp, xrFrame) => {
         if (xrFrame) {
           const pose = xrFrame.getViewerPose(referenceSpace);
           const hitTestResults = xrFrame.getHitTestResults(hitTestSource);
 
-          if (hitTestResults.length > 0) {
+          // Only show reticle if no model is placed and we have hit test results
+          if (hitTestResults.length > 0 && !currentModelRef.current) {
             const hit = hitTestResults[0];
             const hitPose = hit.getPose(referenceSpace);
             reticle.visible = true;
             reticle.matrix.fromArray(hitPose.transform.matrix);
-          } else {
+          } else if (!currentModelRef.current) {
             reticle.visible = false;
           }
         }
@@ -162,10 +273,15 @@ export default function ArPage() {
         try {
           renderer.setAnimationLoop(null);
           renderer.domElement.removeEventListener("touchend", touchPlace);
+          renderer.domElement.removeEventListener("touchstart", handleTouchStart);
+          renderer.domElement.removeEventListener("touchmove", handleTouchMove);
+          renderer.domElement.removeEventListener("touchend", handleTouchEnd);
           session.removeEventListener("select", onSelect);
           if (renderer.domElement && renderer.domElement.parentNode) {
             renderer.domElement.parentNode.removeChild(renderer.domElement);
           }
+          currentModelRef.current = null;
+          initialScaleRef.current = 1.4; // Reset scale
         } catch (err) {
           console.warn("cleanup error", err);
         } finally {
@@ -183,6 +299,7 @@ export default function ArPage() {
         xrRendererRef.current.domElement.parentNode.removeChild(xrRendererRef.current.domElement);
       }
       xrRendererRef.current = null;
+      currentModelRef.current = null;
     }
   };
 
@@ -201,6 +318,7 @@ export default function ArPage() {
       if (xrRendererRef.current && xrRendererRef.current.domElement && xrRendererRef.current.domElement.parentNode) {
         xrRendererRef.current.domElement.parentNode.removeChild(xrRendererRef.current.domElement);
       }
+      currentModelRef.current = null;
     };
   }, []);
 
@@ -243,14 +361,12 @@ export default function ArPage() {
         </div>
       </div>
 
-      
-
       {/* Main content - centered with engaging hook */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full mt-12 sm:mt-16 md:mt-20 lg:mt-24 lg:mb-34 text-center px-2 sm:px-4">
         
         {/* Engaging Hook Section */}
         <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "Outfit, sans-serif" }}>
+         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
   Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
     Power
   </span> of <br className="hidden sm:block" />
@@ -260,7 +376,7 @@ export default function ArPage() {
 </h1>
 
 
-          <p className="text-xs hidden sm:block md:text-lg text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>
+          <p className="text-xs hidden sm:block md:text-lg text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "anta, sans-serif" }}>
             Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
           </p>
         </div>
@@ -273,9 +389,7 @@ export default function ArPage() {
           <div className="animate-bounce">
             <div className="w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-pink-400 transform rotate-45"></div>
           </div>
-         <div>
-          
-         </div>
+         
           <button
             onClick={startAR}
             onMouseEnter={() => setIsHovered(true)}
@@ -299,8 +413,8 @@ export default function ArPage() {
                 <>
                   <div className="text-2xl sm:text-3xl md:text-4xl">👁️</div>
                   <div className="text-left">
-                    <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold">Launch AR Experience</div>
-                    <div className="text-xs sm:text-sm font-normal opacity-90 hidden sm:block">Tap to place camera in your space</div>
+                    <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold"  style={{ fontFamily: "anta, sans-serif" }} >Launch AR Experience</div>
+                    <div className="text-xs sm:text-sm font-normal opacity-90 hidden sm:block"style={{ fontFamily: "anta, sans-serif" }}>Tap to place camera in your space</div>
                   </div>
                 </>
               )}
@@ -315,19 +429,19 @@ export default function ArPage() {
             >
               <span className="relative flex items-center space-x-2 sm:space-x-3">
                 <div className="text-lg sm:text-xl">✕</div>
-                <span className="text-sm sm:text-base md:text-lg">Exit AR Mode</span>
+                <span className="text-sm sm:text-base md:text-lg"style={{ fontFamily: "anta, sans-serif" }} >Exit AR Mode</span>
               </span>
             </button>
           )}
         </div>
 
         {/* Instructions */}
-        <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 animate-fade-in-up" style={{animationDelay: '0.9s'}}>
-          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-pink-300 mb-4 sm:mb-6 text-center">How it works:</h3>
+        <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 animate-fade-in-up"  style={{ fontFamily: "anta, sans-serif", animationDelay: '0.9s' }} >
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-pink-300 mb-4 sm:mb-6 text-center"style={{ fontFamily: "anta, sans-serif" }} >How it works:</h3>
           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 max-w-6xl mx-auto px-2">
             
             {/* Step 1 */}
-            <div className="bg-gradient-to-br from-pink-500/10 to-fuchsia-600/10 border border-pink-500/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 text-center backdrop-blur-sm hover:border-pink-400/40 transition-all duration-300 hover:scale-105 group">
+            <div className="bg-gradient-to-br from-pink-500/10 to-fuchsia-600/10 border border-pink-500/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 lg:p-6 text-center backdrop-blur-sm hover:border-pink-400/40 transition-all duration-300 hover:scale-105 group" >
               <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white font-bold text-sm sm:text-base md:text-lg">1</span>
               </div>
@@ -359,11 +473,28 @@ export default function ArPage() {
                 <span className="text-white font-bold text-sm sm:text-base md:text-lg">4</span>
               </div>
               <h4 className="text-pink-300 font-semibold mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">Place & Explore</h4>
-              <p className="text-gray-300 text-xs sm:text-sm leading-tight">Tap to place on ring, then walk around to view</p>
+              <p className="text-gray-300 text-xs sm:text-sm leading-tight">
+                Tap to place on ring, pinch to zoom in/out
+              </p>
             </div>
             
           </div>
         </div>
+
+        {/* Zoom Instructions */}
+        {xrSessionRef.current && (
+          <div className="mt-6 sm:mt-8 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
+            <div className="bg-gradient-to-br from-pink-500/10 to-fuchsia-600/10 border border-pink-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm max-w-md mx-auto">
+              <h4 className="text-pink-300 font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg flex items-center justify-center">
+                <span className="mr-2">🔍</span>
+                Zoom Controls
+              </h4>
+              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed text-center">
+                Use <span className="text-pink-300 font-semibold">pinch gesture</span> with two fingers to zoom in and out of the placed model
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* AR Unavailable Modal */}
@@ -384,7 +515,7 @@ export default function ArPage() {
               
               <p className="text-gray-300 mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
                 Your device or browser doesn't support native WebXR `immersive-ar`. 
-                Use a compatible Android device with Chrome, ensure you're on HTTPS, and try again.
+                Use a compatible Android device or IOS device with Chrome, ensure you're on HTTPS, and try again.
               </p>
               
               <div className="flex gap-2 sm:gap-3 justify-center">
@@ -456,7 +587,7 @@ export default function ArPage() {
             line-height: 2.25rem;
           }
           .xs\\:text-base {
-            font-size: 1rem;
+            fontSize: 1rem;
             line-height: 1.5rem;
           }
           .xs\\:max-w-sm {

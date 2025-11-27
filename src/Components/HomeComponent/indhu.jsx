@@ -218,10 +218,9 @@ export default function Indhu() {
         {/* Heading */}
         <div
           className="text-center mb-10"
-   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+          style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
         >
-          
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  capitalize text-white">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl capitalize text-white">
             how we <span className="text-[#FFC016]">deliver</span> excellence
           </h1>
         </div>
@@ -260,24 +259,23 @@ export default function Indhu() {
                 {c.description}
               </p>
             </div>
-            
           ))}
         </div>
+
         {/* Scroll hint at bottom */}
-<div className="mt-6 text-center flex items-center justify-center gap-2 opacity-70 animate-pulse">
-  <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-  </svg>
+        <div className="mt-6 text-center flex items-center justify-center gap-2 opacity-70 animate-pulse">
+          <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
 
-  <span className="text-gray-300 text-sm">Scroll left to know more</span>
+          <span className="text-gray-300 text-sm">Scroll left to know more</span>
 
-  <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-  </svg>
-</div>
-
+          <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+        </div>
       </section>
     );
   }
@@ -354,11 +352,24 @@ export default function Indhu() {
     applyPulseEffect();
     applyGlowEffect();
 
-    // FIXED: Proper scroll distance calculation to avoid white space
+    // FIXED: Precise scroll calculation to prevent white space
     const getScrollAmount = () => {
+      const svgRect = svg.getBoundingClientRect();
       const svgWidth = svg.scrollWidth;
       const viewportWidth = window.innerWidth;
-      return -(svgWidth - viewportWidth);
+      
+      // Calculate exact scroll distance needed
+      const scrollDistance = svgWidth - viewportWidth;
+      
+      // Return negative value for left scroll, clamped to prevent overscroll
+      return Math.max(-scrollDistance, -(svgWidth - viewportWidth + 100)); // Added 100px padding
+    };
+
+    // Calculate proper end value to prevent white space
+    const calculateEnd = () => {
+      const scrollAmount = Math.abs(getScrollAmount());
+      // Add extra buffer to ensure smooth ending
+      return `+=${scrollAmount + window.innerHeight * 0.5}`;
     };
 
     const scrollTween = gsap.to(svg, {
@@ -367,13 +378,21 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${Math.abs(getScrollAmount())}`,
+        end: calculateEnd,
         scrub: 1,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true,
-        pinSpacing: true,
+        pinSpacing: true, // Keep pinSpacing to prevent layout shift
         markers: false,
+        onLeave: () => {
+          // Ensure proper cleanup when leaving section
+          ScrollTrigger.refresh();
+        },
+        onEnterBack: () => {
+          // Ensure proper re-entry behavior
+          ScrollTrigger.refresh();
+        }
       },
     });
 
@@ -383,7 +402,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${Math.abs(getScrollAmount())}`,
+        end: calculateEnd,
         scrub: 1,
         invalidateOnRefresh: true,
       },
@@ -395,7 +414,7 @@ export default function Indhu() {
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: () => `+=${Math.abs(getScrollAmount())}`,
+        end: calculateEnd,
         scrub: 0.1,
         onUpdate: (self) => {
           const progress = self.progress;
@@ -420,15 +439,20 @@ export default function Indhu() {
       },
     });
 
-    // Refresh ScrollTrigger on window resize
+    // Optimized resize handler with debounce
+    let resizeTimeout;
     const handleResize = () => {
-      ScrollTrigger.refresh();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 250);
     };
 
     window.addEventListener('resize', handleResize);
 
     // Cleanup function
     return () => {
+      clearTimeout(resizeTimeout);
       window.removeEventListener('resize', handleResize);
       scrollTween?.kill();
       pathAnimation?.kill();
@@ -452,13 +476,13 @@ export default function Indhu() {
       
       <div
         className="absolute top-24 left-1/2 -translate-x-1/2 uppercase text-center z-10 w-full px-4"
-   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
       >
         <p className="text-xs sm:text-sm text-[#FFC016] tracking-wide uppercase mb-2">
           Our Process
         </p>
         <h1
-          className="text-4xl md:text-5xl uppercase lg:text-6xl xl:text-7xl  leading-tight text-[#ffffff] capitalize"
+          className="text-4xl md:text-5xl uppercase lg:text-6xl xl:text-7xl leading-tight text-[#ffffff] capitalize"
           style={{ textShadow: "none" }}
         >
           how we <span className="text-[#FFC016]">deliver</span> excellence
@@ -561,7 +585,9 @@ export default function Indhu() {
                   fill={c.color}
                   fontSize={fontSize * 1.7}
                   fontWeight={400}
-style={{ fontFamily: "anta, sans-serif" }}>                  {c.label}
+                  style={{ fontFamily: "anta, sans-serif" }}
+                >
+                  {c.label}
                 </text>
                 {descriptionLines.map((line, i) => (
                   <text
@@ -572,8 +598,8 @@ style={{ fontFamily: "anta, sans-serif" }}>                  {c.label}
                     fill="#FFFFFF"
                     fontSize={fontSize * 0.65}
                     fontWeight={400}
-                    style={{ fontFamily: "anta, sans-serif" }}>
-                  
+                    style={{ fontFamily: "anta, sans-serif" }}
+                  >
                     {line}
                   </text>
                 ))}
