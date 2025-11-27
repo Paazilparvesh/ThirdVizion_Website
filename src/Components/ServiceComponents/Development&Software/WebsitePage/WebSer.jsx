@@ -17,8 +17,8 @@ const BookOpenIcon = () => (
 
 const ShoppingCartIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="9" cy="21" r="1" />
-    <circle cx="20" cy="21" r="1" />
+    ircle cx="9" cy="21" r="1" />
+    ircle cx="20" cy="21" r="1" />
     <path d="M1 1h4l2.68 12.09a2 2 0 0 0 1.76 1.54L21 16" />
     <path d="M6 5h17l-1 7H8" />
   </svg>
@@ -40,7 +40,7 @@ const PlaneIcon = () => (
 
 const SmileIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
+    ircle cx="12" cy="12" r="10" />
     <path d="M8 14s1.5 2 4 2 4-2 4-2" />
     <line x1="9" y1="9" x2="9.01" y2="9" />
     <line x1="15" y1="9" x2="15.01" y2="9" />
@@ -145,13 +145,13 @@ const RadialSelector = ({ services, selectedService, setSelectedService, rotatio
           <div className="text-center px-6">
             <h3 className="text-4xl font-extrabold text-white leading-tight mb-4 font-inter-tight">
               <span className="block">
-                Web Development <span className="block text-[#00d3f3]">service</span>
+                Digital Solutions <span className="block text-[#00d3f3]">We Create</span>
               </span>
             </h3>
             {selectedService && (
               <div className="mt-6 pt-6 border-t border-[#00d3f3]/30">
                 <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest font-inter-tight">
-                  WE DO
+                  SPECIALIZED IN
                 </p>
                 <p className="text-2xl font-bold text-white mt-2 font-inter-tight">
                   {selectedService.title}
@@ -191,7 +191,7 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
   return (
     <div className="flex flex-col items-center w-full py-12 space-y-6 px-4">
       <h2 className="text-3xl font-bold text-white text-center mb-4">
-        Web Development <span className="text-[#00d3f3]">Service</span>
+        Digital Solutions <span className="text-[#00d3f3]">We Create</span>
       </h2>
       <div className="flex flex-col w-full max-w-md space-y-4">
         {services.map((service) => {
@@ -226,7 +226,7 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
       {selectedService && (
         <div className="mt-8 p-6 bg-black/40 border border-[#00d3f3]/30 rounded-xl backdrop-blur-md text-center animate-fadeIn">
           <p className="text-sm text-[#00d3f3] font-semibold uppercase tracking-widest">
-            WE DO
+            SPECIALIZED IN
           </p>
           <p className="text-2xl font-bold text-white mt-2">
             {selectedService.title}

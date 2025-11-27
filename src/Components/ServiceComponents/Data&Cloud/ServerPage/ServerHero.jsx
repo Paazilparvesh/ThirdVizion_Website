@@ -13,7 +13,7 @@ const ServerHero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xltext-4xl md:text-5xl xl:text-6xl font-medium mb-6 text-[#05df72] tracking-wide"
-         style={{ fontFamily: "Outfit, sans-serif" }}  >
+         style={{ fontFamily: "DeaconTest, sans-serif" }}  >
             Your Servers Managed with Precision
           </motion.h1>
         </TextReveal>
@@ -24,7 +24,7 @@ const ServerHero = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
             className="text-gray-300 max-w-3xl hidden sm:block mb-8 leading-relaxed FONT-MEDIUM"
-           style={{ fontFamily: "work-sans, sans-serif" }}>
+           style={{ fontFamily: "anta, sans-serif" }}>
             We provide comprehensive server management services, ensuring your
             servers are secure, reliable, and perform optimally. This includes
             proactive monitoring, regular maintenance, and swift troubleshooting

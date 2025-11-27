@@ -276,7 +276,7 @@ export default function ContactHero() {
       <div
         ref={headerRef}
         className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none"
-        style={{ fontFamily: "Outfit, sans-serif" }}
+        style={{ fontFamily: "DeaconTest, sans-serif" }}
       >
         <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]">
           Contact
@@ -286,7 +286,7 @@ export default function ContactHero() {
             className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
               backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
-              fontFamily: "Outfit, sans-serif"
+              fontFamily: "DeaconTest, sans-serif"
            
             }}
           >
@@ -297,7 +297,7 @@ export default function ContactHero() {
             style={{
               backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
            
-             fontFamily: "Outfit, sans-serif" }}
+             fontFamily: "DeaconTest, sans-serif" }}
           >
             Touch
           </div>
@@ -363,14 +363,14 @@ export default function ContactHero() {
             {/* Company Badge */}
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-6 py-3 rounded-full">
-                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}> Contact Us</span>
+                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'DeaconTest', sans-serif" }}> Contact Us</span>
               </div>
             </div>
 
             {/* Minimal Header */}
             <div className="text-center mb-12">
            
-              <h1 className="text-4xl font-light text-white mb-4"  style={{ fontFamily: "'outfit', sans-serif" }}>
+              <h1 className="text-4xl font-light text-white mb-4"  style={{ fontFamily: "'DeaconTest', sans-serif" }}>
                 Get In <span className="font-semilight">Touch</span>
               </h1>
               <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>

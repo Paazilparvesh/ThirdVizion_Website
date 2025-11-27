@@ -13,7 +13,7 @@ function Whatserver() {
                 {/* Subheading */}
                 <p 
                     className="text-xl md:text-2xl text-white/70 text-center mb-12 max-w-4xl mx-auto"
-                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                    style={{ fontFamily: 'anta, sans-serif' }}
                 >
                     Professional server administration that ensures your infrastructure runs smoothly, securely, and efficiently 24/7
                 </p>
@@ -25,7 +25,7 @@ function Whatserver() {
                     <div className="text-center mb-10">
                         <p 
                             className="text-xl md:text-2xl text-gray-200 leading-relaxed"
-                            style={{ fontFamily: 'work-sans, sans-serif' }}
+                            style={{ fontFamily: 'anta, sans-serif' }}
                         >
                             <span className="font-bold text-[#05df72]">
                                 Server Management
@@ -48,7 +48,7 @@ function Whatserver() {
                             </h3>
                             <p 
                                 className="text-white/70 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 24/7 tracking of CPU, memory, disk space, and network performance metrics
                             </p>
@@ -65,7 +65,7 @@ function Whatserver() {
                             </h3>
                             <p 
                                 className="text-white/70 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Firewall configuration, intrusion detection, and regular security patch updates
                             </p>
@@ -82,7 +82,7 @@ function Whatserver() {
                             </h3>
                             <p 
                                 className="text-white/70 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Automated daily backups with disaster recovery planning and testing
                             </p>
@@ -99,7 +99,7 @@ function Whatserver() {
                             </h3>
                             <p 
                                 className="text-white/70 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                style={{ fontFamily: 'anta, sans-serif' }}
                             >
                                 Regular optimization of server resources for maximum speed and efficiency
                             </p>
@@ -127,7 +127,7 @@ function Whatserver() {
                                     <span className="text-2xl mr-3">🌐</span>
                                     Web Servers
                                 </h3>
-                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'work-sans, sans-serif' }}>
+                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'anta, sans-serif' }}>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> Apache HTTP Server</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> Nginx</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> Microsoft IIS</li>
@@ -144,7 +144,7 @@ function Whatserver() {
                                     <span className="text-2xl mr-3">🗄️</span>
                                     Database Servers
                                 </h3>
-                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'work-sans, sans-serif' }}>
+                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'anta, sans-serif' }}>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> MySQL / MariaDB</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> PostgreSQL</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> MongoDB</li>
@@ -161,7 +161,7 @@ function Whatserver() {
                                     <span className="text-2xl mr-3">📧</span>
                                     Application Servers
                                 </h3>
-                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'work-sans, sans-serif' }}>
+                                <ul className="space-y-2 text-white/70 text-sm" style={{ fontFamily: 'anta, sans-serif' }}>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> Email Servers (Postfix)</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> FTP Servers</li>
                                     <li className="flex items-center"><span className="text-[#05df72] mr-2">•</span> DNS Servers</li>
@@ -194,7 +194,7 @@ function Whatserver() {
                                     </h4>
                                     <p 
                                         className="text-white/70 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Proactive monitoring prevents downtime before it affects your business operations
                                     </p>
@@ -212,7 +212,7 @@ function Whatserver() {
                                     </h4>
                                     <p 
                                         className="text-white/70 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Regular security updates protect against vulnerabilities and cyber threats
                                     </p>
@@ -230,7 +230,7 @@ function Whatserver() {
                                     </h4>
                                     <p 
                                         className="text-white/70 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Prevent expensive emergency fixes with regular maintenance and monitoring
                                     </p>
@@ -248,7 +248,7 @@ function Whatserver() {
                                     </h4>
                                     <p 
                                         className="text-white/70 text-sm"
-                                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                                        style={{ fontFamily: 'anta, sans-serif' }}
                                     >
                                         Easily scale server resources as your business grows without disruption
                                     </p>

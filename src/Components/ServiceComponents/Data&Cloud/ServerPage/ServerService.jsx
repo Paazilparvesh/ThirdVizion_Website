@@ -14,7 +14,7 @@ const ServerService = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-medium mb-2 text-[#05df72]" style={{ fontFamily: "Outfit, sans-serif" }}>
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-medium mb-2 text-[#05df72]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
             Our Services
           </motion.h2>
         </TextReveal>
@@ -27,7 +27,7 @@ const ServerService = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-          style={{ fontFamily: "work-sans, sans-serif" }} >
+          style={{ fontFamily: "anta, sans-serif" }} >
             We provide end-to-end solutions to ensure your servers and cloud
             infrastructure are optimized, secure, and tailored to your business
             needs.
@@ -82,7 +82,7 @@ const ServerService = () => {
                 initial={{ x: -10, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: idx * 0.2 + 0.2, duration: 0.5 }}
-              style={{ fontFamily: "Outfit, sans-serif" }} >
+              style={{ fontFamily: "DeaconTest, sans-serif" }} >
                 {service.title}
               </motion.h3>
 
@@ -92,7 +92,7 @@ const ServerService = () => {
                 initial={{ x: 10, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ delay: idx * 0.2 + 0.3, duration: 0.5 }}
-             style={{ fontFamily: "work-sans, sans-serif" }} >
+             style={{ fontFamily: "anta, sans-serif" }} >
                 {service.desc}
               </motion.p>
             </motion.div>
