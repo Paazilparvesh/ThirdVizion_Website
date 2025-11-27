@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// ---------- IMPORT ALL 18 IMAGES ----------
 import img1 from "/src/assets/AboutImages/Artboard 1 copy.jpg";
 import img2 from "/src/assets/AboutImages/dhilip.jpg";
 import img3 from "/src/assets/AboutImages/JANA.jpg";
@@ -24,7 +22,7 @@ import img17 from "/src/assets/AboutImages/yeshwant.jpg";
 import img18 from "/src/assets/AboutImages/THARUN copy.jpg";
 
 
-// ---------- TEAM DATA (18 MEMBERS) ----------
+
 const teamData = [
   { img: img8, name: "RAJESH", role: "GAME DEVELOPER" },
   { img: img4, name: "JERO", role: "SOFTWARE DEVELOPER" },
@@ -33,7 +31,7 @@ const teamData = [
   { img: img15, name: "THARUN", role: "3D GENERALIST" },
   { img: img18, name: "SANTHOSH", role: "UI & UX DESIGNER" },
 
-  { img: img6, name: "PAAZIL", role: "SOFTWARE DEVELOPER" },
+  { img: img6, name: "PAAZIL PARVESH", role: "SOFTWARE DEVELOPER" },
   { img: img17, name: "YESWANTH", role: "SOFTWARE DEVELOPER" },
   { img: img10, name: "ARULWIN REX", role: "SALES & AUTOMATION" },
   { img: img13, name: "SATHIYA", role: "SOFTWARE DEVELOPER" },

@@ -158,7 +158,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex justify-center items-center gap-4 xl:gap-8 text-white text-sm xl:text-base">
+          <nav className="hidden lg:flex justify-center  items-center gap-4 xl:gap-16 text-white text-sm xl:text-[15px]" style={{ fontFamily: "anta, sans-serif" }}>
             <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
               Home
             </Link>
@@ -172,7 +172,7 @@ const Header = () => {
 
             {/* Services Dropdown */}
             <div
-              className="relative group"
+              className="relative  group" 
               onMouseEnter={() => !hoverDisabled && setActiveDropdown("Services")}
               onMouseLeave={() => !hoverDisabled && setActiveDropdown(null)}
             >
