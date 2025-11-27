@@ -3,10 +3,10 @@ import { useEffect } from "react";
 
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 import IAMHero from "/src/Components/ServiceComponents/Data&Cloud/IAMPage/IAMHero.jsx";
-import IAMDashboard from "/src/Components/ServiceComponents/Data&Cloud/IAMPage/IAMDashboard.jsx";
+
 import WhyChoose from "/src/Components/ServiceComponents/Data&Cloud/IAMPage/IAMChooseUs.jsx";
 import IAMBenefits from "/src/Components/ServiceComponents/Data&Cloud/IAMPage/IAMBenefit.jsx";
-import Whatiam from "../../../Components/ServiceComponents/Data&Cloud/IAMPage/whatiam";
+import Whatiam from "/src/Components/ServiceComponents/Data&Cloud/IAMPage/whatiam.jsx";
 
 
 const IAMPage = () => {
