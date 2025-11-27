@@ -16,13 +16,13 @@ const testimonials = [
   },
   {
     name: "Sivaganga",
-    role: "Madras Kitchen • Software Developer",
+    role: "Madras Kitchen • Manager",
     review:
       "ThirdVizion created a visually stunning and highly functional website for us. Our online orders increased just because of their clean UI and fast UX.",
   },
   {
     name: "Priya Nandakumar",
-    role: "TourSup • Human Resource",
+    role: "TourSup • Manager",
     review:
       "From planning to delivery, ThirdVizion maintained complete clarity and professionalism. Their work improved our customer engagement drastically.",
   },
@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
   return (
     <section className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase mb-4 text-white"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
 >
           What People Say <span className="text-[#FFC016]"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
 > About Us</span>

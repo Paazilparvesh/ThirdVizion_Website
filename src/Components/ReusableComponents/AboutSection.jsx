@@ -21,7 +21,7 @@ export default function About() {
     }
     requestAnimationFrame(raf);
 
-    // Capsule subtle breathing animation
+    // Capsule breathing animation
     gsap.to(capsuleRef.current, {
       scale: 1.05,
       rotate: 3,
@@ -31,7 +31,7 @@ export default function About() {
       yoyo: true,
     });
 
-    // Logo fade-in and scale animation
+    // Logo fade-in
     gsap.fromTo(
       logoRef.current,
       { opacity: 0, scale: 0.8, y: 30 },
@@ -49,7 +49,7 @@ export default function About() {
       }
     );
 
-    // Animate highlights with counting numbers
+    // Counter + fade
     itemsRef.current.forEach((el) => {
       const numEl = el.querySelector(".highlight-num");
       const value = numEl.dataset.value;
@@ -106,6 +106,7 @@ export default function About() {
       className="relative bg-gradient-to-b from-black via-neutral-900 to-black text-white min-h-screen w-full overflow-hidden py-24"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+        
         {/* LEFT */}
         <div className="px-6 flex flex-col gap-6">
           <motion.h2
@@ -113,8 +114,12 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ amount: 0.3 }}
-            className="text-4xl md:text-5xl xl:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-orange-400 md:text-center lg:text-left font-inter-tight"
-      style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}    >
+            className="text-4xl md:text-5xl xl:text-[54px] font-extrabold 
+            bg-clip-text text-transparent 
+            bg-gradient-to-r from-[#F7E08C] via-[#F3C74F] to-[#D9A441] 
+            md:text-center lg:text-left font-inter-tight"
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+          >
             Transforming Businesses with Innovative Digital Technology.
           </motion.h2>
 
@@ -124,30 +129,42 @@ export default function About() {
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ amount: 0.3 }}
             className="text-gray-300 md:text-center lg:text-left text-md xl:text-lg leading-snug"
-       style={{ fontFamily: "anta, sans-serif" }}   >
+            style={{ fontFamily: "anta, sans-serif" }}
+          >
             We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.
           </motion.p>
-
-          {/* Buttons removed from here */}
         </div>
 
-        {/* CENTER CAPSULE WITH LOGO */}
+        {/* CENTER CAPSULE */}
         <div className="flex justify-center items-center">
           <div
             ref={capsuleRef}
-            className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[45vw] lg:h-[50vh] xl:w-full xl:h-[70vh] 2xl:h-[55vh] rounded-full bg-gradient-to-tr from-indigo-500/20 via-pink-500/20 to-orange-500/20 backdrop-blur-md border border-white/10 shadow-[0_0_50px_rgba(255,255,255,0.1)] flex flex-col items-center justify-center"
+            className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[45vw] lg:h-[50vh] 
+            xl:w-full xl:h-[70vh] 2xl:h-[55vh] rounded-full 
+            bg-gradient-to-tr 
+from-[#F7E08C]/15 
+to-[#D9A441]/15
+            backdrop-blur-md 
+            border border-[#F3C74F]/20
+            shadow-[0_0_65px_rgba(243,199,79,0.30)]
+            flex flex-col items-center justify-center"
           >
             <img
               ref={logoRef}
               src={Logo}
-              className="w-48 h-48 md:w-56 md:h-56 lg:w-54 lg:h-54 xl:w-35 xl:h-35 z-10 drop-shadow-lg object-contain"
+              className="w-48 h-48 md:w-56 md:h-56 lg:w-54 lg:h-54 xl:w-35 xl:h-35 
+              z-10 drop-shadow-[0_0_25px_rgba(243,199,79,0.45)] object-contain"
             />
-            <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500/10 to-orange-500/10 animate-pulse blur-3xl" />
+
+            {/* Golden aura */}
+            <span className="absolute inset-0 rounded-full 
+            bg-gradient-to-tr from-[#F7E08C]/15 to-[#D9A441]/15 
+            animate-pulse blur-3xl" />
           </div>
         </div>
 
         {/* RIGHT HIGHLIGHTS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12 px-6"      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12 px-6">
           {highlights.map((item, i) => (
             <div
               key={i}
@@ -155,14 +172,25 @@ export default function About() {
               className="flex flex-col items-center gap-2"
             >
               <span
-                className="highlight-num text-4xl md:text-5xl font-bold text-pink-400"
-                data-value={item.num} style={{ fontFamily: "anta, sans-serif" }}>
+                className="highlight-num text-4xl md:text-5xl font-extrabold 
+                bg-clip-text text-transparent 
+                bg-gradient-to-r from-[#F7E08C] via-[#F3C74F] to-[#D9A441]"
+                data-value={item.num}
+                style={{ fontFamily: "anta, sans-serif" }}
+              >
                 0
               </span>
-              <p className="text-gray-300 text-lg    text-center"  style={{ fontFamily: "anta, sans-serif" }}    >{item.text}</p>
+
+              <p
+                className="text-gray-300 text-lg text-center"
+                style={{ fontFamily: "anta, sans-serif" }}
+              >
+                {item.text}
+              </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 
 const WebHero = () => {
   return (
-    <section className="relative isolate pt-50 md:pt-0 md:min-h-screen flex mb-90   items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
+    <section className="relative isolate pt-50 md:pt-0 md:min-h-screen flex mb-50   items-center justify-center overflow-hidden text-white px-4 sm:px-6 md:px-8">
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         {/* Main Heading */}
         <h1

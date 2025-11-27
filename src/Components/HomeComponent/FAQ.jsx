@@ -116,10 +116,10 @@ const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
   <h2
   id="faq-heading"
-  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-6xl uppercase font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
 >
-  Frequently Asked Questions
+  Frequently  Asked Questions
 </h2>
 
     <p className="mt-4 text-lg text-yellow-500 max-w-2xl mx-auto  tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>

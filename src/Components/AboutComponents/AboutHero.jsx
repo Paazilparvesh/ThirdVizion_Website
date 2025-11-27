@@ -257,6 +257,7 @@ export default function AboutHero() {
     <div className="relative w-full min-h-screen bg-black overflow-hidden">
 
       {/* Scroll Down Button */}
+      {/* Scroll Down Button */}
       {showScrollButton && (
         <div
           ref={scrollButtonRef}
@@ -264,7 +265,9 @@ export default function AboutHero() {
           onClick={handleScrollDown}
         >
           <div className="flex flex-col items-center justify-center">
-           
+            <div className="text-white text-sm font-inter-tight mb-2 uppercase tracking-wider">
+              Scroll Down
+            </div>
             <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
             </div>
