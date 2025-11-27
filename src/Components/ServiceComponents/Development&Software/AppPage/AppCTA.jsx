@@ -1,8 +1,44 @@
+import React, { useEffect, useRef } from "react";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; // <-- Added
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { Link } from "react-router-dom";
+
+const AnimatedCounter = ({ value, suffix = "" }) => {
+  const ref = useRef(null);
+  const motionValue = useMotionValue(0);
+  const springValue = useSpring(motionValue, {
+    damping: 50,
+    stiffness: 100,
+  });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView) {
+      motionValue.set(value);
+    }
+  }, [motionValue, isInView, value]);
+
+  useEffect(() => {
+    springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = Math.floor(latest) + suffix;
+      }
+    });
+  }, [springValue, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+};
 
 const AppCTA = () => {
+  const statsRef = useRef(null);
+  const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
+
+  const stats = [
+    { value: 150, label: "Apps Delivered", suffix: "+" },
+    { value: 95, label: "Client Satisfaction", suffix: "%" },
+    { value: 24, label: "Support Available", suffix: "/7" },
+  ];
+
   return (
     <section className="w-full flex items-center justify-center px-4 sm:px-6 md:px-10 lg:px-16 py-24 font-inter-tight relative overflow-hidden">
       
@@ -22,70 +58,73 @@ const AppCTA = () => {
         >
           <TextReveal>
             <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight">
-              Ready to Build Your Next Big App?
+              Choose ThirdVizion for Your Best App
             </motion.h2>
           </TextReveal>
 
           <TextReveal delay={0.2}>
             <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              Let's collaborate and turn your vision into reality. Our team specializes in crafting premium, scalable, and user-centric applications that stand out in the market.
+              Partner with <span className="text-[#ff8904] font-semibold">ThirdVizion</span> to transform your ideas into exceptional mobile and web applications. We deliver premium, scalable solutions that drive success.
             </motion.p>
           </TextReveal>
+        </motion.div>
+
+        {/* Animated Statistics */}
+        <motion.div
+          ref={statsRef}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="relative group"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isStatsInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+            >
+              <div className="flex flex-col items-center gap-3 p-6 rounded-xl bg-gradient-to-br from-[#ff8904]/10 to-transparent border border-[#ff8904]/30 backdrop-blur-sm hover:border-[#ff8904]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,137,4,0.3)] group-hover:scale-105">
+                <div className="text-5xl md:text-6xl font-bold text-[#ff8904]">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                </div>
+                <span className="text-sm md:text-base font-medium text-gray-300">
+                  {stat.label}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* ---- Using Link for Navigation ---- */}
           <Link to="/contact">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border border-[#ff8904]/40 px-10 py-5 font-medium tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 bg-black text-[#ff8904] shadow-[0_0_15px_rgba(255,137,4,0.3)] hover:shadow-[0_0_30px_rgba(255,137,4,0.5)] hover:border-[#ff8904]/60"
+              className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#ff8904] bg-[#ff8904] px-10 py-5 font-semibold tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 text-black shadow-[0_0_20px_rgba(255,137,4,0.4)] hover:shadow-[0_0_35px_rgba(255,137,4,0.6)]"
               style={{
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)'
               }}
             >
-              Get in Touch
+              Start Your Project
               <svg 
                 className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-500" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </motion.button>
           </Link>
-        </motion.div>
-
-        {/* Additional info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8 text-gray-400 text-sm"
-        >
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
-            <span>No upfront costs</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
-            <span>Free consultation</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>
-            <span>24/7 support</span>
-          </div>
         </motion.div>
 
       </div>
