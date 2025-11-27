@@ -11,10 +11,10 @@ import Client10 from "/src/assets/partners/c4.png";
 import Client11 from "/src/assets/home/Clients/kt-10 (1).png";
 import Client12 from "/src/assets/partners/c6.png";
 import Client13 from "/src/assets/partners/c7.png";
-import Client14 from "/src/assets/partners/cc.jpeg";
-import Client15 from "/src/assets/partners/cc2.jpeg";
-import Client16 from "/src/assets/partners/cc3.jpeg";
-import Client17 from "/src/assets/partners/cc4.png";
+import Client14 from "/src/assets/partners/a.png";
+import Client15 from "/src/assets/partners/aa.png";
+import Client16 from "/src/assets/partners/aaa.png";
+import Client17 from "/src/assets/partners/aaaa.png";
 
 // ---------------------------
 // NEW: SEPARATE ARRAYS

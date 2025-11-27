@@ -5,25 +5,7 @@ import { Link } from "react-router-dom";
 export default function VrLanding() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent text-white">
-      {/* Background Grid Overlay */}
-     
-
-      {/* Neon Glow Blobs */}
-     
-      {/* <motion.h1
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-center"
-        style={{ fontFamily: "DeaconTest, sans-serif" }}
-      >
-        Transform Your World with{" "}
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-500 font-medium mt-2 gap-5 ">
-          VIRTUAL REALITY
-        </span>
-      </motion.h1> */}
-
+ 
       <motion.h1
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
@@ -39,7 +21,7 @@ export default function VrLanding() {
 </motion.h1>
 
 
-      {/* Subtext */}
+      
       <motion.p
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
