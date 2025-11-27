@@ -40,151 +40,177 @@ function Whatar() {
             </div>
 
             <div className="max-w-6xl mx-auto relative z-10">
-                {/* Main Heading with DeaconTest Font */}
-                <h1 
-                    className="text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-pink-300 to-fuchsia-300 bg-clip-text text-transparent"
-                    style={{ fontFamily: 'DeaconTest, sans-serif' }}
-                >
-                    Augmented Reality Explained
-                </h1>
-
-                {/* Main Content Card */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-xl shadow-2xl border border-pink-500/20 p-8 md:p-12 hover:border-pink-500/40 transition-all duration-300">
-                    {/* Description */}
-                    <p 
-                        className="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 text-center"
-                        style={{ fontFamily: 'work-sans, sans-serif' }}
+                {/* Main Heading with Enhanced Styling */}
+                <div className="text-center mb-12">
+                    <h1 
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
+                        style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
                     >
-                        <span className="font-bold bg-gradient-to-r from-pink-400 to-fuchsia-400 bg-clip-text text-transparent">
-                            Augmented Reality (AR)
-                        </span>{" "}
-                        blends digital content with the real world, creating immersive experiences through your device's camera.
-                    </p>
+                        Augmented Reality Explained
+                    </h1>
+                    
+                    {/* Animated decoration */}
+                    <div className="flex justify-center">
+                        <div className="w-48 h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent rounded-full animate-pulse"></div>
+                    </div>
+                </div>
 
-                    {/* AR Features Grid - With Numbers */}
-                    <div className="grid md:grid-cols-3 gap-6 mt-10">
+                {/* Enhanced Main Content Card */}
+                <div className="bg-gray-900/40 backdrop-blur-lg rounded-2xl shadow-2xl border border-pink-500/30 p-6 md:p-8 lg:p-12 hover:border-pink-400/40 hover:shadow-pink-500/20 transition-all duration-500">
+                    {/* Enhanced Description */}
+                    <div className="text-center mb-10">
+                        <p 
+                            className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto"
+                            style={{ fontFamily: "anta, sans-serif" }}
+                        >
+                            <span className="font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                                Augmented Reality (AR)
+                            </span>{" "}
+                            blends digital content with the real world, creating immersive experiences through your device's camera and sensors.
+                        </p>
+                    </div>
+
+                    {/* Enhanced AR Features Grid */}
+                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
                         {/* Feature 1 */}
-                        <div className="bg-gradient-to-br from-pink-500/10 to-fuchsia-500/10 border border-pink-500/20 p-6 rounded-lg hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <span className="text-white font-bold text-base sm:text-lg">1</span>
+                        <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 border border-pink-500/30 p-6 rounded-xl hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm group">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <span className="text-white font-bold text-lg">1</span>
+                                </div>
+                                <div className="text-3xl transform group-hover:scale-110 transition-transform duration-300">📱</div>
                             </div>
-                            <div className="text-4xl mb-4">📱</div>
                             <h3 
-                                className="text-xl font-bold mb-3 text-pink-300"
-                                style={{ fontFamily: 'DeaconTest, sans-serif' }}
+                                className="text-xl font-bold mb-3 text-pink-300 border-b border-pink-700/50 pb-2"
+                                style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
                             >
                                 Real-Time Interaction
                             </h3>
                             <p 
-                                className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                className="text-gray-300 text-sm leading-relaxed"
+                                style={{ fontFamily: "anta, sans-serif" }}
                             >
-                                Interact with 3D objects and virtual elements in your real environment instantly
+                                Interact with 3D objects and virtual elements in your real environment instantly through camera and motion sensors.
                             </p>
                         </div>
 
                         {/* Feature 2 */}
-                        <div className="bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20 p-6 rounded-lg hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <span className="text-white font-bold text-base sm:text-lg">2</span>
+                        <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 border border-pink-500/30 p-6 rounded-xl hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm group">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <span className="text-white font-bold text-lg">2</span>
+                                </div>
+                                <div className="text-3xl transform group-hover:scale-110 transition-transform duration-300">🎯</div>
                             </div>
-                            <div className="text-4xl mb-4">🎯</div>
                             <h3 
-                                className="text-xl font-bold mb-3 text-pink-300"
-                                style={{ fontFamily: 'DeaconTest, sans-serif' }}
+                                className="text-xl font-bold mb-3 text-pink-300 border-b border-pink-700/50 pb-2"
+                                style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
                             >
                                 Product Visualization
                             </h3>
                             <p 
-                                className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                className="text-gray-300 text-sm leading-relaxed"
+                                style={{ fontFamily: "anta, sans-serif" }}
                             >
-                                See products in your space before buying - furniture, decor, and more
+                                See products in your space before buying - furniture, decor, appliances with accurate scale and placement.
                             </p>
                         </div>
 
                         {/* Feature 3 */}
-                        <div className="bg-gradient-to-br from-fuchsia-500/10 to-cyan-500/10 border border-pink-500/20 p-6 rounded-lg hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <span className="text-white font-bold text-base sm:text-lg">3</span>
+                        <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 border border-pink-500/30 p-6 rounded-xl hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm group">
+                            <div className="flex items-center justify-between mb-4">
+                                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <span className="text-white font-bold text-lg">3</span>
+                                </div>
+                                <div className="text-3xl transform group-hover:scale-110 transition-transform duration-300">🌐</div>
                             </div>
-                            <div className="text-4xl mb-4">🌐</div>
                             <h3 
-                                className="text-xl font-bold mb-3 text-pink-300"
-                                style={{ fontFamily: 'DeaconTest, sans-serif' }}
+                                className="text-xl font-bold mb-3 text-pink-300 border-b border-pink-700/50 pb-2"
+                                style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
                             >
                                 Web-Based AR
                             </h3>
                             <p 
-                                className="text-gray-300 text-sm"
-                                style={{ fontFamily: 'work-sans, sans-serif' }}
+                                className="text-gray-300 text-sm leading-relaxed"
+                                style={{ fontFamily: "anta, sans-serif" }}
                             >
-                                Access AR experiences directly through browsers - no app downloads needed
+                                Access AR experiences directly through browsers using WebXR - no app downloads needed, instant access.
                             </p>
                         </div>
                     </div>
 
-                    {/* Use Cases Section - With Numbers */}
+                    {/* Enhanced Use Cases Section */}
                     <div className="mt-12">
-                        <h2 
-                            className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-pink-300 to-fuchsia-300 bg-clip-text text-transparent"
-                            style={{ fontFamily: 'DeaconTest, sans-serif' }}
-                        >
-                            AR Applications
-                        </h2>
+                        <div className="text-center mb-8">
+                            <h2 
+                                className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
+                                style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
+                            >
+                                AR Applications
+                            </h2>
+                            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent rounded-full animate-pulse mx-auto"></div>
+                        </div>
                         
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                             {/* Application 1 */}
-                            <div className="flex items-center space-x-3 bg-gradient-to-r from-pink-500/5 to-fuchsia-500/5 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 transition-all backdrop-blur-sm">
-                                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span className="text-white font-bold text-sm">1</span>
+                            <div className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group">
+                                <div className="flex items-center space-x-3">
+                                    <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <span className="text-white font-bold text-sm">1</span>
+                                    </div>
+                                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300"></span>
                                 </div>
-                                <span className="text-2xl">🛋️</span>
                                 <span 
-                                    className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    className="text-gray-200 text-sm font-medium flex-1"
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
-                                    Interior Design & Furniture Placement
+                                    Interior Design & Furniture
                                 </span>
                             </div>
 
                             {/* Application 2 */}
-                            <div className="flex items-center space-x-3 bg-gradient-to-r from-pink-500/5 to-fuchsia-500/5 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 transition-all backdrop-blur-sm">
-                                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span className="text-white font-bold text-sm">2</span>
+                            <div className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group">
+                                <div className="flex items-center space-x-3">
+                                    <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <span className="text-white font-bold text-sm">2</span>
+                                    </div>
+                                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300"></span>
                                 </div>
-                                <span className="text-2xl">👓</span>
                                 <span 
-                                    className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    className="text-gray-200 text-sm font-medium flex-1"
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
-                                    Virtual Try-On (Glasses, Clothes)
+                                    Virtual Try-On
                                 </span>
                             </div>
 
                             {/* Application 3 */}
-                            <div className="flex items-center space-x-3 bg-gradient-to-r from-pink-500/5 to-fuchsia-500/5 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 transition-all backdrop-blur-sm">
-                                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span className="text-white font-bold text-sm">3</span>
+                            <div className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group">
+                                <div className="flex items-center space-x-3">
+                                    <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <span className="text-white font-bold text-sm">3</span>
+                                    </div>
+                                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300"></span>
                                 </div>
-                                <span className="text-2xl">🎮</span>
                                 <span 
-                                    className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    className="text-gray-200 text-sm font-medium flex-1"
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
                                     Gaming & Entertainment
                                 </span>
                             </div>
 
                             {/* Application 4 */}
-                            <div className="flex items-center space-x-3 bg-gradient-to-r from-pink-500/5 to-fuchsia-500/5 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 transition-all backdrop-blur-sm">
-                                <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span className="text-white font-bold text-sm">4</span>
+                            <div className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group">
+                                <div className="flex items-center space-x-3">
+                                    <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                        <span className="text-white font-bold text-sm">4</span>
+                                    </div>
+                                    <span className="text-2xl group-hover:scale-110 transition-transform duration-300"></span>
                                 </div>
-                                <span className="text-2xl">📚</span>
                                 <span 
-                                    className="text-gray-200 text-sm"
-                                    style={{ fontFamily: 'work-sans, sans-serif' }}
+                                    className="text-gray-200 text-sm font-medium flex-1"
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
                                     Education & Training
                                 </span>
@@ -192,14 +218,27 @@ function Whatar() {
                         </div>
                     </div>
 
-                    {/* CTA Button - Commented out */}
-                    <div className="text-center mt-10">
-                        {/* Button removed */}
+                    {/* Additional Info Section */}
+                    <div className="mt-12 text-center">
+                        <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 border border-pink-500/30 rounded-xl p-6 backdrop-blur-sm">
+                            <h3 
+                                className="text-2xl font-bold mb-4 text-pink-300"
+                                style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
+                            >
+                                Experience the Future Today
+                            </h3>
+                            <p 
+                                className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto"
+                                style={{ fontFamily: "anta, sans-serif" }}
+                            >
+                                AR technology continues to evolve, offering new ways to interact with digital content in your physical space through smartphones, tablets, and wearable devices.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Add custom styles */}
+            {/* Custom Styles */}
             <style jsx>{`
                 @keyframes float {
                     0%, 100% { transform: translateY(0px) scale(1); }
@@ -226,6 +265,21 @@ function Whatar() {
                 
                 .animate-pulse-slow {
                     animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .animate-fade-in-up {
+                    animation: fadeInUp 0.8s ease-out forwards;
                 }
             `}</style>
         </div>
