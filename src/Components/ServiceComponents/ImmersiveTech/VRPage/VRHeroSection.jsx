@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -7,8 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
 
   const frameCount = 192;
   const startFrame = 86400;
@@ -69,69 +67,25 @@ function VRHeroSection() {
         }
       };
 
-      // Preload single image with promise
-      const preloadImage = (index) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = currentFrame(index);
-          
-          img.onload = () => {
-            images[index] = img;
-            resolve(img);
-          };
-          
-          img.onerror = () => {
-            console.error(`Failed to load frame ${index}`);
-            reject(new Error(`Failed to load frame ${index}`));
-          };
-        });
+      // Load first frame immediately
+      const firstImage = new Image();
+      firstImage.src = currentFrame(0);
+      firstImage.onload = () => {
+        images[0] = firstImage;
+        render();
       };
 
-      // Load ALL images with progress tracking
-      const loadAllImages = async () => {
-        try {
-          // Load first frame immediately and show it
-          await preloadImage(0);
-          render();
-          setLoadingProgress(1);
+      // Preload remaining images in background (silent loading)
+      for (let i = 1; i < frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(i);
+        img.onload = () => {
+          images[i] = img;
+        };
+      }
 
-          // Load remaining images in optimized batches
-          const batchSize = 10; // Load 10 images at a time
-          let loadedCount = 1;
-
-          for (let i = 1; i < frameCount; i += batchSize) {
-            const batchPromises = [];
-            
-            // Create batch of promises
-            for (let j = i; j < Math.min(i + batchSize, frameCount); j++) {
-              batchPromises.push(preloadImage(j));
-            }
-
-            // Wait for current batch to complete
-            await Promise.all(batchPromises);
-            
-            // Update progress
-            loadedCount += batchPromises.length;
-            setLoadingProgress(loadedCount);
-            
-            console.log(`Loaded ${loadedCount}/${frameCount} images`);
-          }
-
-          // All images loaded successfully
-          console.log("✅ All images loaded successfully!");
-          setAllImagesLoaded(true);
-          
-        } catch (error) {
-          console.error("Error loading images:", error);
-          setAllImagesLoaded(true); // Show content anyway
-        }
-      };
-
-      // Start loading all images
-      loadAllImages();
-
-      // Setup ScrollTrigger
-      const scrollTriggerInstance = ScrollTrigger.create({
+      // Setup ScrollTrigger immediately
+      ScrollTrigger.create({
         trigger: mainRef.current,
         start: "top 510",
         end: `+=${frameCount * 3}`,
@@ -141,12 +95,8 @@ function VRHeroSection() {
             frameCount - 1,
             Math.floor(self.progress * (frameCount - 1))
           );
-          
-          // Only update if frame exists and is loaded
-          if (images[targetFrame]) {
-            videoFrames.frame = targetFrame;
-            render();
-          }
+          videoFrames.frame = targetFrame;
+          render();
         },
       });
 
@@ -161,7 +111,6 @@ function VRHeroSection() {
 
       return () => {
         window.removeEventListener("resize", handleResize);
-        scrollTriggerInstance.kill();
       };
     }, mainRef);
 
@@ -171,31 +120,9 @@ function VRHeroSection() {
   return (
     <div ref={mainRef}>
       <section className="relative w-full h-[100svh] flex overflow-hidden bg-black">
-        <canvas
-          ref={canvasRef}
-          className="z-10"
-        ></canvas>
+        <canvas ref={canvasRef} className="z-10"></canvas>
 
-        {/* Loading Progress Indicator */}
-        {!allImagesLoaded && (
-          <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/80">
-            <div className="text-center text-white">
-              <div className="mb-4">
-                <div className="w-64 h-2 bg-gray-700 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-white transition-all duration-300"
-                    style={{ width: `${(loadingProgress / frameCount) * 100}%` }}
-                  ></div>
-                </div>
-              </div>
-              <p className="text-sm">
-                Loading {loadingProgress}/{frameCount} frames
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Main Content */}
+        {/* Main Content - Always visible */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="text-center text-white">
             <h2
@@ -207,9 +134,14 @@ function VRHeroSection() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Always visible */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-          {/* Commented out as per your original code */}
+          {/* <div className="text-center text-white/70">
+            <p className="text-sm mb-2">Scroll to explore</p>
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
+              <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce"></div>
+            </div>
+          </div> */}
         </div>
       </section>
     </div>
