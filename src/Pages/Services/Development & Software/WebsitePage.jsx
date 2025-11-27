@@ -8,6 +8,7 @@ import WebAbt from "/src/Components/ServiceComponents/Development&Software/Websi
 import WebSer from "/src/Components/ServiceComponents/Development&Software/WebsitePage/WebSer.jsx";
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
+
 const WebsitePage = () => {
   return (
     <div className="bg-black">
@@ -17,7 +18,7 @@ const WebsitePage = () => {
       {/* Hide on mobile, show on tablet & laptop */}
       
         <WebDesignScroll />
-      
+    
       <WebAbt />
             <div className="hidden sm:block">
 
