@@ -7,7 +7,7 @@ function Whatserver() {
                     className="text-5xl md:text-6xl font-bold text-center mb-6 text-[#05df72] drop-shadow-[0_0_15px_rgba(5,223,114,0.3)]"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
-                    What is Server Management?
+                   Server Management Explained
                 </h1>
 
                 {/* Subheading */}

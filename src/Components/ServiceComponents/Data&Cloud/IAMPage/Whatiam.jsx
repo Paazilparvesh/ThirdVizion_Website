@@ -7,7 +7,7 @@ function Whatiam() {
                     className="text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
-                    What is IAM?
+                     Understanding Identity Management
                 </h1>
 
                 {/* Subheading */}

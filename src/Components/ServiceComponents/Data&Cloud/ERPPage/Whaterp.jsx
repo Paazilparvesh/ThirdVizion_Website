@@ -7,7 +7,7 @@ function Whaterp() {
                     className="text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
-                    What is ERP?
+                   ERP Explained
                 </h1>
 
                 {/* Subheading */}
