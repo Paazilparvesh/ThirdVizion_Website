@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import ScrollToTop from "/src/Layout/ScrollToTop";
 import Header from "/src/Layout/Header";
 import Footer from "/src/Layout/Footer";
 
-// pages (same as before)
+// pages
 import HomePage from "/src/Pages/HomePage.jsx";
 import AboutPage from "/src/Pages/AboutPage.jsx";
 import ContactPage from "/src/Pages/ContactPage.jsx";
@@ -23,39 +23,50 @@ import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
 
+// VR Page Wrapper with Auto Refresh
+function VrPageWrapper() {
+  const [refreshKey, setRefreshKey] = useState(0);
 
+  useEffect(() => {
+    // Set up interval to refresh every 3 seconds (3000 milliseconds)
+    const intervalId = setInterval(() => {
+      setRefreshKey((prevKey) => prevKey + 1);
+    }, 3000);
+
+    // Cleanup interval when component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return <VrPage key={refreshKey} />;
+}
 
 function AnimatedRoutes() {
-  
-
-
+  const location = useLocation();
 
   return (
-   
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<InnerBlog />} />
-        <Route path="/virtual_reality" element={<VrPage />} />
-        <Route path="/augmented_reality" element={<ArPage />} />
-        <Route path="/3d_services" element={<ThreeDServices />} />
-        <Route
-          path="/client_relationship_management"
-          element={<CRM />}
-        />
-        <Route
-          path="/identity_and_access_management"
-          element={<IAM />}
-        />
-        <Route path="/enterprise_resource_planning" element={<ERP />} />
-        <Route path="/server_management" element={<Server />} />
-        <Route path="/web_development" element={<WebsitePage />} />
-        <Route path="/app_development" element={<AppPage />} />
-        <Route path="/game_development" element={<GamePage />} />
-      </Routes>
-   
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<InnerBlog />} />
+      <Route path="/virtual_reality" element={<VrPageWrapper />} />
+      <Route path="/augmented_reality" element={<ArPage />} />
+      <Route path="/3d_services" element={<ThreeDServices />} />
+      <Route
+        path="/client_relationship_management"
+        element={<CRM />}
+      />
+      <Route
+        path="/identity_and_access_management"
+        element={<IAM />}
+      />
+      <Route path="/enterprise_resource_planning" element={<ERP />} />
+      <Route path="/server_management" element={<Server />} />
+      <Route path="/web_development" element={<WebsitePage />} />
+      <Route path="/app_development" element={<AppPage />} />
+      <Route path="/game_development" element={<GamePage />} />
+    </Routes>
   );
 }
 
