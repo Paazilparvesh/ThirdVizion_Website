@@ -1,0 +1,11 @@
+Model Information:
+* title:	Product
+* source:	https://sketchfab.com/3d-models/product-d03c8256e84a43158e81b5ee78c6e923
+* author:	segevcgi (https://sketchfab.com/segevcgi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Product" (https://sketchfab.com/3d-models/product-d03c8256e84a43158e81b5ee78c6e923) by segevcgi (https://sketchfab.com/segevcgi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -60,17 +60,17 @@ const App = () => {
       </div>
 
       {/* Responsive Centered Hero Text with Advanced Animations */}
-      <div className="relative z-10 flex flex-col  pt-25 mb-0  pt-4 xs:pt-20 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-screen">
+      <div className="relative z-10 flex flex-col  pt-25 mb-0  pt-4 xs:pt-20 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-screen"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
         {/* First Line with Typing Animation */}
         <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2 xs:px-3 sm:px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-semimedium leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   style={{ fontFamily: "Outfit, sans-serif" }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-semimedium leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   >
             99% AR accuracy delivered
           </h1>
         </div>
         
         {/* Second Line with Character Stagger Animation */}
         <div className="overflow-hidden mb-4 xs:mb-5 sm:mb-6 md:mb-7 lg:mb-8 px-2 xs:px-3 sm:px-4">
-          <h1 className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-light leading-tight xs:leading-tight sm:leading-tight md:leading-tight" style={{ fontFamily: "work-sans, sans-serif" }}>
+          <h1 className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-sans font-light leading-tight xs:leading-tight sm:leading-tight md:leading-tight" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
             <span className="animate-stagger-chars">
               {splitText("by ThirdVizion")}
             </span>
@@ -84,7 +84,7 @@ const App = () => {
     <button
       onClick={() => setShowForm(true)}
       className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
-      style={{ fontFamily: "Outfit, sans-serif" }}
+      style={{ fontFamily: "anta, sans-serif" }}
     >
       Get in Touch
     </button>

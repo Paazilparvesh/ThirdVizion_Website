@@ -71,10 +71,10 @@ const ARServices = () => {
           {icon}
         </div>
         
-        <h3 className="text-2xl font-bold mb-4 text-pink-300 border-b border-pink-700/50 pb-3 relative z-10"   style={{ fontFamily: "Outfit, sans-serif" }}>
+        <h3 className="text-2xl font-bold mb-4 text-pink-300 border-b border-pink-700/50 pb-3 relative z-10"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
           {title}
         </h3>
-        <p className="text-gray-300 mb-6 text-sm flex-grow relative z-10 leading-relaxed"   style={{ fontFamily: "work-sans, sans-serif" }}>{content}</p>
+        <p className="text-gray-300 mb-6 text-sm flex-grow relative z-10 leading-relaxed"   style={{ fontFamily: "anta, sans-serif" }}>{content}</p>
         
         {/* Details/List Section */}
         <div className="mt-3 relative z-10">
@@ -161,7 +161,7 @@ const ARServices = () => {
         {/* Enhanced Header Section */}
         <header className="text-center mt-0 mb-15">
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semimedium text-white mb-6 leading-tight">
-            We Do <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "Outfit, sans-serif" }} >AR Solutions</span> For All Platforms 
+            We Do <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }} >AR Solutions</span> For All Platforms 
           </h1>
           
           {/* Animated decoration */}
