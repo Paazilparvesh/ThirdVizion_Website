@@ -11,8 +11,8 @@ import aiBrain from "../../../../assets/Animations/voice.json";
  * Single-file component that:
  * - Shows a minimal interface with only AR functionality
  * - On mobile, opens a WebXR immersive-ar session with hit-test placement
- * - Places only one model at a time with enhanced lighting
- * - Supports zoom in/out for placed models using pinch gesture
+ * - Places only one model at a time with enhanced lighting and auto-rotation
+ * - Supports gesture controls (drag, rotate, zoom) for placed models
  *
  * Usage: <ArPage />
  */
@@ -25,6 +25,102 @@ function isMobile() {
   return /Mobi|Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 }
 
+// ---------------------- Gesture Controls Component ----------------------
+function GestureControls({ modelRef, zoomSpeed = 0.02 }) {
+  const lastAngle = useRef(null);
+  const lastDistance = useRef(null);
+  const dragging = useRef(false);
+  const lastPos = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const getDistance = (t1, t2) => {
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      return Math.sqrt(dx * dx + dy * dy);
+    };
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        dragging.current = true;
+        lastPos.current = {
+          x: e.touches[0].clientX,
+          y: e.touches[0].clientY,
+        };
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      if (!modelRef.current) return;
+
+      // Prevent scrolling
+      e.preventDefault();
+
+      // --------------------------
+      // 1-FINGER DRAG (Snapchat style)
+      // --------------------------
+      if (e.touches.length === 1 && dragging.current) {
+        const touch = e.touches[0];
+
+        const dx = touch.clientX - lastPos.current.x;
+        const dy = touch.clientY - lastPos.current.y;
+
+        modelRef.current.position.x += dx * 0.0005;
+        modelRef.current.position.y -= dy * 0.0005;
+
+        lastPos.current = { x: touch.clientX, y: touch.clientY };
+      }
+
+      // --------------------------
+      // 2-FINGER ROTATE + PINCH ZOOM
+      // --------------------------
+      if (e.touches.length === 2) {
+        const [t1, t2] = e.touches;
+
+        // ROTATION
+        const dx = t2.clientX - t1.clientX;
+        const dy = t2.clientY - t1.clientY;
+        const angle = Math.atan2(dy, dx);
+
+        if (lastAngle.current !== null) {
+          const delta = angle - lastAngle.current;
+          modelRef.current.rotation.y += delta * 2; // rotation speed
+        }
+        lastAngle.current = angle;
+
+        // PINCH ZOOM
+        const dist = getDistance(t1, t2);
+
+        if (lastDistance.current !== null) {
+          const diff = dist - lastDistance.current;
+          modelRef.current.scale.multiplyScalar(1 + diff * zoomSpeed);
+        }
+
+        lastDistance.current = dist;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      dragging.current = false;
+      lastAngle.current = null;
+      lastDistance.current = null;
+    };
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd);
+    window.addEventListener("touchcancel", handleTouchEnd);
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchcancel", handleTouchEnd);
+    };
+  }, [modelRef, zoomSpeed]);
+
+  return null;
+}
+
 // ---------------------- Main Component ----------------------
 export default function ArPage() {
   const [showArUnavailableMsg, setShowArUnavailableMsg] = useState(false);
@@ -35,6 +131,8 @@ export default function ArPage() {
   const currentModelRef = useRef(null);
   const initialDistanceRef = useRef(null);
   const initialScaleRef = useRef(1.4); // Default scale
+  const animationFrameIdRef = useRef(null);
+  const [modelPlaced, setModelPlaced] = useState(false);
 
   // Start the WebXR session and create a Three.js XR-renderer world
   const startAR = async () => {
@@ -147,12 +245,32 @@ export default function ArPage() {
         return clone;
       };
 
+      // Function to start auto-rotation animation
+      const startAutoRotation = (model) => {
+        if (animationFrameIdRef.current) {
+          cancelAnimationFrame(animationFrameIdRef.current);
+        }
+
+        const animate = () => {
+          if (model && model.rotation) {
+            // Smooth 360-degree rotation on Y axis
+            model.rotation.y += 0.01; // Adjust speed as needed (0.01 = slow rotation)
+          }
+          animationFrameIdRef.current = requestAnimationFrame(animate);
+        };
+        
+        animationFrameIdRef.current = requestAnimationFrame(animate);
+      };
+
       const placeModel = () => {
         if (!reticle.visible) return;
         
         // Remove existing model if any
         if (currentModelRef.current) {
           placed.remove(currentModelRef.current);
+          if (animationFrameIdRef.current) {
+            cancelAnimationFrame(animationFrameIdRef.current);
+          }
         }
         
         const model = createModelInstance();
@@ -172,6 +290,10 @@ export default function ArPage() {
         
         placed.add(model);
         currentModelRef.current = model;
+        setModelPlaced(true);
+        
+        // Start automatic rotation animation
+        startAutoRotation(model);
         
         // Hide the reticle after placing the object
         reticle.visible = false;
@@ -181,7 +303,7 @@ export default function ArPage() {
         placeModel();
       };
 
-      // Handle pinch zoom for placed model
+      // Handle pinch zoom for placed model (legacy - will be replaced by gesture controls)
       const handleTouchStart = (e) => {
         if (e.touches.length === 2 && currentModelRef.current) {
           // Calculate initial distance between two touches
@@ -247,9 +369,7 @@ export default function ArPage() {
 
       // Add event listeners for touch interactions
       renderer.domElement.addEventListener("touchend", touchPlace);
-      renderer.domElement.addEventListener("touchstart", handleTouchStart);
-      renderer.domElement.addEventListener("touchmove", handleTouchMove);
-      renderer.domElement.addEventListener("touchend", handleTouchEnd);
+      // Keep legacy touch events for now, but GestureControls will handle the advanced gestures
 
       renderer.setAnimationLoop((timestamp, xrFrame) => {
         if (xrFrame) {
@@ -273,14 +393,19 @@ export default function ArPage() {
         try {
           renderer.setAnimationLoop(null);
           renderer.domElement.removeEventListener("touchend", touchPlace);
-          renderer.domElement.removeEventListener("touchstart", handleTouchStart);
-          renderer.domElement.removeEventListener("touchmove", handleTouchMove);
-          renderer.domElement.removeEventListener("touchend", handleTouchEnd);
           session.removeEventListener("select", onSelect);
+          
+          // Stop rotation animation
+          if (animationFrameIdRef.current) {
+            cancelAnimationFrame(animationFrameIdRef.current);
+            animationFrameIdRef.current = null;
+          }
+          
           if (renderer.domElement && renderer.domElement.parentNode) {
             renderer.domElement.parentNode.removeChild(renderer.domElement);
           }
           currentModelRef.current = null;
+          setModelPlaced(false);
           initialScaleRef.current = 1.4; // Reset scale
         } catch (err) {
           console.warn("cleanup error", err);
@@ -300,6 +425,13 @@ export default function ArPage() {
       }
       xrRendererRef.current = null;
       currentModelRef.current = null;
+      setModelPlaced(false);
+      
+      // Stop rotation animation on error
+      if (animationFrameIdRef.current) {
+        cancelAnimationFrame(animationFrameIdRef.current);
+        animationFrameIdRef.current = null;
+      }
     }
   };
 
@@ -319,11 +451,26 @@ export default function ArPage() {
         xrRendererRef.current.domElement.parentNode.removeChild(xrRendererRef.current.domElement);
       }
       currentModelRef.current = null;
+      setModelPlaced(false);
+      
+      // Clean up animation frame
+      if (animationFrameIdRef.current) {
+        cancelAnimationFrame(animationFrameIdRef.current);
+        animationFrameIdRef.current = null;
+      }
     };
   }, []);
 
   return (
     <div className="bg-gradient-to-br pt-10  from-gray-900 via-black to-pink-950 text-white min-h-screen flex p-4 overflow-hidden relative">
+      {/* Gesture Controls - Only active when model is placed */}
+      {modelPlaced && (
+        <GestureControls 
+          modelRef={currentModelRef} 
+          zoomSpeed={0.02}
+        />
+      )}
+      
       <div className="absolute inset-0">
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-black to-fuchsia-800/10 animate-pulse-slow"></div>
@@ -474,24 +621,35 @@ export default function ArPage() {
               </div>
               <h4 className="text-pink-300 font-semibold mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">Place & Explore</h4>
               <p className="text-gray-300 text-xs sm:text-sm leading-tight">
-                Tap to place on ring, pinch to zoom in/out
+                Tap to place on ring, model auto-rotates 360°
               </p>
             </div>
             
           </div>
         </div>
 
-        {/* Zoom Instructions */}
+        {/* Gesture Instructions */}
         {xrSessionRef.current && (
           <div className="mt-6 sm:mt-8 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
             <div className="bg-gradient-to-br from-pink-500/10 to-fuchsia-600/10 border border-pink-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm max-w-md mx-auto">
               <h4 className="text-pink-300 font-semibold mb-2 sm:mb-3 text-sm sm:text-base md:text-lg flex items-center justify-center">
-                <span className="mr-2">🔍</span>
-                Zoom Controls
+                <span className="mr-2">👆</span>
+                Gesture Controls
               </h4>
-              <p className="text-gray-300 text-xs sm:text-sm leading-relaxed text-center">
-                Use <span className="text-pink-300 font-semibold">pinch gesture</span> with two fingers to zoom in and out of the placed model
-              </p>
+              <div className="text-gray-300 text-xs sm:text-sm leading-relaxed text-center space-y-2">
+                <p>
+                  <span className="text-pink-300 font-semibold">1 Finger Drag:</span> Move model around
+                </p>
+                <p>
+                  <span className="text-pink-300 font-semibold">2 Finger Rotate:</span> Rotate model manually
+                </p>
+                <p>
+                  <span className="text-pink-300 font-semibold">Pinch Zoom:</span> Zoom in/out on model
+                </p>
+                <p className="text-pink-200 font-medium mt-2">
+                  Model auto-rotates when not interacting
+                </p>
+              </div>
             </div>
           </div>
         )}
