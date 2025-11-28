@@ -353,7 +353,7 @@ export default function AboutHero() {
           </div>
 
           {/* Content Section */}
-          <div className="relative -mt-20 bg-black rounded-t-4xl pt-12 px-6 pb-16">
+          <div className="relative -mt-2 bg-black rounded-t-4xl pt-12 px-6 pb-16">
             {/* Company Badge */}
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
   <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-4 py-5 rounded-full">
@@ -365,7 +365,7 @@ export default function AboutHero() {
       </svg>
 
       {/* Center text */}
-      <span className="text-black font-semibold text-sm tracking-wider whitespace-nowrap"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
+      <span className="text-black font-semibold text-sm tracking-wider whitespace-nowrap"  style={{ fontFamily: "'anta', sans-serif" }}>
         Drag to explore
       </span>
 

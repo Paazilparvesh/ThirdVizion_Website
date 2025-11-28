@@ -7,6 +7,8 @@ import image3 from "/src/assets/webscroll/image3.png";
 import image4 from "/src/assets/webscroll/image4.png";
 import image5 from "/src/assets/webscroll/image5.png";
 import image6 from "/src/assets/webscroll/image6.png";
+import image7 from "/src/assets/webscroll/ico 7.png";
+import image8 from "/src/assets/webscroll/ico8.png";
 // import image7 from "/src/assets/AboutImages/weeeeeee.png";
 // import image8 from "/src/assets/AboutImages/weeeeeeee.png";
 // import image9 from "/src/assets/AboutImages/weeeeeeeee.png";
@@ -88,8 +90,8 @@ const WebDesignScroll = () => {
               image4,
               image5,
               image6,
-              // image7,
-              // image8,
+              image7,
+              image8,
               // image9,
               // image10,
             ].map((img, index) => (
@@ -119,8 +121,8 @@ const WebDesignScroll = () => {
             {[
               // image10,
               image6,
-              // image7,
-              // image8,
+              image7,
+              image8,
               // image9,
               image5,
               image4,
@@ -154,9 +156,9 @@ const WebDesignScroll = () => {
               image1,
               image6,
               image2,
-              // image7,
+              image7,
               image3,
-              // image8,
+              image8,
               image4,
               // image9,
               image5,
