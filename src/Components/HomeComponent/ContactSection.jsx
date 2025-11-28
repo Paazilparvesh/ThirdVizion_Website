@@ -25,13 +25,13 @@ export default function ContactHero() {
           {/* LEFT SIDE — heading + paragraph */}
           <div className="space-y-6">
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl uppercase xl:text-7xl font-medium leading-tight font-outfit"
+              className="text-4xl md:text-5xl lg:text-6xl uppercase xl:text-7xl font-medium leading-tight font-outfit text-center sm:text-left mx-auto sm:mx-0"
    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
      >
              
 Let’s Build Something Great 
 {" "}
-              <span className="text-yellow-400">Together</span>
+              <span className="text-yellow-400 text-center sm:text-left mx-auto sm:mx-0">Together</span>
             </h1>
             <p
               className="max-w-lg text-gray-300 text-xs md:text-lg leading-7 font-work-sans tracking-wide"

@@ -55,15 +55,30 @@ const App = () => {
       </div>
 
       {/* 🔹 Responsive AI Brain Animation */}
-      <div className="absolute bottom-[-220px]   lg:-bottom-52 xl:-bottom-47  2xl:-bottom-60 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[790px] md:bottom-[-160px]   xl:w-[78vh] md:w-[70vw]  lg:w-[70vw] z-20">
+      {/* <div className="absolute bottom-[-220px]   lg:-bottom-52 xl:-bottom-47  2xl:-bottom-60 left-1/2 -translate-x-1/2 -translate-y-1/2  w-[790px] md:bottom-[-160px]   xl:w-[78vh] md:w-[70vw]  lg:w-[70vw] z-20">
         <Lottie animationData={aiBrain} loop={true} />
-      </div>
+      </div> */}
+<div
+  className="
+    absolute 
+    bottom-[-220px] md:bottom-[-160px] lg:-bottom-52 xl:-bottom-47 2xl:-bottom-60
+    left-1/2 -translate-x-1/2 -translate-y-1/2
+    w-[250px]        /* 👈 Mobile size */
+    sm:w-[400px]     /* 👈 Small tablets */
+    md:w-[70vw]      /* Your existing sizes */
+    lg:w-[70vw]
+    xl:w-[78vh]
+    z-20
+  "
+>
+  <Lottie animationData={aiBrain} loop={true} />
+</div>
 
       {/* Responsive Centered Hero Text with Advanced Animations */}
       <div className="relative z-10 flex flex-col  pt-25 mb-0  pt-4 xs:pt-20 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-screen"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
         {/* First Line with Typing Animation */}
         <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2 xs:px-3 sm:px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-semimedium leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   >
+          <h1 className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-semimedium leading-tight xs:leading-tight sm:leading-tight md:leading-tight lg:leading-tight animate-gradient-typing"   >
             99% AR accuracy delivered
           </h1>
         </div>
