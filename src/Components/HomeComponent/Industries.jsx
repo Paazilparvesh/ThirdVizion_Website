@@ -162,13 +162,13 @@ const Industries = () => {
       {/* TOP SECTION */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
         <div className="flex-1">
-          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base text-center sm:text-left mx-auto sm:mx-0 "   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
 >
             Industries we empower
           </p>
 
           <h2
-            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-bold leading-tight font-Outfit"
+            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-bold leading-tight font-Outfit text-center sm:text-left mx-auto sm:mx-0"
   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
           >
             Turning <span className="text-yellow-400">vision</span> into impact.

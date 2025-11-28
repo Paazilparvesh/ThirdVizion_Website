@@ -4,9 +4,9 @@ import img2 from "/src/assets/AboutImages/about2.png";
 
 export default function About() {
   return (
-    <div className="w-full min-h-screen bg-black pt-20 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
+    <div className="w-full min-h-screen bg-black pt-40 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
       {/* Top Title Section */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-4">
        <h2
   className="text-4xl lg:text-7xl tracking-wide"
   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
@@ -15,6 +15,7 @@ export default function About() {
 </h2>
 
       </div>
+
 
       {/* First Row */}
       <div

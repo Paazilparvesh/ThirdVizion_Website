@@ -4,7 +4,7 @@ function Whatiam() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Main Heading */}
                 <h1 
-                    className="text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
+                    className="text-3xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
                      Understanding Identity Management
@@ -108,7 +108,7 @@ function Whatiam() {
                     </div>
 
                     {/* How IAM Works Section */}
-                    <div className="mt-16">
+                    {/* <div className="mt-16">
                         <h2 
                             className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
                             style={{ fontFamily: 'DeaconTest, sans-serif' }}
@@ -118,7 +118,7 @@ function Whatiam() {
 
                         <div className="grid md:grid-cols-3 gap-8">
                             
-                            {/* Step 1 */}
+                        
                             <div className="relative">
                                 <div className="flex items-start space-x-4">
                                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDC700] to-[#FFD700] rounded-full flex items-center justify-center text-black font-bold text-xl" style={{ fontFamily: 'DeaconTest, sans-serif' }}>
@@ -141,7 +141,7 @@ function Whatiam() {
                                 </div>
                             </div>
 
-                            {/* Step 2 */}
+                         
                             <div className="relative">
                                 <div className="flex items-start space-x-4">
                                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDC700] to-[#FFD700] rounded-full flex items-center justify-center text-black font-bold text-xl" style={{ fontFamily: 'DeaconTest, sans-serif' }}>
@@ -164,7 +164,7 @@ function Whatiam() {
                                 </div>
                             </div>
 
-                            {/* Step 3 */}
+                            
                             <div className="relative">
                                 <div className="flex items-start space-x-4">
                                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#FDC700] to-[#FFD700] rounded-full flex items-center justify-center text-black font-bold text-xl" style={{ fontFamily: 'DeaconTest, sans-serif' }}>
@@ -188,10 +188,10 @@ function Whatiam() {
                             </div>
 
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Key Benefits */}
-                    <div className="mt-16 pt-8 border-t border-[#FDC700]/20">
+                    {/* <div className="mt-16 pt-8 border-t border-[#FDC700]/20">
                         <h2 
                             className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
                             style={{ fontFamily: 'DeaconTest, sans-serif' }}
@@ -270,11 +270,11 @@ function Whatiam() {
                                     >
                                         Automate user provisioning and reduce IT help desk tickets for password resets
                                     </p>
-                                </div>
-                            </div>
+                                </div> */}
+                            {/* </div> */}
 
-                        </div>
-                    </div>
+                        {/* </div> */}
+                    {/* </div> */}
 
                 </div>
             </div>

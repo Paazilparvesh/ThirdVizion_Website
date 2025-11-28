@@ -231,7 +231,7 @@ export default function Threelanding() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
           {/* Left column — text */}
           <div className="w-full lg:w-1/2">
-            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight"   style={{ fontFamily: "DeaconTest, sans-serif" }}>
+            <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight text-center sm:text-left mx-auto sm:mx-0"   style={{ fontFamily: "DeaconTest, sans-serif" }}>
               <span className="block overflow-hidden">
                 <span className="word block transform translate-y-0">ThirdVizion</span>
               </span>

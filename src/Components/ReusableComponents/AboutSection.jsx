@@ -117,7 +117,7 @@ export default function About() {
             className="text-4xl md:text-5xl xl:text-[54px] font-extrabold 
             bg-clip-text text-transparent 
             bg-gradient-to-r from-[#F7E08C] via-[#F3C74F] to-[#D9A441] 
-            md:text-center lg:text-left font-inter-tight"
+             text-center md:text-center lg:text-left font-inter-tight"
             style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
           >
             Transforming Businesses with Innovative Digital Technology.
