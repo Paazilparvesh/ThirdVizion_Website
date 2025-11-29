@@ -7,40 +7,22 @@ export default function About() {
     <div className="w-full min-h-screen bg-black pt-20 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
       {/* Top Title Section */}
       <div className="text-center mb-4">
-       <h2
-  className="text-4xl lg:text-7xl tracking-wide"
-  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
->
-  WHO ARE WE
-</h2>
-
+        <h2
+          className="text-4xl lg:text-7xl tracking-wide"
+          style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+        >
+          WHO ARE WE
+        </h2>
       </div>
 
-
-      {/* First Row */}
+      {/* First Row - Image First on Mobile */}
       <div
         className="flex flex-col md:flex-row items-center justify-between gap-12 mb-10"
         style={{ fontFamily: "anta, sans-serif" }}
       >
-        {/* Content */}
+        {/* Floating Image - Shows First on Mobile */}
         <motion.div
-          className="flex-1 text-center md:text-left max-w-2xl"
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-medium">
-            At ThirdVizion, we're more than just a technology company—we're innovators
-            shaping the future. Our mission is to deliver cutting-edge solutions that
-            not only solve challenges but also create new opportunities across
-            industries. With a dedicated team of experts, we bring ideas to life with
-            seamless technology that transforms businesses.
-          </p>
-        </motion.div>
-
-        {/* Floating Image - Smaller Size with Height Control */}
-        <motion.div
-          className="flex-1 flex justify-center md:justify-end"
+          className="flex-1 flex justify-center md:justify-end order-1 md:order-2"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -59,17 +41,33 @@ export default function About() {
             <img
               src={img}
               alt="About Visual 1"
-              className="rounded-xl shadow-2xl w-full  object-cover"
+              className="rounded-xl shadow-2xl w-full object-cover"
             />
           </motion.div>
         </motion.div>
+
+        {/* Content - Shows Second on Mobile */}
+        <motion.div
+          className="flex-1 text-center md:text-left max-w-2xl order-2 md:order-1"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-medium">
+            At ThirdVizion, we're more than just a technology company—we're innovators
+            shaping the future. Our mission is to deliver cutting-edge solutions that
+            not only solve challenges but also create new opportunities across
+            industries. With a dedicated team of experts, we bring ideas to life with
+            seamless technology that transforms businesses.
+          </p>
+        </motion.div>
       </div>
 
-      {/* Second Row */}
+      {/* Second Row - Image First on Mobile */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Floating Image - Smaller Size with Height Control */}
+        {/* Floating Image - Shows First on Mobile */}
         <motion.div
-          className="flex-1 flex justify-center md:justify-start"
+          className="flex-1 flex justify-center md:justify-start order-1"
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -89,14 +87,14 @@ export default function About() {
             <img
               src={img2}
               alt="About Visual 2"
-              className="rounded-xl shadow-2xl w-full  object-cover"
+              className="rounded-xl shadow-2xl w-full object-cover"
             />
           </motion.div>
         </motion.div>
 
-        {/* Content */}
+        {/* Content - Shows Second on Mobile */}
         <motion.div
-          className="flex-1 text-center md:text-right max-w-2xl"
+          className="flex-1 text-center md:text-right max-w-2xl order-2"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
