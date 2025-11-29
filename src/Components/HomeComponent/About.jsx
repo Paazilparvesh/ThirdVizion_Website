@@ -4,7 +4,7 @@ import img2 from "/src/assets/AboutImages/about2.png";
 
 export default function About() {
   return (
-    <div className="w-full min-h-screen bg-black pt-40 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
+    <div className="w-full min-h-screen bg-black pt-20 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
       {/* Top Title Section */}
       <div className="text-center mb-4">
        <h2
@@ -19,7 +19,7 @@ export default function About() {
 
       {/* First Row */}
       <div
-        className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24"
+        className="flex flex-col md:flex-row items-center justify-between gap-12 mb-10"
         style={{ fontFamily: "anta, sans-serif" }}
       >
         {/* Content */}

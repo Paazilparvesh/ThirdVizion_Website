@@ -11,27 +11,30 @@ import FAQ from "/src/Components/HomeComponent/FAQ.jsx";
 import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 import Indhu from "../Components/HomeComponent/indhu";
 import About from "../Components/HomeComponent/About";
+import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
 
 export default function Home() {
-  
+
 
   return (
     <div id="home-scroll-container">
+      <SparkleBg count={25} color="455, 237, 4" speed={0.8} />
       <Hero />
-      <About/>
+      <About />
       {/* <VisionMission /> */}
       <Industries />
-        <div className="hidden sm:block">
-      <Newservice /> </div>
+      <div className="hidden sm:block">
+        <Newservice /> 
       <Partners className="bg-black" />
       <Indhu />
       <Testimonial />
-      
+
       <FAQ />
       <div className="relative">
         <div className="relative z-20 -mt-10">
-          <ContactSection />
+                  </div>
+
         </div>
       </div>
     </div>

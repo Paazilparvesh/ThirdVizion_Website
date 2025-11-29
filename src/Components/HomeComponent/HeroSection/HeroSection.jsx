@@ -99,7 +99,7 @@ const Landing = () => {
       <div className="flex flex-col items-center justify-center gap- z-20 text-white pointer-events-none">
        <h2
   class="w-full absolute top-130 md:top-120 lg:top-128 xl:top-119 left-1/2 
-  -translate-x-1/2 z-50 leading-snug text-center text-3xl md:text-3xl lg:text-5xl 
+  -translate-x-1/2 z-50 leading-snug text-center text-5xl md:text-3xl lg:text-5xl 
   xl:text-5xl xl:max-w-4xl font-segoe-ui font-bold px-5 uppercase pt-[45px] pointer-events-none"
 >
   Engineering the Future, Innovating the Present.

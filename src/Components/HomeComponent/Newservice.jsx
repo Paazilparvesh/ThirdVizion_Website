@@ -681,7 +681,7 @@ export default function Categories() {
               <div className="flex flex-col">
                 <div>
                   <h3 
-                    className="text-2xl md:text-3xl lg:text-6xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
+                    className="text-2xl md:text-3xl lg:text-5xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
                     style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {activeCategory.title}
@@ -704,7 +704,7 @@ export default function Categories() {
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer  px-[25px]  py-[9px] text-2xl md:text-3xl lg:text-[22px] inline-block text-xs`}
+                            className={`${getTagStyle(tag)} cursor-pointer  px-[18px]  py-[8px] text-2xl md:text-3xl lg:text-[19px] inline-block text-xs`}
             style={{ fontFamily: "anta, sans-serif" }}>
                           
                             {tag}
