@@ -373,8 +373,8 @@ function Whatcrm() {
 
                 {/* Heading */}
                 <h1 
-                    className="text-5xl md:text-6xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-                    style={{ fontFamily: "DeaconTest" }}
+                    className="text-5xl md:text-6xl font-semibold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+                      style={{ fontFamily: "DeaconTest, sans-serif" }}
                 >
                     What is CRM?
                 </h1>

@@ -20,7 +20,7 @@ import iamIcon from "/src/assets/ourserviceicons/iam.png";
 import vrIcon from "/src/assets/ourserviceicons/vr.png";
 import threedIcon from "/src/assets/ourserviceicons/3d.png";
 import erpIcon from "/src/assets/ourserviceicons/erp.png";
-import gameIcon from "/src/assets/ourserviceicons/game.png"; // Add these if available
+import gameIcon from "/src/assets/ourserviceicons/game.png";
 import webIcon from "/src/assets/ourserviceicons/website.png";
 import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
 
@@ -33,7 +33,7 @@ const capabilitiesData = [
       {
         name: "AR",
         img: DesignTool,
-        icon: arIcon, // Use icon instead of emojis
+        icon: arIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -45,7 +45,7 @@ const capabilitiesData = [
       {
         name: "3D",
         img: Layout,
-        icon: threedIcon, // Use icon instead of emojis
+        icon: threedIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -57,7 +57,7 @@ const capabilitiesData = [
       {
         name: "VIRTUAL REALITY",
         img: Component,
-        icon: vrIcon, // Use icon instead of emojis
+        icon: vrIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -76,7 +76,7 @@ const capabilitiesData = [
       {
         name: "CRM",
         img: Portal,
-        icon: crmIcon, // Use icon instead of emojis
+        icon: crmIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -88,7 +88,7 @@ const capabilitiesData = [
       {
         name: "IAM",
         img: Dashboard,
-        icon: iamIcon, // Use icon instead of emojis
+        icon: iamIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -100,7 +100,7 @@ const capabilitiesData = [
       {
         name: "ERP",
         img: Aws,
-        icon: erpIcon, // Use icon instead of emojis
+        icon: erpIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -119,7 +119,7 @@ const capabilitiesData = [
       {
         name: "GAME DEVELOPMENT",
         img: Azure,
-        icon: gameIcon, // Use icon instead of emojis
+        icon: gameIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -131,7 +131,7 @@ const capabilitiesData = [
       {
         name: "WEBSITE",
         img: GoogleCloud,
-        icon: webIcon, // Use icon instead of emojis
+        icon: webIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -143,7 +143,7 @@ const capabilitiesData = [
       {
         name: "MOBILE APP",
         img: Por,
-        icon: mobileIcon, // Use icon instead of emojis
+        icon: mobileIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -156,16 +156,14 @@ const capabilitiesData = [
   },
 ];
 
-
-
-// Icon Animation Component (Updated from RollingEmojis)
+// Icon Animation Component - Updated with circular black background mask
 const RollingIcons = ({ icons, isInView }) => {
   return (
     <div className="flex space-x-3 mt-4 justify-start flex-wrap gap-2">
       {icons.map((icon, index) => (
         <motion.div
           key={index}
-          className="flex items-center justify-center"
+          className="relative flex items-center justify-center"
           initial={{ 
             opacity: 0, 
             x: -80,
@@ -191,16 +189,21 @@ const RollingIcons = ({ icons, isInView }) => {
             damping: 15
           }}
           whileHover={{
-            scale: 1.4,
+            scale: 1.2,
             rotate: 15,
             transition: { duration: 0.3 }
           }}
         >
-          <img 
-            src={icon} 
-            alt="service icon" 
-            className="w-20 h-20 object-contain" // Adjusted size from w-12 h-12 to w-10 h-10
-          />
+          {/* Circular black background mask with gradient border effect */}
+          <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-gray-800 via-black to-gray-900 p-[2px] shadow-xl">
+            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+              <img 
+                src={icon} 
+                alt="service icon" 
+                className="w-14 h-14 object-contain"
+              />
+            </div>
+          </div>
         </motion.div>
       ))}
     </div>
@@ -609,13 +612,15 @@ export default function Categories() {
                     >
                       <div className="group cursor-pointer relative border border-gray-700 rounded-xl p-3 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
                         <div className="flex items-center space-x-3">
-                          {/* Service Icon */}
-                          <div className="flex-shrink-0 w-10 h-10 rounded-lg overflow-hidden border border-gray-600 flex items-center justify-center bg-gray-800">
-                            <img
-                              src={service.icon}
-                              alt={service.name}
-                              className="w-6 h-6 object-contain" // Adjusted icon size
-                            />
+                          {/* Service Icon with circular black mask */}
+                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 via-black to-gray-900 p-[2px] shadow-lg">
+                            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                              <img
+                                src={service.icon}
+                                alt={service.name}
+                                className="w-6 h-6 object-contain"
+                              />
+                            </div>
                           </div>
                           
                           {/* Service Info */}
@@ -690,30 +695,30 @@ export default function Categories() {
                   <div className="mt-3 md:mt-4 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                   <div className="relative">
                     <p
-                      className="text-white/90 mt-3   text-2xl md:text-3xl lg:text-[19px]  md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
+                      className="text-white/90 mt-3 text-2xl md:text-3xl lg:text-[19px] md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
                       style={{ fontFamily: "anta, sans-serif" }}
                     >
                       {activeCategory.desc.split('. ')[0]}.
                     </p>
                     
                     {/* BUTTONS SECTION */}
-                    <div className="mt-4 md:mt-5     flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
+                    <div className="mt-4 md:mt-5 flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
                       {getCategoryTags(activeCategory).map((tag, index) => (
                         <Link
                           to={getTagLink(tag, activeCategory)}
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer  px-[18px]  py-[8px] text-2xl md:text-3xl lg:text-[19px] inline-block text-xs`}
-            style={{ fontFamily: "anta, sans-serif" }}>
-                          
+                            className={`${getTagStyle(tag)} cursor-pointer px-[18px] py-[8px] text-2xl md:text-3xl lg:text-[19px] inline-block text-xs`}
+                            style={{ fontFamily: "anta, sans-serif" }}
+                          >
                             {tag}
                           </span>
                         </Link>
                       ))}
                     </div>
 
-                    {/* ICONS BELOW BUTTONS on LEFT SIDE - Updated to use RollingIcons */}
+                    {/* ICONS BELOW BUTTONS on LEFT SIDE - Updated with circular black mask */}
                     <div className="mt-4 md:mt-5">
                       <RollingIcons 
                         icons={getCategoryIcons(activeCategory)} 
@@ -746,8 +751,6 @@ export default function Categories() {
             ))}
           </div>
         </div>
-
-       
 
         <div className="text-center mt-16 md:mt-32">
           <motion.div

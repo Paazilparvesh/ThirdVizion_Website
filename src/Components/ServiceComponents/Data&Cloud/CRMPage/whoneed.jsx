@@ -4,7 +4,7 @@ function Whoneed() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Heading */}
                 <h2 
-                    className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+                    className="text-6xl md:text-5xl font-semibold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
                     Who Needs CRM?
