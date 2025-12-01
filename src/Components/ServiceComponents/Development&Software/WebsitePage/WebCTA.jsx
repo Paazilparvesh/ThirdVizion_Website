@@ -78,18 +78,7 @@ const WebCTA = () => {
           </motion.p>
         </TextReveal>
 
-        <TextReveal delay={0.3}>
-          <motion.p
-            className="text-gray-400 text-base md:text-lg max-w-2xl mb-12 mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            style={{ fontFamily: "anta, sans-serif" }}
-          >
-            Join industry leaders who trust us to build innovative,
-            high-performance web solutions that elevate their business.
-          </motion.p>
-        </TextReveal>
+        
 
         {/* Animated Statistics - 3 Column Centered */}
         <motion.div

@@ -349,6 +349,45 @@
 //     );
 // }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // export default Whatcrm;
 import React from "react";
 import { Filter, Megaphone, Headphones, BarChart3 } from "lucide-react";
@@ -363,24 +402,20 @@ function Whatcrm() {
         <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden">
 
             {/* Background */}
-            <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467]/20 via-black to-[#FF6467]/10"></div>
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#FF6467] rounded-full filter blur-[100px] opacity-20 animate-float"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#FF6467] rounded-full filter blur-[120px] opacity-15 animate-float-slow"></div>
-            </div>
+          
 
             <div className="max-w-7xl mx-auto relative z-10 space-y-16">
 
                 {/* Heading */}
                 <h1 
                     className="text-5xl md:text-6xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-                    style={{ fontFamily: "DeaconTest" }}
+                  style={{ fontFamily: "DeaconTest, sans-serif" }}
                 >
                     What is CRM?
                 </h1>
 
                 {/* Main Card */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all duration-300">
+                <div className="rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all duration-300">
 
                     {/* Definition */}
                     <p 
@@ -397,24 +432,24 @@ function Whatcrm() {
                     <div className="grid md:grid-cols-3 gap-6 mt-12">
 
                         {/* Centralized Data */}
-                        <div className="bg-[#FF6467]/10 p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
+                        <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={CentralizedIcon} className="w-16 h-16 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-[#FF6467] mb-2">Centralized Data</h3>
-                            <p className="text-gray-300 text-sm">Store customer details and history in one place.</p>
+                            <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Store customer details and history in one place.   </p>
                         </div>
 
                         {/* Automation */}
-                        <div className="bg-[#FF6467]/10 p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
+                        <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={AutomationIcon} className="w-16 h-16 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-[#FF6467] mb-2">Automation</h3>
-                            <p className="text-gray-300 text-sm">Automate routine business workflows.</p>
+                            <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Automate routine business workflows.</p>
                         </div>
 
                         {/* AI Insights */}
-                        <div className="bg-[#FF6467]/10 p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
+                        <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={AiInsightIcon} className="w-16 h-16 mx-auto mb-4" />
                             <h3 className="text-xl font-bold text-[#FF6467] mb-2">AI Insights</h3>
-                            <p className="text-gray-300 text-sm">Analyze data and predict customer behavior.</p>
+                            <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Analyze data and predict customer behavior.</p>
                         </div>
                     </div>
 
@@ -422,38 +457,38 @@ function Whatcrm() {
                     <div className="mt-12 grid md:grid-cols-2 gap-6">
 
                         {/* Sales Pipeline */}
-                        <div className="flex items-start space-x-4 bg-[#FF6467]/10 p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
+                        <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Filter className="text-[#FF6467]" size={32} />
                             <div>
-                                <h4 className="text-white font-semibold text-lg">Sales Pipeline Management</h4>
-                                <p className="text-gray-300 text-sm">Track leads and deals across all stages.</p>
+                                <h4 className="text-white font-semibold text-lg"  >Sales Pipeline Management</h4>
+                                <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Track leads and deals across all stages.</p>
                             </div>
                         </div>
 
                         {/* Marketing */}
-                        <div className="flex items-start space-x-4 bg-[#FF6467]/10 p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
+                        <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Megaphone className="text-[#FF6467]" size={32} />
                             <div>
                                 <h4 className="text-white font-semibold text-lg">Marketing Campaigns</h4>
-                                <p className="text-gray-300 text-sm">Optimize campaigns and measure performance.</p>
+                                <p className="text-gray-300 text-sm" style={{ fontFamily: "anta, sans-serif" }}>Optimize campaigns and measure performance.</p>
                             </div>
                         </div>
 
                         {/* Customer Support */}
-                        <div className="flex items-start space-x-4 bg-[#FF6467]/10 p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
+                        <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Headphones className="text-[#FF6467]" size={32} />
                             <div>
                                 <h4 className="text-white font-semibold text-lg">Customer Service</h4>
-                                <p className="text-gray-300 text-sm">Resolve support tickets with full context.</p>
+                                <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Resolve support tickets with full context.</p>
                             </div>
                         </div>
 
                         {/* Reports */}
-                        <div className="flex items-start space-x-4 bg-[#FF6467]/10 p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
+                        <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <BarChart3 className="text-[#FF6467]" size={32} />
                             <div>
                                 <h4 className="text-white font-semibold text-lg">Reports & Analytics</h4>
-                                <p className="text-gray-300 text-sm">Measure performance with powerful insights.</p>
+                                <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Measure performance with powerful insights.</p>
                             </div>
                         </div>
                     </div>

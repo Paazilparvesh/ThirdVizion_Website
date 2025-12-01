@@ -4,34 +4,29 @@ import React, { useState, useEffect } from "react";
 const testimonials = [
   {
     name: "Santhosh Kumar",
-    role: "Kanakavali • Manager",
+    role: "Kanakavali ",
     review:
-      "ThirdVizion helped us modernize our entire digital presence. Their attention to detail and clean UI execution gave our brand a premium identity.",
+    "Working with ThirdVizion transformed our hardware business’s online presence. The team delivered a sleek, high-performance website that showcases our products beautifully and elevates our brand identity. Their precision, creativity, and timely execution truly set them apart."
   },
   {
     name: "Rajesh",
-    role: "Asmi • Team Leader",
+    role: "Asmi ",
     review:
-      "The design and development support from ThirdVizion was exceptional. Our platform feels smoother, faster and far more user-friendly now.",
+    "ThirdVizion did an excellent job building our NGO website. They captured our mission perfectly and delivered a clean, impactful, and easy-to-navigate platform. Their professionalism and understanding of our cause made the entire experience smooth and meaningful."
   },
   {
     name: "Sivaganga",
-    role: "Madras Kitchen • Manager",
+    role: "Madras Kitchen ",
     review:
-      "ThirdVizion created a visually stunning and highly functional website for us. Our online orders increased just because of their clean UI and fast UX.",
+    "ThirdVizion delivered a beautifully crafted website for our food business. The clean design, smooth user experience, and easy ordering flow have helped us attract more customers online. Their work truly elevated our brand’s digital presence."
   },
   {
     name: "Priya Nandakumar",
-    role: "TourSup • Manager",
+    role: "TourSup ",
     review:
-      "From planning to delivery, ThirdVizion maintained complete clarity and professionalism. Their work improved our customer engagement drastically.",
+    "ThirdVizion built a modern and engaging website for our travel company. The clean layouts, smooth navigation, and well-structured tour pages have significantly boosted customer inquiries. Their clarity, creativity, and professionalism made the entire process seamless."
   },
-  {
-    name: "Arun Prakash",
-    role: "KombaMela • Manager",
-    review:
-      "ThirdVizion built a fast, scalable platform that handles our event traffic smoothly. The team truly understands performance and great UI.",
-  },
+ 
 ];
 
 export default function TestimonialsSection() {

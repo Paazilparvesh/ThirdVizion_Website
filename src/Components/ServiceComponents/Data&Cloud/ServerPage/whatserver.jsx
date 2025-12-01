@@ -32,7 +32,7 @@ function Whatserver() {
                 </p>
 
                 {/* Main Content */}
-                <div className="bg-[#05df72]/5 backdrop-blur-lg rounded-2xl border border-[#05df72]/30 p-8 md:p-12">
+                <div className=" rounded-2xl border border-[#05df72]/30 p-8 md:p-12">
 
                     {/* Definition */}
                     <div className="text-center mb-10">

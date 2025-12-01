@@ -200,6 +200,18 @@
 // }
 
 // export default Willhelp;
+
+
+
+
+
+
+
+
+
+
+
+
 import { motion } from "framer-motion";
 
 // ⬇️ IMPORT YOUR 3D PNG ICONS ⬇️
@@ -339,7 +351,7 @@ function Willhelp() {
 
                 {/* Why Choose Us */}
                 <motion.div
-                    className="mt-12 bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all"
+                    className="mt-12  rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}

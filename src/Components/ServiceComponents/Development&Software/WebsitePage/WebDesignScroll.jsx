@@ -11,8 +11,8 @@ import image7 from "/src/assets/webscroll/ico 7.png";
 import image8 from "/src/assets/webscroll/ico8.png";
 // import image7 from "/src/assets/AboutImages/weeeeeee.png";
 // import image8 from "/src/assets/AboutImages/weeeeeeee.png";
-// import image9 from "/src/assets/AboutImages/weeeeeeeee.png";
-// import image10 from "/src/assets/AboutImages/weeeeeeeeee.png";
+import image9 from "/src/assets/webscroll/Desktop - 105.png";
+import image10 from "/src/assets/webscroll/Desktop - 106.png";
 
 const WebDesignScroll = () => {
   return (
@@ -92,8 +92,8 @@ const WebDesignScroll = () => {
               image6,
               image7,
               image8,
-              // image9,
-              // image10,
+              image9,
+              image10,
             ].map((img, index) => (
               <div
                 key={index}
@@ -119,11 +119,11 @@ const WebDesignScroll = () => {
         >
           <div className="list">
             {[
-              // image10,
+              image10,
               image6,
               image7,
               image8,
-              // image9,
+              image9,
               image5,
               image4,
               image3,
@@ -160,9 +160,9 @@ const WebDesignScroll = () => {
               image3,
               image8,
               image4,
-              // image9,
+              image9,
               image5,
-              // image10,
+              image10,
             ].map((img, index) => (
               <div
                 key={index}

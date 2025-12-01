@@ -35,7 +35,7 @@ const ProjectsData = [
     image: scopik,
     description: "A Next.js powered platform with seamless Supabase integration.",
     live: "https://scopik.com/",
-    tools: ["React.js", "Tailwind", "PostresSQL", "Django"],
+    tools: ["React", "PostresSQL", "Django"],
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const ProjectsData = [
     image: spinz,
     description: "A reward-based platform for gamified interactions and user engagement.",
     live: "https://spinzreward.site/",
-    tools: ["Mern Stack"],
+    tools: ["React","Express","postresSQL"],
   },
 ];
 

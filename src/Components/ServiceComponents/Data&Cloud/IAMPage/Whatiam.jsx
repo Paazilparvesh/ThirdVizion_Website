@@ -19,7 +19,7 @@ function Whatiam() {
                 </p>
 
                 {/* Main Content Card */}
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-[#FDC700]/20 p-8 md:p-12 hover:border-[#FDC700]/40 transition-all duration-300">
+                <div className="rounded-2xl shadow-2xl border border-[#FDC700]/20 p-8 md:p-12 hover:border-[#FDC700]/40 transition-all duration-300">
                     
                     {/* Main Definition */}
                     <div className="text-center mb-10">
@@ -38,7 +38,7 @@ function Whatiam() {
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
                         
                         {/* Component 1 */}
-                        <div className="group bg-gradient-to-br from-[#FDC700]/10 to-[#FDC700]/5 border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
+                        <div className="group border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
                             <div className="text-5xl mb-4">🔐</div>
                             <h3 
                                 className="text-xl font-bold mb-3 text-[#FDC700]"
@@ -55,7 +55,7 @@ function Whatiam() {
                         </div>
 
                         {/* Component 2 */}
-                        <div className="group bg-gradient-to-br from-[#FDC700]/10 to-[#FDC700]/5 border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
+                        <div className="group border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
                             <div className="text-5xl mb-4">🛡️</div>
                             <h3 
                                 className="text-xl font-bold mb-3 text-[#FDC700]"
@@ -72,7 +72,7 @@ function Whatiam() {
                         </div>
 
                         {/* Component 3 */}
-                        <div className="group bg-gradient-to-br from-[#FDC700]/10 to-[#FDC700]/5 border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
+                        <div className="group border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
                             <div className="text-5xl mb-4">👤</div>
                             <h3 
                                 className="text-xl font-bold mb-3 text-[#FDC700]"
@@ -89,7 +89,7 @@ function Whatiam() {
                         </div>
 
                         {/* Component 4 */}
-                        <div className="group bg-gradient-to-br from-[#FDC700]/10 to-[#FDC700]/5 border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
+                        <div className="group border border-[#FDC700]/20 p-6 rounded-xl hover:border-[#FDC700]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm text-center">
                             <div className="text-5xl mb-4">📊</div>
                             <h3 
                                 className="text-xl font-bold mb-3 text-[#FDC700]"
