@@ -32,15 +32,7 @@ const teamData = [
   { img: img10, name: "ARULWIN REX", role: "SALES & AUTOMATION" },
   { img: img13, name: "SATHIYA", role: "BACK END DEVELOPER" },
 =======
-  { img: img4, name: "JERO", role: "SOFTWARE DEVELOPER" },
-  { img: img2, name: "DHILIP", role: "Frontend Developer" },
-  { img: img14, name: "SHAMMIKUMAR", role: "Frontend Developer" },
-  { img: img15, name: "THARUN", role: "3D GENERALIST" },
-  { img: img18, name: "SANTHOSH", role: "UI & UX DESIGNER" },
-  { img: img6, name: "PAAZIL PARVESH", role: "Frontend Developer" },
-  { img: img17, name: "YESWANTH", role: " Backend DEVELOPER" },
-  { img: img10, name: "ARULWIN REX", role: "SALES & AUTOMATION" },
-  { img: img13, name: "SATHIYA", role: "Backend DEVELOPER" },
+
 >>>>>>> 5a0ad02f34cb8aded41a9b783593f85ec16736a5
   { img: img11, name: "SANTHOUSH REDDY", role: "DIGITAL MARKETING SPECIALIST" },
   { img: img16, name: "VISHNU PRIYA", role: "FRONT END DEVELOPER" },
