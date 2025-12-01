@@ -21,7 +21,6 @@ import img18 from "/src/assets/AboutImages/THARUN copy.jpg";
 
 const teamData = [
   { img: img8, name: "RAJESH", role: "GAME DEVELOPER" },
-<<<<<<< HEAD
   { img: img4, name: "JERO", role: "BACK END DEVELOPER" },
   { img: img2, name: "DHILIP", role: "FRONT END DEVELOPER" },
   { img: img14, name: "SHAMMIKUMAR", role: "BACK END DEVELOPER" },
@@ -31,9 +30,6 @@ const teamData = [
   { img: img17, name: "YESWANTH", role: "BACK END DEVELOPER" },
   { img: img10, name: "ARULWIN REX", role: "SALES & AUTOMATION" },
   { img: img13, name: "SATHIYA", role: "BACK END DEVELOPER" },
-=======
-
->>>>>>> 5a0ad02f34cb8aded41a9b783593f85ec16736a5
   { img: img11, name: "SANTHOUSH REDDY", role: "DIGITAL MARKETING SPECIALIST" },
   { img: img16, name: "VISHNU PRIYA", role: "FRONT END DEVELOPER" },
   { img: img5, name: "KARTHICK", role: "FRONT END DEVELOPER" },
