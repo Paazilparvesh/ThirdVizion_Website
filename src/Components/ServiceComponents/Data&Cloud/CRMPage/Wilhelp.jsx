@@ -52,7 +52,7 @@
 //                     </h1>
 //                     <p 
 //                         className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed px-4" 
-//                         style={{ fontFamily: "work-sans, sans-serif" }}
+//                        style={{ fontFamily: "anta, sans-serif" }}
 //                     >
 //                         Delivering proven CRM solutions with measurable results that accelerate your business success.
 //                     </p>
@@ -105,7 +105,7 @@
 //                                 {/* Description */}
 //                                 <p 
 //                                     className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4" 
-//                                     style={{ fontFamily: "work-sans, sans-serif" }}
+//                                    style={{ fontFamily: "anta, sans-serif" }}
 //                                 >
 //                                     {service.description}
 //                                 </p>
@@ -155,7 +155,7 @@
 //                             </h4>
 //                             <p 
 //                                 className="text-gray-300 text-xs sm:text-sm"
-//                                 style={{ fontFamily: "work-sans, sans-serif" }}
+//                                style={{ fontFamily: "anta, sans-serif" }}
 //                             >
 //                                 Launch in weeks with proven methodologies
 //                             </p>
@@ -171,7 +171,7 @@
 //                             </h4>
 //                             <p 
 //                                 className="text-gray-300 text-xs sm:text-sm"
-//                                 style={{ fontFamily: "work-sans, sans-serif" }}
+//                                style={{ fontFamily: "anta, sans-serif" }}
 //                             >
 //                                 Industry expertise across multiple sectors
 //                             </p>
@@ -187,7 +187,7 @@
 //                             </h4>
 //                             <p 
 //                                 className="text-gray-300 text-xs sm:text-sm"
-//                                 style={{ fontFamily: "work-sans, sans-serif" }}
+//                                style={{ fontFamily: "anta, sans-serif" }}
 //                             >
 //                                 Custom-built for your business needs
 //                             </p>
@@ -289,7 +289,7 @@ function Willhelp() {
                     </h1>
                     <p 
                         className="text-lg text-gray-300 max-w-2xl mx-auto"
-                        style={{ fontFamily: "work-sans, sans-serif" }}
+                       style={{ fontFamily: "anta, sans-serif" }}
                     >
                         Delivering proven CRM solutions with measurable results that accelerate your business success.
                     </p>
@@ -306,7 +306,25 @@ function Willhelp() {
                             viewport={{ once: true }}
                             className="relative p-8 rounded-2xl border border-[#FF6467]/20 bg-black/40 backdrop-blur-2xl flex flex-col hover:border-[#FF6467]/40 transition-all duration-500 group"
                         >
-                            {/* Icon + Badge */}
+                            {/* Number Badge - Top Left Corner */}
+                            <div className="absolute -top-4 -left-4 z-20">
+                                <div className="relative">
+                                    {/* Glow effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] rounded-full blur-lg opacity-70"></div>
+                                    
+                                    {/* Number Badge */}
+                                    <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] flex items-center justify-center shadow-2xl border-4 border-black/90">
+                                        <span 
+                                            className="text-3xl font-black text-white"
+                                            style={{ fontFamily: "DeaconTest, sans-serif" }}
+                                        >
+                                            {index + 1}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Icon + Metric */}
                             <div className="flex items-center justify-between mb-6">
                                 {/* PNG icon */}
                                 <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg`}>
@@ -330,7 +348,7 @@ function Willhelp() {
                             {/* Description */}
                             <p 
                                 className="text-gray-300 mb-4"
-                                style={{ fontFamily: "work-sans, sans-serif" }}
+                               style={{ fontFamily: "anta, sans-serif" }}
                             >
                                 {service.description}
                             </p>
@@ -386,7 +404,7 @@ function Willhelp() {
 
                                 <p 
                                     className="text-gray-300 text-sm"
-                                    style={{ fontFamily: "work-sans, sans-serif" }}
+                                   style={{ fontFamily: "anta, sans-serif" }}
                                 >
                                     {item.desc}
                                 </p>
@@ -400,3 +418,5 @@ function Willhelp() {
 }
 
 export default Willhelp;
+
+

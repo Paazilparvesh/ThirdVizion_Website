@@ -19,7 +19,7 @@ import Client17 from "/src/assets/partners/aaaa.png";
 // ---------------------------
 // NEW: SEPARATE ARRAYS
 // ---------------------------
-const topSlides = [Client14, Client15, Client16, Client17];
+const topSlides = [Client14, Client15, Client16, Client17,Client13,Client3];
 
 const bottomSlides = [
   Client1, Client2, Client3, Client4,

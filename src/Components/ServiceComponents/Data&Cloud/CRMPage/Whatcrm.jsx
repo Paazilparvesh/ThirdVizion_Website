@@ -409,7 +409,7 @@ function Whatcrm() {
                 {/* Heading */}
                 <h1 
                     className="text-5xl md:text-6xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-                  style={{ fontFamily: "DeaconTest, sans-serif" }}
+                    style={{ fontFamily: "DeaconTest, sans-serif" }}
                 >
                     What is CRM?
                 </h1>
@@ -434,21 +434,21 @@ function Whatcrm() {
                         {/* Centralized Data */}
                         <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={CentralizedIcon} className="w-16 h-16 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-[#FF6467] mb-2">Centralized Data</h3>
+                            <h3 className="text-xl font-bold text-[#FF6467] mb-2"style={{ fontFamily: "anta, sans-serif" }}>Centralized Data</h3>
                             <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Store customer details and history in one place.   </p>
                         </div>
 
                         {/* Automation */}
                         <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={AutomationIcon} className="w-16 h-16 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-[#FF6467] mb-2">Automation</h3>
+                            <h3 className="text-xl font-bold text-[#FF6467] mb-2"style={{ fontFamily: "anta, sans-serif" }}>Automation</h3>
                             <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Automate routine business workflows.</p>
                         </div>
 
                         {/* AI Insights */}
                         <div className=" p-6 rounded-xl border border-[#FF6467]/20 text-center hover:scale-105 transition">
                             <img src={AiInsightIcon} className="w-16 h-16 mx-auto mb-4" />
-                            <h3 className="text-xl font-bold text-[#FF6467] mb-2">AI Insights</h3>
+                            <h3 className="text-xl font-bold text-[#FF6467] mb-2"style={{ fontFamily: "anta, sans-serif" }}>AI Insights</h3>
                             <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Analyze data and predict customer behavior.</p>
                         </div>
                     </div>
@@ -460,7 +460,7 @@ function Whatcrm() {
                         <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Filter className="text-[#FF6467]" size={32} />
                             <div>
-                                <h4 className="text-white font-semibold text-lg"  >Sales Pipeline Management</h4>
+                                <h4 className="text-white font-semibold text-lg" style={{ fontFamily: "anta, sans-serif" }} >Sales Pipeline Management</h4>
                                 <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Track leads and deals across all stages.</p>
                             </div>
                         </div>
@@ -469,7 +469,7 @@ function Whatcrm() {
                         <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Megaphone className="text-[#FF6467]" size={32} />
                             <div>
-                                <h4 className="text-white font-semibold text-lg">Marketing Campaigns</h4>
+                                <h4 className="text-white font-semibold text-lg"style={{ fontFamily: "anta, sans-serif" }}>Marketing Campaigns</h4>
                                 <p className="text-gray-300 text-sm" style={{ fontFamily: "anta, sans-serif" }}>Optimize campaigns and measure performance.</p>
                             </div>
                         </div>
@@ -478,7 +478,7 @@ function Whatcrm() {
                         <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <Headphones className="text-[#FF6467]" size={32} />
                             <div>
-                                <h4 className="text-white font-semibold text-lg">Customer Service</h4>
+                                <h4 className="text-white font-semibold text-lg"style={{ fontFamily: "anta, sans-serif" }}>Customer Service</h4>
                                 <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Resolve support tickets with full context.</p>
                             </div>
                         </div>
@@ -487,7 +487,7 @@ function Whatcrm() {
                         <div className="flex items-start space-x-4  p-4 rounded-lg border border-[#FF6467]/20 hover:border-[#FF6467]/40 transition">
                             <BarChart3 className="text-[#FF6467]" size={32} />
                             <div>
-                                <h4 className="text-white font-semibold text-lg">Reports & Analytics</h4>
+                                <h4 className="text-white font-semibold text-lg"style={{ fontFamily: "anta, sans-serif" }}>Reports & Analytics</h4>
                                 <p className="text-gray-300 text-sm"style={{ fontFamily: "anta, sans-serif" }}>Measure performance with powerful insights.</p>
                             </div>
                         </div>

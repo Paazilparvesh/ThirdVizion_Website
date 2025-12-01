@@ -44,7 +44,7 @@ function CrmVideo() {
         <section className="w-full min-h-screen text-white py-8 md:py-16 px-4 sm:px-6 font-sans">
             {/* Header Section */}
             <div className="max-w-7xl mx-auto text-center mb-16">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 font-sans">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 ">
                     <span className="bg-gradient-to-r from-[#FF6467] via-[#FF6467] to-[#FF6467] bg-clip-text text-transparent bg-size-200 animate-gradient" style={{ fontFamily: "DeaconTest, sans-serif" }} >
                         Understanding CRM Software
                     </span>

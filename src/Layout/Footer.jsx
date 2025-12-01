@@ -12,11 +12,11 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="flex flex-col bg-black text-white relative overflow-hidden"
+      className="flex flex-col bg-black text-white relative overflow-hidden pb-16 sm:pb-20 md:pb-0"
     >
       {/* Top Section */}
       <div
-        className="max-w-7xl mx-auto mb-30 mt-15 bg-black px-6 py-12 
+        className="max-w-7xl mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black px-6 py-12 
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8
         md:text-left text-center relative z-10"
       >
@@ -148,10 +148,12 @@ const Footer = () => {
         <p
           className="bg-clip-text text-transparent font-normal tracking-wider 
                      text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[220px] 2xl:text-[225px]
-                     leading-none -mb-8 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
+                     leading-none mb-0 sm:mb-0 md:-mb-12 lg:-mb-16 pointer-events-none select-none"
           style={{
             backgroundImage:
               "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
           THIRDVIZION

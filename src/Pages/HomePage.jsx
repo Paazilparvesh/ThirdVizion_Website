@@ -19,12 +19,12 @@ export default function Home() {
 
   return (
     <div id="home-scroll-container">
-      <SparkleBg count={25} color="455, 237, 4" speed={0.8} />
+      <SparkleBg count={25} color="255, 255, 255" speed={0.8} />
       <Hero />
       <About />
       {/* <VisionMission /> */}
       <Industries />
-      <div className="hidden sm:block">
+      <div className="">
         <Newservice /> 
       <Partners className="bg-black" />
       <Indhu />

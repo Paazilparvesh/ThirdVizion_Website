@@ -5,7 +5,7 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-import amsi from "/src/assets/HeroImages/amsi-go.png";
+import amsi from "/src/assets/HeroImages/qq.png";
 import madras from "/src/assets/HeroImages/madraskitchen.png";
 import scopik from "/src/assets/HeroImages/scopik.png";
 import spinz from "/src/assets/HeroImages/spinz.png";
@@ -15,11 +15,11 @@ gsap.registerPlugin(ScrollTrigger);
 const ProjectsData = [
   {
     id: 1,
-    title: "AMSI NGO",
+    title: "White LMS",
     image: amsi,
-    description: "A modern NGO website designed for awareness campaigns and online donations.",
+description: "A user-friendly and interactive LMS website designed to enhance learning experiences, streamline course management, and improve student engagement.",
     live: "https://amsi-ngo.com/",
-    tools: ["Wordpress"],
+    tools: ["React","Django","PostresSQL"],
   },
   {
     id: 2,
