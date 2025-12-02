@@ -1,45 +1,52 @@
 import { motion } from "framer-motion";
-import { Heart, BookOpen, Car, Home, Settings, ShoppingBag } from "lucide-react";
+
+// Import WebP images
+import heartImg from "/src/assets/vrassset/heart.webp";
+import educationImg from "/src/assets/vrassset/education.webp";
+import carImg from "/src/assets/vrassset/car.webp";
+import realestateImg from "/src/assets/vrassset/realestate.webp";
+import manufacturingImg from "/src/assets/vrassset/manufacturing.webp";
+import retailImg from "/src/assets/vrassset/retail.webp";
 
 function VRIndustries() {
     const industries = [
         {
-            icon: Heart,
+            image: heartImg,
             metric: "85%",
             title: "Healthcare",
             description: "Surgical training, pain management, mental health therapy, and medical simulations in risk-free environments for doctors and students.",
             gradient: "from-blue-500 to-cyan-400",
         },
         {
-            icon: BookOpen,
+            image: educationImg,
             metric: "3X",
             title: "Education",
             description: "Virtual classrooms, immersive training, and interactive lessons improve learning in schools, universities, and corporate settings.",
             gradient: "from-green-500 to-emerald-400",
         },
         {
-            icon: Car,
+            image: carImg,
             metric: "60%",
             title: "Automotive",
             description: "Car manufacturers use VR for design, crash simulations, virtual test drives, and autonomous vehicle development before production.",
             gradient: "from-red-500 to-orange-400",
         },
         {
-            icon: Home,
+            image: realestateImg,
             metric: "5X",
             title: "Real Estate",
             description: "VR-powered tours let buyers explore properties remotely while architects visualize and refine designs before construction begins.",
             gradient: "from-purple-500 to-pink-400",
         },
         {
-            icon: Settings,
+            image: manufacturingImg,
             metric: "70%",
             title: "Manufacturing",
             description: "Prototype testing, assembly line optimization, and worker training in complex or hazardous environments with zero real-world risk.",
             gradient: "from-orange-500 to-yellow-400",
         },
         {
-            icon: ShoppingBag,
+            image: retailImg,
             metric: "4X",
             title: "Retail",
             description: "Brands leverage VR for virtual shopping experiences, interactive product trials, and immersive advertising campaigns that engage customers.",
@@ -91,9 +98,13 @@ function VRIndustries() {
                             <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-indigo-500/5 opacity-50 group-hover:opacity-70 transition-opacity duration-500 rounded-2xl" />
                             
                             <div className="relative z-10 flex flex-col h-full">
-                                {/* Icon */}
-                                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${industry.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                                    <industry.icon className="w-8 h-8 text-white" />
+                                {/* Image Icon - No Background */}
+                                <div className="w-16 h-16 rounded-2xl bg-transparent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg overflow-hidden">
+                                    <img 
+                                        src={industry.image} 
+                                        alt={industry.title}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
 
                                 {/* Metric */}

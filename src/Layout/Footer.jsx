@@ -105,7 +105,7 @@ const Footer = () => {
           <h3 className="font-semibold text-lg mb-4">Social</h3>
           <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xl text-gray-300">
             <a
-              href="https://www.facebook.com/share/1Q5hmaxzpF/"
+              href="https://www.facebook.com/profile.php?id=61580211779605"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -119,7 +119,7 @@ const Footer = () => {
               <FaInstagram className="hover:text-white" />
             </a>
             <a
-              href="https://www.linkedin.com/company/thirdvizion-labs/posts/?feedView=all"
+              href="https://www.linkedin.com/company/106155239/admin/settings/"
               target="_blank"
               rel="noopener noreferrer"
             >
