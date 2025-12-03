@@ -156,7 +156,7 @@ const Industries = () => {
   return (
     <section
       id="industries"
-      className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 lg:px-24 xl:px-32 overflow-hidden"
+      className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 lg:px-24 xl:px-20 overflow-hidden"
       style={{ fontFamily: "anta, sans-serif" }}>
 
       {/* TOP SECTION */}
@@ -174,7 +174,7 @@ const Industries = () => {
           </h2>
         </div>
 
-        <div className="flex-1 font-worksans text-gray-300 text-justify md:text-right text-md md:text-sm px-2 md:px-8 mb-8 leading-relaxed max-w-xl"
+        <div className="flex-1 font-worksans text-gray-300 text-justify md:text-right text-md md:text-sm lg:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl"
           style={{ fontFamily: "anta, sans-serif" }}>
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and

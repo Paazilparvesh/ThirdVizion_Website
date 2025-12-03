@@ -6,7 +6,7 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
- 
+
   FaYoutube,
   FaChevronDown,
   FaVrCardboard,
@@ -23,15 +23,13 @@ import { MdViewInAr } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "/src/assets/Logo.svg";
-import NewLogo from "/src/assets/New_Logo.png"
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [setMobileCategoryOpen] = useState(null);
-  const [hoverDisabled, setHoverDisabled] = useState(false);
-  const [activeBox, setActiveBox] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -119,10 +117,16 @@ const Header = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => {
-    setIsOpen(false);
-    setActiveDropdown(null);
-    setMobileCategoryOpen(null);
+    setIsClosing(true);
+
+    // Wait for animation to finish (same duration as CSS)
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+      setActiveDropdown(null);
+    }, 450); // matches animation duration
   };
+
 
   const handleBoxClick = (page, e) => {
 
@@ -132,33 +136,49 @@ const Header = () => {
   }
 
   const socialLinks = [
-    { icon: FaFacebookF, href: "https://www.facebook.com/share/1Q5hmaxzpF/" },
+    { icon: FaFacebookF, href: "https://www.facebook.com/people/Thirdvizion-Labs/61580211779605" },
     { icon: FaInstagram, href: "https://www.instagram.com/thirdvizionlabs/" },
     {
       icon: FaLinkedinIn,
-      href: "https://www.linkedin.com/company/thirdvizion-labs/posts/?feedView=all",
+      href: "https://www.linkedin.com/company/thirdvizion-labs",
     },
 
     { icon: FaYoutube, href: "https://www.youtube.com/@ThirdVizion" },
   ];
 
+  useEffect(() => {
+    if (isOpen) {
+      // Disable page scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Restore page scroll
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      // Clean up if component unmounts
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+
   return (
     <>
       {/* Top Nav */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 font-anta ${scrolled
           ? "bg-black/90 backdrop-blur-lg border-b border-white/10 shadow-2xl"
           : "bg-transparent"
           }`}
       >
-        <div className="flex justify-between items-center h-14 sm:h-16 md:h-18 px-3 sm:px-4 md:px-6 lg:px-10">
+        <div className="flex justify-between items-center h-14 sm:h-16 md:h-20 px-3 sm:px-4 md:px-6 lg:px-10">
           {/* Logo */}
           <Link to="/" onClick={closeMenu}>
             <img src={Logo} alt="Logo" className="size-40" />
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex justify-center  items-center gap-4 xl:gap-16 text-white text-sm xl:text-[15px]" style={{ fontFamily: "anta, sans-serif" }}>
+          <nav className="hidden lg:flex justify-center  items-center gap-4 xl:gap-16 text-white text-sm lg:text-20" style={{ fontFamily: "anta, sans-serif" }}>
             <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
               Home
             </Link>
@@ -172,7 +192,7 @@ const Header = () => {
 
             {/* Services Dropdown */}
             <div
-              className="relative  group" 
+              className="relative  group"
               onMouseEnter={() => !hoverDisabled && setActiveDropdown("Services")}
               onMouseLeave={() => !hoverDisabled && setActiveDropdown(null)}
             >
@@ -267,7 +287,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden fixed top-5 right-10 z-50">
+          <div className="lg:hidden fixed top-3 right-7 z-50">
             <button onClick={toggleMenu} className="w-8 h-8 flex flex-col justify-center items-center z-50">
               <span className={`block h-0.5 w-5 bg-white transition ${isOpen ? "rotate-45 translate-y-1.5" : "-translate-y-1"}`} />
               <span className={`block h-0.5 w-5 bg-white transition ${isOpen ? "opacity-0" : "opacity-100"}`} />
@@ -276,81 +296,94 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Drawer */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                key="mobile-menu"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="w-full absolute top-0 z-40 bg-black/95 backdrop-blur-xl p-6 flex flex-col lg:hidden"
+          {isOpen && (
+            <div
+              className={`
+      fixed inset-0 
+      z-50 
+      bg-black/95 backdrop-blur-xl 
+      flex flex-col 
+      p-6 
+      overflow-y-auto 
+      lg:hidden
+      animate-slideIn ${isClosing ? "animate-slideOut" : "animate-slideIn"}
+    `}
+            >
+              {/* Close button inside drawer */}
+              <button
+                onClick={closeMenu}
+                className="absolute top-5 right-6 w-8 h-8 flex flex-col justify-center items-center"
               >
-                {/* Scrollable container */}
-                <div className="flex-1 overflow-y-scroll flex flex-col gap-6 pt-">
-                  {/* Mobile Nav Links */}
-                  <nav className="flex flex-col gap-4 text-white text-lg">
-                    <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
-                      Home
-                    </Link>
-                    <Link to="/about" onClick={closeMenu} className="hover:text-purple-400">
-                      About
-                    </Link>
+                <span className="block h-0.5 w-5 bg-white rotate-45 translate-y-1" />
+                <span className="block h-0.5 w-5 bg-white -rotate-45 -translate-y-1" />
+              </button>
 
-                    {/* Collapsible Services Section */}
-                    <div className="border-t border-white/10 pt-4">
-                      <p className="text-gray-300 text-sm uppercase mb-3">Services</p>
-                      {Object.entries(categories).map(([categoryName, categoryData]) => (
-                        <div key={categoryName} className="mb-4">
-                          <p className="text-xs text-gray-400 mb-2">{categoryName}</p>
-                          <div className="flex flex-col gap-2">
-                            {categoryData.pages.map((page) => (
-                              <button
-                                key={page.name}
-                                onClick={(e) => handleBoxClick(page, e)}
-                                className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"
-                              >
-                                <span className="w-6 h-6 flex items-center justify-center rounded bg-white/10 text-purple-400">
-                                  {page.icon}
-                                </span>
-                                <span className="text-sm">{page.name}</span>
-                              </button>
-                            ))}
-                          </div>
+              {/* Scrollable Content */}
+              <div className="flex-1 flex flex-col gap-6 mt-12 overflow-y-auto">
+                {/* Mobile Nav Links */}
+                <nav className="flex flex-col gap-4 text-white text-lg">
+                  <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
+                    Home
+                  </Link>
+                  <Link to="/about" onClick={closeMenu} className="hover:text-purple-400">
+                    About
+                  </Link>
+
+                  {/* Services Section */}
+                  <div className="border-t border-white/10 pt-4">
+                    <p className="text-gray-300 text-sm uppercase mb-3">Services</p>
+
+                    {Object.entries(categories).map(([categoryName, categoryData]) => (
+                      <div key={categoryName} className="mb-4">
+                        <p className="text-xs text-gray-400 mb-2">{categoryName}</p>
+
+                        <div className="flex flex-col gap-2">
+                          {categoryData.pages.map((page) => (
+                            <button
+                              key={page.name}
+                              onClick={(e) => handleBoxClick(page, e)}
+                              className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10"
+                            >
+                              <span className="w-6 h-6 flex items-center justify-center rounded bg-white/10 text-purple-400">
+                                {page.icon}
+                              </span>
+                              <span className="text-sm">{page.name}</span>
+                            </button>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-
-                    <Link to="/contact" onClick={closeMenu} className="hover:text-purple-400">
-                      Contact
-                    </Link>
-                    <Link to="/blog" onClick={closeMenu} className="hover:text-purple-400">
-                      Resources
-                    </Link>
-                  </nav>
-
-                  {/* Social Links */}
-                  <div className="mt-auto flex gap-4 justify-center md:justify-start">
-                    {socialLinks.map((social, i) => {
-                      const Icon = social.icon;
-                      return (
-                        <a
-                          key={i}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 text-gray-400 hover:text-white"
-                        >
-                          <Icon />
-                        </a>
-                      );
-                    })}
+                      </div>
+                    ))}
                   </div>
-                </div>
-              </motion.div>
 
-            )}
-          </AnimatePresence>
+                  <Link to="/contact" onClick={closeMenu} className="hover:text-purple-400">
+                    Contact
+                  </Link>
+                  <Link to="/blog" onClick={closeMenu} className="hover:text-purple-400">
+                    Resources
+                  </Link>
+                </nav>
+
+                                {/* Social Icons */}
+                <div className=" fixed top-4 mr-8 flex justify-start md:justify-start z-0 gap-4">
+                  {socialLinks.map((social, i) => {
+                    const Icon = social.icon;
+                    return (
+                      <a
+                        key={i}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-gray-400 hover:text-white"
+                      >
+                        <Icon />
+                      </a>
+                    );
+                  })}
+                </div>
+
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
