@@ -87,36 +87,103 @@ const Landing = () => {
     createDynamicLists(10, 10);
   });
 
+  // useEffect(() => {
+  //   const allHexagons = document.querySelectorAll(".pattern ul li");
+
+  //   // STAGGER CONFIG
+  //   const STAGGER_COUNT = 4;     // how many hexagons pop per wave
+  //   const STAGGER_DELAY = 150;   // delay between each item in the wave
+  //   const WAVE_INTERVAL = 2000;  // time between waves
+
+  //   const startWave = () => {
+  //     const usedIndexes = new Set();
+
+  //     for (let i = 0; i < STAGGER_COUNT; i++) {
+  //       setTimeout(() => {
+  //         let randomIndex;
+
+  //         // ensure unique hexagon per wave
+  //         do {
+  //           randomIndex = Math.floor(Math.random() * allHexagons.length);
+  //         } while (usedIndexes.has(randomIndex));
+
+  //         usedIndexes.add(randomIndex);
+
+  //         const item = allHexagons[randomIndex];
+  //         if (item) {
+  //           item.classList.add("random-pop");
+
+  //           setTimeout(() => {
+  //             item.classList.remove("random-pop");
+  //           }, 1600); // remove slower
+  //         }
+  //       }, i * STAGGER_DELAY); // stagger timing
+  //     }
+  //   };
+
+  //   const interval = setInterval(startWave, WAVE_INTERVAL);
+  //   startWave(); // run immediately on page load
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  useEffect(() => {
+    const hexagons = Array.from(document.querySelectorAll(".pattern ul li"));
+
+    if (hexagons.length < 4) {
+      console.warn("Not enough hexagons found to pop 4 at once");
+      return;
+    }
+
+    const POP_COUNT = 4;
+    const POP_DURATION = 1600;
+    const WAVE_INTERVAL = 2000;
+
+    const startWave = () => {
+      const used = new Set();
+
+      while (used.size < POP_COUNT) {
+        const idx = Math.floor(Math.random() * hexagons.length);
+        used.add(idx);
+      }
+
+      // Trigger all 4 at EXACTLY the same time
+      [...used].forEach((i) => {
+        const el = hexagons[i];
+        if (!el) return;
+
+        el.classList.add("random-pop");
+
+        setTimeout(() => {
+          el.classList.remove("random-pop");
+        }, POP_DURATION);
+      });
+    };
+
+    const interval = setInterval(startWave, WAVE_INTERVAL);
+    startWave();
+
+    return () => clearInterval(interval);
+  }, []);
+
+
+
   return (
-    <div
-      id="pattern"
-      className="pattern   2xl:h-[112vh] overflow-hidden relative z-0"
-    >
-      {/* This section contains the background pattern */}
-      {createDynamicLists(10, 15)}
+    <div className="w-full h-full max-h-[80%] md:max-h-[100%] overflow-hidden bg-black relative">
 
       {/* ✅ Centered text + button */}
-      <div className="flex flex-col items-center justify-center gap- z-20 text-white pointer-events-none">
-       <h2
-  class="w-full absolute top-130 md:top-120 lg:top-128 xl:top-119 left-1/2 
-  -translate-x-1/2 z-50 leading-snug text-center text-5xl md:text-3xl lg:text-5xl 
-  xl:text-5xl xl:max-w-4xl font-segoe-ui font-bold px-5 uppercase pt-[45px] pointer-events-none"
->
-  Engineering the Future, Innovating the Present.
-</h2>
+      <h2
+        class="w-full absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-white leading-snug text-center text-4xl md:text-3xl md:scale-110 lg:text-4xl lg:scale-115 xl:text-6xl xl:scale-100 font-segoe-ui font-bold px-5 uppercase pointer-events-none"
+      >
+        Engineering the Future, Innovating <br className="hidden md:block" /> the Present
+      </h2>
 
-
-        {/* <p className="w-full absolute top-155 md:top-128 lg:top-155 xl:top-157 2xl:top-151 left-1/2 -translate-x-1/2 xl:max-w-4xl 2xl:max-w-2xl text-xl md:text-base lg:text-lg 2xl:text-xs text-center text-gray-200 px-20 pointer-events-none">
-          We combine cutting-edge technology with visionary ideas to deliver
-          solutions that shape tomorrow while empowering businesses today.
-        </p> */}
-
-        {/* <Link
-          to={"/contact"}
-          className="absolute top-235 md:top-190 lg:top-175 xl:top-168 2xl:top-160 left-1/2 -translate-x-1/2 bg-violet-500 text-white px-8 py-3 text-2xl rounded-full pointer-events-auto hover:scale-110 duration-300"
-        >
-         CONTACT US
-        </Link> */}
+      <div
+        id="pattern"
+        className="pattern mt-0 md:-mt-[320px] pr-0 md:pr-[80px] mb-0 md:mb-[80px] flex flex-col justify-center items-center relative scale-135 md:scale-90 lg:scale-70 xl:scale-80"
+      >
+        {/* This section contains the background pattern */}
+        {createDynamicLists(10, 15)}
       </div>
     </div>
   );

@@ -17,8 +17,8 @@ const BookOpenIcon = () => (
 
 const ShoppingCartIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    ircle cx="9" cy="21" r="1" />
-    ircle cx="20" cy="21" r="1" />
+    {/* ircle cx="9" cy="21" r="1" />
+    ircle cx="20" cy="21" r="1" /> */}
     <path d="M1 1h4l2.68 12.09a2 2 0 0 0 1.76 1.54L21 16" />
     <path d="M6 5h17l-1 7H8" />
   </svg>
@@ -40,7 +40,7 @@ const PlaneIcon = () => (
 
 const SmileIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    ircle cx="12" cy="12" r="10" />
+    {/* ircle cx="12" cy="12" r="10" /> */}
     <path d="M8 14s1.5 2 4 2 4-2 4-2" />
     <line x1="9" y1="9" x2="9.01" y2="9" />
     <line x1="15" y1="9" x2="15.01" y2="9" />
@@ -88,11 +88,10 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
     >
       {/* Segment Arc */}
       <div
-        className={`w-full h-full absolute transition-all duration-500 rounded-full ${
-          isSelected
-            ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
-            : "border border-white/20 hover:opacity-40 hover:border-[#00d3f3]/50"
-        }`}
+        className={`w-full h-full absolute transition-all duration-500 rounded-full ${isSelected
+          ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
+          : "border border-white/20 hover:opacity-40 hover:border-[#00d3f3]/50"
+          }`}
         style={{
           clipPath: `polygon(50% 50%, 100% 50%, 100% 100%, 0% 100%, 0% 50%)`,
           transform: `rotate(${-(90 - 360 / totalServices / 2)}deg)`,
@@ -102,29 +101,26 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
 
       {/* Icon + Label */}
       <div
-        className={`absolute left-0 top-0 p-4 transition-all duration-500 flex flex-col items-center space-y-2 group ${
-          isSelected ? "scale-125 z-20" : "scale-100 hover:scale-110 z-10"
-        }`}
+        className={`absolute left-0 top-0 p-4 transition-all duration-500 flex flex-col items-center space-y-2 group ${isSelected ? "scale-125 z-20" : "scale-100 hover:scale-110 z-10"
+          }`}
         style={{
           transform: `translate(240px, 0px) rotate(${counterRotationDegrees}deg)`,
         }}
       >
         <div
-          className={`w-20 h-20 flex items-center justify-center rounded-full transition-all duration-500 backdrop-blur-md ${
-            isSelected
-              ? "bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]"
-              : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
-          }`}
+          className={`w-20 h-20 flex items-center justify-center rounded-full transition-all duration-500 backdrop-blur-md ${isSelected
+            ? "bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]"
+            : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
+            }`}
         >
           {IconComponent && React.createElement(IconComponent, {})}
         </div>
         <span
-          className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${
-            isSelected
-              ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
-              : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
-              
-          }`}
+          className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${isSelected
+            ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
+            : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
+
+            }`}
         >
           {service.title}
         </span>
@@ -183,7 +179,7 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
       const timer = setTimeout(() => {
         setSelectedService(null);
       }, 4000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [selectedService, setSelectedService]);
@@ -200,17 +196,15 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
           return (
             <div
               key={service.title}
-              className={`flex items-center space-x-4 px-6 py-4 rounded-xl border transition-all duration-300 cursor-pointer ${
-                isSelected
-                  ? "bg-[#00d3f3]/20 border-[#00d3f3] shadow-[0_0_20px_rgba(0,211,243,0.3)]"
-                  : "bg-white/5 border-white/10 hover:border-[#00d3f3]/50 hover:bg-[#00d3f3]/10"
-              }`}
+              className={`flex items-center space-x-4 px-6 py-4 rounded-xl border transition-all duration-300 cursor-pointer ${isSelected
+                ? "bg-[#00d3f3]/20 border-[#00d3f3] shadow-[0_0_20px_rgba(0,211,243,0.3)]"
+                : "bg-white/5 border-white/10 hover:border-[#00d3f3]/50 hover:bg-[#00d3f3]/10"
+                }`}
               onClick={() => setSelectedService(service)}
             >
               <div
-                className={`w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 ${
-                  isSelected ? "bg-[#00d3f3] text-black scale-110" : "bg-white/10 text-white"
-                }`}
+                className={`w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 ${isSelected ? "bg-[#00d3f3] text-black scale-110" : "bg-white/10 text-white"
+                  }`}
               >
                 {Icon && <Icon />}
               </div>
@@ -221,7 +215,7 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
           );
         })}
       </div>
-      
+
       {/* Selected service display for mobile */}
       {selectedService && (
         <div className="mt-8 p-6 bg-black/40 border border-[#00d3f3]/30 rounded-xl backdrop-blur-md text-center animate-fadeIn">
@@ -261,7 +255,7 @@ const App = () => {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
-      
+
       // Reset auto-rotation state when switching between mobile and desktop
       if (mobile) {
         setAutoRotate(false);

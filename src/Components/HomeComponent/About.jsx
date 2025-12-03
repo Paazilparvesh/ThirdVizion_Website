@@ -4,11 +4,11 @@ import img2 from "/src/assets/AboutImages/about2.png";
 
 export default function About() {
   return (
-    <div className="w-full min-h-screen bg-black pt-20 text-yellow-400 py-16 px-6 lg:px-20 overflow-hidden font-worksans">
+    <div className="w-full min-h-screen bg-black pt-10 text-yellow-400 py-16 px-6 lg:px-20 xl:px-28 overflow-hidden font-worksans">
       {/* Top Title Section */}
       <div className="text-center mb-4">
         <h2
-          className="text-4xl lg:text-7xl tracking-wide"
+          className="text-4xl lg:text-6xl tracking-wide pb-15"
           style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
         >
           WHO ARE WE
@@ -17,12 +17,12 @@ export default function About() {
 
       {/* First Row - Image First on Mobile */}
       <div
-        className="flex flex-col md:flex-row items-center justify-between gap-12 mb-10"
+        className="flex flex-col md:flex-row items-center justify-between gap-5 mb-10"
         style={{ fontFamily: "anta, sans-serif" }}
       >
         {/* Floating Image - Shows First on Mobile */}
         <motion.div
-          className="flex-1 flex justify-center md:justify-end order-1 md:order-2"
+          className="flex-1 flex justify-center md:justify-end order-1 md:order-2 scale-85 xl:scale-100"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -53,7 +53,7 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-medium">
+          <p className="text-md md:text-xl leading-relaxed text-gray-300 font-medium text-justify md:text-left">
             At ThirdVizion, we're more than just a technology company—we're innovators
             shaping the future. Our mission is to deliver cutting-edge solutions that
             not only solve challenges but also create new opportunities across
@@ -64,10 +64,10 @@ export default function About() {
       </div>
 
       {/* Second Row - Image First on Mobile */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-5">
         {/* Floating Image - Shows First on Mobile */}
         <motion.div
-          className="flex-1 flex justify-center md:justify-start order-1"
+          className="flex-1 flex justify-center md:justify-start order-1 scale-85 xl:scale-100"
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -100,7 +100,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           style={{ fontFamily: "anta, sans-serif" }}
         >
-          <p className="text-lg md:text-xl leading-relaxed text-gray-300 font-medium">
+          <p className="text-md md:text-xl leading-relaxed text-gray-300 font-medium text-justify md:text-right">
             We pride ourselves on being a dynamic team of forward-thinkers, dedicated
             to addressing complex challenges with innovative, tailor-made solutions.
             Our mission is not just to keep up with technological advancements but to

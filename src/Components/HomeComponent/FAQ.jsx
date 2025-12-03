@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 if (typeof window !== "undefined") {
   try {
     gsap.registerPlugin(ScrollTrigger);
-  } catch {}
+  } catch { }
 }
 
 /* --------------------------------------------------------------------------
@@ -114,15 +114,15 @@ const measureHeight = (el) => {
    -------------------------------------------------------------------------- */
 const FAQHeader = () => (
   <header className="text-center mb-16 relative z-10">
-  <h2
-  id="faq-heading"
-  className="text-4xl md:text-5xl lg:text-6xl xl:text-6xl uppercase font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
-  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
->
-  Frequently  Asked Questions
-</h2>
+    <h2
+      id="faq-heading"
+      className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
+      style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+    >
+      Frequently  Asked Questions
+    </h2>
 
-    <p className="mt-4 text-lg text-yellow-500 max-w-2xl mx-auto  tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>
+    <p className="mt-4 text-sm text-yellow-500 max-w-2xl mx-auto  tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
@@ -360,7 +360,7 @@ export default function FAQSection() {
   return (
     <section
       className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-work-sans overflow-hidden" style={{ fontFamily: "anta, sans-serif" }}>
-   
+
       <div className="max-w-5xl mx-auto">
         <FAQHeader />
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12 justify-center">
@@ -399,13 +399,6 @@ export default function FAQSection() {
             </div>
           </div>
         </div>
-
-        {/* ✅ Centered HelpBot */}
-        {/* <div className="flex justify-center mt-12">
-          <div className="w-full max-w-md">
-            <HelpBotCTA />
-          </div>
-        </div> */}
       </div>
       <BackgroundDecorations />
     </section>

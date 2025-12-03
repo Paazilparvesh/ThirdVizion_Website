@@ -1,16 +1,15 @@
 /* General styling for the pattern */
-.pattern {
-  margin-top: -320px;
-  padding-right: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  zoom: 1.5;
-  position: relative;
-  height: 900px;
-}
+/* .pattern { */
+/* margin-top: -320px; */
+/* padding-right: 80px; */
+/* margin-bottom: 80px; */
+/* display: flex; */
+/* flex-direction: column; */
+/* align-items: center; */
+/* justify-content: center; */
+/* zoom: 1.5; */
+/* position: relative; */
+/* } */
 
 .pattern ul {
   display: flex;
@@ -82,8 +81,7 @@
   width: 81px;
   height: 16.5px;
   transform-origin: bottom;
-  transform: skewX(-33deg) skewY(3deg) rotateZ(17.5deg) translateX(-86px)
-    translateY(-10px);
+  transform: skewX(-33deg) skewY(3deg) rotateZ(17.5deg) translateX(-86px) translateY(-10px);
 }
 
 .pattern ul li::after {
@@ -255,19 +253,19 @@
     height: 900px;
     padding-top: 480px;
   }
-  
+
   .content-overlay h2 {
     font-size: 1.5rem;
     width: 90%;
     padding: 0 1rem;
   }
-  
+
   .content-overlay p {
     font-size: 0.9rem;
     width: 90%;
     padding: 0 1rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1rem;
     padding: 0.6rem 1.5rem;
@@ -281,19 +279,19 @@
     height: 900px;
     padding-top: 480px;
   }
-  
+
   .content-overlay h2 {
     font-size: 1.8rem;
     width: 90%;
     padding: 0 1.5rem;
   }
-  
+
   .content-overlay p {
     font-size: 1rem;
     width: 90%;
     padding: 0 1.5rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.1rem;
     padding: 0.7rem 1.75rem;
@@ -307,19 +305,19 @@
     height: 900px;
     padding-top: 480px;
   }
-  
+
   .content-overlay h2 {
     font-size: 2rem;
     width: 80%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay p {
     font-size: 1.1rem;
     width: 80%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.2rem;
     padding: 0.8rem 2rem;
@@ -333,19 +331,19 @@
     height: 900px;
     padding-top: 480px;
   }
-  
+
   .content-overlay h2 {
     font-size: 2.2rem;
     width: 70%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay p {
     font-size: 1.2rem;
     width: 70%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.3rem;
     padding: 0.9rem 2.25rem;
@@ -359,19 +357,19 @@
     height: 900px;
     padding-top: 400px;
   }
-  
+
   .content-overlay h2 {
     font-size: 2.5rem;
     width: 60%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay p {
     font-size: 1.3rem;
     width: 60%;
     padding: 0 2rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.4rem;
     padding: 1rem 2.5rem;
@@ -385,21 +383,21 @@
     height: 900px;
     padding-top: 350px;
   }
-  
+
   .content-overlay h2 {
     font-size: 3rem;
     width: 55%;
     padding: 0 2rem;
     margin-bottom: 2rem;
   }
-  
+
   .content-overlay p {
     font-size: 1.5rem;
     width: 55%;
     padding: 0 2rem;
     margin-bottom: 3rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.6rem;
     padding: 1.2rem 3rem;
@@ -413,21 +411,21 @@
     height: 900px;
     padding-top: 300px;
   }
-  
+
   .content-overlay h2 {
     font-size: 3.5rem;
     width: 50%;
     padding: 0 2rem;
     margin-bottom: 2.5rem;
   }
-  
+
   .content-overlay p {
     font-size: 1.8rem;
     width: 50%;
     padding: 0 2rem;
     margin-bottom: 3.5rem;
   }
-  
+
   .content-overlay .contact-btn {
     font-size: 1.8rem;
     padding: 1.5rem 3.5rem;
@@ -452,4 +450,76 @@
   .pattern {
     height: 900px;
   }
+}
+
+
+/* Random pop animation */
+/* @keyframes randomPop {
+  0% {
+    transform: translate(0, 0);
+    z-index: 0;
+  }
+  50% {
+    transform: translate(35px, -35px);
+    z-index: 1003;
+  }
+  100% {
+    transform: translate(0, 0);
+    z-index: 0;
+  }
+} */
+
+
+/* Slow random popup animation */
+.random-pop span:nth-child(5) {
+  transform: translate(35px, -35px);
+  z-index: 1003;
+  transition: all 1.5s ease;
+  /* slower */
+}
+
+.random-pop span:nth-child(4) {
+  transform: translate(25px, -25px);
+  transition: all 1.5s ease;
+}
+
+.random-pop span:nth-child(3) {
+  transform: translate(15px, -15px);
+  transition: all 1.5s ease;
+}
+
+.random-pop span:nth-child(2) {
+  transform: translate(5px, -5px);
+  transition: all 1.5s ease;
+}
+
+.random-pop span:nth-child(1) {
+  transform: translate(0, 0);
+  transition: all 1.5s ease;
+}
+
+/* KEEP your original hover colors working */
+.random-pop.facebook span:nth-child(5),
+.pattern ul li.facebook:hover span:nth-child(5) {
+  background: #3b5999;
+}
+
+.random-pop.instagram span:nth-child(5),
+.pattern ul li.instagram:hover span:nth-child(5) {
+  background: #e4405f;
+}
+
+.random-pop.twitter span:nth-child(5),
+.pattern ul li.twitter:hover span:nth-child(5) {
+  background: #55acee;
+}
+
+.random-pop.reddit span:nth-child(5),
+.pattern ul li.reddit:hover span:nth-child(5) {
+  background: #ff5700;
+}
+
+.random-pop.whatsapp span:nth-child(5),
+.pattern ul li.whatsapp:hover span:nth-child(5) {
+  background: #25d366;
 }

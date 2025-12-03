@@ -80,7 +80,7 @@ const Industries = () => {
     gsap.to(overlayEl, {
       width: "50%",
       x: "0%",
-      
+
       duration: 0.8,
       ease: "power2.out",
     });
@@ -105,7 +105,7 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: hoverXValues[index],
-     
+
       scale: scaleValue,
       duration: 0.8,
       ease: "power2.out",
@@ -146,7 +146,7 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: 0,
-     
+
       scale: 1,
       duration: 0.8,
       ease: "power2.inOut",
@@ -156,27 +156,26 @@ const Industries = () => {
   return (
     <section
       id="industries"
-      className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 overflow-hidden"
-            style={{ fontFamily: "anta, sans-serif" }}>
- 
+      className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 lg:px-24 xl:px-20 overflow-hidden"
+      style={{ fontFamily: "anta, sans-serif" }}>
+
       {/* TOP SECTION */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
+      <div className="flex flex-col md:flex-row justify-between items-start lg:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
         <div className="flex-1">
-          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-base text-center sm:text-left mx-auto sm:mx-0 "   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
->
+          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-xs text-center sm:text-left mx-auto sm:mx-0 " style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
             Industries we empower
           </p>
 
           <h2
-            className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase font-bold leading-tight font-Outfit text-center sm:text-left mx-auto sm:mx-0"
-  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+            className="text-3xl md:text-4xl lg:text-6xl xl:text-7xl capitalize font-bold leading-tight font-Outfit text-center sm:text-left mx-auto sm:mx-0"
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
           >
             Turning <span className="text-yellow-400">vision</span> into impact.
           </h2>
         </div>
 
-        <div className="flex-1 font-worksans text-gray-300 text-sm md:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl" 
-         style={{ fontFamily: "anta, sans-serif" }}>
+        <div className="flex-1 font-worksans text-gray-300 text-justify md:text-right text-md md:text-sm lg:text-lg px-2 md:px-8 mb-8 leading-relaxed max-w-xl"
+          style={{ fontFamily: "anta, sans-serif" }}>
           We partner with organizations to unlock new opportunities and
           strengthen workforce capabilities. Through technology, training, and
           strategic collaboration, we enable industries to thrive. Our goal is to
@@ -194,21 +193,21 @@ const Industries = () => {
             >
               <div className="flex items-start space-x-4">
                 {/* Number */}
-                <div className="flex-shrink-0">
+                {/* <div className="flex-shrink-0">
                   <h3 className="text-lg font-semibold text-gray-300">
                     {industry.number}
                   </h3>
-                </div>
-                
+                </div> */}
+
                 {/* Content */}
                 <div className="flex-1">
                   <h4 className="text-xl font-semibold text-white mb-2">
                     {industry.name}
                   </h4>
-                  
+
                   {/* Mobile Image with Color Overlay */}
                   <div className="mt-4 rounded-lg overflow-hidden border border-gray-600 relative">
-                    <div 
+                    <div
                       className="absolute inset-0 z-10"
                       style={{
                         background: mobileColorOverlays[industry.color]
@@ -217,13 +216,13 @@ const Industries = () => {
                     <img
                       src={industryImages[index]}
                       alt={industry.name}
-                      className="w-full h-32 object-cover relative z-0"
+                      className="w-full h-32 object-fit scale-150 relative z-0"
                       style={{ objectPosition: imagePositions[index] }}
                     />
                   </div>
-                  
+
                   {/* Color Indicator */}
-                  <div 
+                  <div
                     className="h-1 w-16 mt-3 rounded-full"
                     style={{
                       background: colorGradients[industry.color].split(' ')[2]
@@ -237,12 +236,12 @@ const Industries = () => {
       </div>
 
       {/* DESKTOP VIEW */}
-      <div className="hidden md:block relative flex flex-col  border-t border-gray-700">
+      <div className="hidden md:block relative flex flex-col border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
             key={industry.id}
             id="industry-item"
-            className="relative grid grid-cols-1 md:grid-cols-2 items-center py-6 sm:py-7 md:py-8 px-2 sm:px-4 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
+            className="relative grid grid-cols-1 md:grid-cols-2 items-center py-6 sm:py-7 md:py-5 px-2 sm:px-4 md:px-6 border-b border-gray-700 cursor-pointer group overflow-hidden"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >

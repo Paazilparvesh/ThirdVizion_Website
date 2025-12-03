@@ -19,7 +19,7 @@ import Client17 from "/src/assets/partners/aaaa.png";
 // ---------------------------
 // NEW: SEPARATE ARRAYS
 // ---------------------------
-const topSlides = [Client14, Client15, Client16, Client17,Client13,Client3];
+const topSlides = [Client14, Client15, Client16, Client17, Client3];
 
 const bottomSlides = [
   Client1, Client2, Client3, Client4,
@@ -28,148 +28,12 @@ const bottomSlides = [
   Client13
 ];
 
-// ---------------------------
-// The Carousal Component
-// ---------------------------
-const CarousalRow = ({ slides, reverse = false, duration = 14, compact = false }) => {
-  return (
-    <div className="relative w-full overflow-hidden my-2">
-      
-      {/* Triple gradient overlay for fade effect */}
-      <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black via-transparent to-transparent z-20 pointer-events-none"></div>
-      <div className="absolute inset-y-0 left-1/4 w-1/2 bg-transparent z-10 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black via-transparent to-transparent z-20 pointer-events-none"></div>
 
-      {/* Color zone indicator (middle section where logos will be in color) */}
-      <div className="absolute inset-y-0 left-1/4 w-1/2 border-l-2 border-r-2 border-yellow-500/30 z-15 pointer-events-none"></div>
-
-      {/* Sliding Row */}
-      <div
-        className="flex items-center"
-        style={{
-          width: `${slides.length * 2 * 10}rem`,
-          animation: `${reverse ? "reverseScroll" : "scroll"} ${duration}s linear infinite`,
-        }}
-      >
-        {slides.concat(slides).map((img, idx) => (
-          <div
-            key={idx}
-            className={`flex-shrink-0 ${
-              compact
-                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3"
-                : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
-            } flex justify-center items-center group relative`}
-          >
-            <div className="relative w-full h-full">
-              <img
-                src={img}
-                alt={`slide-${idx}`}
-                className="w-full h-full object-contain object-center filter grayscale transition-all duration-300 ease-in-out"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Custom styles for the fade and color effect */}
-      <style jsx>{`
-        .flex-shrink-0 {
-          position: relative;
-        }
-        
-        /* Apply grayscale by default, remove it when in middle section */
-        .flex-shrink-0:nth-child(n) {
-          filter: grayscale(100%);
-          opacity: 0.7;
-          transition: all 0.3s ease-in-out;
-        }
-        
-        /* When the container is hovered, apply color only to logos in middle section */
-        .relative:hover .flex-shrink-0:nth-child(n) {
-          filter: grayscale(100%);
-          opacity: 0.7;
-        }
-        
-        /* Simulate the middle section where logos should be in color */
-        /* This is a complex approach since we can't track position with CSS alone */
-        /* We'll use JavaScript-based approach with intersection observer would be better */
-        /* For now, we'll keep the grayscale effect consistent */
-      `}</style>
-    </div>
-  );
-};
-
-// ---------------------------
-// Enhanced Carousal Component with Position-based Effects
-// ---------------------------
-const EnhancedCarousalRow = ({ slides, reverse = false, duration = 14, compact = false }) => {
-  return (
-    <div className="relative w-full overflow-hidden my-2">
-      
-      {/* Triple gradient overlay - left fade, middle color zone, right fade */}
-      <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black via-black/50 to-transparent z-30 pointer-events-none"></div>
-      <div className="absolute inset-y-0 left-1/4 w-1/2 bg-gradient-to-r from-transparent via-transparent to-transparent z-20 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black via-black/50 to-transparent z-30 pointer-events-none"></div>
-
-      {/* Color zone visual indicator (optional, for debugging) */}
-      {/* <div className="absolute inset-y-0 left-1/4 w-1/2 bg-green-500/10 z-15 pointer-events-none"></div> */}
-
-      {/* Sliding Row */}
-      <div
-        className="flex items-center carousel-track"
-        style={{
-          width: `${slides.length * 2 * 10}rem`,
-          animation: `${reverse ? "reverseScroll" : "scroll"} ${duration}s linear infinite`,
-        }}
-      >
-        {slides.concat(slides).map((img, idx) => (
-          <div
-            key={idx}
-            className={`flex-shrink-0 ${
-              compact
-                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3"
-                : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
-            } flex justify-center items-center logo-item`}
-          >
-            <div className="relative w-full h-full">
-              <img
-                src={img}
-                alt={`slide-${idx}`}
-                className="w-full h-full object-contain object-center logo-image"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Enhanced CSS for the position-based effect */}
-      <style jsx>{`
-        .logo-image {
-          filter: grayscale(100%) brightness(0.7);
-          opacity: 0.8;
-          transition: all 0.5s ease-in-out;
-        }
-        
-        /* This creates the illusion of logos becoming colorful in the middle */
-        /* Since we can't track position with pure CSS for infinite scroll, */
-        /* we create a static effect that suggests movement through color */
-        
-        .carousel-track:hover .logo-image {
-          filter: grayscale(80%) brightness(0.8);
-          opacity: 0.9;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-// ---------------------------
-// Final Carousal Component with the Desired Effect
-// ---------------------------
+// Carousal Component with the Desired Effect
 const FinalCarousalRow = ({ slides, reverse = false, duration = 14, compact = false }) => {
   return (
     <div className="relative w-full overflow-hidden my-2 carousel-container">
-      
+
       {/* Enhanced gradient overlay for the fade effect */}
       <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black via-black/80 to-transparent z-30 pointer-events-none"></div>
       <div className="absolute inset-y-0 left-1/3 w-1/3 bg-transparent z-20 pointer-events-none color-zone"></div>
@@ -186,11 +50,10 @@ const FinalCarousalRow = ({ slides, reverse = false, duration = 14, compact = fa
         {slides.concat(slides).map((img, idx) => (
           <div
             key={idx}
-            className={`flex-shrink-0 ${
-              compact
-                ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3"
-                : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
-            } flex justify-center items-center`}
+            className={`flex-shrink-0 ${compact
+              ? "w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-3"
+              : "w-28 h-28 md:w-36 md:h-36 lg:w-40 lg:h-30 mx-4"
+              } flex justify-center items-center`}
           >
             <div className="relative w-full h-full">
               <img
@@ -228,23 +91,21 @@ const FinalCarousalRow = ({ slides, reverse = false, duration = 14, compact = fa
   );
 };
 
-// ---------------------------
 // Main Component
-// ---------------------------
 export default function Partners() {
   return (
     <div className="bg-black text-white py-12 relative font-['Outfit']">
-      
+
       <h2
-        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-center mb-3"
+        className="text-3xl md:text-4xl lg:text-6xl uppercase text-center mb-3 font-bold"
         style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
       >
-        <span className="font-bold">Our </span>
-        <span className="text-yellow-500 font-bold">Clients</span>
+        <span className="">Our </span>
+        <span className="text-yellow-500">Clients</span>
       </h2>
 
       <p
-        className="text-center text-white-400 text-xs md:text-lg px-4 sm:px-6 md:px-8 mb-8"
+        className="text-center text-white-400 text-sm md:text-lg px-4 sm:px-6 md:px-8 mb-8"
         style={{ fontFamily: "anta, sans-serif" }}
       >
         Creating impact alongside our valued clients.
@@ -258,7 +119,7 @@ export default function Partners() {
       {/* --------------------------- */}
       {/* BOTTOM ROW — All other logos */}
       {/* --------------------------- */}
-      <div className="mt-15">
+      <div className="mt-5 scale-90 md:scale-80">
         <FinalCarousalRow slides={bottomSlides} reverse={true} duration={14} />
       </div>
 
@@ -294,12 +155,6 @@ export default function Partners() {
         .carousel-container .logo-img {
           filter: none;
           opacity: 0.8;
-        }
-        
-        /* On hover, enhance the effect */
-        .carousel-container:hover .logo-img {
-          filter: grayscale(80%) brightness(0.9);
-          opacity: 0.9;
         }
       `}</style>
     </div>
