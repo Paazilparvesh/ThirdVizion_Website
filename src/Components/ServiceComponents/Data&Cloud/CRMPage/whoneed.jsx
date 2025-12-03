@@ -1,34 +1,42 @@
 import { motion } from "framer-motion";
 
+// Import WebP images
+import salesImg from "/src/assets/crmasset/sales.webp";
+import marketingImg from "/src/assets/crmasset/marketing.webp";
+import customercareImg from "/src/assets/crmasset/coustamare.webp";
+import companiesImg from "/src/assets/crmasset/companies.webp";
+import smallBusinessImg from "/src/assets/crmasset/small buisness.webp";
+import manufacturingImg from "/src/assets/crmasset/manu.webp";
+
 function Whoneed() {
     const businessTypes = [
         {
-            emoji: "🏢",
+            image: salesImg,
             title: "Sales Teams",
             description: "Track leads, manage pipelines, automate follow-ups, and close deals faster with organized workflows",
         },
         {
-            emoji: "📢",
+            image: marketingImg,
             title: "Marketing Teams",
             description: "Segment audiences, track multichannel campaigns, and measure ROI with data-driven insights",
         },
         {
-            emoji: "🤝",
+            image: customercareImg,
             title: "Customer Support",
             description: "Provide personalized service with complete customer history and interaction context",
         },
         {
-            emoji: "💼",
+            image: companiesImg,
             title: "B2B Companies",
             description: "Manage complex sales cycles with multiple decision-makers and long-term contracts",
         },
         {
-            emoji: "🌐",
+            image: smallBusinessImg,
             title: "Small Businesses",
             description: "Organize customer data and automate follow-ups to scale operations efficiently",
         },
         {
-            emoji: "🏭",
+            image: manufacturingImg,
             title: "Manufacturers",
             description: "Manage dealer networks, track multi-phase contracts, and streamline quote-to-order",
         },
@@ -45,17 +53,17 @@ function Whoneed() {
                     Who Needs CRM?
                 </h2>
 
-                <div className=" rounded-2xl shadow-2xl border border-[#FF6467]/20 p-8 md:p-12 hover:border-[#FF6467]/40 transition-all duration-300">
+                <div className="rounded-2xl shadow-2xl border border-[#FF6467]/20 p-8 md:p-12 hover:border-[#FF6467]/40 transition-all duration-300">
                     
                     <p 
-                        className="text-lg text-gray-300 max-w-2xl mx-auto"
-                       style={{ fontFamily: "anta, sans-serif" }}
+                        className="text-lg text-gray-300 max-w-2xl mx-auto mb-12 text-center"
+                        style={{ fontFamily: "anta, sans-serif" }}
                     >
                         CRM systems benefit businesses of all sizes across diverse sectors, helping build long-term customer relationships
                     </p>
 
                     {/* Business Types Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {businessTypes.map((business, index) => (
                             <motion.div
                                 key={index}
@@ -66,8 +74,12 @@ function Whoneed() {
                                 className="relative p-8 rounded-2xl border border-[#FF6467]/20 bg-black/40 backdrop-blur-2xl flex flex-col hover:border-[#FF6467]/40 transition-all duration-500 group"
                             >
                                 <div className="flex items-center justify-between mb-6">
-                                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] flex items-center justify-center shadow-lg">
-                                        <span className="text-2xl">{business.emoji}</span>
+                                    <div className="w-16 h-16 rounded-xl bg-transparent flex items-center justify-center shadow-lg overflow-hidden">
+                                        <img 
+                                            src={business.image} 
+                                            alt={business.title}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                 </div>
 
@@ -79,8 +91,8 @@ function Whoneed() {
                                 </h3>
 
                                 <p 
-                                    className="text-gray-300 mb-4"
-                                   style={{ fontFamily: "anta, sans-serif" }}
+                                    className="text-gray-300 mb-4 flex-1"
+                                    style={{ fontFamily: "anta, sans-serif" }}
                                 >
                                     {business.description}
                                 </p>

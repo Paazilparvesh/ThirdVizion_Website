@@ -15,10 +15,10 @@ import {
 
 // SOCIAL LINKS
 const socialLinks = [
-  { Icon: FaFacebookF, href: "https://facebook.com", color: "#1877F2" },
-  { Icon: FaInstagram, href: "https://instagram.com", color: "#E4405F" },
-  { Icon: FaLinkedinIn, href: "https://linkedin.com", color: "#0A66C2" },
-  { Icon: FaYoutube, href: "https://youtube.com", color: "#FF0000" }
+  { Icon: FaFacebookF, href: "https://www.instagram.com/thirdvizionlabs/", color: "#1877F2" },
+  { Icon: FaInstagram, href: "https://www.instagram.com/thirdvizionlabs/", color: "#E4405F" },
+  { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/106155239/admin/settings/", color: "#0A66C2" },
+  { Icon: FaYoutube, href: "https://www.youtube.com/@ThirdVizion", color: "#FF0000" }
 ];
 
 // INFO CARDS
