@@ -46,12 +46,13 @@ function Whoneed() {
         <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden">
             <div className="max-w-7xl mx-auto relative z-10">
 
-                <h2 
-                    className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-                    style={{ fontFamily: 'DeaconTest, sans-serif' }}
-                >
-                    Who Needs CRM?
-                </h2>
+               <h2 
+    className="text-4xl md:text-5xl text-center mb-8 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+    style={{ fontFamily: 'DeaconTest, sans-serif', fontWeight: 600 }}
+>
+    Who Needs CRM?
+</h2>
+
 
                 <div className="rounded-2xl shadow-2xl border border-[#FF6467]/20 p-8 md:p-12 hover:border-[#FF6467]/40 transition-all duration-300">
                     

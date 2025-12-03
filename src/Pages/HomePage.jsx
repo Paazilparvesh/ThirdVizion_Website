@@ -10,7 +10,6 @@ import ContactSection from "/src/Components/HomeComponent/ContactSection.jsx";
 
 import SparkleBg from "/src/Components/ReusableComponents/SparkleBG.jsx";
 
-
 export default function Home() {
   return (
     <>
@@ -34,7 +33,10 @@ export default function Home() {
 
       <FAQ />
 
-      <ContactSection />
+      <div className="relative">
+        <div className="relative z-20 -mt-10"></div>
+        <ContactSection />
+      </div>
     </>
   );
 }

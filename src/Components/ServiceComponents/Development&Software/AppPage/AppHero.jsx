@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
-import qqq from "/src/assets/qqq.mp4"; // UPDATED
+import qqq from "/src/assets/qqq.mp4";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
@@ -10,49 +10,71 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AppHero() {
   const wrapperRef = useRef(null);
   const imgHolderRef = useRef(null);
+  const blackScreenRef = useRef(null);
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
     const imgHolder = imgHolderRef.current;
+    const blackScreen = blackScreenRef.current;
 
-    if (!wrapper || !imgHolder) return;
+    if (!wrapper || !imgHolder || !blackScreen) return;
 
     const innerVideo = imgHolder.querySelector("video");
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    // Pin and scale
-    gsap.fromTo(
+    // Timeline create pannurom - scale and fade sequence ku
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+
+    // First: Scale animation - 0.8 to 3.5 (inu zoom aagum)
+    tl.fromTo(
       imgHolder,
-      { scale: 1, opacity: 1 },
+      { scale: 0.8 },
       {
-        scale: 5.5,
+        scale: 3.5,
         ease: "power2.inOut",
         transformOrigin: "center center",
+        duration: 0.6, // 60% of scroll
+      }
+    );
+
+    // Second: Fade animation - apuram fade aagum
+    tl.to(
+      imgHolder,
+      {
+        opacity: 0,
+        ease: "power2.out",
+        duration: 0.4, // 40% of scroll
+      },
+      "-=0.1" // Slight overlap
+    );
+
+    // Black screen fade in - video fade aagura apuram varum
+    gsap.fromTo(
+      blackScreen,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        ease: "power2.in",
         scrollTrigger: {
           trigger: wrapper,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
+          start: "top+=50% top",
+          end: "top+=90% top",
+          scrub: 1,
         },
       }
     );
 
-    // Fade out video
-    gsap.to(imgHolder, {
-      opacity: 0,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: wrapper,
-        start: "bottom-=40% bottom",
-        end: "bottom bottom",
-        scrub: true,
-      },
-    });
-
-    // Border radius animation (same logic as image)
+    // Border radius animation - smooth ahha maarும்
     if (innerVideo) {
       gsap.fromTo(
         innerVideo,
@@ -63,8 +85,8 @@ export default function AppHero() {
           scrollTrigger: {
             trigger: wrapper,
             start: "top top",
-            end: "bottom bottom",
-            scrub: true,
+            end: "top+=50% top",
+            scrub: 1,
           },
         }
       );
@@ -79,7 +101,6 @@ export default function AppHero() {
     <div className="bg-black text-white font-sans overflow-x-hidden mb-[-10vh]">
       {/* Hero text section */}
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
-        
         <h1
           className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#ff8904]"
           style={{ fontFamily: "DeaconTest, sans-serif" }}
@@ -114,9 +135,16 @@ export default function AppHero() {
         ref={wrapperRef}
         className="relative w-full min-h-[200vh] flex justify-center items-start overflow-hidden"
       >
+        {/* Black screen overlay */}
+        <div
+          ref={blackScreenRef}
+          className="fixed inset-0 bg-black opacity-0 z-40 pointer-events-none"
+        />
+
+        {/* Video holder */}
         <div
           ref={imgHolderRef}
-          className="w-full flex items-center justify-center"
+          className="w-full flex items-center justify-center relative z-20"
         >
           <video
             src={qqq}
@@ -124,7 +152,7 @@ export default function AppHero() {
             loop
             muted
             playsInline
-            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem] mt-40 md:mt-20 object-contain rounded-3xl"
+            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem]  md:mt-20 object-contain rounded-3xl"
           />
         </div>
       </div>

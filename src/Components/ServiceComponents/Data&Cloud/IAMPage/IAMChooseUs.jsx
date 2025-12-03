@@ -32,14 +32,16 @@ export default function WhyChooseIAM() {
   return (
     <section className="relative min-h-screen text-white py-12 sm:py-20 px-4 sm:px-6 md:px-8">
       {/* Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold text-center text-[#FDC700] mb-12 sm:mb-16 leading-tight"
-      style={{ fontFamily: "DeaconTest, sans-serif" }}>
-        Why Choose IAM?
-      </motion.h2>
+  <motion.h2
+  initial={{ opacity: 0, y: -30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-center text-[#FDC700] mb-12 sm:mb-16 leading-tight"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
+>
+  Why Choose IAM?
+</motion.h2>
+
 
       {/* Steps */}
       <div className="space-y-16 sm:space-y-20 max-w-5xl mx-auto">

@@ -34,7 +34,6 @@ const AppCTA = () => {
   const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
   const stats = [
-    { value: 150, label: "Apps Delivered", suffix: "+" },
     { value: 95, label: "Client Satisfaction", suffix: "%" },
     { value: 24, label: "Support Available", suffix: "/7" },
   ];
@@ -57,15 +56,19 @@ const AppCTA = () => {
           className="mb-12"
         >
           <TextReveal>
-            <motion.h2 className="text-4xl md:text-5xl lg:text-6xl font-inter-tight font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight"
-             style={{ fontFamily: "DeaconTest, sans-serif" }} >
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#ff8904] mb-8 leading-tight"
+              style={{ fontFamily: "DeaconTest, sans-serif" }}
+            >
               Ready to Build Your Next Big App?
             </motion.h2>
           </TextReveal>
 
           <TextReveal delay={0.2}>
-            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto"
-             style={{ fontFamily: "anta, sans-serif" }} >
+            <motion.p 
+              className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto"
+              style={{ fontFamily: "anta, sans-serif" }}
+            >
               Let's collaborate and turn your vision into reality. Our team specializes in crafting premium, scalable, and user-centric applications that stand out in the market.
             </motion.p>
           </TextReveal>
@@ -74,7 +77,7 @@ const AppCTA = () => {
         {/* Animated Statistics */}
         <motion.div
           ref={statsRef}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -88,10 +91,16 @@ const AppCTA = () => {
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
             >
               <div className="flex flex-col items-center gap-3 p-6 rounded-xl bg-gradient-to-br from-[#ff8904]/10 to-transparent border border-[#ff8904]/30 backdrop-blur-sm hover:border-[#ff8904]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,137,4,0.3)] group-hover:scale-105">
-                <div className="text-5xl md:text-6xl font-bold text-[#ff8904]">
+                <div 
+                  className="text-5xl md:text-6xl font-bold text-[#ff8904]"
+                  style={{ fontFamily: "DeaconTest, sans-serif" }}
+                >
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <span className="text-sm md:text-base font-medium text-gray-300">
+                <span 
+                  className="text-sm md:text-base font-medium text-gray-300"
+                  style={{ fontFamily: "anta, sans-serif" }}
+                >
                   {stat.label}
                 </span>
               </div>
@@ -110,11 +119,11 @@ const AppCTA = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="font-inter-tight inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#ff8904] bg-[#ff8904] px-10 py-5 font-semibold tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 text-black shadow-[0_0_20px_rgba(255,137,4,0.4)] hover:shadow-[0_0_35px_rgba(255,137,4,0.6)]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl border-2 border-[#ff8904] bg-[#ff8904] px-10 py-5 font-semibold tracking-wide text-lg shadow-2xl backdrop-blur-xl transition-all duration-500 text-black shadow-[0_0_20px_rgba(255,137,4,0.4)] hover:shadow-[0_0_35px_rgba(255,137,4,0.6)] group"
               style={{
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
-                fontFamily: "anta, sans-serif" 
+                fontFamily: "anta, sans-serif" 
               }}
             >
               Start Your Project
@@ -134,10 +143,10 @@ const AppCTA = () => {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
           viewport={{ once: true, amount: 0.3 }}
           className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8 text-gray-400 text-sm"
-          style={{ fontFamily: "anta, sans-serif" }}
+          style={{ fontFamily: "anta, sans-serif" }}
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-[#ff8904] rounded-full"></div>

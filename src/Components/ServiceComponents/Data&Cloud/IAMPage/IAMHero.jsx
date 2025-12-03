@@ -13,12 +13,20 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-inter-tight">
-          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent block" style={{ fontFamily: "DeaconTest, sans-serif" }}>
-            Empower Your Business
-          </span>
-          <span className="bg-gradient-to-r from-[#FDC700] to-[#ffd84c] bg-clip-text text-transparent block" style={{ fontFamily: "DeaconTest, sans-serif" }}>
-            with Smarter Access
-          </span>
+         <span
+  className="bg-gradient-to-r from-[#FDC700] to-[#FFD84C] bg-clip-text text-transparent block font-semibold"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
+>
+  Empower Your Business
+</span>
+
+         <span
+  className="bg-gradient-to-r from-[#FDC700] to-[#FFD84C] bg-clip-text text-transparent block font-semibold"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
+>
+  with Smarter Access
+</span>
+
         </h1>
 
         <p className="mt-4 text-[#f5f5f5] text-base md:text-sm max-w-2xl mx-auto" style={{ fontFamily: "anta, sans-serif" }}>
