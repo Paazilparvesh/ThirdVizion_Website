@@ -126,8 +126,8 @@ function VRHeroSection() {
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
           <div className="text-center text-white">
             <h2
-              className="text-4xl md:text-6xl font-bold mb-4"
-              style={{ fontFamily: "Outfit, sans-serif" }}
+              className="text-4xl md:text-6xl font-semibold mb-4"
+              style={{ fontFamily: "DeaconTest, sans-serif" }}
             >
               Experience Virtual Reality
             </h2>

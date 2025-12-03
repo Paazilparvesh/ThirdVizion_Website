@@ -31,6 +31,7 @@ export default function Home() {
       <Testimonial />
 
       <FAQ />
+      <ContactSection/>
       <div className="relative">
         <div className="relative z-20 -mt-10">
                   </div>

@@ -99,7 +99,7 @@ const App = () => {
     <button
       onClick={() => setShowForm(true)}
       className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
-      style={{ fontFamily: "anta, sans-serif" }}
+      style={{ fontFamily: "decontest, sans-serif" }}
     >
       Get in Touch
     </button>

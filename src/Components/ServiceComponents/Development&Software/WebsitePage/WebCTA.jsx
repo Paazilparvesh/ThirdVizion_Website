@@ -37,7 +37,7 @@ const WebCTA = () => {
   const stats = [
     { value: 98, label: "Client Satisfaction", suffix: "%" },
     { value: 100, label: "Design Quality", suffix: "%" },
-    { value: 24, label: "Support Available", suffix: "/7" },
+    { value: 24, label: "Support Available", suffix: "/5" },
   ];
 
   return (
