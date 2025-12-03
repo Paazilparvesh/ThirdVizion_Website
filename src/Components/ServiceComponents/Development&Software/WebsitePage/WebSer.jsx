@@ -89,8 +89,8 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
       {/* Segment Arc */}
       <div
         className={`w-full h-full absolute transition-all duration-500 rounded-full ${isSelected
-            ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
-            : "border border-white/20 hover:opacity-40 hover:border-[#00d3f3]/50"
+          ? "border-2 border-[#00d3f3] opacity-70 shadow-[0_0_15px_rgba(0,211,243,0.5)]"
+          : "border border-white/20 hover:opacity-40 hover:border-[#00d3f3]/50"
           }`}
         style={{
           clipPath: `polygon(50% 50%, 100% 50%, 100% 100%, 0% 100%, 0% 50%)`,
@@ -109,16 +109,16 @@ const RadialSegment = ({ service, angle, isSelected, onClick, rotationOffset }) 
       >
         <div
           className={`w-20 h-20 flex items-center justify-center rounded-full transition-all duration-500 backdrop-blur-md ${isSelected
-              ? "bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]"
-              : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
+            ? "bg-[#00d3f3] text-gray-900 scale-110 shadow-[0_0_20px_rgba(0,211,243,0.7)]"
+            : "bg-white/5 text-white border border-white/30 group-hover:bg-[#00d3f3]/20 group-hover:border-[#00d3f3]/50 group-hover:shadow-[0_0_15px_rgba(0,211,243,0.3)]"
             }`}
         >
           {IconComponent && React.createElement(IconComponent, {})}
         </div>
         <span
           className={`text-sm font-bold transition-all duration-500 px-3 py-1 rounded-full backdrop-blur-md ${isSelected
-              ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
-              : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
+            ? "text-[#00d3f3] bg-[#00d3f3]/20 scale-110 border border-[#00d3f3]/30"
+            : "text-white bg-white/5 border border-white/10 group-hover:bg-[#00d3f3]/10 group-hover:text-[#00d3f3] group-hover:border-[#00d3f3]/30"
 
             }`}
         >
@@ -197,8 +197,8 @@ const MobileServices = ({ services, selectedService, setSelectedService }) => {
             <div
               key={service.title}
               className={`flex items-center space-x-4 px-6 py-4 rounded-xl border transition-all duration-300 cursor-pointer ${isSelected
-                  ? "bg-[#00d3f3]/20 border-[#00d3f3] shadow-[0_0_20px_rgba(0,211,243,0.3)]"
-                  : "bg-white/5 border-white/10 hover:border-[#00d3f3]/50 hover:bg-[#00d3f3]/10"
+                ? "bg-[#00d3f3]/20 border-[#00d3f3] shadow-[0_0_20px_rgba(0,211,243,0.3)]"
+                : "bg-white/5 border-white/10 hover:border-[#00d3f3]/50 hover:bg-[#00d3f3]/10"
                 }`}
               onClick={() => setSelectedService(service)}
             >

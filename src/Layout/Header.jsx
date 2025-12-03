@@ -6,7 +6,6 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-
   FaYoutube,
   FaChevronDown,
   FaVrCardboard,
@@ -21,7 +20,6 @@ import {
 } from "react-icons/fa";
 import { MdViewInAr } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import Logo from "/src/assets/Logo.svg";
 
 const Header = () => {
@@ -29,6 +27,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [hoverDisabled] = useState(false);
 
 
   const navigate = useNavigate();
@@ -178,7 +177,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex justify-center  items-center gap-4 xl:gap-16 text-white text-sm lg:text-20" style={{ fontFamily: "anta, sans-serif" }}>
+          <nav className="hidden lg:flex justify-center  items-center gap-4 xl:gap-16 text-white text-sm lg:text-lg font-anta">
             <Link to="/" onClick={closeMenu} className="hover:text-purple-400">
               Home
             </Link>
@@ -192,7 +191,7 @@ const Header = () => {
 
             {/* Services Dropdown */}
             <div
-              className="relative  group"
+              className="relative group"
               onMouseEnter={() => !hoverDisabled && setActiveDropdown("Services")}
               onMouseLeave={() => !hoverDisabled && setActiveDropdown(null)}
             >
@@ -207,7 +206,7 @@ const Header = () => {
 
               {/* Mega Menu */}
               <div
-                className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 transition-all duration-300 ${activeDropdown === "Services"
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-4 transition-all z-50 duration-300 ${activeDropdown === "Services"
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible -translate-y-4"
                   }`}
@@ -363,7 +362,7 @@ const Header = () => {
                   </Link>
                 </nav>
 
-                                {/* Social Icons */}
+                {/* Social Icons */}
                 <div className=" fixed top-4 mr-8 flex justify-start md:justify-start z-0 gap-4">
                   {socialLinks.map((social, i) => {
                     const Icon = social.icon;
