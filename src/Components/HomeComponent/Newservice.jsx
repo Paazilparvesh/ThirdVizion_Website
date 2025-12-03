@@ -31,7 +31,8 @@ const capabilitiesData = [
     desc: "We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
     children: [
       {
-        name: "AR",
+        name: "Augmented Reality",
+        subname: "AR",
         img: DesignTool,
         icon: arIcon,
         imageSettings: {
@@ -43,7 +44,8 @@ const capabilitiesData = [
         link: "/augmented_reality"
       },
       {
-        name: "3D",
+        name: "3D Modeling",
+        subname: "3D",
         img: Layout,
         icon: threedIcon,
         imageSettings: {
@@ -55,7 +57,8 @@ const capabilitiesData = [
         link: "/3d_services"
       },
       {
-        name: "VIRTUAL REALITY",
+        name: "Virtual Reality",
+        subname: "VR",
         img: Component,
         icon: vrIcon,
         imageSettings: {
@@ -74,7 +77,8 @@ const capabilitiesData = [
     desc: "Empower your business with secure, scalable, and data-driven cloud solutions designed to boost performance and reliability. At ThirdVizion Labs, we create innovative digital applications that help brands manage data smarter, automate workflows, and drive growth.",
     children: [
       {
-        name: "CRM",
+        name: "Customer Relationship Management",
+        subname: "CRM",
         img: Portal,
         icon: crmIcon,
         imageSettings: {
@@ -86,7 +90,8 @@ const capabilitiesData = [
         link: "/client_relationship_management"
       },
       {
-        name: "IAM",
+        name: "Identity & Access Management",
+        subname: "IAM",
         img: Dashboard,
         icon: iamIcon,
         imageSettings: {
@@ -98,7 +103,8 @@ const capabilitiesData = [
         link: "/identity_and_access_management"
       },
       {
-        name: "ERP",
+        name: "Enterprises Resourse Planning",
+        subname: "ERP",
         img: Aws,
         icon: erpIcon,
         imageSettings: {
@@ -117,7 +123,8 @@ const capabilitiesData = [
     desc: "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
     children: [
       {
-        name: "GAME DEVELOPMENT",
+        name: "Game Development",
+        subname: "Game",
         img: Azure,
         icon: gameIcon,
         imageSettings: {
@@ -129,7 +136,8 @@ const capabilitiesData = [
         link: "/game_development"
       },
       {
-        name: "WEBSITE",
+        name: "Website Development",
+        subname: "Website",
         img: GoogleCloud,
         icon: webIcon,
         imageSettings: {
@@ -141,7 +149,8 @@ const capabilitiesData = [
         link: "/web_development"
       },
       {
-        name: "MOBILE APP",
+        name: "App Development",
+        subname: "Mobile App",
         img: Por,
         icon: mobileIcon,
         imageSettings: {
@@ -164,14 +173,14 @@ const RollingIcons = ({ icons, isInView }) => {
         <motion.div
           key={index}
           className="relative flex items-center justify-center"
-          initial={{ 
-            opacity: 0, 
+          initial={{
+            opacity: 0,
             x: -80,
             rotate: -360,
             scale: 0.3
           }}
-          animate={isInView ? { 
-            opacity: 1, 
+          animate={isInView ? {
+            opacity: 1,
             x: 0,
             rotate: 0,
             scale: 1
@@ -197,9 +206,9 @@ const RollingIcons = ({ icons, isInView }) => {
           {/* Circular black background mask with gradient border effect */}
           <div className="relative w-20 h-20 rounded-full bg-gradient-to-br from-gray-800 via-black to-gray-900 p-[2px] shadow-xl">
             <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-              <img 
-                src={icon} 
-                alt="service icon" 
+              <img
+                src={icon}
+                alt="service icon"
                 className="w-14 h-14 object-contain"
               />
             </div>
@@ -214,13 +223,13 @@ const RollingIcons = ({ icons, isInView }) => {
 const SlideDownImage = ({ src, alt, delay = 0, isInView }) => {
   return (
     <motion.div
-      initial={{ 
-        opacity: 0, 
+      initial={{
+        opacity: 0,
         y: -100,
         scale: 0.8
       }}
-      animate={isInView ? { 
-        opacity: 1, 
+      animate={isInView ? {
+        opacity: 1,
         y: 0,
         scale: 1
       } : {
@@ -251,13 +260,13 @@ const SlideDownImage = ({ src, alt, delay = 0, isInView }) => {
 const SlideUpImage = ({ src, alt, delay = 0, isInView }) => {
   return (
     <motion.div
-      initial={{ 
-        opacity: 0, 
+      initial={{
+        opacity: 0,
         y: 100,
         scale: 0.8
       }}
-      animate={isInView ? { 
-        opacity: 1, 
+      animate={isInView ? {
+        opacity: 1,
         y: 0,
         scale: 1
       } : {
@@ -287,14 +296,14 @@ const SlideUpImage = ({ src, alt, delay = 0, isInView }) => {
 // New Component for Structured Image Layout with Directional Animations
 const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
   const children = category.children;
-  
+
   return (
     <div className="flex flex-col space-y-4">
       {/* First row - single full width image - SLIDE DOWN */}
       {children[0] && (
         <div className="w-full">
-          <ImageCard 
-            service={children[0]} 
+          <ImageCard
+            service={children[0]}
             category={category}
             index={0}
             inViewImages={inViewImages}
@@ -304,14 +313,14 @@ const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
           />
         </div>
       )}
-      
+
       {/* Second row - two images side by side - SLIDE UP */}
       {children.slice(1, 3).length > 0 && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
           {children.slice(1, 3).map((service, index) => (
-            <ImageCard 
+            <ImageCard
               key={index + 1}
-              service={service} 
+              service={service}
               category={category}
               index={index + 1}
               inViewImages={inViewImages}
@@ -329,7 +338,7 @@ const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
 // Updated Image Card Component with Directional Animation
 const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidth, animationType }) => {
   const imageId = `${category.id}-${service.name}-image`;
-  
+
   return (
     <div className="block relative">
       <Link to={service.link}>
@@ -346,19 +355,19 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
               className={`${fullWidth ? 'h-72' : 'h-60'} overflow-hidden border border-gray-600/30 shadow-2xl relative group`}
               style={{ borderRadius: service.imageSettings.borderRadius }}
             >
-              <div 
+              <div
                 className="w-full h-full"
                 ref={el => imageRefs.current[imageId] = el}
               >
                 {animationType === "slideDown" ? (
-                  <SlideDownImage 
+                  <SlideDownImage
                     src={service.img}
                     alt={service.name}
                     delay={index * 0.2}
                     isInView={inViewImages[imageId]}
                   />
                 ) : (
-                  <SlideUpImage 
+                  <SlideUpImage
                     src={service.img}
                     alt={service.name}
                     delay={index * 0.2}
@@ -366,23 +375,59 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
                   />
                 )}
               </div>
-              <div className="absolute inset-0 bg-black/40 opacity-70 group-hover:opacity-30 transition-all duration-500"></div>
+              {/* <div className="absolute inset-0 bg-black/40 opacity-70 group-hover:opacity-30 transition-all duration-500"></div> */}
 
               {/* TITLE OVERLAY */}
-              <div className="absolute bottom-3 left-3 right-3">
-                <div className="flex items-center justify-between">
+              {/* <div className="absolute bottom-3 left-3 right-3 bg-black">
+                <div className="flex items-center justify-between  backlight-blur">
                   <div className="flex-1">
-                    <h4 className="text-white text-base font-semibold mb-1">
+                    <h4 className="text-white text-2xl font-semibold mb-1">
                       {service.name}
                     </h4>
                   </div>
-                  <div className="text-yellow-500 transform group-hover:translate-x-1 transition-transform duration-300">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <div className="text-yellow-500 mr-2 transform group-hover:translate-x-1 transition-transform duration-300">
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                   </div>
                 </div>
+              </div> */}
+
+
+              {/* TITLE OVERLAY */}
+              <div className="absolute bottom-0 h-auto w-full">
+
+                {/* Background fade only behind title & arrow */}
+                <div className="
+      absolute inset-0 
+      bg-black/60 
+      opacity-60 
+      group-hover:opacity-30 
+      backdrop-blur-md
+      transition-all 
+      duration-500 
+      rounded-lg
+    ">
+                </div>
+
+                {/* Foreground content */}
+                <div className="relative flex items-center justify-between px-3 py-2">
+                  <div className="flex-1">
+                    <h4 className="text-white text-2xl font-semibold">
+                      {service.name}
+                    </h4>
+                  </div>
+
+                  <div className="text-yellow-500 transform group-hover:translate-x-1 transition-transform duration-300">
+                    <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
+
               </div>
+
+
             </div>
           </div>
         </motion.div>
@@ -532,7 +577,7 @@ export default function Categories() {
     if (category.id === "data-cloud") {
       return [
         ...category.children.map(child => child.name),
-        "SERVER MANAGEMENT"
+        "Server Management"
       ];
     }
     return category.children.map(child => child.name);
@@ -554,7 +599,7 @@ export default function Categories() {
     );
 
     // Special case for SERVER MANAGEMENT in data-cloud section
-    if (tag === "SERVER MANAGEMENT" && category.id === "data-cloud") {
+    if (tag === "Server Management" && category.id === "data-cloud") {
       return "/server_management";
     }
 
@@ -569,33 +614,33 @@ export default function Categories() {
   return (
     <>
       <h1
-        className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl bg-[#000000] text-center uppercase pt-8 font-bold "
+        className="text-3xl md:text-4xl lg:text-6xl bg-[#000000] text-center uppercase py-8 font-bold border-none"
         style={{ fontFamily: "DeaconTest, sans-serif" }}
       >
         <span className="text-white">OUR</span>{" "}
         <span className="text-yellow-500">SERVICE</span>
       </h1>
-      
-      <section className="bg-black text-white min-h-screen px-4 py-6 md:px-12 md:py-12" ref={scrollContainerRef}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+      <section className="bg-black text-white min-h-screen px-4 xl:px-14 py-6 md:py-12" ref={scrollContainerRef}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4">
 
           {/* MOBILE VIEW */}
           <div className="block md:hidden">
             {capabilitiesData.map((category, index) => (
               <div key={category.id} className="mb-8">
                 {/* Category Header */}
-                <div className="text-center mb-4">
-                  <h3 
+                <div className="text-left mb-4 px-2">
+                  <h3
                     className="text-xl font-semibold tracking-wide text-yellow-500 mb-2 uppercase"
                     style={{ fontFamily: "Outfit, sans-serif" }}
                   >
                     {category.title}
                   </h3>
-                  
-                  <div className="h-px w-12 mx-auto bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-2"></div>
-                  
+
+                  <div className="h-px w-12 bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 mb-2"></div>
+
                   <p
-                    className="text-white/80 text-xs leading-relaxed font-light tracking-wide max-w-md mx-auto px-2"
+                    className="text-white/80 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto"
                     style={{ fontFamily: "Work Sans, sans-serif" }}
                   >
                     {category.desc.split('. ')[0]}.
@@ -613,19 +658,19 @@ export default function Categories() {
                       <div className="group cursor-pointer relative border border-gray-700 rounded-xl p-3 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
                         <div className="flex items-center space-x-3">
                           {/* Service Icon with circular black mask */}
-                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 via-black to-gray-900 p-[2px] shadow-lg">
-                            <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
+                          <div className="flex-shrink-0 w-12 h-12">
+                            <div className="w-full h-full  bg-black flex items-center justify-center">
                               <img
                                 src={service.icon}
                                 alt={service.name}
-                                className="w-6 h-6 object-contain"
+                                className="w-12 h-12 object-contain"
                               />
                             </div>
                           </div>
-                          
+
                           {/* Service Info */}
                           <div className="flex-1">
-                            <h4 
+                            <h4
                               className="text-white text-sm font-semibold tracking-wide mb-1"
                               style={{ fontFamily: "Outfit, sans-serif" }}
                             >
@@ -633,14 +678,14 @@ export default function Categories() {
                             </h4>
                             <div className="h-px w-8 bg-gradient-to-r from-yellow-500 to-transparent mb-1"></div>
                             <p className="text-white/60 text-xs font-light">
-                              Explore {service.name.toLowerCase()} services
+                              Explore {service.subname} services
                             </p>
                           </div>
-                          
+
                           {/* Arrow Indicator */}
-                          <div className="text-yellow-500 transform group-hover:translate-x-1 transition-transform duration-300">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M5 12h14M12 5l7 7-7 7"/>
+                          <div className="text-yellow-500 mr-2 transform group-hover:translate-x-1 transition-transform duration-300">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                              <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                           </div>
                         </div>
@@ -650,7 +695,7 @@ export default function Categories() {
                 </div>
 
                 {/* Category Tags */}
-                <div className="mt-4 flex flex-wrap gap-1 justify-center">
+                {/* <div className="mt-4 flex flex-wrap gap-1 justify-center">
                   {getCategoryTags(category).map((tag, tagIndex) => (
                     <Link
                       to={getTagLink(tag, category)}
@@ -664,7 +709,7 @@ export default function Categories() {
                       </span>
                     </Link>
                   ))}
-                </div>
+                </div> */}
 
                 {/* Section Divider */}
                 {index < capabilitiesData.length - 1 && (
@@ -675,7 +720,7 @@ export default function Categories() {
           </div>
 
           {/* DESKTOP VIEW */}
-          <div className="hidden md:block md:sticky md:top-40 h-fit mt-6 md:mt-12">
+          <div className="hidden md:block md:sticky md:top-40 h-fit  mt-6 md:mt-12">
             <motion.div
               key={activeCategory.id}
               initial={{ opacity: 0, y: 50 }}
@@ -685,22 +730,22 @@ export default function Categories() {
             >
               <div className="flex flex-col">
                 <div>
-                  <h3 
-                    className="text-2xl md:text-3xl lg:text-5xl font-medium tracking-wider text-yellow-500 mb-3 md:mb-4 uppercase text-center md:text-left"
+                  <h3
+                    className="text-2xl md:text-3xl lg:text-5xl font-medium tracking-wider text-yellow-500 uppercase text-center md:text-left"
                     style={{ fontFamily: "anta, sans-serif" }}
                   >
                     {activeCategory.title}
                   </h3>
-                  
-                  <div className="mt-3 md:mt-4 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
+
+                  <div className="mt-2 h-px w-full bg-gradient-to-r from-yellow-600 via-yellow-500/80 to-transparent"></div>
                   <div className="relative">
                     <p
-                      className="text-white/90 mt-3 text-2xl md:text-3xl lg:text-[19px] md:mt-4 max-w-md leading-relaxed text-sm md:text-base font-light tracking-wide text-center md:text-left"
+                      className="text-white/90 mt-3  md:mt-4 max-w-md leading-relaxed text-sm md:text-lg lg:text-[19px] font-light tracking-wide text-center md:text-left"
                       style={{ fontFamily: "anta, sans-serif" }}
                     >
                       {activeCategory.desc.split('. ')[0]}.
                     </p>
-                    
+
                     {/* BUTTONS SECTION */}
                     <div className="mt-4 md:mt-5 flex flex-wrap gap-2 md:gap-2 justify-center md:justify-start">
                       {getCategoryTags(activeCategory).map((tag, index) => (
@@ -709,7 +754,7 @@ export default function Categories() {
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer px-[18px] py-[8px] text-2xl md:text-3xl lg:text-[19px] inline-block text-xs`}
+                            className={`${getTagStyle(tag)} cursor-pointer px-[18px] py-[8px] text-2xl md:text-lg lg:text-[19px] inline-block text-xs`}
                             style={{ fontFamily: "anta, sans-serif" }}
                           >
                             {tag}
@@ -720,9 +765,9 @@ export default function Categories() {
 
                     {/* ICONS BELOW BUTTONS on LEFT SIDE - Updated with circular black mask */}
                     <div className="mt-4 md:mt-5">
-                      <RollingIcons 
-                        icons={getCategoryIcons(activeCategory)} 
-                        isInView={inViewItems[activeCategory.id]} 
+                      <RollingIcons
+                        icons={getCategoryIcons(activeCategory)}
+                        isInView={inViewItems[activeCategory.id]}
                       />
                     </div>
                   </div>
@@ -741,7 +786,7 @@ export default function Categories() {
                 className={`relative ${index < capabilitiesData.length - 1 ? 'mb-40' : ''}`}
               >
                 <div className="relative">
-                  <StructuredImageLayout 
+                  <StructuredImageLayout
                     category={cap}
                     inViewImages={inViewImages}
                     imageRefs={imageRefs}
@@ -752,16 +797,16 @@ export default function Categories() {
           </div>
         </div>
 
-        <div className="text-center mt-16 md:mt-32">
+        {/* <div className="text-center mt-16 md:mt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            {/* Additional content if needed */}
+            {/* Additional content if needed 
           </motion.div>
-        </div>
+        </div> */}
       </section>
     </>
   );

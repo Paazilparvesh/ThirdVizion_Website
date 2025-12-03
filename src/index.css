@@ -252,3 +252,12 @@ h2 {
   font-family: "Anta", sans-serif;
 } */
 
+
+.mobile-step {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.mobile-step.visible {
+  opacity: 1;
+  transform: translateY(0px);
+}

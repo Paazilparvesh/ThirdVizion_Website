@@ -6,27 +6,27 @@ const testimonials = [
     name: "Santhosh Kumar",
     role: "Kanakavali ",
     review:
-    "Working with ThirdVizion transformed our hardware business’s online presence. The team delivered a sleek, high-performance website that showcases our products beautifully and elevates our brand identity. Their precision, creativity, and timely execution truly set them apart."
+      "Working with ThirdVizion transformed our hardware business’s online presence. The team delivered a sleek, high-performance website that showcases our products beautifully and elevates our brand identity. Their precision, creativity, and timely execution truly set them apart."
   },
   {
     name: "Rajesh",
     role: "Asmi ",
     review:
-    "ThirdVizion did an excellent job building our NGO website. They captured our mission perfectly and delivered a clean, impactful, and easy-to-navigate platform. Their professionalism and understanding of our cause made the entire experience smooth and meaningful."
+      "ThirdVizion did an excellent job building our NGO website. They captured our mission perfectly and delivered a clean, impactful, and easy-to-navigate platform. Their professionalism and understanding of our cause made the entire experience smooth and meaningful."
   },
   {
     name: "Sivaganga",
     role: "Madras Kitchen ",
     review:
-    "ThirdVizion delivered a beautifully crafted website for our food business. The clean design, smooth user experience, and easy ordering flow have helped us attract more customers online. Their work truly elevated our brand’s digital presence."
+      "ThirdVizion delivered a beautifully crafted website for our food business. The clean design, smooth user experience, and easy ordering flow have helped us attract more customers online. Their work truly elevated our brand’s digital presence."
   },
   {
     name: "Priya Nandakumar",
     role: "TourSup ",
     review:
-    "ThirdVizion built a modern and engaging website for our travel company. The clean layouts, smooth navigation, and well-structured tour pages have significantly boosted customer inquiries. Their clarity, creativity, and professionalism made the entire process seamless."
+      "ThirdVizion built a modern and engaging website for our travel company. The clean layouts, smooth navigation, and well-structured tour pages have significantly boosted customer inquiries. Their clarity, creativity, and professionalism made the entire process seamless."
   },
- 
+
 ];
 
 export default function TestimonialsSection() {
@@ -49,10 +49,12 @@ export default function TestimonialsSection() {
   return (
     <section className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-        <h2 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase mb-4 text-white"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
->
-          What People Say <span className="text-[#FFC016]"    style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
-> About Us</span>
+        <h2
+          className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 text-white"
+          style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+        >
+          What People Say <span className="text-[#FFC016]" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+          > About Us</span>
         </h2>
 
         <p className="text-white text-sm md:text-lg mb-12 md:mb-16 max-w-2xl mx-auto px-4" style={{ fontFamily: "anta, sans-serif" }}>
@@ -61,7 +63,7 @@ export default function TestimonialsSection() {
 
         {/* --- Mobile View --- */}
         <div className="block md:hidden">
-          <div 
+          <div
             className="max-w-md mx-auto"
             onTouchStart={() => setPaused(true)}
             onTouchEnd={() => setPaused(false)}
@@ -73,16 +75,16 @@ export default function TestimonialsSection() {
                 <div className="flex space-x-1 mb-4">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <svg key={star} className="w-5 h-5 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                
+
                 {/* Review Text */}
                 <p className="text-gray-300 leading-relaxed text-base mb-6 px-2" style={{ fontFamily: "anta, sans-serif" }}>
                   "{testimonials[activeIndex].review}"
                 </p>
-                
+
                 {/* Client Info */}
                 <div className="mb-4">
                   <h4 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: "anta, sans-serif" }}>
@@ -101,9 +103,8 @@ export default function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === activeIndex ? "bg-[#FFC016] w-6" : "bg-gray-600"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${i === activeIndex ? "bg-[#FFC016] w-6" : "bg-gray-600"
+                    }`}
                 />
               ))}
             </div>
@@ -112,16 +113,16 @@ export default function TestimonialsSection() {
             <div className="flex justify-center items-center space-x-6">
               <button
                 onClick={prev}
-                className="w-12 h-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+                className="size-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 relative"
               >
-                <span className="group-hover:text-black">‹</span>
+                <span className="absolute inset-0 top-2 scale-200">‹</span>
               </button>
 
               <button
                 onClick={next}
-                className="w-12 h-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+                className="size-12 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-xl transition-all duration-300 relative"
               >
-                <span className="group-hover:text-black">›</span>
+                <span className="absolute inset-0 top-2 scale-200">›</span>
               </button>
             </div>
           </div>
@@ -153,12 +154,12 @@ export default function TestimonialsSection() {
                   <p className="text-gray-300 leading-relaxed text-xl max-w-2xl" style={{ fontFamily: "anta, sans-serif" }}>
                     "{testimonials[activeIndex].review}"
                   </p>
-                  
+
                   {/* Rating Stars */}
                   <div className="flex space-x-1 mt-8">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <svg key={star} className="w-6 h-6 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
                   </div>
@@ -190,7 +191,7 @@ export default function TestimonialsSection() {
                         <div className="flex space-x-1">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <svg key={star} className="w-4 h-4 text-[#FFC016]" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
@@ -208,9 +209,9 @@ export default function TestimonialsSection() {
           <div className="flex justify-center items-center mt-16 space-x-8">
             <button
               onClick={prev}
-              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group relative"
             >
-              <span className="group-hover:text-black">‹</span>
+              <span className="group-hover:text-black absolute inset-0 top-2.5 scale-170">‹</span>
             </button>
 
             {/* Dots */}
@@ -219,18 +220,17 @@ export default function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    i === activeIndex ? "bg-[#FFC016] w-8" : "bg-gray-600 hover:bg-gray-400"
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${i === activeIndex ? "bg-[#FFC016] w-8" : "bg-gray-600 hover:bg-gray-400"
+                    }`}
                 />
               ))}
             </div>
 
             <button
               onClick={next}
-              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group"
+              className="w-14 h-14 rounded-full bg-black border border-gray-700 flex items-center justify-center text-white text-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC016] hover:bg-[#FFC016] group relative"
             >
-              <span className="group-hover:text-black">›</span>
+              <span className="group-hover:text-black absolute inset-0 top-2.5 scale-170">›</span>
             </button>
           </div>
         </div>

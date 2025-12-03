@@ -53,7 +53,7 @@ export default function Indhu() {
         label: "SUCCESS Phase"
       }
     ],
-    
+
     useSingleColor: false,
     singleColor: "#FFC016",
     pulseEffect: true,
@@ -68,10 +68,12 @@ export default function Indhu() {
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
+
       if (window.innerWidth < 240) setRadius(30);
       else if (window.innerWidth < 1000) setRadius(15);
       else setRadius(80);
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -149,11 +151,11 @@ export default function Indhu() {
     if (colorTransitions.useSingleColor) {
       return colorTransitions.singleColor;
     }
-    
+
     const currentTransition = colorTransitions.transitions.find(
       transition => progress >= transition.startProgress && progress <= transition.endProgress
     );
-    
+
     return currentTransition ? currentTransition.color : colorTransitions.transitions[0].color;
   };
 
@@ -167,20 +169,20 @@ export default function Indhu() {
     }
 
     const gradientStops = [];
-    
+
     colorTransitions.transitions.forEach((transition, index) => {
       gradientStops.push(
-        <stop 
+        <stop
           key={`start-${index}`}
-          offset={`${transition.startProgress * 100}%`} 
+          offset={`${transition.startProgress * 100}%`}
           stopColor={transition.color}
         />
       );
-      
+
       gradientStops.push(
-        <stop 
+        <stop
           key={`end-${index}`}
-          offset={`${transition.endProgress * 100}%`} 
+          offset={`${transition.endProgress * 100}%`}
           stopColor={transition.color}
         />
       );
@@ -192,7 +194,7 @@ export default function Indhu() {
   // Function to apply pulse animation
   const applyPulseEffect = () => {
     if (!colorTransitions.pulseEffect || !pathRef.current) return;
-    
+
     const path = pathRef.current;
     gsap.to(path, {
       strokeOpacity: 1 - colorTransitions.pulseIntensity,
@@ -206,131 +208,18 @@ export default function Indhu() {
   // Function to apply glow effect
   const applyGlowEffect = () => {
     if (!colorTransitions.glowEffect || !pathRef.current) return;
-    
+
     const path = pathRef.current;
     path.style.filter = `drop-shadow(0 0 ${colorTransitions.glowIntensity * 8}px currentColor)`;
   };
 
-  // --- MOBILE SIMPLE HORIZONTAL SCROLL VERSION ---
-  if (isMobile) {
-    return (
-      <section className="bg-black text-white w-full py-18 px-4 flex flex-col items-center">
-        {/* Heading */}
-        <div
-          className="text-center mb-10"
-          style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl capitalize text-white">
-            how we <span className="text-[#FFC016]">deliver</span> excellence
-          </h1>
-        </div>
-
-        {/* Horizontal scroll cards */}
-        <div className="w-[280px] pl-20 flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
-          {circles.map((c) => (
-            <div
-              key={c.id}
-              className="min-w-[250px] max-w-[260px] bg-[#111] border border-[#222] rounded-2xl p-5 flex-shrink-0 snap-center text-center"
-            >
-              <div 
-                className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#1a1a1a] border flex items-center justify-center"
-                style={{ borderColor: c.color }}
-              >
-                <img
-                  src={c.img}
-                  alt={c.label}
-                  className="w-12 h-12 object-contain"
-                  loading="lazy"
-                />
-              </div>
-              <h2
-                className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-2"
-                style={{ 
-                  fontFamily: "Outfit, sans-serif",
-                  color: c.color 
-                }}
-              >
-                {c.label}
-              </h2>
-              <p
-                className="text-xs md:text-lg text-gray-300 leading-relaxed"
-                style={{ fontFamily: "Work Sans, sans-serif" }}
-              >
-                {c.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll hint at bottom */}
-        <div className="mt-6 text-center flex items-center justify-center gap-2 opacity-70 animate-pulse">
-          <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-          </svg>
-
-          <span className="text-gray-300 text-sm">Scroll left to know more</span>
-
-          <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-          </svg>
-        </div>
-      </section>
-    );
-  }
-
-  // --- DESKTOP ORIGINAL DESIGN ---
-  const splitDescription = (description) => {
-    const words = description.split(" ");
-    const totalWords = words.length;
-    const targetLines = 3;
-    const wordsPerLine = Math.ceil(totalWords / targetLines);
-    const lines = [];
-    let currentLine = [];
-    let currentWordCount = 0;
-
-    words.forEach((word, index) => {
-      currentLine.push(word);
-      currentWordCount++;
-      if (currentWordCount >= wordsPerLine || index === words.length - 1) {
-        if (currentLine.length > 2 || index === words.length - 1) {
-          lines.push(currentLine.join(" "));
-          currentLine = [];
-          currentWordCount = 0;
-        }
-      }
-    });
-    while (lines.length < targetLines) lines.push("");
-    return lines.slice(0, targetLines);
-  };
-
-  const pathD = `
-    M ${circles[0].cx} ${circles[0].cy}
-    ${circles
-      .slice(1)
-      .map((circle, i) => {
-        const prevCircle = circles[i];
-        const controlPoint1 = {
-          x: prevCircle.cx + (circle.cx - prevCircle.cx) * 0.25,
-          y: prevCircle.cy,
-        };
-        const controlPoint2 = {
-          x: circle.cx - (circle.cx - prevCircle.cx) * 0.25,
-          y: circle.cy,
-        };
-        return `C ${controlPoint1.x} ${controlPoint1.y}, ${controlPoint2.x} ${controlPoint2.y}, ${circle.cx} ${circle.cy}`;
-      })
-      .join(" ")}
-  `;
-
   useEffect(() => {
     if (isMobile) return;
-    
+
     const section = containerRef.current;
     const svg = svgRef.current;
     const path = pathRef.current;
-    
+
     if (!section || !svg || !path) return;
 
     // Clean up any existing ScrollTriggers
@@ -341,8 +230,8 @@ export default function Indhu() {
     });
 
     const totalLength = path.getTotalLength();
-    gsap.set(path, { 
-      strokeDasharray: totalLength, 
+    gsap.set(path, {
+      strokeDasharray: totalLength,
       strokeDashoffset: totalLength,
       strokeWidth: colorTransitions.strokeWidth,
       strokeOpacity: colorTransitions.strokeOpacity
@@ -357,10 +246,10 @@ export default function Indhu() {
       const svgRect = svg.getBoundingClientRect();
       const svgWidth = svg.scrollWidth;
       const viewportWidth = window.innerWidth;
-      
+
       // Calculate exact scroll distance needed
       const scrollDistance = svgWidth - viewportWidth;
-      
+
       // Return negative value for left scroll, clamped to prevent overscroll
       return Math.max(-scrollDistance, -(svgWidth - viewportWidth + 100)); // Added 100px padding
     };
@@ -419,12 +308,12 @@ export default function Indhu() {
         onUpdate: (self) => {
           const progress = self.progress;
           const currentColor = getCurrentColor(progress);
-          
+
           // Update the path color
           if (path) {
             path.style.stroke = currentColor;
           }
-          
+
           // Update circle colors based on progress
           circles.forEach((circle) => {
             if (progress >= circle.progressStart && progress <= circle.progressEnd) {
@@ -457,7 +346,7 @@ export default function Indhu() {
       scrollTween?.kill();
       pathAnimation?.kill();
       colorAnimation?.kill();
-      
+
       // Kill all ScrollTriggers associated with this section
       ScrollTrigger.getAll().forEach((st) => {
         if (st.trigger === section || st.vars?.trigger === section) {
@@ -467,13 +356,229 @@ export default function Indhu() {
     };
   }, [isMobile]);
 
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const items = document.querySelectorAll(".mobile-step");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    items.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+
+  // --- MOBILE SIMPLE HORIZONTAL SCROLL VERSION ---
+  // if (isMobile) {
+  //   return (
+  //     <section className="bg-black text-white w-full py-18 px-4 flex flex-col items-center">
+  //       {/* Heading */}
+  //       <div
+  //         className="text-center mb-10"
+  //         style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+  //       >
+  //         <h1 className="text-3xl md:text-4xl lg:text-6xl capitalize text-white">
+  //           how we <span className="text-[#FFC016]">deliver</span> excellence
+  //         </h1>
+  //       </div>
+
+  //       {/* Horizontal scroll cards */}
+  //       <div className="w-[280px] pl-20 flex overflow-x-auto space-x-5 scrollbar-hide snap-x snap-mandatory">
+  //         {circles.map((c) => (
+  //           <div
+  //             key={c.id}
+  //             className="min-w-[250px] max-w-[260px] bg-[#111] border border-[#222] rounded-2xl p-5 flex-shrink-0 snap-center text-center"
+  //           >
+  //             <div
+  //               className="w-20 h-20 mx-auto mb-4 rounded-full bg-[#1a1a1a] border flex items-center justify-center"
+  //               style={{ borderColor: c.color }}
+  //             >
+  //               <img
+  //                 src={c.img}
+  //                 alt={c.label}
+  //                 className="w-12 h-12 object-contain"
+  //                 loading="lazy"
+  //               />
+  //             </div>
+  //             <h2
+  //               className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-2"
+  //               style={{
+  //                 fontFamily: "Outfit, sans-serif",
+  //                 color: c.color
+  //               }}
+  //             >
+  //               {c.label}
+  //             </h2>
+  //             <p
+  //               className="text-xs md:text-lg text-gray-300 leading-relaxed"
+  //               style={{ fontFamily: "Work Sans, sans-serif" }}
+  //             >
+  //               {c.description}
+  //             </p>
+  //           </div>
+  //         ))}
+  //       </div>
+
+  //       {/* Scroll hint at bottom */}
+  //       <div className="mt-6 text-center flex items-center justify-center gap-2 opacity-70 animate-pulse">
+  //         <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  //           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+  //             d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+  //         </svg>
+
+  //         <span className="text-gray-300 text-sm">Scroll left to know more</span>
+
+  //         <svg className="w-4 h-4 text-gray-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  //           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+  //             d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+  //         </svg>
+  //       </div>
+  //     </section>
+  //   );
+  // }
+
+  // --- MOBILE VERTICAL SVG SCROLL VERSION ---
+  if (isMobile) {
+    return (
+      <section className="bg-black text-white w-full py-16 px-4 flex flex-col items-center">
+
+        {/* Heading */}
+        <div
+          className="text-center mb-10"
+          style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+        >
+          <h1 className="text-3xl md:text-4xl capitalize text-white">
+            how we <span className="text-[#FFC016]">deliver</span> excellence
+          </h1>
+        </div>
+
+        {/* Vertical scroll container */}
+        <div className="w-full max-w-[380px] overflow-y-auto h-[80vh] px-4 space-y-12 no-scrollbar">
+          {circles.map((c) => (
+            <div
+              key={c.id}
+              className="flex flex-col items-center text-center opacity-0 translate-y-10 mobile-step"
+            >
+              {/* Circle image with drop animation */}
+              <div
+                className="w-24 h-24 rounded-full bg-[#1a1a1a] border flex items-center justify-center"
+                style={{
+                  borderColor: c.color,
+                }}
+              >
+                <img
+                  src={c.img}
+                  alt={c.label}
+                  className="w-14 h-14 object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              <h2
+                className="text-2xl font-semibold mt-4"
+                style={{
+                  fontFamily: "Outfit, sans-serif",
+                  color: c.color,
+                }}
+              >
+                {c.label}
+              </h2>
+
+              <p
+                className="text-gray-300 text-sm leading-relaxed mt-2"
+                style={{ fontFamily: "Work Sans, sans-serif" }}
+              >
+                {c.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Scroll hint */}
+        {/* <div className="mt-6 text-center flex items-center justify-center gap-2 opacity-60 animate-pulse">
+        <svg
+          className="w-5 h-5 text-gray-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"
+            d="M12 5v14m0 0l-4-4m4 4l4-4"
+          />
+        </svg>
+        <span className="text-gray-300 text-sm">Scroll down</span>
+      </div> */}
+      </section>
+    );
+  }
+
+
+  // --- DESKTOP ORIGINAL DESIGN ---
+  const splitDescription = (description) => {
+    const words = description.split(" ");
+    const totalWords = words.length;
+    const targetLines = 3;
+    const wordsPerLine = Math.ceil(totalWords / targetLines);
+    const lines = [];
+    let currentLine = [];
+    let currentWordCount = 0;
+
+    words.forEach((word, index) => {
+      currentLine.push(word);
+      currentWordCount++;
+      if (currentWordCount >= wordsPerLine || index === words.length - 1) {
+        if (currentLine.length > 2 || index === words.length - 1) {
+          lines.push(currentLine.join(" "));
+          currentLine = [];
+          currentWordCount = 0;
+        }
+      }
+    });
+    while (lines.length < targetLines) lines.push("");
+    return lines.slice(0, targetLines);
+  };
+
+  const pathD = `
+    M ${circles[0].cx} ${circles[0].cy}
+    ${circles
+      .slice(1)
+      .map((circle, i) => {
+        const prevCircle = circles[i];
+        const controlPoint1 = {
+          x: prevCircle.cx + (circle.cx - prevCircle.cx) * 0.25,
+          y: prevCircle.cy,
+        };
+        const controlPoint2 = {
+          x: circle.cx - (circle.cx - prevCircle.cx) * 0.25,
+          y: circle.cy,
+        };
+        return `C ${controlPoint1.x} ${controlPoint1.y}, ${controlPoint2.x} ${controlPoint2.y}, ${circle.cx} ${circle.cy}`;
+      })
+      .join(" ")}
+  `;
+
+
+
   return (
     <section
       ref={containerRef}
       className="relative w-full min-h-screen overflow-hidden bg-black text-white flex items-center justify-start py-16 isolate"
     >
       <div className="absolute inset-0 bg-black" />
-      
+
       <div
         className="absolute top-24 left-1/2 -translate-x-1/2 uppercase text-center z-10 w-full px-4"
         style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
@@ -482,7 +587,7 @@ export default function Indhu() {
           Our Process
         </p>
         <h1
-          className="text-4xl md:text-5xl uppercase lg:text-6xl xl:text-7xl leading-tight text-[#ffffff] capitalize"
+          className="text-2xl md:text-4xl uppercase lg:text-6xl xl:text-7xl leading-tight text-[#ffffff] capitalize"
           style={{ textShadow: "none" }}
         >
           how we <span className="text-[#FFC016]">deliver</span> excellence
@@ -523,14 +628,14 @@ export default function Indhu() {
             <linearGradient id="gradientGlow" x1="0" y1="0" x2="1" y2="0">
               {getPreciseGradientStops()}
             </linearGradient>
-            
+
             {/* Glow filter */}
             {colorTransitions.glowEffect && (
               <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation={colorTransitions.glowIntensity * 4} result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                <feGaussianBlur stdDeviation={colorTransitions.glowIntensity * 4} result="coloredBlur" />
+                <feMerge>
+                  <feMergeNode in="coloredBlur" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             )}
@@ -544,8 +649,8 @@ export default function Indhu() {
               window.innerWidth >= 1536
                 ? 18 + radius / 7
                 : window.innerWidth >= 1024
-                ? 16 + radius / 9
-                : 12;
+                  ? 16 + radius / 9
+                  : 12;
             const descriptionLines = splitDescription(c.description);
 
             return (
