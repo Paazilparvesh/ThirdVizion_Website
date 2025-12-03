@@ -1,17 +1,39 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function VRHeroSection() {
   const mainRef = useRef(null);
   const canvasRef = useRef(null);
+  const lenisRef = useRef(null);
 
   const frameCount = 192;
   const startFrame = 86400;
 
   useEffect(() => {
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    lenisRef.current = lenis;
+
+    // Synchronize Lenis scrolling with GSAP's ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    // Add Lenis's raf method to GSAP's ticker
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
     const ctx = gsap.context(() => {
       const canvas = canvasRef.current;
       const context = canvas.getContext("2d");
@@ -84,12 +106,14 @@ function VRHeroSection() {
         };
       }
 
-      // Setup ScrollTrigger immediately
+      // Setup ScrollTrigger with Lenis
       ScrollTrigger.create({
         trigger: mainRef.current,
-        start: "top 510",
-        end: `+=${frameCount * 3}`,
+        start: "top top",
+        end: `+=${frameCount * 10}`,
         scrub: 1,
+        pin: true,
+        anticipatePin: 1,
         onUpdate: (self) => {
           const targetFrame = Math.min(
             frameCount - 1,
@@ -114,7 +138,13 @@ function VRHeroSection() {
       };
     }, mainRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      lenis.destroy();
+      gsap.ticker.remove((time) => {
+        lenis.raf(time * 1000);
+      });
+    };
   }, []);
 
   return (
@@ -136,12 +166,12 @@ function VRHeroSection() {
 
         {/* Scroll Indicator - Always visible */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-          {/* <div className="text-center text-white/70">
+          <div className="text-center text-white/70">
             <p className="text-sm mb-2">Scroll to explore</p>
             <div className="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
               <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce"></div>
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
     </div>
