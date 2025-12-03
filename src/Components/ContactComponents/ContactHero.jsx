@@ -271,12 +271,15 @@ export default function ContactHero() {
           className="fixed bottom-8 left-1/2 hidden sm:block transform -translate-x-1/2 z-50 cursor-pointer"
           onClick={handleScrollDown}
         >
-          <div className="flex flex-col items-center justify-center">
-            <div className="text-white text-sm font-inter-tight mb-2 uppercase tracking-wider">
-              Scroll Down
+          <div className="flex flex items-center justify-center gap-2">
+            <div className="text-white text-xs font-inter-tight mb-2 uppercase tracking-wider mt-5">
+              Scroll
             </div>
             <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
               <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+            <div className="text-white text-xs font-inter-tight mb-2 uppercase tracking-wider mt-5">
+              Down
             </div>
           </div>
         </div>
