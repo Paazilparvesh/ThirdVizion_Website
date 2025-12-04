@@ -103,7 +103,7 @@ export default function About() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-gradient-to-b from-black via-neutral-900 to-black text-white min-h-screen w-full overflow-hidden py-24"
+      className="relative bg-gradient-to-b from-black via-neutral-900 to-black text-white min-h-screen w-full overflow-hidden py-0"
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-12 items-center">
         
@@ -128,7 +128,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             viewport={{ amount: 0.3 }}
-            className="text-gray-300 md:text-center lg:text-left text-md xl:text-lg leading-snug"
+            className="text-gray-300 text-center md:text-center lg:text-left text-md xl:text-lg leading-snug"
             style={{ fontFamily: "anta, sans-serif" }}
           >
             We create innovative digital solutions that blend AR/VR, 3D design, cloud infrastructure, and custom software development. Our goal is to help businesses grow smarter, work faster, and lead through technology.

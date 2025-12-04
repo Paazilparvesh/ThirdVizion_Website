@@ -115,7 +115,7 @@ const Vrsol = () => {
       >
         {/* Header - Hides BEFORE pin starts */}
         <div ref={headerRef} className="text-center mb-10 lg:absolute lg:top-1 w-full">
-          <h1 className="text-3xl md:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500" 
+          <h1 className="text-3xl md:text-5xl font-font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500" 
            style={{ fontFamily: "DeaconTest, sans-serif" }}>
             How ThirdVizion Transforms VR
           </h1>

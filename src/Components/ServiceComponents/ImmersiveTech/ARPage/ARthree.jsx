@@ -44,7 +44,7 @@ const App = () => {
         {/* Animated Text Line 1 */}
         <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2">
           <h1
-            className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight animate-gradient-typing"
+            className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight animate-gradient-typing font-font-semibold"
           >
             99% AR accuracy delivered
           </h1>

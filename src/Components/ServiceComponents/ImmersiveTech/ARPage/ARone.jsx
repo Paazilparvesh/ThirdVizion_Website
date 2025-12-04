@@ -783,7 +783,7 @@ export default function ArPage() {
             Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
               Power
             </span> of<br />
-            <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent font-font-semibold">
               Augmented Reality
             </span>
           </h1>

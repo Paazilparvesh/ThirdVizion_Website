@@ -122,7 +122,7 @@ const ARServices = () => {
 
   return (
     <div className="text-white min-h-screen flex p-4 relative">
-      <div className="relative z-10 max-w-7xl mx-auto w-full mt-10">
+      <div className="relative z-10 max-w-7xl mx-auto w-full mt-10 font-font-semibold">
         {/* HEADER */}
         <header className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-6 leading-tight">
