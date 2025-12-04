@@ -294,7 +294,7 @@ export default function ContactHero() {
         <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]">
           Contact
         </div>
-        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
+        {/* <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
           <div 
             className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
@@ -313,7 +313,42 @@ export default function ContactHero() {
           >
             Touch
           </div>
-        </div>
+        </div> */}
+
+        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
+
+  {/* GET IN */}
+  <div
+    className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+      backgroundSize: "200% 100%",          // extends full gradient across both words
+      backgroundPosition: "left center",     // start from yellow at left edge
+      WebkitBackgroundClip: "text",
+      fontFamily: "Outfit, sans-serif",
+    }}
+  >
+    Get in
+  </div>
+
+  {/* TOUCH */}
+  <div
+    className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+      backgroundSize: "200% 100%",
+      backgroundPosition: "right center",    // continue gradient (blue → green → red)
+      WebkitBackgroundClip: "text",
+      fontFamily: "Outfit, sans-serif",
+    }}
+  >
+    Touch
+  </div>
+
+</div>
+
       </div>
 
       <div ref={wrapperRef} className="w-full relative">
