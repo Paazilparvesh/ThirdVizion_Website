@@ -15,9 +15,9 @@ import {
 
 // SOCIAL LINKS
 const socialLinks = [
-  { Icon: FaFacebookF, href: "https://www.instagram.com/thirdvizionlabs/", color: "#1877F2" },
+  { Icon: FaFacebookF, href: "https://www.facebook.com/people/Thirdvizion-Labs/61580211779605", color: "#1877F2" },
   { Icon: FaInstagram, href: "https://www.instagram.com/thirdvizionlabs/", color: "#E4405F" },
-  { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/106155239/admin/settings/", color: "#0A66C2" },
+  { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/thirdvizion-labs", color: "#0A66C2" },
   { Icon: FaYoutube, href: "https://www.youtube.com/@ThirdVizion", color: "#FF0000" }
 ];
 
@@ -91,21 +91,6 @@ const formVariants = {
     opacity: 1,
     x: 0,
     transition: { duration: 0.8, ease: "easeOut" }
-  }
-};
-
-const buttonVariants = {
-  initial: {
-    scale: 1,
-    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-  },
-  hover: {
-    scale: 1.05,
-    background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
-    transition: { duration: 0.3, ease: "easeInOut" }
-  },
-  tap: {
-    scale: 0.95
   }
 };
 
@@ -229,7 +214,7 @@ const ContactForm = () => {
 
           {/* Social Links */}
           <motion.div 
-            className="flex gap-6 text-2xl"
+            className="flex gap-6 text-2xl mt-4"
             variants={itemVariants}
           >
             {socialLinks.map(({ Icon, href, color }, index) => (
@@ -386,8 +371,8 @@ style={{ fontFamily: "anta, sans-serif" }}            >
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 rounded-lg font-bold text-white border-none relative overflow-hidden group"
-                  variants={buttonVariants}
+                  className="w-full py-4 rounded-lg font-bold bg-[#e59305] text-white border-none relative overflow-hidden group"
+                  // variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
                   whileTap="tap"

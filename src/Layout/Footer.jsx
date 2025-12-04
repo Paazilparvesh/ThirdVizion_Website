@@ -16,8 +16,8 @@ const Footer = () => {
     >
       {/* Top Section */}
       <div
-        className="max-w-7xl mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black px-6 py-12 
-        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8
+        className="mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black ml-20 py-12 
+        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8
         md:text-left text-center relative z-10"
       >
         {/* --- Links --- */}
@@ -88,6 +88,41 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* --- Services --- */}
+        <div className="">
+          <h3 className="font-semibold text-lg mb-4">Services</h3>
+          <ul className="space-y-2 text-sm text-gray-300">
+            <li>
+              <Link to="/web_development" className="hover:text-white cursor-pointer">
+                Web Development
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/client_relationship_management"
+                className="hover:text-white cursor-pointer"
+              >
+                CRM Solutions
+              </Link>
+            </li>
+            <li>
+              <Link to="/virtual_reality" className="hover:text-white cursor-pointer">
+                Virtual Reality
+              </Link>
+            </li>
+            <li>
+              <Link to="/augmented_reality" className="hover:text-white cursor-pointer">
+                Augmented Reality
+              </Link>
+            </li>
+            <li>
+              <Link to="/3d_services" className="hover:text-white cursor-pointer">
+                3D Visualization
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* --- Contact --- */}
         <div>
           <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
@@ -101,7 +136,7 @@ const Footer = () => {
         </div>
 
         {/* --- Social --- */}
-        <div>
+        <div className="ml-10">
           <h3 className="font-semibold text-lg mb-4">Social</h3>
           <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xl text-gray-300">
             <a
