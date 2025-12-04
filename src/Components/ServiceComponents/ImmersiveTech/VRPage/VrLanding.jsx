@@ -40,7 +40,7 @@ export default function VrLanding() {
         className="mt-10 flex gap-6"
       >
         <Link to="/contact">
-          <motion.button
+          {/* <motion.button
             initial={{ opacity: 0, y: 40, scale: 0.96 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             className="hover:bg-purple-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] hover:scale-[1.02] transition-all duration-500 focus:outline-none focus:ring-4 focus:ring-purple-500/50 
@@ -48,7 +48,31 @@ export default function VrLanding() {
               mb-6 lg:mb-8"
          style={{ fontFamily: "DeaconTest, sans-serif" }} >
             Request a demo
-          </motion.button>
+          </motion.button> */}
+          <motion.button
+  initial={{ opacity: 0, y: 40, scale: 0.96 }}
+  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+  className="
+    hover:bg-purple-500 
+    text-white 
+    shadow-[0_0_20px_rgba(168,85,247,0.4)] 
+    hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] 
+    hover:scale-[1.02] 
+    transition-all duration-500 
+    border border-purple-400/30 
+    px-5 py-2.5 sm:px-6 sm:py-3 
+    font-semibold 
+    backdrop-blur-md 
+    rounded-xl sm:rounded-2xl 
+    md:px-8 
+    text-sm sm:text-base lg:text-lg xl:text-xl 
+    mb-6 lg:mb-8
+  "
+  style={{ fontFamily: 'DeaconTest, sans-serif' }}
+>
+  Request a demo
+</motion.button>
+
         </Link>
       </motion.div>
     </section>
