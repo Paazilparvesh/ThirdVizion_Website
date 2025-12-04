@@ -197,10 +197,24 @@ const BlogPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
-          <span className="bg-gradient-to-r from-[#FF700A] font-medium via-orange-400 to-yellow-400 bg-clip-text text-transparent"
+          {/* <span className="bg-gradient-to-r from-[#FF700A] font-medium via-orange-400 to-yellow-400 bg-clip-text text-transparent"
             style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
-            Welcome to Our Blog
-          </span>
+           Our Blogs
+          </span> */}
+          <span
+  className="font-medium bg-clip-text text-transparent"
+  style={{
+    fontFamily: "DeaconTest, sans-serif",
+    fontWeight: 600,
+    backgroundImage:
+      "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  }}
+>
+  Our Blogs
+</span>
+
         </motion.h1>
         
         

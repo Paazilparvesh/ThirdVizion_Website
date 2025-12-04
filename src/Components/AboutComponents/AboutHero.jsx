@@ -284,16 +284,45 @@ export default function AboutHero() {
         <div className="about-text font-inter-tight text-md xl:text-2xl md:mr-6 xl:mr-10 -mb-5 md:-mb-8 xl:-mb-10 font-medium text-white text-center uppercase">
           About
         </div>
-
+{/* 
         <div className="flex gap-2 xl:gap-6 mt-4">
-          <div className="third-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
+          <div className="third-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-blue-500 bg-clip-text text-transparent">
             Third
           </div>
           <div className="vizion-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-gradient-to-r from-yellow-400 via-green-500 to-red-500 bg-clip-text text-transparent">
             Vizion
           </div>
         </div>
-      </div>
+      </div> */}
+
+    <div className="flex gap-2 xl:gap-6 mt-4">
+  <div
+    className="third-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+      backgroundSize: "200% 100%",      // extend across both words
+      backgroundPosition: "left center", // ensures color starts from left
+      WebkitBackgroundClip: "text",
+    }}
+  >
+    Third
+  </div>
+
+  <div
+    className="vizion-text font-inter-tight text-4xl md:text-[5rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+      backgroundSize: "200% 100%",      
+      backgroundPosition: "right center", // smooth continuation
+      WebkitBackgroundClip: "text",
+    }}
+  >
+    Vizion
+  </div>
+</div>
+</div>
 
       <div ref={wrapperRef} className="w-full relative">
         {/* Desktop scroll section */}
@@ -356,7 +385,7 @@ export default function AboutHero() {
           <div className="relative -mt-2 bg-black rounded-t-4xl pt-12 px-6 pb-16">
             {/* Company Badge */}
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-  <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-4 py-5 rounded-full">
+  <div className=" px-4 py-5 rounded-full">
     <div className="flex items-center gap-3">
       {/* Left (same) SVG */}
       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -380,7 +409,7 @@ export default function AboutHero() {
 
 
             {/* Minimal Header */}
-            <div className="text-center mb-12">
+            {/* <div className="text-center mb-12">
               <div className="text-gray-400 text-sm font-light tracking-widest uppercase mb-2"  style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 About Us
               </div>
@@ -388,7 +417,35 @@ export default function AboutHero() {
                 Third <span className="font-lightbold">Vizion</span>
               </h1>
               <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
-            </div>
+            </div> */}
+
+            <div className="text-center mb-12">
+  <div
+    className="text-gray-400 text-sm font-light tracking-widest uppercase mb-2"
+    style={{ fontFamily: "'Work Sans', sans-serif" }}
+  >
+    About Us
+  </div>
+
+  {/* FIXED GRADIENT HEADING */}
+  <h1
+    className="text-4xl font-light mb-4 bg-clip-text text-transparent w-full block"
+    style={{
+      fontFamily: "'Work Sans', sans-serif",
+      backgroundImage:
+        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+      backgroundSize: "100% auto",
+      backgroundPosition: "left",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+    }}
+  >
+    Third <span className="font-lightbold">Vizion</span>
+  </h1>
+
+  <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
+</div>
+
 
             {/* Core Description */}
             <div className="max-w-md mx-auto space-y-6 text-center">

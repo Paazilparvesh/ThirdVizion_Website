@@ -259,7 +259,7 @@ const Industries = () => {
             {/* Right image overlay with background color added */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
-              className="absolute top-0 right-0 h-full w-1/2 z-20"
+              className="absolute top-0 right-0 h-full w-[60%] z-20"
               style={{
                 backgroundImage: `${colorGradients[industry.color]}, url(${industryImages[index]})`,
                 backgroundSize: "cover",
