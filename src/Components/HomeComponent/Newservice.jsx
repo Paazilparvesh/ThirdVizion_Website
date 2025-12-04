@@ -754,7 +754,7 @@ export default function Categories() {
                           key={index}
                         >
                           <span
-                            className={`${getTagStyle(tag)} cursor-pointer px-[18px] py-[8px] text-2xl md:text-lg lg:text-[19px] inline-block text-xs`}
+                            className={`${getTagStyle(tag)} cursor-pointer px-[18px] py-[8px] text-[20px] md:text-lg lg:text-[15px] inline-block text-xs`}
                             style={{ fontFamily: "anta, sans-serif" }}
                           >
                             {tag}
