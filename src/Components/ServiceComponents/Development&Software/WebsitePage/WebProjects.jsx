@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ProjectsData = [
  {
   id: 1,
-  title: "Construction Site",
+  title: " indira Construction ",
   image: indhra,
   description:
     "A professional construction company website built on WordPress, showcasing services, ongoing projects, and client trust with a modern, responsive design.",

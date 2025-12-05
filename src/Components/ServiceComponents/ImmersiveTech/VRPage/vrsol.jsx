@@ -24,7 +24,7 @@ const VrData = [
     description:
       "ThirdVizion builds tailored VR applications for training, marketing, and entertainment using Unity and Unreal Engine with seamless cross-platform deployment.",
     icon: IconTime,
-    image:VrImage1 ,
+    image: VrImage1,
   },
   {
     id: "trainingVR",
@@ -32,7 +32,7 @@ const VrData = [
     description:
       "We design immersive VR training programs for industries like healthcare, manufacturing, and aviation with real-time performance tracking and analytics.",
     icon: IconGlasses,
-    image: VrImage2  ,
+    image: VrImage2,
   },
   {
     id: "architecturalVR",
@@ -111,22 +111,87 @@ const Vrsol = () => {
 
       <div
         ref={containerRef}
-        className="min-h-screen w-full flex flex-col justify-center items-center px-4 md:px-8 relative z-10"
+        className="min-h-screen w-full flex flex-col justify-start lg:justify-center items-center px-4 py-12 md:px-8 relative z-10"
       >
-        {/* Header - Hides BEFORE pin starts */}
-        <div ref={headerRef} className="text-center mb-10 lg:absolute lg:top-1 w-full">
-          <h1 className="text-3xl md:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500" 
-           style={{ fontFamily: "DeaconTest, sans-serif" }}>
+        {/* Header */}
+        <div ref={headerRef} className="text-center mb-8 lg:mb-10 lg:absolute lg:top-1 w-full">
+          <h1
+            className="text-3xl md:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500"
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
+          >
             How ThirdVizion Transforms VR
           </h1>
-          <p className="text-gray-400 text-base md:text-lg  max-w-2xl mx-auto"
-           style={{ fontFamily: "anta, sans-serif" }}>
+          <p
+            className="text-gray-400 text-base md:text-lg mt-3 max-w-2xl mx-auto"
+            style={{ fontFamily: "anta, sans-serif" }}
+          >
             We deliver cutting-edge virtual reality solutions from concept to deployment
           </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center lg:h-[85vh] mt-16 lg:mt-0">
+        {/* MOBILE LAYOUT - Card Stack */}
+        <div className="lg:hidden w-full max-w-md mx-auto space-y-6">
+          {VrData.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-zinc-900/50 backdrop-blur-lg rounded-2xl overflow-hidden border border-violet-500/20 shadow-xl"
+            >
+              {/* Image Section */}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                {/* Icon Badge */}
+                <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20">
+                  <img src={service.icon} alt="icon" className="w-8 h-8 object-contain" />
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div className="p-6">
+                <h3
+                  className="text-xl font-bold text-white mb-3"
+                  style={{ fontFamily: "DeaconTest, sans-serif" }}
+                >
+                  {service.title}
+                </h3>
+                <p
+                  className="text-gray-300 text-sm leading-relaxed"
+                  style={{ fontFamily: "anta, sans-serif" }}
+                >
+                  {service.description}
+                </p>
+
+                {/* Progress Indicator */}
+                <div className="mt-4 flex items-center gap-2">
+                  <div className="flex-1 h-1 bg-zinc-700 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 0.3 }}
+                      viewport={{ once: true }}
+                      className="h-full bg-gradient-to-r from-violet-500 to-indigo-500"
+                    />
+                  </div>
+                  <span className="text-violet-400 text-xs font-semibold">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* DESKTOP LAYOUT - Original Two Column */}
+        <div className="hidden lg:grid max-w-7xl w-full grid-cols-2 gap-8 items-center h-[85vh]">
           {/* LEFT COLUMN */}
           <div className="flex flex-col gap-4">
             {VrData.map((service, index) => (
@@ -157,32 +222,26 @@ const Vrsol = () => {
                   </h3>
                 </div>
 
-                <div className="block lg:hidden mt-3" style={{ fontFamily: "anta, sans-serif" }}>
-                  <p className="text-gray-300 text-sm">{service.description}</p>
-                </div>
-
-                <div className="hidden lg:block">
-                  <AnimatePresence>
-                    {activeService === service.id && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="mt-3 text-gray-300 text-sm pl-12 border-l-2 border-violet-500/50">
-                          {service.description.substring(0, 80)}...
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                <AnimatePresence>
+                  {activeService === service.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-3 text-gray-300 text-sm pl-12 border-l-2 border-violet-500/50">
+                        {service.description.substring(0, 80)}...
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>
 
           {/* RIGHT COLUMN - Full Image Display */}
-          <div className=" w-full flex items-center justify-center mt-10 h-[600px]">
+          <div className="w-full flex items-center justify-center h-[600px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService}
@@ -193,7 +252,7 @@ const Vrsol = () => {
                 className="w-full h-full bg-zinc-900/80 rounded-3xl overflow-hidden border border-zinc-700/50 shadow-2xl p-2"
               >
                 {/* Full Image Container */}
-                <div className="relative w-full  ">
+                <div className="relative w-full h-full">
                   <img
                     src={activeServiceData.image}
                     alt={activeServiceData.title}
@@ -210,7 +269,7 @@ const Vrsol = () => {
                   </div>
 
                   {/* Content Overlay - Bottom */}
-                  <div className="hidden lg:block absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-8">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-8">
                     <h2
                       className="text-3xl font-bold mb-3 text-white"
                       style={{ fontFamily: "DeaconTest, sans-serif" }}
