@@ -12,7 +12,7 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-tight font-inter-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  font-medium leading-tight font-inter-tight">
          <span
   className="bg-gradient-to-r from-[#FDC700] to-[#FFD84C] bg-clip-text text-transparent block font-semibold"
   style={{ fontFamily: "DeaconTest, sans-serif" }}
@@ -37,7 +37,7 @@ export default function HeroSection() {
         {/* CTA Button */}
        <Link to="/contact">
   <motion.button
-    className="mt-6 px-8 py-3 rounded-full font-semibold tracking-wide bg-[#FDC700] text-black shadow-[0_0_25px_rgba(253,199,0,0.3)] hover:shadow-[0_0_40px_rgba(253,199,0,0.5)] hover:bg-[#ffe166] transition-all"
+    className="mt-6 px-8 py-3 rounded-full font-semibold tracking-wide  text-[#FDC700] shadow-[0_0_25px_rgba(253,199,0,0.3)] hover:shadow-[0_0_40px_rgba(253,199,0,0.5)]  transition-all"
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >

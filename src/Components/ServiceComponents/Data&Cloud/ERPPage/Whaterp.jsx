@@ -25,7 +25,7 @@ function Whaterp() {
         </p>
 
         {/* Main Content Card */}
-        <div className="bg-[#7C86FF10] backdrop-blur-lg rounded-2xl shadow-[0_0_20px_rgba(124,134,255,0.15)] border border-[#7C86FF30] p-8 md:p-12 hover:border-[#7C86FF40] hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] transition-all duration-300">
+        <div className="  rounded-2xl shadow-[0_0_20px_rgba(124,134,255,0.15)] border border-[#7C86FF30] p-8 md:p-12 hover:border-[#7C86FF40] hover:shadow-[0_0_40px_rgba(124,134,255,0.35)] transition-all duration-300">
           {/* Main Definition */}
           <div className="text-center mb-10">
             <p
@@ -44,7 +44,7 @@ function Whaterp() {
           {/* Core Modules Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {/* Module 1 - Financial (icon2) */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group  from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <img src={icontwo} alt="Financial" className="w-16 h-16 mb-4 object-contain" />
               <h3
                 className="text-xl font-bold mb-3 text-white"
@@ -62,7 +62,7 @@ function Whaterp() {
             </div>
 
             {/* Module 2 - Human Resources (icon3) */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group  from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <img src={iconthree} alt="HR" className="w-16 h-16 mb-4 object-contain" />
               <h3
                 className="text-xl font-bold mb-3 text-white"
@@ -80,7 +80,7 @@ function Whaterp() {
             </div>
 
             {/* Module 3 - Supply Chain (icon1) */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <img src={iconone} alt="Supply Chain" className="w-16 h-16 mb-4 object-contain" />
               <h3
                 className="text-xl font-bold mb-3 text-white"
@@ -98,7 +98,7 @@ function Whaterp() {
             </div>
 
             {/* Module 4 - Manufacturing */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group  from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <div className="text-5xl mb-4">🏭</div>
               <h3
                 className="text-xl font-bold mb-3 text-white"
@@ -116,7 +116,7 @@ function Whaterp() {
             </div>
 
             {/* Module 5 - Sales & CRM (icon4) */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group  from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <img src={iconfour} alt="Sales" className="w-16 h-16 mb-4 object-contain" />
               <h3
                 className="text-xl font-bold mb-3 text-white"
@@ -134,7 +134,7 @@ function Whaterp() {
             </div>
 
             {/* Module 6 - Analytics */}
-            <div className="group bg-gradient-to-br from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="group  from-[#7C86FF]/10 to-[#7C86FF]/5 border border-[#7C86FF]/20 p-6 rounded-xl hover:border-[#7C86FF]/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <div className="text-5xl mb-4">📊</div>
               <h3
                 className="text-xl font-bold mb-3 text-white"

@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import img1 from "/src/assets/AboutImages/Artboard 1 copy.jpg";
+import img1 from "/src/assets/AboutImages/aka.jpg";
 import img2 from "/src/assets/AboutImages/dhilip.jpg";
 import img3 from "/src/assets/AboutImages/JANA.jpg";
 import img4 from "/src/assets/AboutImages/JERO.jpg";
 import img5 from "/src/assets/AboutImages/KARTHICK.jpg";
 import img6 from "/src/assets/AboutImages/PAZIL.jpg";
-import img7 from "/src/assets/AboutImages/RAGUL.jpg";
-import img8 from "/src/assets/AboutImages/RAJESH.jpg";
+import img7 from "/src/assets/AboutImages/rag.jpg";
+import img8 from "/src/assets/AboutImages/raj.jpg";
 import img9 from "/src/assets/AboutImages/RAKESH.jpg";
-import img10 from "/src/assets/AboutImages/REX.jpg";
+import img10 from "/src/assets/AboutImages/arr.jpg";
 import img11 from "/src/assets/AboutImages/S2.jpg";
 import img12 from "/src/assets/AboutImages/saravana priya.jpg";
 import img13 from "/src/assets/AboutImages/SATHYA.jpg";
 import img14 from "/src/assets/AboutImages/SHAMMI.jpg";
 import img15 from "/src/assets/AboutImages/THARUN.jpg";
 import img16 from "/src/assets/AboutImages/vishnu priya.jpg";
-import img17 from "/src/assets/AboutImages/yeshwant.jpg";
+import img17 from "/src/assets/AboutImages/yesh.jpg";
 import img18 from "/src/assets/AboutImages/THARUN copy.jpg";
 
 const teamData = [
@@ -100,7 +100,7 @@ export default function OurTeam() {
                   >
                     <div
                       className={`absolute inset-0 transition-all duration-700 ${
-                        isActive ? "bg-black/70" : "bg-black/40"
+                        isActive ? "" : "bg-black/40"
                       }`}
                     />
 

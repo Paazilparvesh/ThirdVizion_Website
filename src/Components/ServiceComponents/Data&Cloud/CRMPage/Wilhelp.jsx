@@ -59,7 +59,7 @@ function Willhelp() {
         },
         {
             icon: FinanceIcon,
-            metric: "24/5",
+            metric: "24",
             title: "Training & Support",
             description: "Comprehensive team training with 24/7 support for maximum CRM adoption.",
             gradient: "from-red-400 to-pink-500",
@@ -138,14 +138,7 @@ function Willhelp() {
                                     <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] rounded-full blur-lg opacity-70"></div>
                                     
                                     {/* Number Badge */}
-                                    <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] flex items-center justify-center shadow-2xl border-4 border-black/90">
-                                        <span 
-                                            className="text-3xl font-black text-white"
-                                            style={{ fontFamily: "DeaconTest, sans-serif" }}
-                                        >
-                                            {index + 1}
-                                        </span>
-                                    </div>
+                                    
                                 </div>
                             </div>
 
@@ -218,15 +211,15 @@ function Willhelp() {
 
                 {/* Why Choose Us */}
                 <motion.div
-                    className="mt-12 rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all"
+                    className="mt-40 rounded-2xl shadow-2xl border border-[#FF6467]/20 p-10 hover:border-[#FF6467]/40 transition-all"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
                <h2 
-  className="text-4xl text-center mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-6xl text-center mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
 >
   Why Choose ThirdVizion?
 </h2>

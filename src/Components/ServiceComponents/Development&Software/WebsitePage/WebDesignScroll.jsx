@@ -83,7 +83,7 @@ const WebDesignScroll = () => {
           <div className="list">
             {[
               image1, image2, image3, image4, image5,
-              image6, image7, image8, image9, image10,
+              image6, image7,  image9, image10,image8,
             ].map((img, index) => (
               <div
                 key={index}
@@ -109,8 +109,8 @@ const WebDesignScroll = () => {
         >
           <div className="list">
             {[
-              image10, image6, image7, image8, image9, image5,
-              image4, image3, image2, image1,
+              image10,  image7, image8, image9, image5,
+              image4, image3, image2, image1, image6
             ].map((img, index) => (
               <div
                 key={index}
@@ -135,8 +135,8 @@ const WebDesignScroll = () => {
         >
           <div className="list">
             {[
-              image1, image6, image2, image7, image3,
-              image8, image4, image9, image5, image10,
+              image1, image6, image2, image7, 
+              image8, image4, image9, image5, image10, image3
             ].map((img, index) => (
               <div
                 key={index}

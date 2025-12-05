@@ -213,7 +213,7 @@ const Footer = () => {
       </div>
 
       {/* Desktop Design - Hidden on mobile, shown on md and above */}
-      <div className="hidden md:block     mb-5 ">
+      <div className="hidden md:block     mb-10 ">
         {/* Top Section */}
         <div
           className="mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black ml-20 py-10

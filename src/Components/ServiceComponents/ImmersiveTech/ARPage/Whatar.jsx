@@ -35,7 +35,7 @@ function Whatar() {
           </div>
 
           {/* FEATURES GRID */}
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12" style={{ fontFamily: "anta, sans-serif" }}>
             {/* FEATURE 1 */}
             <div className="bg-gradient-to-br from-pink-900/20 to-purple-900/20 border border-pink-500/30 p-6 rounded-xl hover:shadow-lg hover:border-pink-400/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm group">
               <div className="flex items-center justify-between mb-4">
@@ -103,7 +103,7 @@ function Whatar() {
           {/* APPLICATIONS SECTION */}
           <div className="mt-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "anta, sans-serif" }}> 
                 AR Applications
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent rounded-full animate-pulse mx-auto"></div>
@@ -118,7 +118,7 @@ function Whatar() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group"
+                  className="flex items-center space-x-4 bg-gradient-to-r from-pink-900/10 to-purple-900/10 border border-pink-500/20 p-4 rounded-lg hover:border-pink-400/40 hover:bg-pink-900/20 transition-all duration-300 backdrop-blur-sm group" style={{ fontFamily: "anta, sans-serif" }}
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-white font-bold text-sm">{index + 1}</span>
@@ -129,7 +129,7 @@ function Whatar() {
             </div>
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center" style={{ fontFamily: "anta, sans-serif" }}>
             <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 border border-pink-500/30 rounded-xl p-6 backdrop-blur-sm">
               <h3 className="text-2xl font-bold mb-4 text-pink-300">Experience the Future Today</h3>
               <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
