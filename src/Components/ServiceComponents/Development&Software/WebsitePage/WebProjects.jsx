@@ -5,17 +5,17 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-import indhra from "/src/assets/webprojects/indhra.png";
-import madras from "/src/assets/webprojects/madras.png";
-import scopik from "/src/assets/webprojects/scopik.png";
-import spinz from "/src/assets/webprojects/itamiltv.png";
+import indhra from "/src/assets/webprojects/ica 1.png";
+import madras from "/src/assets/webprojects/ica2.png";
+import scopik from "/src/assets/webprojects/ica3.png";
+import spinz from "/src/assets/webprojects/ica4.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsData = [
  {
   id: 1,
-  title: "Construction Site",
+  title: "Indira",
   image: indhra,
   description:
     "A professional construction company website built on WordPress, showcasing services, ongoing projects, and client trust with a modern, responsive design.",

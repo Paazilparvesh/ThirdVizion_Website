@@ -887,6 +887,11 @@ import { Link } from "react-router-dom";
 import CRM_Video from "/src/assets/newserviceehome/Corporate_CRM_Video_Generation.mp4";
 import ERP_Video from "/src/assets/newserviceehome/ERP_Video_Generation_Request.mp4";
 import VR_Video from "/src/assets/newserviceehome/VR_Video_Generation_Request 1.mp4";
+import D_Modeling from "/src/assets/ar/D_Modeling_and_Rendering_Video.mp4";
+import AR_Vedio from "/src/assets/ar/Futuristic_AR_Video_Generation2.mp4";
+import Game_dev from "/src/assets/ar/Futuristic_Game_Dev_Workspace_POV.mp4";
+import Web_dev from "/src/assets/newserviceehome/Web_Development_Video_Generation 1.mp4"
+// import Tech_Vedio from "/src/assets/ar/Futuristic_Tech_Video_Generation1.mp4"
 
 
 // Image imports (unchanged)
@@ -905,64 +910,67 @@ import arIcon from "/src/assets/ourserviceicons/ar.png";
 import crmIcon from "/src/assets/ourserviceicons/crm.png";
 import iamIcon from "/src/assets/ourserviceicons/iam.png";
 import vrIcon from "/src/assets/ourserviceicons/vr.png";
-import threedIcon from "/src/assets/ourserviceicons/3d.png";
+// import threedIcon from "/src/assets/ourserviceicons/3d.png";
 import erpIcon from "/src/assets/ourserviceicons/erp.png";
 import gameIcon from "/src/assets/ourserviceicons/game.png";
 import webIcon from "/src/assets/ourserviceicons/website.png";
 import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
+import Aricon1 from "/src/assets/ar/Gemini_Generated_Image_4wcpq64wcpq64wcp.png";
+import threedIcon from "/src/assets/ar/Gemini_Generated_Image_ps0yl0ps0yl0ps0y.png";
 
 /* =========================
    Data: capabilitiesData
    - Emerging tech children use video: <import>
    ========================= */
 const capabilitiesData = [
-  {
-    id: "emerging-tech",
-    title: "emerging tech",
+    {
+    id: "software-dev",
+    title: "software development",
     desc:
-      "We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
+      "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
     children: [
       {
-        name: "Augmented Reality",
-        subname: "AR",
-        video: CRM_Video, // <-- video used here
-        icon: arIcon,
+        name: "Game Development",
+        subname: "Game",
+        img: Azure,
+        icon: gameIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/augmented_reality",
+        link: "/game_development",
       },
       {
-        name: "3D Modeling",
-        subname: "3D",
-        video: ERP_Video, // <-- video used here
-        icon: threedIcon,
+        name: "Website Development",
+        subname: "Website",
+        video:Web_dev,
+        icon: webIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/3d_services",
+        link: "/web_development",
       },
       {
-        name: "Virtual Reality",
-        subname: "VR",
-        video: VR_Video, // <-- video used here
-        icon: vrIcon,
+        name: "App Development",
+        subname: "Mobile App",
+        img: Por,
+        icon: mobileIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/virtual_reality",
+        link: "/app_development",
       },
     ],
   },
+
   {
     id: "data-cloud",
     title: "data and cloud",
@@ -972,7 +980,7 @@ const capabilitiesData = [
       {
         name: "Customer Relationship Management",
         subname: "CRM",
-        img: Portal,
+        video:CRM_Video,
         icon: crmIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -995,11 +1003,12 @@ const capabilitiesData = [
         size: "h-100",
         link: "/identity_and_access_management",
       },
-      {
-        name: "Enterprises Resourse Planning",
-        subname: "ERP",
-        img: Aws,
-        icon: erpIcon,
+    {
+  name: "Enterprise Resource Planning",
+  subname: "ERP",
+  video: ERP_Video,
+  icon: erpIcon,
+
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -1010,50 +1019,51 @@ const capabilitiesData = [
       },
     ],
   },
-  {
-    id: "software-dev",
-    title: "software development",
+
+    {
+    id: "emerging-tech",
+    title: "emerging tech",
     desc:
-      "We create innovative software solutions that help businesses grow in the digital era. From custom websites to mobile apps and interactive games, our team combines creativity, technology, and strategy to turn ideas into reality",
+      "We deliver secure, scalable, and intelligent technology solutions that help businesses manage data efficiently, streamline operations, and enhance customer engagement.",
     children: [
       {
-        name: "Game Development",
-        subname: "Game",
-        img: Azure,
-        icon: gameIcon,
+        name: "Augmented Reality",
+        subname: "AR",
+        video: AR_Vedio, // <-- video used here
+        icon: Aricon1,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/game_development",
+        link: "/augmented_reality",
       },
       {
-        name: "Website Development",
-        subname: "Website",
-        img: GoogleCloud,
-        icon: webIcon,
+        name: "3D Modeling",
+        subname: "3D",
+        video: D_Modeling, // <-- video used here
+        icon: threedIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/web_development",
+        link: "/3d_services",
       },
       {
-        name: "App Development",
-        subname: "Mobile App",
-        img: Por,
-        icon: mobileIcon,
+        name: "Virtual Reality",
+        subname: "VR",
+        video: VR_Video, // <-- video used here
+        icon: vrIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/app_development",
+        link: "/virtual_reality",
       },
     ],
   },

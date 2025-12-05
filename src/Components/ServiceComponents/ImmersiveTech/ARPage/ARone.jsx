@@ -519,7 +519,7 @@ return (
         </div>
 
         {/* Steps */}
-        <div className="mt-12 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
+        <div className="mt-12 max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
           {["Launch AR", "Allow Access", "Scan Surfaces", "Place & Explore"].map((text, i) => (
             <div key={i} className="bg-gradient-to-br from-pink-500/10 to-fuchsia-600/10 border border-pink-500/20 p-4 rounded-xl backdrop-blur-sm text-center">
               <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-fuchsia-600 rounded-full flex items-center justify-center mx-auto text-white font-bold">
