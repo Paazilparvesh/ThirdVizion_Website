@@ -915,8 +915,8 @@ import erpIcon from "/src/assets/ourserviceicons/erp.png";
 import gameIcon from "/src/assets/ourserviceicons/game.png";
 import webIcon from "/src/assets/ourserviceicons/website.png";
 import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
-import Aricon1 from "/src/assets/ar/Gemini_Generated_Image_4wcpq64wcpq64wcp.png";
-import threedIcon from "/src/assets/ar/Gemini_Generated_Image_ps0yl0ps0yl0ps0y.png";
+import Aricon1 from "/src/assets/newserviceehome/Gemini_Generated_Image_4wcpq64wcpq64wcp.png";
+import threedIcon from "/src/assets/newserviceehome/Gemini_Generated_Image_ps0yl0ps0yl0ps0y.png";
 
 /* =========================
    Data: capabilitiesData
