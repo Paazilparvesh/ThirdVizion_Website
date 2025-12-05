@@ -4,7 +4,7 @@ import about2 from "/src/assets/home/about2.png";
 const About = () => {
   return (
     <section className="bg-black text-white relative">
-      <div className="py-16">
+      <div className="py-16 md:py-20">
         {/* About + Statistics Container */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto mb-12">
           {/* About Text */}
@@ -23,7 +23,7 @@ const About = () => {
 
           {/* Statistics */}
           <div className="grid grid-cols-3 gap-6 text-center">
-            {/* Statistic Item */}
+           
             <div>
               <p className="text-yellow-400 text-5xl md:text-7xl font-bold">
                 12

@@ -97,7 +97,7 @@ function VRIndustries() {
                             {/* Glass morphism overlay */}
                             <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-indigo-500/5 opacity-50 group-hover:opacity-70 transition-opacity duration-500 rounded-2xl" />
                             
-                            <div className="relative z-10 flex flex-col h-full">
+                            <div className="relative z-10 flex flex-col h-full items-center text-center md:items-start md:text-left">
                                 {/* Image Icon - No Background */}
                                 <div className="w-16 h-16 rounded-2xl bg-transparent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg overflow-hidden">
                                     <img 
@@ -157,20 +157,21 @@ function VRIndustries() {
                     viewport={{ once: true, amount: 0.3 }}
                 >
                     <h2 
-                        className="text-3xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent" 
-                        style={{ fontFamily: "DeaconTest, sans-serif" }}
-                    >
-                        The Future of VR
-                    </h2>
-                    <p 
-                        className="text-lg leading-relaxed text-gray-300" 
-                        style={{ fontFamily: "anta, sans-serif" }}
-                    >
-                        As VR technology continues to evolve, it's revolutionizing industries by reducing costs, 
-                        improving safety, enhancing training programs, and creating unprecedented opportunities 
-                        for innovation. From space exploration to mental health therapy, VR is shaping the future 
-                        of how we interact with digital environments.
-                    </p>
+    className="text-3xl font-bold mb-4 bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent text-center md:text-left" 
+    style={{ fontFamily: "DeaconTest, sans-serif" }}
+>
+    The Future of VR
+</h2>
+<p 
+    className="text-lg leading-relaxed text-gray-300 text-center md:text-left" 
+    style={{ fontFamily: "anta, sans-serif" }}
+>
+    As VR technology continues to evolve, it's revolutionizing industries by reducing costs, 
+    improving safety, enhancing training programs, and creating unprecedented opportunities 
+    for innovation. From space exploration to mental health therapy, VR is shaping the future 
+    of how we interact with digital environments.
+</p>
+
                 </motion.div>
             </div>
         </section>
