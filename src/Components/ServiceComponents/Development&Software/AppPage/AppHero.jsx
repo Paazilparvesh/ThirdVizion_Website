@@ -102,14 +102,14 @@ export default function AppHero() {
       {/* Hero text section */}
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
         <h1
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 text-[#ff8904]"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 text-[#ff8904]"
           style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           We Craft Seamless Mobile Experiences
         </h1>
 
         <p
-          className="text-gray-400 text-sm hidden sm:block sm:text-base md:text-lg max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
+          className="text-gray-400 text-base md:text-sm hidden sm:block  max-w-md sm:max-w-xl lg:max-w-2xl mb-6"
           style={{ fontFamily: "anta, sans-serif" }}
         >
           Transforming ideas into intuitive and engaging mobile applications

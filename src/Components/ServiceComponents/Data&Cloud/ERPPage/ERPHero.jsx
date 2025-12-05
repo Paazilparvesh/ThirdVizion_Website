@@ -17,7 +17,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
           viewport={{ amount: 0.3 }}
-          className="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
+          className="mt-6 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[1.05] tracking-tight bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
           style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           The Operating system of the future, <br className="hidden xl:flex" />
@@ -26,7 +26,7 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p
-          className="mt-5 max-w-2xl mx-auto text-[#c7cbff] hidden sm:block text-lg leading-relaxed"
+          className="mt-5 max-w-2xl mx-auto text-base md:text-sm text-[#c7cbff] hidden sm:block text-lg leading-relaxed"
           style={{ fontFamily: "anta, sans-serif" }}
         >
           Streamline operations, enhance decision-making, and improve

@@ -6,11 +6,11 @@ import image2 from "/src/assets/webscroll/image2.png";
 import image3 from "/src/assets/webscroll/image3.png";
 import image4 from "/src/assets/webscroll/image4.png";
 import image5 from "/src/assets/webscroll/image5.png";
-import image6 from "/src/assets/webscroll/image6.png";
-import image7 from "/src/assets/webscroll/ico 7.png";
-import image8 from "/src/assets/webscroll/ico8.png";
-import image9 from "/src/assets/webscroll/Desktop - 105.png";
-import image10 from "/src/assets/webscroll/Desktop - 106.png";
+import image6 from "/src/assets/webscroll/2088817268.jpg";
+import image7 from "/src/assets/webscroll/wq.png";
+import image8 from "/src/assets/webscroll/yoga.png";
+import image9 from "/src/assets/webscroll/Home.png";
+import image10 from "/src/assets/webscroll/prot.png";
 
 const WebDesignScroll = () => {
   return (
@@ -31,7 +31,7 @@ const WebDesignScroll = () => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ amount: 0 }}
-            className="w-full text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6"
+            className="w-full text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-6"
             style={{ fontFamily: "DeconTest, sans-serif" }}
           >
             Stunning Designs for <span className="text-[#00d3f3]">Modern Web</span>

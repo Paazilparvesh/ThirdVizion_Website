@@ -63,7 +63,7 @@ export default function CrmHero() {
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.3, duration: 0.6 }}
   viewport={{ amount: 0 }}
-  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight tracking-tight mb-4 lg:mb-6 text-[#FF6467]"
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold  mb-4 lg:mb-6 text-[#FF6467]"
   style={{ fontFamily: "DeaconTest, sans-serif" }}
 >
   Enterprise-Grade CRM
@@ -76,7 +76,7 @@ export default function CrmHero() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ amount: 0 }}
-              className="text-sm sm:text-base lg:text-lg text-white/70 mb-6 lg:mb-8 leading-relaxed"
+              className="text-base md:text-sm  text-white/70 mb-6 lg:mb-8 leading-relaxed"
               style={{ fontFamily: "anta, sans-serif" }}
             >
               Boost growth with an AI-powered CRM that unites sales, marketing, and support. 

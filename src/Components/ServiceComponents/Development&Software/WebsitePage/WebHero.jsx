@@ -7,7 +7,7 @@ const WebHero = () => {
       <div className="relative z-10 mx-auto max-w-6xl text-center">
         {/* Main Heading */}
         <h1
-          className="mt-6 font-medium text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
+          className="mt-6 font-semibold text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.15] sm:leading-[1.1] tracking-wide text-white"
           style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           The easiest path to build your{" "}
@@ -19,12 +19,12 @@ const WebHero = () => {
         {/* Subtitle */}
        <p
   className="mt-4 sm:mt-5 max-w-sm hidden sm:block  sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto 
-             text-xs sm:text-sm md:text-base lg:text-lg text-white/70 px-2 
+             text-base md:text-sm text-white/70 px-2 
              font-inter-tight leading-relaxed"
 >
   At{" "}
   <span
-    className="font-semibold text-[#00d3f3] capitalize inline-block"
+    className="font-semibold   text-base md:text-sm text-[#00d3f3] capitalize inline-block"
     style={{ fontFamily: "anta, sans-serif" }}
   >
     ThirdVizion

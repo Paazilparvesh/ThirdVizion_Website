@@ -199,18 +199,9 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
       </select>
     </div>
 
-    <div className="relative w-full md:w-auto flex-grow">
-      <div className="absolute left-3 top-1/2 -translate-y-1/2 text-yellow-400">
-        <Search size={18} />
-      </div>
-      <input
-        type="search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search questions..."
-        className="pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-amber-400/20 text-sm text-amber-50 w-full placeholder:text-amber-400/50 focus:outline-none focus:ring-2 focus:ring-amber-400 font-work-sans font-normal tracking-wide"
-      />
-    </div>
+      
+      
+    
   </div>
 );
 

@@ -119,7 +119,7 @@ export default function WebProject() {
     return (
       <div className="text-white px-4 py-10 flex flex-col gap-10 bg-[#0B0D24]">
         <motion.h2
-          className="text-center text-3xl font-bold text-[#7C86FF]"
+          className="text-center text-3xl font-font-semibold text-[#7C86FF]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -184,7 +184,7 @@ export default function WebProject() {
         viewport={{ amount: 0 }}
       >
         <h1 
-          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
           style={{ fontFamily: "DeaconTest, sans-serif" }}
         >
           ERP Dashboard

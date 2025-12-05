@@ -4,7 +4,7 @@ import img2 from "/src/assets/AboutImages/about2.png";
 
 export default function About() {
   return (
-    <div className="w-full min-h-screen bg-black pt-10 text-yellow-400 py-16 px-6 lg:px-20 xl:px-28 overflow-hidden font-worksans">
+    <div className="w-full min-h-screen bg-black pt-30 text-yellow-400 py-16 px-6 lg:px-20 xl:px-28 overflow-hidden font-worksans">
       {/* Top Title Section */}
       <div className="text-center mb-4">
         <h2
