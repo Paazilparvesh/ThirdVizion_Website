@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 // Import WebP images
-import salesImg from "/src/assets/crmasset/sales.webp";
-import marketingImg from "/src/assets/crmasset/marketing.webp";
-import customercareImg from "/src/assets/crmasset/coustamare.webp";
-import companiesImg from "/src/assets/crmasset/companies.webp";
-import smallBusinessImg from "/src/assets/crmasset/small buisness.webp";
-import manufacturingImg from "/src/assets/crmasset/manu.webp";
+import salesImg from "/src/assets/crmasset/salesteam.png";
+import marketingImg from "/src/assets/crmasset/marketing.png";
+import customercareImg from "/src/assets/crmasset/coustamare support.png";
+import companiesImg from "/src/assets/crmasset/company.png";
+import smallBusinessImg from "/src/assets/crmasset/buisness.png";
+import manufacturingImg from "/src/assets/crmasset/retail.png";
 
 function Whoneed() {
     const businessTypes = [

@@ -5,22 +5,24 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-import amsi from "/src/assets/HeroImages/qq.png";
-import madras from "/src/assets/HeroImages/madraskitchen.png";
-import scopik from "/src/assets/HeroImages/scopik.png";
-import spinz from "/src/assets/HeroImages/spinz.png";
+import indhra from "/src/assets/webprojects/indhra.png";
+import madras from "/src/assets/webprojects/madras.png";
+import scopik from "/src/assets/webprojects/scopik.png";
+import spinz from "/src/assets/webprojects/itamiltv.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsData = [
-  {
-    id: 1,
-    title: "White LMS",
-    image: amsi,
-description: "A user-friendly and interactive LMS website designed to enhance learning experiences, streamline course management, and improve student engagement.",
-    live: "https://amsi-ngo.com/",
-    tools: ["React","Django","PostresSQL"],
-  },
+ {
+  id: 1,
+  title: "Construction Site",
+  image: indhra,
+  description:
+    "A professional construction company website built on WordPress, showcasing services, ongoing projects, and client trust with a modern, responsive design.",
+  live: "https://amsi-ngo.com/",
+  tools: ["WordPress", "Elementor", "Custom CSS"],
+}
+,
   {
     id: 2,
     title: "Madras Kitchen",
@@ -38,13 +40,15 @@ description: "A user-friendly and interactive LMS website designed to enhance le
     tools: ["React", "PostresSQL", "Django"],
   },
   {
-    id: 4,
-    title: "Spinz Reward",
-    image: spinz,
-    description: "A reward-based platform for gamified interactions and user engagement.",
-    live: "https://spinzreward.site/",
-    tools: ["React","Express","postresSQL"],
-  },
+  id: 4,
+  title: "iTamilTV",
+  image: spinz,
+  description:
+    "A Tamil media streaming platform delivering the latest news, entertainment, and cultural content to Tamil-speaking audiences worldwide.",
+  live: "https://spinzreward.site/",
+  tools: ["React", "Express", "PostgreSQL"],
+}
+
 ];
 
 export default function WebProject() {

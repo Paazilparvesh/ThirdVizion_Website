@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
 // /src/data/ProjectsData.js
-import amsi from "/src/assets/HeroImages/HeroHeader.webp";
-import madras from "/src/assets/HeroImages/dashh.png";
-import scopik from "/src/assets/HeroImages/dashhh.png";
-import spinz from "/src/assets/HeroImages/dashhhh.png";
+import amsi from "/src/assets/erpdashboard/Dashboard 1.png";
+import madras from "/src/assets/erpdashboard/dashboard 2.png";
+import scopik from "/src/assets/erpdashboard/Dashboard 3.jpg";
+import spinz from "/src/assets/erpdashboard/dashboard 4.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -140,7 +140,7 @@ export default function WebProject() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-fill"
               />
             </div>
 

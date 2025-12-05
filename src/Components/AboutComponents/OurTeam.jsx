@@ -157,7 +157,7 @@ export default function OurTeam() {
             transition={{ duration: 0.5, delay: index * 0.05 }}
           >
             {/* Circular Image */}
-            <div
+            {/* <div
               className="relative w-32 h-32 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg"
               style={{
                 backgroundImage: `url(${member.img})`,
@@ -166,7 +166,19 @@ export default function OurTeam() {
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            </div>
+            </div> */}
+
+            <div
+  className="relative w-32 h-32 rounded-full border-2 border-yellow-400 overflow-hidden shadow-lg"
+  style={{
+    backgroundImage: `url(${member.img})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+</div>
+
 
             {/* Name and Role */}
             <div className="mt-3 text-center">

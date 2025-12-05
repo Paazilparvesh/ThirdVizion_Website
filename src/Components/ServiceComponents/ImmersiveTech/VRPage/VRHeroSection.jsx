@@ -154,9 +154,9 @@ function VRHeroSection() {
 
         {/* Main Content - Always visible */}
         <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-          <div className="text-center text-white">
+          <div className="text-center text-white pt-[384px] md:pt-0">
             <h2
-              className="text-4xl md:text-6xl font-semibold mb-4"
+              className="text-4xl md:text-6xl font-semibold mb-4 font-font-semibold"
               style={{ fontFamily: "DeaconTest, sans-serif" }}
             >
               Experience Virtual Reality
@@ -164,15 +164,16 @@ function VRHeroSection() {
           </div>
         </div>
 
+
         {/* Scroll Indicator - Always visible */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
           <div className="text-center text-white/70">
             <p className="text-sm mb-2">Scroll to explore</p>
             <div className="w-6 h-10 border-2 border-white/50 rounded-full mx-auto flex justify-center">
               <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

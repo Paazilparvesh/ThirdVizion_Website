@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 // Import WebP images
-import heartImg from "/src/assets/vrassset/heart.webp";
-import educationImg from "/src/assets/vrassset/education.webp";
-import carImg from "/src/assets/vrassset/car.webp";
+import heartImg from "/src/assets/vrassset/health.png";
+import educationImg from "/src/assets/vrassset/education.png";
+import carImg from "/src/assets/vrassset/truck.png";
 import realestateImg from "/src/assets/vrassset/realestate.webp";
-import manufacturingImg from "/src/assets/vrassset/manufacturing.webp";
-import retailImg from "/src/assets/vrassset/retail.webp";
+import manufacturingImg from "/src/assets/vrassset/manufature.png";
+import retailImg from "/src/assets/vrassset/retail.png";
 
 function VRIndustries() {
     const industries = [
@@ -66,7 +66,7 @@ function VRIndustries() {
                     viewport={{ once: true, amount: 0.3 }}
                 >
                     <h2 
-                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight mb-6 leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent" 
+                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold tracking-tight mb-6 leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent" 
                         style={{ fontFamily: "DeaconTest, sans-serif" }}
                     >
                         VR Industries
