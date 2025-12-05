@@ -461,8 +461,9 @@ export default function ArPage() {
     };
   }, []);
 
-  return (
-    <div className="bg-gradient-to-br pt-10  from-gray-900 via-black to-pink-950 text-white min-h-screen  flex p-4 overflow-hidden relative">
+return (
+  <div className="pt-10 text-white w-full flex p-4 overflow-hidden relative">
+
       {/* Gesture Controls - Only active when model is placed */}
       {modelPlaced && (
         <GestureControls 
@@ -470,61 +471,25 @@ export default function ArPage() {
           zoomSpeed={0.02}
         />
       )}
-      
-      <div className="absolute inset-0">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-black to-fuchsia-800/10 animate-pulse-slow"></div>
-        
-        {/* Grid pattern with pink glow */}
-        <div className="absolute inset-0 z-0">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ec489955" strokeWidth="0.5" />
-              </pattern>
-              <radialGradient id="glow-gradient" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#ec4899" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#be185d" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-            <circle cx="20%" cy="30%" r="200" fill="url(#glow-gradient)" />
-            <circle cx="80%" cy="70%" r="150" fill="url(#glow-gradient)" />
-          </svg>
-        </div>
 
-        {/* Animated glowing orbs */}
-        <div className="absolute top-1/4 left-1/4 w-16 h-16 sm:w-32 sm:h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-pink-500 rounded-full filter blur-[50px] sm:blur-[75px] md:blur-[100px] opacity-20 animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-48 sm:h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 bg-fuchsia-400 rounded-full filter blur-[60px] sm:blur-[90px] md:blur-[120px] opacity-15 animate-float-slow"></div>
-        
-        {/* Circuit pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.02]">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,20 Q40,0 80,20 T160,20" stroke="white" fill="none" strokeWidth="0.5"/>
-            <path d="M0,60 Q40,40 80,60 T160,60" stroke="white" fill="none" strokeWidth="0.5"/>
-            <path d="M0,100 Q40,80 80,100 T160,100" stroke="white" fill="none" strokeWidth="0.5"/>
-            <path d="M0,140 Q40,120 80,140 T160,140" stroke="white" fill="none" strokeWidth="0.5"/>
-          </svg>
-        </div>
-      </div>
+      {/* ----- MAIN UI CONTENT ONLY (no backgrounds) ----- */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full mt-12 sm:mt-16 md:mt-20 lg:mt-24 text-center px-2 sm:px-4">
 
-      {/* Main content - centered with engaging hook */}
-      <div className="relative z-10 font-semibold flex flex-col items-center justify-center w-full mt-12 sm:mt-16 md:mt-20 lg:mt-24 lg:mb-34 text-center px-2 sm:px-4">
-        
-        {/* Engaging Hook Section */}
-        <div className="mb-8 sm:mb-10 md:mb-12 font-semibold lg:mb-16">
-         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "DeaconTest, sans-serif",  }}>
-  Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text font-semibold text-transparent">
-    Power
-  </span> of <br className="hidden sm:block" />
-  <span className="bg-gradient-to-r  font-semibold  from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
-    Augmented Reality
-  </span>
-</h1>
+        {/* Title */}
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight"
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
+            Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
+              Power
+            </span> of<br />
+            <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
+              Augmented Reality
+            </span>
+          </h1>
 
-
-          <p className=" hidden sm:block text-base md:text-sm text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "anta, sans-serif" }}>
-            Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
+          <p className="text-gray-300 max-w-2xl mx-auto mt-4 hidden sm:block"
+            style={{ fontFamily: "anta, sans-serif" }}>
+            Enhance real-world experiences with interactive AR solutions.
           </p>
         </div>
 
@@ -536,15 +501,13 @@ export default function ArPage() {
 
           <button
             onClick={startAR}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             disabled={startingAr}
             className="relative group bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white font-bold py-5 px-12 rounded-xl shadow-2xl hover:scale-105 transition-all duration-500"
           >
             {startingAr ? "Preparing AR..." : "Launch AR Experience"}
           </button>
 
-          {/* Close AR button */}
+          {/* Exit AR Mode */}
           {xrSessionRef.current && (
             <button
               onClick={endAR}
@@ -581,7 +544,7 @@ export default function ArPage() {
       {/* Modal */}
       {showArUnavailableMsg && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md">
-          <div className="relative bg-zinc-900 border border-white/10 rounded-2xl p-6 text-center">
+          <div className="bg-zinc-900 border border-white/10 rounded-2xl p-6 text-center">
             <h3 className="text-2xl font-bold text-pink-200 mb-4">AR Not Available</h3>
             <p className="text-gray-300 mb-4 text-sm">
               Your device doesn't support immersive AR. Try using a compatible browser or Android/IOS device.
