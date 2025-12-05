@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ProjectsData = [
  {
   id: 1,
-  title: "Indira",
+  title: " Indira Projects ",
   image: indhra,
   description:
     "A professional construction company website built on WordPress, showcasing services, ongoing projects, and client trust with a modern, responsive design.",
@@ -46,7 +46,7 @@ const ProjectsData = [
   description:
     "A Tamil media streaming platform delivering the latest news, entertainment, and cultural content to Tamil-speaking audiences worldwide.",
   live: "https://spinzreward.site/",
-  tools: ["React", "Express", "PostgreSQL"],
+  tools: ["Wordpress"],
 }
 
 ];
@@ -136,7 +136,7 @@ export default function WebProject() {
       >
         <TextReveal>
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-60 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-50 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent"
             style={{ fontFamily: "DeconTest, sans-serif" }}
           >
             Our Portfolio
@@ -157,7 +157,7 @@ export default function WebProject() {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full xl:w-1/2 h-[50vh] xl:h-screen object-cover rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
+              className="w-full xl:w-1/2 h-[450px]  object-fill rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
             />
 
             {/* CONTENT */}

@@ -378,7 +378,7 @@ export default function AboutHero() {
             
           
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0  pointer-events-none"></div>
           </div>
 
           {/* Content Section */}
@@ -387,22 +387,8 @@ export default function AboutHero() {
             <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
   <div className=" px-4 py-5 rounded-full">
     <div className="flex items-center gap-3">
-      {/* Left (same) SVG */}
-      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-      </svg>
+  
 
-      {/* Center text */}
-      <span className="text-black font-semibold text-sm tracking-wider whitespace-nowrap"  style={{ fontFamily: "'anta', sans-serif" }}>
-        Drag to explore
-      </span>
-
-      {/* Right (same) SVG */}
-      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-      </svg>
     </div>
   </div>
 </div>

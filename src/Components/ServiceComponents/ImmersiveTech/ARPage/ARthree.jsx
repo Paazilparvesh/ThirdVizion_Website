@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import aiBrain from "../../../../assets/Animations/Digitalmedia3d.json";
@@ -16,16 +15,15 @@ const App = () => {
   };
 
   return (
-    /* ❌ REMOVED background layers, keep only container */
     <div className="relative text-white flex p-2 xs:p-3 sm:p-4 md:p-6 lg:p-8 overflow-hidden w-full">
 
-      {/* ⭐ Lottie Animation — unchanged */}
+      {/* ⭐ Lottie Animation — CLOSER TO TEXT ON MOBILE */}
       <div
         className="
           absolute 
-          bottom-[-220px] md:bottom-[-160px] lg:-bottom-52 xl:-bottom-47 2xl:-bottom-60
+          bottom-[-130px] xs:bottom-[-60px] sm:bottom-[-100px] md:bottom-[-160px] lg:-bottom-52 xl:-bottom-47 2xl:-bottom-60
           left-1/2 -translate-x-1/2 -translate-y-1/2
-          w-[250px]
+          w-[450px] xs:w-[320px]
           sm:w-[400px]
           md:w-[70vw]
           lg:w-[70vw]
@@ -36,13 +34,13 @@ const App = () => {
         <Lottie animationData={aiBrain} loop={true} />
       </div>
 
-      {/* ⭐ Hero Section */}
+      {/* ⭐ Hero Section - REDUCED HEIGHT ON MOBILE */}
       <div
-        className="relative z-10 flex flex-col pt-25 pt-4 xs:pt-20 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-screen"
+        className="relative z-10 flex flex-col pt-4 xs:pt-12 sm:pt-16 md:pt-28 lg:pt-32 xl:pt-36 2xl:pt-40 items-center text-center w-full min-h-[70vh] sm:min-h-[80vh] md:min-h-screen"
         style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
       >
         {/* Animated Text Line 1 */}
-        <div className="overflow-hidden mb-0 xs:mb-3 sm:mb-4 md:mb-5 lg:mb-6 px-2">
+        <div className="overflow-hidden mb-0 xs:mb-2 sm:mb-3 md:mb-5 lg:mb-6 px-2">
           <h1
             className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight animate-gradient-typing font-font-semibold"
           >
@@ -51,7 +49,7 @@ const App = () => {
         </div>
 
         {/* Animated Text Line 2 */}
-        <div className="overflow-hidden mb-4 xs:mb-5 sm:mb-6 md:mb-7 lg:mb-8 px-2">
+        <div className="overflow-hidden mb-2 xs:mb-3 sm:mb-4 md:mb-7 lg:mb-8 px-2">
           <h1
             className="text-3xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl leading-tight"
             style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
@@ -64,35 +62,27 @@ const App = () => {
 
         {/* CTA Button */}
         {!showForm && (
-          <div className="mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 animate-fade-in-up px-2">
+          <div className="mb-3 xs:mb-4 sm:mb-6 md:mb-10 lg:mb-12 animate-fade-in-up px-2">
             <Link to="/contact">
-              {/* <button
+              <button
                 onClick={() => setShowForm(true)}
-                className="bg-gradient-to-r from-pink-600 to-fuchsia-600 hover:from-pink-700 hover:to-fuchsia-700 text-white font-semibold text-sm xs:text-base sm:text-lg md:text-xl py-2 xs:py-3 sm:py-4 px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25 animate-float-glow"
-                style={{ fontFamily: "decontest, sans-serif" }}
+                className="
+                  bg-gradient-to-r from-pink-600 to-fuchsia-600 
+                  hover:from-pink-700 hover:to-fuchsia-700 
+                  text-white font-semibold 
+                  text-sm sm:text-base lg:text-lg xl:text-xl
+                  py-2 xs:py-3 sm:py-4 
+                  px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 
+                  rounded-lg 
+                  transform hover:scale-105 
+                  transition-all duration-300 
+                  shadow-lg hover:shadow-pink-500/25 
+                  animate-float-glow
+                "
+                style={{ fontFamily: "DeaconTest, sans-serif" }}
               >
                 Get Started
-              </button> */}
-              <button
-  onClick={() => setShowForm(true)}
-  className="
-    bg-gradient-to-r from-pink-600 to-fuchsia-600 
-    hover:from-pink-700 hover:to-fuchsia-700 
-    text-white font-semibold 
-    text-sm sm:text-base lg:text-lg xl:text-xl
-    py-2 xs:py-3 sm:py-4 
-    px-6 xs:px-8 sm:px-10 md:px-12 lg:px-14 
-    rounded-lg 
-    transform hover:scale-105 
-    transition-all duration-300 
-    shadow-lg hover:shadow-pink-500/25 
-    animate-float-glow
-  "
-  style={{ fontFamily: "DeaconTest, sans-serif" }}
->
-  Get Started
-</button>
-
+              </button>
             </Link>
           </div>
         )}
