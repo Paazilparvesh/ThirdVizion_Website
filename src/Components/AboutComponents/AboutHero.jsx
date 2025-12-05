@@ -378,7 +378,7 @@ export default function AboutHero() {
             
           
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0  pointer-events-none"></div>
           </div>
 
           {/* Content Section */}
@@ -394,9 +394,13 @@ export default function AboutHero() {
       </svg>
 
       {/* Center text */}
-      <span className="text-black font-semibold text-sm tracking-wider whitespace-nowrap"  style={{ fontFamily: "'anta', sans-serif" }}>
-        Drag to explore
-      </span>
+      <span 
+  className="text-white font-semibold text-sm tracking-wider whitespace-nowrap px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg"
+  style={{ fontFamily: "'Anta', sans-serif" }}
+>
+  Drag to explore
+</span>
+
 
       {/* Right (same) SVG */}
       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -213,10 +213,10 @@ const Footer = () => {
       </div>
 
       {/* Desktop Design - Hidden on mobile, shown on md and above */}
-      <div className="hidden md:block">
+      <div className="hidden md:block     mb-5 ">
         {/* Top Section */}
         <div
-          className="mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black ml-20 py-12 
+          className="mx-auto mb-16 sm:mb-20 md:mb-30 mt-15 bg-black ml-20 py-10
           grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8
           md:text-left text-center relative z-10"
         >
@@ -335,49 +335,52 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* --- Social --- */}
-          <div className="ml-10">
-            <h3 className="font-semibold text-lg mb-4">Social</h3>
-            {/* Desktop social icons with white circular backgrounds - HORIZONTAL LAYOUT */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <a
-                href="https://www.facebook.com/profile.php?id=61580211779605"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <FaFacebookF className="text-black text-lg" />
-              </a>
-              <a
-                href="https://www.instagram.com/thirdvizionlabs/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <FaInstagram className="text-black text-lg" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/106155239/admin/settings/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <FaLinkedinIn className="text-black text-lg" />
-              </a>
-              <a
-                href="https://www.youtube.com/@ThirdVizion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
-              >
-                <FaYoutube className="text-black text-lg" />
-              </a>
-            </div>
-          </div>
-        </div>
+         {/* --- Social --- */}
+<div className="ml-10">
+  <h3 className="font-semibold text-lg mb-4">Social</h3>
 
+  {/* 2x2 GRID LAYOUT */}
+  <div className="grid grid-cols-2 gap-2   -lg:mr-4  xl:mr-8 -2xl:mr-8   lg:pr-10 place-items-center">
+    <a
+      href="https://www.facebook.com/profile.php?id=61580211779605"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
+    >
+      <FaFacebookF className="text-black text-lg" />
+    </a>
+
+    <a
+      href="https://www.instagram.com/thirdvizionlabs/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
+    >
+      <FaInstagram className="text-black text-lg" />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/company/106155239/admin/settings/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
+    >
+      <FaLinkedinIn className="text-black text-lg" />
+    </a>
+
+    <a
+      href="https://www.youtube.com/@ThirdVizion"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 transition-colors"
+    >
+      <FaYoutube className="text-black text-lg" />
+    </a>
+  </div>
+</div>
+        </div>
         {/* Brand Text */}
-        <div className="absolute bottom-0 left-0 w-full text-center overflow-hidden">
+        <div className="absolute bottom-0   left-0 w-full text-center overflow-hidden">
           <p
             className="bg-clip-text text-transparent font-normal tracking-wider 
                        text-[40px] sm:text-[60px] md:text-[110px] lg:text-[150px] xl:text-[220px] 2xl:text-[225px]

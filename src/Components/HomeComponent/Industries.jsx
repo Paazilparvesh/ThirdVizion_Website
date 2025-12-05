@@ -24,7 +24,6 @@ const industryImages = [
   retailImage,
 ];
 
-// ⭐ New: Image position control for all images
 const imagePositions = [
   "center 34.5%",
   "center 52%",
@@ -33,18 +32,19 @@ const imagePositions = [
 ];
 
 const colorGradients = {
-  "indigo-400": "linear-gradient(to right, #818cf8 80%, transparent 100%)",
+  "indigo-400": "linear-gradient(to right, #1f93ffff 80%, transparent 100%)",
   "green-400": "linear-gradient(to right, #4ade80 80%, transparent 100%)",
   "red-400": "linear-gradient(to right, #f87171 80%, transparent 100%)",
   "purple-400": "linear-gradient(to right, #c084fc 80%, transparent 100%)",
 };
 
 const mobileColorOverlays = {
-  "indigo-400": "linear-gradient(135deg, rgba(129, 140, 248, 0.3) 0%, rgba(129, 140, 248, 0.1) 100%)",
-  "green-400": "linear-gradient(135deg, rgba(74, 222, 128, 0.3) 0%, rgba(74, 222, 128, 0.1) 100%)",
-  "red-400": "linear-gradient(135deg, rgba(248, 113, 113, 0.3) 0%, rgba(248, 113, 113, 0.1) 100%)",
-  "purple-400": "linear-gradient(135deg, rgba(192, 132, 252, 0.3) 0%, rgba(192, 132, 252, 0.1) 100%)",
+  "indigo-400": "rgba(67, 56, 202, 0.55)",   // Dark indigo
+  "green-400": "rgba(22, 163, 74, 0.55)",    // Dark green
+  "red-400": "rgba(185, 28, 28, 0.55)",      // Dark red
+  "purple-400": "rgba(134, 25, 143, 0.55)",  // Dark purple
 };
+
 
 const Industries = () => {
   const overlayRefs = useRef([]);
@@ -68,7 +68,6 @@ const Industries = () => {
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
-
     const overlayEl = overlayRefs.current[index];
     const imageOverlayEl = imageOverlayRefs.current[index];
     const numberEl = numberTextRefs.current[index];
@@ -80,7 +79,6 @@ const Industries = () => {
     gsap.to(overlayEl, {
       width: "50%",
       x: "0%",
-
       duration: 0.8,
       ease: "power2.out",
     });
@@ -105,7 +103,6 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: hoverXValues[index],
-
       scale: scaleValue,
       duration: 0.8,
       ease: "power2.out",
@@ -146,7 +143,6 @@ const Industries = () => {
 
     gsap.to(nameEl, {
       x: 0,
-
       scale: 1,
       duration: 0.8,
       ease: "power2.inOut",
@@ -157,12 +153,13 @@ const Industries = () => {
     <section
       id="industries"
       className="bg-black text-white font-outfit py-16 sm:py-20 md:py-24 px-4 sm:px-8 lg:px-24 xl:px-20 overflow-hidden"
-      style={{ fontFamily: "anta, sans-serif" }}>
-
+      style={{ fontFamily: "anta, sans-serif" }}
+    >
       {/* TOP SECTION */}
       <div className="flex flex-col md:flex-row justify-between items-start lg:items-center mb-10 sm:mb-14 md:mb-16 gap-6 md:gap-8">
         <div className="flex-1">
-          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-xs text-center sm:text-left mx-auto sm:mx-0 " style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
+          <p className="circle-text text-gray-400 text-white uppercase tracking-widest text-xs sm:text-sm md:text-xs text-center sm:text-left mx-auto sm:mx-0 "
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
             Industries we empower
           </p>
 
@@ -183,59 +180,47 @@ const Industries = () => {
         </div>
       </div>
 
-      {/* MOBILE VIEW */}
+      {/* -------------------------------------- */}
+      {/* 📱 MOBILE VIEW (Updated as you requested) */}
+      {/* -------------------------------------- */}
       <div className="block md:hidden">
-        <div className="space-y-4">
-          {industries.map((industry, index) => (
-            <div
-              key={industry.id}
-              className="border border-gray-700 rounded-2xl p-6 hover:border-gray-500 transition-all duration-300"
-            >
-              <div className="flex items-start space-x-4">
-                {/* Number */}
-                {/* <div className="flex-shrink-0">
-                  <h3 className="text-lg font-semibold text-gray-300">
-                    {industry.number}
-                  </h3>
-                </div> */}
+        {industries.map((industry, index) => (
+          <div key={industry.id} className="">
+            <div className="relative w-full h-25  overflow-hidden">
 
-                {/* Content */}
-                <div className="flex-1">
-                  <h4 className="text-xl font-semibold text-white mb-2">
-                    {industry.name}
-                  </h4>
+              {/* Color Overlay */}
+              <div
+                className="absolute inset-0 z-10"
+                style={{
+                  background: mobileColorOverlays[industry.color],
+                }}
+              />
 
-                  {/* Mobile Image with Color Overlay */}
-                  <div className="mt-4 rounded-lg overflow-hidden border border-gray-600 relative">
-                    <div
-                      className="absolute inset-0 z-10"
-                      style={{
-                        background: mobileColorOverlays[industry.color]
-                      }}
-                    ></div>
-                    <img
-                      src={industryImages[index]}
-                      alt={industry.name}
-                      className="w-full h-32 object-fit scale-150 relative z-0"
-                      style={{ objectPosition: imagePositions[index] }}
-                    />
-                  </div>
+              {/* Background Image */}
+              <img
+                src={industryImages[index]}
+                alt={industry.name}
+                className="w-full h-full object-cover  scale-95"
+                style={{ objectPosition: imagePositions[index] }}
+              />
 
-                  {/* Color Indicator */}
-                  <div
-                    className="h-1 w-16 mt-3 rounded-full"
-                    style={{
-                      background: colorGradients[industry.color].split(' ')[2]
-                    }}
-                  ></div>
-                </div>
+              {/* TEXT INSIDE IMAGE */}
+              <div className="absolute bottom-8 left-3 z-20">
+              <p className="text-[16px] font-semibold flex gap-32">
+  <span>{industry.number}</span>
+  <span>{industry.name}</span>
+</p>
+
+                
+                  
+             
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
-      {/* DESKTOP VIEW */}
+      {/* DESKTOP VIEW — NOT TOUCHED */}
       <div className="hidden md:block relative flex flex-col border-t border-gray-700">
         {industries.map((industry, index) => (
           <div
@@ -245,7 +230,6 @@ const Industries = () => {
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
-            {/* Color overlay */}
             <div
               ref={(el) => (overlayRefs.current[index] = el)}
               className="absolute inset-0 z-10"
@@ -256,7 +240,6 @@ const Industries = () => {
               }}
             ></div>
 
-            {/* Right image overlay with background color added */}
             <div
               ref={(el) => (imageOverlayRefs.current[index] = el)}
               className="absolute top-0 right-0 h-full w-[60%] z-20"
@@ -269,7 +252,6 @@ const Industries = () => {
               }}
             ></div>
 
-            {/* Number */}
             <div className="relative z-30 flex justify-start">
               <h3
                 ref={(el) => (numberTextRefs.current[index] = el)}
@@ -279,7 +261,6 @@ const Industries = () => {
               </h3>
             </div>
 
-            {/* Name */}
             <div className="relative z-30 flex justify-start">
               <p
                 ref={(el) => (nameTextRefs.current[index] = el)}

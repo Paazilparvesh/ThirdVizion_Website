@@ -98,7 +98,7 @@ export default function AppHero() {
   }, []);
 
   return (
-    <div className="bg-black text-white font-sans overflow-x-hidden mb-[-10vh]">
+    <div className="bg-black text-white font-sans overflow-x-hidden -mb-50">
       {/* Hero text section */}
       <section className="mt-40 lg:mt-0 lg:h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 relative z-10">
         <h1
@@ -133,7 +133,7 @@ export default function AppHero() {
       {/* Scroll-through section */}
       <div
         ref={wrapperRef}
-        className="relative w-full min-h-[200vh] flex justify-center items-start overflow-hidden"
+        className="relative w-full min-h-[150vh] flex justify-center items-start overflow-hidden"
       >
         {/* Black screen overlay */}
         <div
@@ -152,7 +152,7 @@ export default function AppHero() {
             loop
             muted
             playsInline
-            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem]  md:mt-20 object-contain rounded-3xl"
+            className="w-56 sm:w-64 md:w-80 lg:w-[20rem] xl:w-[22rem] 2xl:w-[20rem]  md:mt-10 object-contain rounded-3xl"
           />
         </div>
       </div>
