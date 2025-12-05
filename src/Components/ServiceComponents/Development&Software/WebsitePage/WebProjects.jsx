@@ -136,7 +136,7 @@ export default function WebProject() {
       >
         <TextReveal>
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-60 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-50 font-medium tracking-wide bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-500 bg-clip-text text-transparent"
             style={{ fontFamily: "DeconTest, sans-serif" }}
           >
             Our Portfolio
