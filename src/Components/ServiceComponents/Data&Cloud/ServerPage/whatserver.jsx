@@ -17,7 +17,7 @@ function Whatserver() {
 
                 {/* Main Heading */}
                 <h1 
-                    className="text-5xl md:text-6xl font-bold text-center mb-6 text-[#05df72]"
+                    className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl  text-center mb-6 text-[#05df72]"
                     style={{ fontFamily: "DeaconTest, sans-serif" }}
                 >
                     Server Management Explained
@@ -92,7 +92,7 @@ function Whatserver() {
 
                     {/* ⭐ Why It Matters */}
                     <div className="mt-16 pt-10 border-t border-[#05df72]/20">
-                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#05df72]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-10 text-[#05df72]" style={{ fontFamily: "DeaconTest, sans-serif" }}>
                             Why It Matters
                         </h2>
 

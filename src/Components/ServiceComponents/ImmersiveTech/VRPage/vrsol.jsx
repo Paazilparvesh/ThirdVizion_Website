@@ -113,12 +113,10 @@ const Vrsol = () => {
         ref={containerRef}
         className="min-h-screen w-full flex flex-col justify-start lg:justify-center items-center px-4 py-12 md:px-8 relative z-10"
       >
-        {/* Header */}
-        <div ref={headerRef} className="text-center mb-8 lg:mb-10 lg:absolute lg:top-1 w-full">
-          <h1
-            className="text-3xl md:text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500"
-            style={{ fontFamily: "DeaconTest, sans-serif" }}
-          >
+        {/* Header - Hides BEFORE pin starts */}
+        <div ref={headerRef} className="text-center mb-10 lg:absolute lg:top-1 w-full">
+          <h1 className="text-3xl md:text-5xl font-font-semibold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-indigo-500" 
+           style={{ fontFamily: "DeaconTest, sans-serif" }}>
             How ThirdVizion Transforms VR
           </h1>
           <p
@@ -241,7 +239,7 @@ const Vrsol = () => {
           </div>
 
           {/* RIGHT COLUMN - Full Image Display */}
-          <div className="w-full flex items-center justify-center h-[600px]">
+          <div className="w-full flex items-center justify-center h-[550px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeService}

@@ -69,50 +69,50 @@ export default function CRMShowcase() {
   ];
 
   // Calculate positions for feature cards based on platform positions
- const getFeatureCardPosition = (index, totalItems, radius, center) => {
-  const angle = (index / totalItems) * Math.PI * 2;
-  const x = center.x + radius * Math.cos(angle);
-  const y = center.y + radius * Math.sin(angle);
+  const getFeatureCardPosition = (index, totalItems, radius, center) => {
+    const angle = (index / totalItems) * Math.PI * 2;
+    const x = center.x + radius * Math.cos(angle);
+    const y = center.y + radius * Math.sin(angle);
 
-  let cardX, cardY;
+    let cardX, cardY;
 
-  // Custom manual offset for each card (to fine-tune layout)
-  switch (index) {
-    case 0: // Top-right
-      cardX = x + 60;
-      cardY = y - 40;
-      break;
-    case 1: // Right
-      cardX = x + 50;
-      cardY = y - 30;
-      break;
-    case 2: // Bottom-right
-      cardX = x + -320;
-      cardY = y + -10;
-      break;
-    case 3: // Bottom
-      cardX = x - 340;
-      cardY = y + -40;
-      break;
-    case 4: // Bottom-left
-      cardX = x - 340;
-      cardY = y + -30;
-      break;
-    case 5: // Left
-      cardX = x - 350;
-      cardY = y - 55;
-      break;
-    case 6: // Top-left
-      cardX = x - -50;
-      cardY = y - 50;
-      break;
-    default:
-      cardX = x;
-      cardY = y;
-  }
+    // Custom manual offset for each card (to fine-tune layout)
+    switch (index) {
+      case 0: // Top-right
+        cardX = x + 60;
+        cardY = y - 40;
+        break;
+      case 1: // Right
+        cardX = x + 50;
+        cardY = y - 30;
+        break;
+      case 2: // Bottom-right
+        cardX = x + -320;
+        cardY = y + -10;
+        break;
+      case 3: // Bottom
+        cardX = x - 340;
+        cardY = y + -40;
+        break;
+      case 4: // Bottom-left
+        cardX = x - 340;
+        cardY = y + -30;
+        break;
+      case 5: // Left
+        cardX = x - 350;
+        cardY = y - 55;
+        break;
+      case 6: // Top-left
+        cardX = x - -50;
+        cardY = y - 50;
+        break;
+      default:
+        cardX = x;
+        cardY = y;
+    }
 
-  return { x: cardX, y: cardY };
-};
+    return { x: cardX, y: cardY };
+  };
 
   // Check screen size on mount and resize
   useEffect(() => {
@@ -261,7 +261,7 @@ export default function CRMShowcase() {
         {/* Header */}
         <div className="relative z-40 pt-16 px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-medium text-[#FF6467] mb-3"
+            <h2 className="text-2xl font-semibold text-[#FF6467] mb-3"
               style={{ fontFamily: "DeaconTest, sans-serif" }}>
               Your CRM Universe
             </h2>
@@ -313,7 +313,7 @@ export default function CRMShowcase() {
     );
   }
 
-  // Render Tablet View (unchanged)
+  // Render Tablet View
   if (isTablet) {
     const radius = 180;
     const center = { x: 380, y: 300 };
@@ -330,7 +330,7 @@ export default function CRMShowcase() {
               <Tablet className="w-6 h-6 text-[#FF6467] mr-2" />
               <span className="text-sm text-[#FF6467] font-medium">Tablet View</span>
             </div>
-            <h2 className="text-3xl font-bold text-[#FF6467] mb-3"
+            <h2 className="text-3xl font-semibold text-[#FF6467] mb-3"
               style={{ fontFamily: "DeaconTest, sans-serif" }}>
               Your CRM Universe
             </h2>
@@ -470,17 +470,16 @@ export default function CRMShowcase() {
     return (
       <section
         ref={sectionRef}
-        className="relative w-full min-h-screen bg-transparent text-white overflow-hidden"
+        className="relative w-full min-h-screen font-semibold bg-transparent text-white overflow-hidden"
       >
         {/* Header - Not Pinned */}
-        <div className="relative z-40 pt-16 text-center">
-      <h2
-  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight tracking-tight text-[#FF6467] mb-2"
-  style={{ fontFamily: "DeaconTest, sans-serif" }}
->
-  Your CRM Universe
-</h2>
-
+        <div className="relative z-40 pt-16  text-center">
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#FF6467] mb-2"
+            style={{ fontFamily: "DeaconTest, sans-serif" }}
+          >
+            Your CRM Universe
+          </h2>
 
           <p className="text-white/60 text-xs md:text-sm max-w-xl mx-auto mt-1"
             style={{ fontFamily: "anta, sans-serif" }}>
@@ -617,7 +616,7 @@ export default function CRMShowcase() {
           <Laptop className="w-6 h-6 text-[#FF6467] mr-2" />
           <span className="text-sm text-[#FF6467] font-medium">Desktop View</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-[#FF6467] mb-2"
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#FF6467] mb-2"
           style={{ fontFamily: "DeaconTest, sans-serif" }}>
           Your CRM Universe
         </h2>

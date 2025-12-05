@@ -4,16 +4,16 @@ import iconthree from "/src/assets/erpasseet/human resourse.png";
 import iconfour from "/src/assets/erpasseet/sales.png";
 
 function Whaterp() {
-  return (
-    <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Main Heading */}
-        <h1
-          className="text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
-          style={{ fontFamily: "DeaconTest, sans-serif" }}
-        >
-          ERP Explained
-        </h1>
+    return (
+        <div className="bg-transparent py-16 px-4 min-h-screen relative overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Main Heading */}
+                <h1 
+                    className="text-5xl md:text-6xl  text-center mb-6 bg-gradient-to-r from-white via-[#dfe1ff] to-[#a9afff] bg-clip-text text-transparent"
+                    style={{ fontFamily: 'DeaconTest, sans-serif' }}
+                >
+                   ERP Explained
+                </h1>
 
         {/* Subheading */}
         <p

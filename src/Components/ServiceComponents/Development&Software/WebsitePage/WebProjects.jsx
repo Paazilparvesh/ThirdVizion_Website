@@ -5,17 +5,17 @@ import Lenis from "lenis";
 import { motion } from "framer-motion";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
-import indhra from "/src/assets/webprojects/indhra.png";
-import madras from "/src/assets/webprojects/madras.png";
-import scopik from "/src/assets/webprojects/scopik.png";
-import spinz from "/src/assets/webprojects/itamiltv.png";
+import indhra from "/src/assets/webprojects/ica 1.png";
+import madras from "/src/assets/webprojects/ica2.png";
+import scopik from "/src/assets/webprojects/ica3.png";
+import spinz from "/src/assets/webprojects/ica4.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProjectsData = [
  {
   id: 1,
-  title: " indira Construction ",
+  title: " Indira Projects ",
   image: indhra,
   description:
     "A professional construction company website built on WordPress, showcasing services, ongoing projects, and client trust with a modern, responsive design.",
@@ -46,7 +46,7 @@ const ProjectsData = [
   description:
     "A Tamil media streaming platform delivering the latest news, entertainment, and cultural content to Tamil-speaking audiences worldwide.",
   live: "https://spinzreward.site/",
-  tools: ["React", "Express", "PostgreSQL"],
+  tools: ["Wordpress"],
 }
 
 ];
@@ -157,7 +157,7 @@ export default function WebProject() {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full xl:w-1/2 h-[50vh] xl:h-screen object-cover rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
+              className="w-full xl:w-1/2 h-[450px]  object-fill rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.2)]"
             />
 
             {/* CONTENT */}

@@ -107,7 +107,7 @@ function Willhelp() {
                     viewport={{ once: true }}
                 >
                     <h1
-                        className="text-5xl font-semibold mb-4 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold mb-4 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
                         style={{ fontFamily: "DeaconTest, sans-serif" }}
                     >
                         Our CRM Excellence
@@ -136,14 +136,12 @@ function Willhelp() {
                                 <div className="relative">
                                     {/* Glow effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] rounded-full blur-lg opacity-70"></div>
-
-                                    {/* Number Badge WITHOUT Stroke */}
+                                    
+                                    {/* Number Badge */}
                                     <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] flex items-center justify-center shadow-2xl border-4 border-black/90">
-                                        <span
+                                        <span 
                                             className="text-3xl font-black text-white"
-                                            style={{
-                                                fontFamily: "DeaconTest, sans-serif"
-                                            }}
+                                            style={{ fontFamily: "DeaconTest, sans-serif" }}
                                         >
                                             {index + 1}
                                         </span>
@@ -226,12 +224,15 @@ function Willhelp() {
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
                 >
-                    <h2
-                        className="text-4xl text-center mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-                        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
-                    >
-                        Why Choose ThirdVizion?
-                    </h2>
+               <h2 
+  className="text-4xl text-center mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+>
+  Why Choose ThirdVizion?
+</h2>
+
+
+
 
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {whyChoose.map((item, i) => (

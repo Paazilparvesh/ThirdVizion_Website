@@ -66,7 +66,7 @@ function VRIndustries() {
                     viewport={{ once: true, amount: 0.3 }}
                 >
                     <h2 
-                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight mb-6 leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent" 
+                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold tracking-tight mb-6 leading-tight bg-gradient-to-r from-violet-400 to-indigo-500 bg-clip-text text-transparent" 
                         style={{ fontFamily: "DeaconTest, sans-serif" }}
                     >
                         VR Industries

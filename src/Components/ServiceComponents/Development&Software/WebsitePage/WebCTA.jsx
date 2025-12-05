@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import TextReveal from "/src/Hooks/TextReveal.jsx";
 
+
 const AnimatedCounter = ({ value, suffix = "" }) => {
   const ref = useRef(null);
   const motionValue = useMotionValue(0);
@@ -13,11 +14,13 @@ const AnimatedCounter = ({ value, suffix = "" }) => {
   });
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+
   useEffect(() => {
     if (isInView) {
       motionValue.set(value);
     }
   }, [motionValue, isInView, value]);
+
 
   useEffect(() => {
     springValue.on("change", (latest) => {
@@ -27,32 +30,36 @@ const AnimatedCounter = ({ value, suffix = "" }) => {
     });
   }, [springValue, suffix]);
 
+
   return <span ref={ref}>0{suffix}</span>;
 };
+
 
 const WebCTA = () => {
   const statsRef = useRef(null);
   const isStatsInView = useInView(statsRef, { once: true, amount: 0.3 });
 
+
   const stats = [
-    { value: 98, label: "Client Satisfaction", suffix: "%" },
     { value: 100, label: "Design Quality", suffix: "%" },
     { value: 24, label: "Support Available", suffix: "/5" },
   ];
 
+
   return (
-    <section className="w-full py-24 px-6 flex flex-col items-center text-center relative overflow-hidden">
+    <section className="w-full min-h-screen flex items-center justify-center py-24 px-6 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#00d3f3]/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00d3f3]/5 rounded-full blur-3xl animate-pulse delay-700"></div>
       </div>
 
+
       {/* Main Content */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center text-center">
         <TextReveal>
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-6 text-[#00d3f3]"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6 text-[#00d3f3]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -62,9 +69,10 @@ const WebCTA = () => {
           </motion.h2>
         </TextReveal>
 
+
         <TextReveal delay={0.2}>
           <motion.p
-            className="text-gray-300 text-lg md:text-xl max-w-3xl mb-4 mx-auto"
+            className="text-gray-300 text-lg md:text-xl max-w-3xl mb-12 mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -78,12 +86,11 @@ const WebCTA = () => {
           </motion.p>
         </TextReveal>
 
-        
 
-        {/* Animated Statistics - 3 Column Centered */}
+        {/* Animated Statistics - 2 Column Centered */}
         <motion.div
           ref={statsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto mb-12 w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -91,7 +98,7 @@ const WebCTA = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              className="relative group"
+              className="relative group w-full"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isStatsInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
@@ -113,6 +120,7 @@ const WebCTA = () => {
             </motion.div>
           ))}
         </motion.div>
+
 
         {/* CTA Button */}
         <div className="flex justify-center items-center">
@@ -147,5 +155,6 @@ const WebCTA = () => {
     </section>
   );
 };
+
 
 export default WebCTA;
