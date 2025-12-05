@@ -21,9 +21,9 @@ const App = () => {
       <div
         className="
           absolute 
-          bottom-[-30px] xs:bottom-[-60px] sm:bottom-[-100px] md:bottom-[-160px] lg:-bottom-52 xl:-bottom-47 2xl:-bottom-60
+          bottom-[-130px] xs:bottom-[-60px] sm:bottom-[-100px] md:bottom-[-160px] lg:-bottom-52 xl:-bottom-47 2xl:-bottom-60
           left-1/2 -translate-x-1/2 -translate-y-1/2
-          w-[280px] xs:w-[320px]
+          w-[450px] xs:w-[320px]
           sm:w-[400px]
           md:w-[70vw]
           lg:w-[70vw]

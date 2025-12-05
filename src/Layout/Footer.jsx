@@ -197,8 +197,8 @@ const Footer = () => {
         <div className="relative h-24 mt-8 overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center">
             <p
-              className="bg-clip-text text-transparent font-normal tracking-wider 
-                       text-[58px] leading-none pointer-events-none select-none"
+              className="bg-clip p-5 text text-transparent font-normal tracking-wider 
+                       text-[50px] leading-none pointer-events-none select-none"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
