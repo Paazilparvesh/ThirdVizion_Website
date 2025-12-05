@@ -4,7 +4,7 @@ function Whatiam() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Main Heading */}
                 <h1 
-                    className="text-3xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
+                    className="text-3xl md:text-6xl  text-center mb-6 bg-gradient-to-r from-[#FDC700] to-[#FFD700] bg-clip-text text-transparent"
                     style={{ fontFamily: 'DeaconTest, sans-serif' }}
                 >
                      Understanding Identity Management

@@ -139,7 +139,7 @@ const RadialSelector = ({ services, selectedService, setSelectedService, rotatio
       <div className="relative w-[940px] h-[856px] flex items-center justify-center">
         <div className="absolute w-88 h-88 bg-black/40 rounded-full border-2 border-[#00d3f3]/30 flex flex-col items-center justify-center backdrop-blur-md shadow-[0_0_30px_rgba(0,211,243,0.2)]">
           <div className="text-center px-6">
-            <h3 className="text-4xl font-extrabold text-white leading-tight mb-4 font-inter-tight">
+            <h3 className="text-4xl  text-white leading-tight mb-4 font-inter-tight">
               <span className="block">
                 Digital Solutions <span className="block text-[#00d3f3]">We Create</span>
               </span>

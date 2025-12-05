@@ -211,7 +211,7 @@ export default function GameLanding() {
         <div>
           
 
-          <h1 className=" text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center md:text-start font-medium leading-[1.05] tracking-tight" style={{ fontFamily: "DeaconTest, sans-serif" }}>
+          <h1 className=" text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center md:text-start font-semibold leading-[1.05] tracking-tight" style={{ fontFamily: "DeaconTest, sans-serif" }}>
             Build Interactive WebSite Games Players  
           </h1>
 

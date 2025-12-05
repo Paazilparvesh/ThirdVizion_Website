@@ -462,7 +462,7 @@ export default function ArPage() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-br pt-10  from-gray-900 via-black to-pink-950 text-white min-h-screen flex p-4 overflow-hidden relative">
+    <div className="bg-gradient-to-br pt-10  from-gray-900 via-black to-pink-950 text-white min-h-screen  flex p-4 overflow-hidden relative">
       {/* Gesture Controls - Only active when model is placed */}
       {modelPlaced && (
         <GestureControls 
@@ -509,21 +509,21 @@ export default function ArPage() {
       </div>
 
       {/* Main content - centered with engaging hook */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full mt-12 sm:mt-16 md:mt-20 lg:mt-24 lg:mb-34 text-center px-2 sm:px-4">
+      <div className="relative z-10 font-semibold flex flex-col items-center justify-center w-full mt-12 sm:mt-16 md:mt-20 lg:mt-24 lg:mb-34 text-center px-2 sm:px-4">
         
         {/* Engaging Hook Section */}
-        <div className="mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
-  Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
+        <div className="mb-8 sm:mb-10 md:mb-12 font-semibold lg:mb-16">
+         <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold mb-4 sm:mb-6 leading-tight"   style={{ fontFamily: "DeaconTest, sans-serif",  }}>
+  Unlock the <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text font-semibold text-transparent">
     Power
   </span> of <br className="hidden sm:block" />
-  <span className="bg-gradient-to-r from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
+  <span className="bg-gradient-to-r  font-semibold  from-pink-500 to-fuchsia-400 bg-clip-text text-transparent">
     Augmented Reality
   </span>
 </h1>
 
 
-          <p className="text-xs hidden sm:block md:text-lg text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "anta, sans-serif" }}>
+          <p className=" hidden sm:block text-base md:text-sm text-gray-300 max-w-xs xs:max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-relaxed"   style={{ fontFamily: "anta, sans-serif" }}>
             Enhance real-world experiences with interactive AR solutions. Visualize products, designs, and spaces in real time before making decisions.
           </p>
         </div>

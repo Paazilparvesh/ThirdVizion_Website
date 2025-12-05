@@ -69,7 +69,7 @@ function Willhelp() {
                     viewport={{ once: true }}
                 >
                     <h1 
-                        className="text-5xl font-semibold mb-4 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+                        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-font-semibold mb-4 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
                         style={{ fontFamily: "DeaconTest, sans-serif" }}
                     >
                         Our CRM Excellence
@@ -97,12 +97,11 @@ function Willhelp() {
                             <div className="absolute -top-4 -left-4 z-20">
                                 <div className="relative">
                                     {/* Glow effect */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] rounded-full blur-lg opacity-70"></div>
                                     
                                     {/* Number Badge */}
                                     <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#FF6467] to-[#FF8A8C] flex items-center justify-center shadow-2xl border-4 border-black/90">
                                         <span 
-                                            className="text-3xl font-black text-white"
+                                            className="text-3xl  text-gradient-to-br from-[#FF6467] to-[#FF8A8C]"
                                             style={{ fontFamily: "DeaconTest, sans-serif" }}
                                         >
                                             {index + 1}
@@ -163,8 +162,8 @@ function Willhelp() {
                     viewport={{ once: true }}
                 >
                <h2 
-  className="text-4xl text-center mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
-  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+  className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center font-font-semibold  mb-10 bg-gradient-to-r from-[#FF6467] to-[#FF8A8C] bg-clip-text text-transparent"
+  style={{ fontFamily: "DeaconTest, sans-serif" }}
 >
   Why Choose ThirdVizion?
 </h2>

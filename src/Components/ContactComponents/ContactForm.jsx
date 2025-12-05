@@ -23,12 +23,9 @@ const socialLinks = [
 
 // INFO CARDS
 const infoCards = [
-  {
-    icon: FaMapMarkerAlt,
-    title: "Address",
-    content: "11, 1st Floor, Ramdos Nagar Kolathur, Chennai-600099",
-    color: "#F59E0B"
-  },
+
+  
+ ,
   {
     icon: FaPhone,
     title: "Phone",
@@ -40,12 +37,11 @@ const infoCards = [
     title: "Email",
     content: "business@thirdvizion.com",
     color: "#EF4444"
-  },
-  {
-    icon: FaGlobe,
-    title: "Support",
-    content: "www.thirdvizion.com",
-    color: "#3B82F6"
+  }, {
+    icon: FaMapMarkerAlt,
+    title: "Address",
+    content: "11, 1st Floor, Ramdos Nagar Kolathur, Chennai-600099",
+    color: "#F59E0B"
   }
 ];
 
@@ -240,38 +236,84 @@ const ContactForm = () => {
             ))}
           </motion.div>
 
-          {/* Info Cards Grid */}
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8" style={{ fontFamily: "anta, sans-serif" }}            
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
 
-            variants={containerVariants}
-          >
-            {infoCards.map(({ icon: Icon, title, content, color }, index) => (
-              <motion.div
-                key={index}
-                className="p-4 bg-gray-900/40 backdrop-blur-sm rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300"
-                variants={itemVariants}
-                
-                whileHover={{ 
-                  y: -5,
-                  scale: 1.02,
-                  borderColor: color,
-                  boxShadow: `0 10px 30px -10px ${color}40`
-                }}
-              >
-                <div className="flex items-center gap-3 mb-2"   style={{ fontFamily: "anta, sans-serif" }}>
-                  <div 
-                    className="p-2 rounded-lg"
-                    style={{ backgroundColor: `${color}20` }}
-                  >
-                    <Icon className="text-xl" style={{ color }} />
-                  </div>
-                  <h3 className="font-bold text-white">{title}</h3>
-                </div>
-                <p className="text-gray-300 text-sm pl-11">{content}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+{/* Phone Card */}
+<motion.div
+variants={itemVariants}
+className="p-5 bg-gray-900/40 backdrop-blur-md rounded-xl border border-blue-500/20 hover:border-blue-500 transition-all"
+whileHover={{ scale: 1.03 }}
+
+>
+
+
+<div className="flex items-start gap-3">
+
+
+
+  <FaPhone className="text-2xl text-green-400 mt-1" />
+  <div>
+    <h3 className="text-lg font-bold">Phone</h3>
+    <p className="mt-1 text-gray-300 text-sm">
+      +91 89255 27548 <br /> +044-26284947
+    </p>
+  </div>
+</div>
+
+
+</motion.div>
+
+{/* Email Card */}
+<motion.div
+variants={itemVariants}
+className="p-5 bg-gray-900/40 backdrop-blur-md rounded-xl border border-red-500/20 hover:border-red-500 transition-all"
+whileHover={{ scale: 1.03 }}
+
+>
+
+
+<div className="flex items-start gap-3">
+
+
+
+  <FaEnvelope className="text-2xl text-red-400 mt-1" />
+  <div>
+    <h3 className="text-lg font-bold">Email</h3>
+    <p className="mt-1 text-gray-300 text-sm">
+      business@thirdvizion.com
+    </p>
+  </div>
+</div>
+
+
+</motion.div>
+
+{/* Address Card (Full Width) */}
+<motion.div
+variants={itemVariants}
+className="p-5 bg-gray-900/40 backdrop-blur-md rounded-xl border border-yellow-500/20 hover:border-yellow-500 transition-all sm:col-span-2"
+whileHover={{ scale: 1.03 }}
+
+>
+
+<div className="flex items-start gap-3">
+
+  <FaMapMarkerAlt className="text-2xl text-yellow-400 mt-1" />
+  <div>
+    <h3 className="text-lg font-bold">Address</h3>
+    <p className="mt-1 text-gray-300 text-sm">
+      11, 1st Floor, Ramdos Nagar Kolathur, Chennai-600099
+    </p>
+  </div>
+</div>
+
+
+</motion.div>
+
+</div>
+
+
+
         </motion.div>
 
         {/* RIGHT SIDE - Contact Form */}
