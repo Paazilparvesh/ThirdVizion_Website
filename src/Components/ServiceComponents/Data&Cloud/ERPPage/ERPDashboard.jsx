@@ -20,7 +20,7 @@ const ProjectsData = [
     image: amsi,
     description:
       "Software installed on company servers, managed by internal IT team. Offers full control and customization but requires significant upfront investment.",
-    live: "https://amsi-ngo.com/",
+    
     tools: ["Wordpress"],
   },
   {
@@ -29,7 +29,7 @@ const ProjectsData = [
     image: madras,
     description:
       "Hosted on vendor's servers, accessed via subscription. Features lower upfront costs, automatic updates, and scalability with reduced IT burden.",
-    live: "https://madraskitchen.ca/",
+   
     tools: ["Wordpress"],
   },
   {
@@ -38,7 +38,7 @@ const ProjectsData = [
     image: scopik,
     description:
       "Combines on-premise and cloud solutions. Allows keeping sensitive data on-premise while leveraging cloud flexibility for other functions.",
-    live: "https://scopik.com/",
+   
     tools: ["React.js", "Tailwind", "PostgreSQL", "Django"],
   },
   {
@@ -47,7 +47,7 @@ const ProjectsData = [
     image: spinz,
     description:
       "Specialized systems for particular industries with built-in features and best practices tailored to specific processes and compliance needs.",
-    live: "https://spinzreward.site/",
+   
     tools: ["MERN Stack"],
   },
 ];
@@ -158,14 +158,7 @@ export default function WebProject() {
                 {project.description}
               </p>
 
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block mt-2 px-5 py-2 rounded-lg bg-[#7C86FF] text-white font-medium text-sm"
-              >
-                Visit Site
-              </a>
+              
             </div>
           </motion.div>
         ))}
