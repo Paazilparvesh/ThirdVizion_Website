@@ -573,7 +573,7 @@ const Header = () => {
                       <h3 className="text-gray-300 uppercase text-xs tracking-wide">
                         {categoryName}
                       </h3>
-
+                    <div className="flex flex-col gap-3">
                       {categoryData.pages.map((page) => (
                         <button
                           key={page.name}
@@ -583,12 +583,13 @@ const Header = () => {
                           <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 text-purple-400">
                             {page.icon}
                           </span>
-                          <div>
+                          <div className="text-left">
                             <p className="text-sm text-white font-medium">{page.name}</p>
                             <p className="text-xs text-gray-400">{page.desc}</p>
                           </div>
                         </button>
                       ))}
+                    </div>
                     </div>
                   ))}
                 </div>

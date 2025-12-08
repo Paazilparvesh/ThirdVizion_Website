@@ -889,8 +889,11 @@ import ERP_Video from "/src/assets/newserviceehome/ERP_Video_Generation_Request.
 import VR_Video from "/src/assets/newserviceehome/VR_Video_Generation_Request 1.mp4";
 import D_Modeling from "/src/assets/ar/D_Modeling_and_Rendering_Video.mp4";
 import AR_Vedio from "/src/assets/ar/Futuristic_AR_Video_Generation2.mp4";
-import Game_dev from "/src/assets/ar/Futuristic_Game_Dev_Workspace_POV.mp4";
-import Web_dev from "/src/assets/newserviceehome/Web_Development_Video_Generation 1.mp4"
+import Game_dev from "/src/assets/newserviceehome/Futuristic_Developer_Workspace_POV_Video.mp4";
+import Web_dev from "/src/assets/newserviceehome/Web_Development_Video_Generation 1.mp4";
+import App_dev from "/src/assets/newserviceehome/Firefly 8-Second Video - 3 Clips - Hard Cuts - No Transitions - Realistic Tech Style__Prompt-_C.mp4";
+import Server from "/src/assets/newserviceehome/Data_Center_Server_Management_Video.mp4"
+
 // import Tech_Vedio from "/src/assets/ar/Futuristic_Tech_Video_Generation1.mp4"
 
 
@@ -915,8 +918,8 @@ import erpIcon from "/src/assets/ourserviceicons/erp.png";
 import gameIcon from "/src/assets/ourserviceicons/game.png";
 import webIcon from "/src/assets/ourserviceicons/website.png";
 import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
-import Aricon1 from "/src/assets/ar/Gemini_Generated_Image_4wcpq64wcpq64wcp.png";
-import threedIcon from "/src/assets/ar/Gemini_Generated_Image_ps0yl0ps0yl0ps0y.png";
+import Aricon1 from "/src/assets/newserviceehome/ar-app-3d-icon-png-download-10260715.png";
+import threedIcon from "/src/assets/newserviceehome/torus-wireframe-3d-icon-png-download-8447884.png";
 
 /* =========================
    Data: capabilitiesData
@@ -932,7 +935,7 @@ const capabilitiesData = [
       {
         name: "Game Development",
         subname: "Game",
-        img: Azure,
+        video:Game_dev,
         icon: gameIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -958,7 +961,7 @@ const capabilitiesData = [
       {
         name: "App Development",
         subname: "Mobile App",
-        img: Por,
+        video:App_dev,
         icon: mobileIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -991,9 +994,9 @@ const capabilitiesData = [
         link: "/client_relationship_management",
       },
       {
-        name: "Identity & Access Management",
-        subname: "IAM",
-        img: Dashboard,
+        name: "Server Management",
+        subname: "Server",
+        video:Server,
         icon: iamIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -1001,7 +1004,7 @@ const capabilitiesData = [
           borderRadius: "18px",
         },
         size: "h-100",
-        link: "/identity_and_access_management",
+        link: "/server_management",
       },
     {
   name: "Enterprise Resource Planning",
