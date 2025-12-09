@@ -10,25 +10,13 @@ import VRIndustries from "../../../Components/ServiceComponents/ImmersiveTech/VR
 function VirtualReality() {
 
   // ---------- AUTO RELOAD 2 TIMES WITH 100ms DELAY ----------
-  useEffect(() => {
-    const reloadCount = sessionStorage.getItem("vr_reload_count") || 0;
-
-    if (reloadCount < 2) {
-      sessionStorage.setItem("vr_reload_count", Number(reloadCount) + 1);
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 100); // 100ms delay
-    }
-  }, []);
-  // -----------------------------------------------------------
-
+ 
   return (
     <div className="bg-black">
       <SparkleBg count={20} speed={0.8} color="194, 122, 255" />
       
       <VrLanding />
-       <VRHeroSection /> 
+       <VRHeroSection />
      
        <VRIndustries/>
       <Vrbike />
