@@ -1,47 +1,45 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import BlogImage1 from "/src/assets/Blog1/3d.jpg";
-
-// Single blog data
-const BlogsData = [
-  {
-    id: "1",
-    title: "3D Modeling in Immersive Tech",
-    description: "How immersive technologies are shaping the future.",
-    HeroImage: BlogImage1,
-    innerContent: [
-      `Spreadsheets. emails. tracking forms by hand.
-Teams were being slowed down, and each week it cost hours.
-
-At Thirdvizion Labs, we use intelligent, 𝙣𝙤-𝙘𝙤𝙙𝙚 𝙖𝙪𝙩𝙤𝙢𝙖𝙩𝙞𝙤𝙣 to help businesses get One customer had trouble with a not smooth procedure
-Forms are manually checked, emails are sent, data is logged into Airtable, and Slack is used to notify teams.
-
-Each week, it took almost seven hours.
-
-We intervened with a quick, customised automation utilising n8n:
-→ Submission of the form → Automatic email sent → Airtable updated → A Slack ping was initiated.
-
-We constructed it within three days.
-𝙉𝙤𝙩 𝙖 𝙘𝙤𝙙𝙚. 𝙉𝙤𝙩 𝙘𝙤𝙢𝙥𝙡𝙞𝙘𝙖𝙩𝙚𝙙. 𝙊𝙣𝙡𝙮 𝙤𝙪𝙩𝙘𝙤𝙢𝙚𝙨.
-
-The entire process now operates in the background without making any noise.
-No work. No mistakes.
-
-The outcome?
-"Smarter work. Smoother flow."
-
-"The best invisible hire we ever made," stated their COO.`
-    ],
-    sectionImages: [BlogImage1],
-  }
-];
 
 const BlogPage = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [visibleCards, setVisibleCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredBlogs, setFilteredBlogs] = useState(BlogsData);
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
+
+  // Fetch blogs from Strapi API
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch('http://localhost:1337/api/blogs?populate=*');
+        const result = await response.json();
+        
+        // Transform Strapi data to match your component structure
+        const transformedData = result.data.map((blog) => ({
+          id: blog.documentId,
+          title: blog.blog_name,
+          description: blog.blog_desc.substring(0, 120) + "...", // Show first 120 chars
+          fullDescription: blog.blog_desc, // Full description for inner page
+          videoLink: blog.video_link,
+          HeroImage: `http://localhost:1337${blog.blog_img.url}`,
+          createdAt: blog.createdAt,
+        }));
+        
+        setBlogs(transformedData);
+        setFilteredBlogs(transformedData);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
 
   // Reveal animation with staggered effect
   useEffect(() => {
@@ -61,13 +59,13 @@ const BlogPage = () => {
   // Filter blogs based on search term
   useEffect(() => {
     const term = searchTerm.toLowerCase();
-    const filtered = BlogsData.filter(
+    const filtered = blogs.filter(
       (blog) =>
         blog.title.toLowerCase().includes(term) ||
         blog.description.toLowerCase().includes(term)
     );
     setFilteredBlogs(filtered);
-  }, [searchTerm]);
+  }, [searchTerm, blogs]);
 
   // Floating particles background
   const FloatingParticles = () => (
@@ -77,8 +75,8 @@ const BlogPage = () => {
           key={i}
           className="absolute w-1 h-1 bg-[#FF700A] rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
           }}
           animate={{
             y: [0, -100, 0],
@@ -153,6 +151,29 @@ const BlogPage = () => {
     hover: { opacity: 1 }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="w-16 h-16 border-4 border-[#FF700A] border-t-transparent rounded-full"
+        />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-500 text-xl mb-4">Error loading blogs</p>
+          <p className="text-gray-400">{error}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black text-white px-6 md:px-16 xl:py-40 py-30 relative overflow-hidden">
       {/* Animated Background Elements */}
@@ -197,34 +218,25 @@ const BlogPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
-          {/* <span className="bg-gradient-to-r from-[#FF700A] font-medium via-orange-400 to-yellow-400 bg-clip-text text-transparent"
-            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
-           Our Blogs
-          </span> */}
           <span
-  className="font-medium bg-clip-text text-transparent"
-  style={{
-    fontFamily: "DeaconTest, sans-serif",
-    fontWeight: 600,
-    backgroundImage:
-      "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-  }}
->
-  Our Blogs
-</span>
-
+            className="font-medium bg-clip-text text-transparent"
+            style={{
+              fontFamily: "DeaconTest, sans-serif",
+              fontWeight: 600,
+              backgroundImage:
+                "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Our Blogs
+          </span>
         </motion.h1>
-        
-        
-
-      
       </motion.div>
 
       {/* Cards Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-8 relative z-10 justify-items-center"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10 justify-items-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -244,7 +256,9 @@ const BlogPage = () => {
               >
                 🔍
               </motion.div>
-              <p className="text-gray-400 text-xs md:text-lg" style={{ fontFamily: "anta, sans-serif" }}>No blogs found. Try a different search term.</p>
+              <p className="text-gray-400 text-xs md:text-lg" style={{ fontFamily: "anta, sans-serif" }}>
+                No blogs found. Try a different search term.
+              </p>
             </motion.div>
           ) : (
             filteredBlogs.map((blog, i) => (
@@ -281,7 +295,7 @@ const BlogPage = () => {
                       <img 
                         src={blog.HeroImage} 
                         alt={blog.title}
-                        className="w-full h-48 object-cover rounded-xl"
+                        className="w-full h-48 object-cover rounded-xl hover:scale-110 transition-transform duration-500"
                       />
                     </motion.div>
 
@@ -303,13 +317,14 @@ const BlogPage = () => {
                     </motion.div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex-1 flex flex-col"style={{ fontFamily: "anta, sans-serif" }}>
+                    <div className="relative z-10 flex-1 flex flex-col" style={{ fontFamily: "anta, sans-serif" }}>
                       {/* Title with animated underline */}
                       <div className="mb-4">
                         <motion.h2
                           className="text-2xl md:text-3xl font-bold mb-3 inline-block"
                           layoutId={`title-${blog.id}`}
-                         style={{ fontFamily: "anta, sans-serif" }}>
+                          style={{ fontFamily: "anta, sans-serif" }}
+                        >
                           {blog.title}
                         </motion.h2>
                         <motion.div
@@ -317,16 +332,17 @@ const BlogPage = () => {
                           variants={titleVariants}
                           initial="hidden"
                           animate={visibleCards[i] ? "visible" : "hidden"}
-                          style={{ fontFamily: "Outfit, sans-serif" }}/>
+                        />
                       </div>
 
-                      {/* Description */}
+                      {/* Description - Truncated */}
                       <motion.p
                         className="text-gray-300 text-lg leading-relaxed flex-1"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 + i * 0.1 }}
-                        style={{ fontFamily: "" }}>
+                        style={{ fontFamily: "anta, sans-serif" }}
+                      >
                         {blog.description}
                       </motion.p>
 

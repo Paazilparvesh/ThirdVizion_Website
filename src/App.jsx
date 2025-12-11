@@ -22,6 +22,7 @@ import Server from "/src/Pages/Services/Data & Cloud/ServerPage.jsx";
 import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.jsx";
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
+import Digital from "./Pages/Services/Data & Cloud/digital";
 
 
 
@@ -54,6 +55,7 @@ function AnimatedRoutes() {
         <Route path="/web_development" element={<WebsitePage />} />
         <Route path="/app_development" element={<AppPage />} />
         <Route path="/game_development" element={<GamePage />} />
+        <Route path="/digia" element={<Digital/>} />
       </Routes>
    
   );
