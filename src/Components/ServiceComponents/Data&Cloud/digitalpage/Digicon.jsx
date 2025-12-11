@@ -3,53 +3,68 @@ function Digicon() {
     {
       number: "01",
       title: "Competitor Analysis",
-      description: "A comprehensive research of your competitors offers insights on what we are up against. This includes identifying targeted keywords, analyzing their marketing strategies, and understanding the different marketing channels they use. The data from competitor analysis allows us to devise a strategy that pushes you to the top."
+      description:
+        "A comprehensive research of your competitors offers insights on what we are up against. This includes identifying targeted keywords, analyzing their marketing strategies, and understanding the different marketing channels they use. The data from competitor analysis allows us to devise a strategy that pushes you to the top."
     },
     {
       number: "02",
       title: "Fully-Customized Marketing Strategy",
-      description: "With the data from our research, our experts will devise a detailed strategy to meet your business objectives. From using the power of SEO to push your website to the top of Google rankings to leveraging paid advertisements and email marketing campaigns, ThirdVizion meticulously plans each step to meet your business goals."
+      description:
+        "With the data from our research, our experts will devise a detailed strategy to meet your business objectives. From using the power of SEO to push your website to the top of Google rankings to leveraging paid advertisements and email marketing campaigns, ThirdVizion meticulously plans each step to meet your business goals."
     },
     {
       number: "03",
       title: "Execution",
-      description: "With everything in place, it's time to put things into action. The specialists at ThirdVizion see to it that everything goes as planned, dealing with any challenges that may arise. As a results-driven digital marketing agency, our goal is to ensure that all marketing campaigns are efficiently executed."
+      description:
+        "With everything in place, it's time to put things into action. The specialists at ThirdVizion see to it that everything goes as planned, dealing with any challenges that may arise. As a results-driven digital marketing agency, our goal is to ensure that all marketing campaigns are efficiently executed."
     },
     {
       number: "04",
       title: "Reporting",
-      description: "Post execution, the next step is to monitor the progress. ThirdVizion is transparent when it comes to reports. At the end of each month, we share a comprehensive report that contains all relevant information about the work we've done and the results achieved."
+      description:
+        "Post execution, the next step is to monitor the progress. ThirdVizion is transparent when it comes to reports. At the end of each month, we share a comprehensive report that contains all relevant information about the work we've done and the results achieved."
     },
     {
       number: "05",
       title: "Regular Optimization & Review",
-      description: "Digital marketing is an ongoing process. A single algorithm update may impact months of progress. To avoid this, our experts regularly assess the campaigns to ensure they align with changing trends and objectives. If something isn't producing expected results, we'll quickly make the necessary changes to meet your ROI and business goals."
+      description:
+        "Digital marketing is an ongoing process. A single algorithm update may impact months of progress. To avoid this, our experts regularly assess the campaigns to ensure they align with changing trends and objectives. If something isn't producing expected results, we'll quickly make the necessary changes to meet your ROI and business goals."
     },
     {
       number: "06",
       title: "Performance Analysis & Scaling",
-      description: "After optimizing campaigns, we analyze the overall performance metrics and identify successful strategies. ThirdVizion then scales these winning tactics across multiple channels to maximize your reach and ROI. We continuously test new approaches while maintaining what works, ensuring sustainable growth for your business."
+      description:
+        "After optimizing campaigns, we analyze the overall performance metrics and identify successful strategies. ThirdVizion then scales these winning tactics across multiple channels to maximize your reach and ROI. We continuously test new approaches while maintaining what works, ensuring sustainable growth for your business."
     }
   ];
 
   return (
     <>
       <div className="digicon-container">
+        {/* HEADER */}
         <div className="digicon-header">
-          <h2 className="digicon-title" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
-            <span className="title-our">Our</span> <span className="title-process">Process</span>
+          <h2
+            className="digicon-title"
+            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+          >
+            <span className="title-our">Our</span>{" "}
+            <span className="title-process">Process</span>
           </h2>
           <p className="digicon-subtitle">
             A systematic approach to drive your digital success
           </p>
         </div>
 
+        {/* GRID */}
         <div className="process-grid">
           {processes.map((process, index) => (
             <div key={index} className="process-card">
               <div className="card-header">
                 <div className="card-number">{process.number}</div>
-                <h3 className="card-title" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
+                <h3
+                  className="card-title"
+                  style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+                >
                   {process.title}
                 </h3>
               </div>
@@ -60,15 +75,19 @@ function Digicon() {
           ))}
         </div>
 
+        {/* FOOTER */}
         <div className="digicon-footer">
           <div className="footer-content">
-            <h3 className="footer-title" style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}>
+            <h3
+              className="footer-title"
+              style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+            >
               ThirdVizion: Excellence in Digital Marketing
             </h3>
             <p className="footer-description">
-              Our ever-growing list of clients proves that we are the best at what we do. 
-              Our expertise and experience in all areas of digital marketing, from organic SEO 
-              to PPC and social media marketing to web development, allow us to achieve any goal, 
+              Our ever-growing list of clients proves that we are the best at what we do.
+              Our expertise and experience in all areas of digital marketing, from organic SEO
+              to PPC and social media marketing to web development, allow us to achieve any goal,
               no matter how challenging it may be.
             </p>
           </div>
@@ -99,17 +118,20 @@ function Digicon() {
         }
 
         .title-our {
-          color: #ffffff;
+          color: #f9fafb; /* near white for contrast */
         }
 
         .title-process {
-          color: #EF00F3;
-          text-shadow: 0 0 30px rgba(239, 0, 243, 0.3);
+          background: linear-gradient(90deg, #a78bfa, #6366f1); /* from-violet-400 to-indigo-500 */
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-shadow: 0 0 24px rgba(99, 102, 241, 0.45);
         }
 
         .digicon-subtitle {
           font-size: 20px;
-          color: #ffffff;
+          color: #9ca3af; /* text-gray-400 style */
           line-height: 1.6;
           max-width: 600px;
           margin: 0 auto;
@@ -125,8 +147,8 @@ function Digicon() {
         }
 
         .process-card {
-          background: #0a0a0a;
-          border: 1px solid #1a1a1a;
+          background: #050509;
+          border: 1px solid #111827;
           border-radius: 16px;
           padding: 35px;
           position: relative;
@@ -141,15 +163,15 @@ function Digicon() {
           left: 0;
           right: 0;
           height: 2px;
-          background: linear-gradient(90deg, #EF00F3, #d000db);
+          background: linear-gradient(90deg, #a78bfa, #6366f1); /* from-violet-400 to-indigo-500 */
           opacity: 0;
           transition: opacity 0.4s ease;
         }
 
         .process-card:hover {
           transform: translateY(-8px);
-          border-color: #2a2a2a;
-          box-shadow: 0 20px 40px rgba(239, 0, 243, 0.1);
+          border-color: #1f2937;
+          box-shadow: 0 20px 40px rgba(15, 23, 42, 0.75);
         }
 
         .process-card:hover::before {
@@ -167,26 +189,26 @@ function Digicon() {
           width: 60px;
           height: 60px;
           border-radius: 12px;
-          background: linear-gradient(135deg, #EF00F3 0%, #d000db 100%);
+          background: linear-gradient(135deg, #a78bfa, #6366f1); /* gradient badge */
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 24px;
           font-weight: 700;
-          color: #ffffff;
+          color: #f9fafb;
           flex-shrink: 0;
-          box-shadow: 0 10px 20px rgba(239, 0, 243, 0.3);
+          box-shadow: 0 10px 25px rgba(99, 102, 241, 0.6);
           transition: all 0.3s ease;
         }
 
         .process-card:hover .card-number {
           transform: scale(1.1);
-          box-shadow: 0 15px 30px rgba(239, 0, 243, 0.4);
+          box-shadow: 0 15px 35px rgba(99, 102, 241, 0.8);
         }
 
         .card-title {
           font-size: 24px;
-          color: #ffffff;
+          color: #e5e7eb;
           margin: 0;
           line-height: 1.3;
         }
@@ -198,7 +220,7 @@ function Digicon() {
         .card-description {
           font-size: 16px;
           line-height: 1.8;
-          color: #ffffff;
+          color: #9ca3af;
           margin: 0;
           font-weight: 400;
         }
@@ -209,8 +231,8 @@ function Digicon() {
         }
 
         .footer-content {
-          background: #0a0a0a;
-          border: 1px solid #1a1a1a;
+          background: #050509;
+          border: 1px solid #111827;
           border-radius: 20px;
           padding: 60px 50px;
           text-align: center;
@@ -224,22 +246,24 @@ function Digicon() {
           left: 0;
           right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #EF00F3, #d000db);
+          background: linear-gradient(90deg, #a78bfa, #6366f1); /* from-violet-400 to-indigo-500 */
           border-radius: 20px 20px 0 0;
         }
 
         .footer-title {
           font-size: 40px;
-          color: #EF00F3;
+          background: linear-gradient(90deg, #a78bfa, #6366f1);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 25px;
           line-height: 1.2;
-          text-shadow: 0 0 20px rgba(239, 0, 243, 0.2);
         }
 
         .footer-description {
           font-size: 18px;
           line-height: 1.8;
-          color: #ffffff;
+          color: #d1d5db;
           max-width: 800px;
           margin: 0 auto;
           font-weight: 400;
