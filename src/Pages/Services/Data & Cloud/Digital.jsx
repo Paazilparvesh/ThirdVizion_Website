@@ -1,7 +1,7 @@
-import Digicon from "../../../Components/ServiceComponents/Data&Cloud/digitalpage/digicon"
-import Digiindus from "../../../Components/ServiceComponents/Data&Cloud/digitalpage/Digiindus"
-import Digilan from "../../../Components/ServiceComponents/Data&Cloud/digitalpage/Digilan"
-import Service from "../../../Components/ServiceComponents/Data&Cloud/digitalpage/service"
+import Digicon from "/src/Components/ServiceComponents/Data&Cloud/digitalpage/Digicon.jsx"
+import Digiindus from "/src/Components/ServiceComponents/Data&Cloud/digitalpage/Digiindus.jsx"
+import Digilan from "/src/Components/ServiceComponents/Data&Cloud/digitalpage/Digilan.jsx"
+import Service from "/src/Components/ServiceComponents/Data&Cloud/digitalpage/service.jsx"
 
 function Digital() {
     return(
