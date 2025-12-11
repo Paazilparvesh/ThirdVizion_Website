@@ -1,195 +1,244 @@
-// import { useParams } from "react-router-dom";
-// import BlogsData from "/src/Data/Data.jsx";
-
-// function InnerBlog() {
-//   const { id } = useParams();
-//   const blog = BlogsData.find((b) => b.id.toString() === id);
-//   const { sectionImages, innerContent, title } = blog;
-
-//   // split: first N images with content, rest are "extra"
-//   const contentImages = sectionImages.slice(0, innerContent.length);
-//   const extraImages = sectionImages.slice(innerContent.length);
-
-//   if (!blog) {
-//     return (
-//       <div className="text-center mt-10 text-gray-500">Blog not found</div>
-//     );
-//   }
-
-//   return (
-//     <div className="min-h-screen bg-black text-white flex flex-col items-center">
-//       {/* Blog Title */}
-//       <h1 className="text-3xl md:text-4xl font-bold text-orange-400 text-center mt-20">
-//         {blog.title}
-//       </h1>
-
-//       {/* Hero Image */}
-//       <div className="mt-6 w-full flex justify-center">
-//         {blog.HeroImage ? (
-//           <img
-//             src={blog.HeroImage}
-//             alt={blog.title}
-//             className="rounded-lg shadow-lg max-w-4xl w-full object-cover"
-//           />
-//         ) : (
-//           <div className="text-gray-400">No image available</div>
-//         )}
-//       </div>
-//       {/* Blog Content Sections */}
-//       <div>
-//         {/* 🔹 Images WITH content */}
-//         {contentImages.map((img, index) => {
-//           const isEven = index % 2 === 0;
-//           const imageSide = isEven ? "left" : "right";
-//           const textSide = isEven ? "right" : "left";
-
-//           return (
-//             <div
-//               key={`content-${index}`}
-//               className="flex flex-col md:flex-row h-[70vh] items-center my-16 px-8"
-//             >
-//               {/* Image */}
-//               <div
-//                 className={`w-full md:w-1/2 flex items-center justify-center ${imageSide === "left" ? "order-1" : "order-2"
-//                   }`}
-//               >
-//                 <img
-//                   src={img}
-//                   alt={`${title} section ${index + 1}`}
-//                   className="w-80 h-80 object-cover rounded-lg shadow-lg"
-//                 />
-//               </div>
-
-//               {/* Text */}
-//               <div
-//                 className={`w-full md:w-1/2 flex flex-col justify-center px-8 ${textSide === "left" ? "order-1" : "order-2"
-//                   }`}
-//               >
-//                 <h1 className="text-3xl font-bold text-center text-orange-400 mb-8">
-//                   {title}
-//                 </h1>
-//                 <p className="font-bold text-center text-white mb-8">
-//                   {innerContent[index]}
-//                 </p>
-//               </div>
-//             </div>
-//           );
-//         })}
-
-//         {/* 🔹 Images WITHOUT content */}
-//         {extraImages.length === 1 && (
-//           <div className="flex h-[70vh] items-center justify-center my-16 px-8">
-//             <img
-//               src={extraImages[0]}
-//               alt={`${title} extra`}
-//               className="w-full h-full object-cover rounded-lg shadow-lg"
-//             />
-//           </div>
-//         )}
-
-//         {extraImages.length > 1 && (
-//           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 my-16 px-8">
-//             {extraImages.map((img, i) => (
-//               <div
-//                 key={`extra-${i}`}
-//                 className="flex items-center justify-center"
-//               >
-//                 <img
-//                   src={img}
-//                   alt={`${title} extra ${i + 1}`}
-//                   className="w-full h-64 object-cover rounded-lg shadow-lg"
-//                 />
-//               </div>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default InnerBlog;
-
-
 import { useParams } from "react-router-dom";
-import BlogsData from "/src/Data/Data.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 function InnerBlog() {
   const { id } = useParams();
-  const blog = BlogsData.find((b) => b.id.toString() === id);
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!blog) {
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await fetch(`http://localhost:1337/api/blogs?populate=*`);
+        const result = await response.json();
+        
+        // Find the specific blog by documentId
+        const foundBlog = result.data.find((b) => b.documentId === id);
+        
+        if (foundBlog) {
+          const transformedBlog = {
+            id: foundBlog.documentId,
+            title: foundBlog.blog_name,
+            fullDescription: foundBlog.blog_desc,
+            videoLink: foundBlog.video_link,
+            HeroImage: `http://localhost:1337${foundBlog.blog_img.url}`,
+            createdAt: foundBlog.createdAt,
+          };
+          setBlog(transformedBlog);
+        }
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchBlog();
+  }, [id]);
+
+  if (loading) {
     return (
-      <div className="text-center mt-10 text-gray-500">Blog not found</div>
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="w-16 h-16 border-4 border-[#FF700A] border-t-transparent rounded-full"
+        />
+      </div>
     );
   }
 
-  // Combine Hero + section + extra images into one array for carousel
-  const allImages = [
-    blog.HeroImage,
-    ...(blog.sectionImages || [])
-  ].filter(Boolean);
+  if (error || !blog) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center mt-10 text-gray-500">
+          <p className="text-xl">Blog not found</p>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+        </div>
+      </div>
+    );
+  }
 
-  // Join all innerContent into one paragraph
-  const description = blog.innerContent || "No description available.";
-
-  // Carousel state
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % allImages.length);
+  // Container variants for staggered animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      }
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? allImages.length - 1 : prev - 1
-    );
+  // Item variants for individual elements
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center px-4 py-10"  style={{ fontFamily: "anta, sans-serif" }}            >
-
-      {/* Blog Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-orange-400 text-center mt-20"  style={{ fontFamily: "anta, sans-serif" }}            >
-
-        {blog.title}
-      </h1>
-
-      {/* Carousel */}
-      {allImages.length > 0 && (
-        <div className="relative w-full max-w-4xl mt-8" >
+    <div className="min-h-screen bg-black text-white px-4 py-10" style={{ fontFamily: "anta, sans-serif" }}>
+      <motion.div
+        className="max-w-5xl mx-auto flex flex-col items-center mt-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* 1. Hero Image - First */}
+        <motion.div
+          className="w-full mb-10"
+          variants={itemVariants}
+        >
           <img
-            src={allImages[currentIndex]}
-            alt={`${blog.title} image ${currentIndex + 1}`}
-            className="rounded-lg shadow-lg w-full md:h-[400px] object-cover" style={{ fontFamily: "anta, sans-serif" }}            
+            src={blog.HeroImage}
+            alt={blog.title}
+            className="rounded-2xl shadow-2xl w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover border-2 border-gray-800"
           />
+        </motion.div>
 
-          {/* Carousel Controls */}
-          {allImages.length > 1 && (
-            <>
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2  p-2 rounded-full "
-              >
-                ◀
-              </button>
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2p-2 rounded-full"
-              >
-                ▶
-              </button>
-            </>
-          )}
-        </div>
-      )}
+        {/* 2. Blog Title - Second */}
+        <motion.h1
+          className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent px-4"
+          style={{ fontFamily: "anta, sans-serif" }}
+          variants={itemVariants}
+        >
+          {blog.title}
+        </motion.h1>
 
-      {/* Description */}
-      <p className="mt-8 max-w-3xl text-center text-lg leading-relaxed text-gray-300" style={{ fontFamily: "anta, sans-serif" }}            >
+        {/* Decorative Line */}
+        <motion.div
+          className="w-32 h-1 bg-gradient-to-r from-[#FF700A] to-orange-400 rounded-full mb-10"
+          variants={itemVariants}
+        />
 
-        {description}
-      </p>
+        {/* 3. Full Description - Third */}
+        <motion.div
+          className="w-full max-w-4xl bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-gray-800 shadow-xl"
+          variants={itemVariants}
+        >
+          <p 
+            className="text-base md:text-lg lg:text-xl leading-relaxed text-gray-300 whitespace-pre-line text-justify"
+            style={{ fontFamily: "anta, sans-serif" }}
+          >
+            {blog.fullDescription}
+          </p>
+        </motion.div>
+
+        {/* 4. Video Embed (if available) - Fourth */}
+        {blog.videoLink && (
+          <motion.div
+            className="w-full max-w-4xl mt-12"
+            variants={itemVariants}
+          >
+            <h2 
+              className="text-2xl md:text-3xl font-bold text-orange-400 mb-6 text-center"
+              style={{ fontFamily: "anta, sans-serif" }}
+            >
+              Watch Video
+            </h2>
+            <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-800">
+              <iframe
+                src={blog.videoLink.replace("youtube.com/shorts/", "youtube.com/embed/").replace("?si=", "?autoplay=0&si=")}
+                title={blog.title}
+                className="w-full h-full"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
+            </div>
+          </motion.div>
+        )}
+
+        {/* 5. Metadata Section - Fifth */}
+        <motion.div
+          className="w-full max-w-4xl mt-12 flex flex-wrap items-center justify-between gap-4 p-6 bg-gray-900/30 rounded-xl border border-gray-800"
+          variants={itemVariants}
+        >
+          <div className="flex items-center gap-2 text-gray-400">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span style={{ fontFamily: "anta, sans-serif" }}>
+              {new Date(blog.createdAt).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </span>
+          </div>
+          
+          <div className="flex gap-4">
+            {/* Share buttons placeholder */}
+            <button className="text-gray-400 hover:text-[#FF700A] transition-colors">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+              </svg>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* 6. Back Button - Sixth */}
+        <motion.div
+          className="mt-16 mb-10"
+          variants={itemVariants}
+        >
+          <a
+            href="/blogs"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#FF700A] to-orange-400 text-white rounded-full font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300"
+            style={{ fontFamily: "anta, sans-serif" }}
+          >
+            <svg 
+              className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Blogs
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* Floating Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <motion.div
+          className="absolute top-1/4 -left-20 w-72 h-72 bg-gradient-to-r from-[#FF700A] to-purple-600 rounded-full blur-3xl opacity-20"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-l from-[#FF700A] to-blue-600 rounded-full blur-3xl opacity-15"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.15, 0.25, 0.15],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
     </div>
   );
 }
