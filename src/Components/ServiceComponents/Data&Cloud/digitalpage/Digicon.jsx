@@ -103,8 +103,8 @@ function Digicon() {
         }
 
         .title-process {
-          color: #FFD700;
-          text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+          color: #EF00F3;
+          text-shadow: 0 0 30px rgba(239, 0, 243, 0.3);
         }
 
         .digicon-subtitle {
@@ -141,7 +141,7 @@ function Digicon() {
           left: 0;
           right: 0;
           height: 2px;
-          background: linear-gradient(90deg, #FFD700, #FFA500);
+          background: linear-gradient(90deg, #EF00F3, #d000db);
           opacity: 0;
           transition: opacity 0.4s ease;
         }
@@ -149,7 +149,7 @@ function Digicon() {
         .process-card:hover {
           transform: translateY(-8px);
           border-color: #2a2a2a;
-          box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
+          box-shadow: 0 20px 40px rgba(239, 0, 243, 0.1);
         }
 
         .process-card:hover::before {
@@ -167,21 +167,21 @@ function Digicon() {
           width: 60px;
           height: 60px;
           border-radius: 12px;
-          background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+          background: linear-gradient(135deg, #EF00F3 0%, #d000db 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 24px;
           font-weight: 700;
-          color: #000000;
+          color: #ffffff;
           flex-shrink: 0;
-          box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+          box-shadow: 0 10px 20px rgba(239, 0, 243, 0.3);
           transition: all 0.3s ease;
         }
 
         .process-card:hover .card-number {
           transform: scale(1.1);
-          box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+          box-shadow: 0 15px 30px rgba(239, 0, 243, 0.4);
         }
 
         .card-title {
@@ -224,16 +224,16 @@ function Digicon() {
           left: 0;
           right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #FFD700, #FFA500);
+          background: linear-gradient(90deg, #EF00F3, #d000db);
           border-radius: 20px 20px 0 0;
         }
 
         .footer-title {
           font-size: 40px;
-          color: #FFD700;
+          color: #EF00F3;
           margin-bottom: 25px;
           line-height: 1.2;
-          text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+          text-shadow: 0 0 20px rgba(239, 0, 243, 0.2);
         }
 
         .footer-description {

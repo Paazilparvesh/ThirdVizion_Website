@@ -13,7 +13,7 @@ function Service() {
                         className="text-5xl text-white"
                         style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
                     >
-                        ThirdVizion <span className="text-yellow-400">Services</span>
+                        ThirdVizion <span className="text-[#EF00F3]">Services</span>
                     </h1>
                 </div>
 

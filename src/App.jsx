@@ -22,7 +22,7 @@ import Server from "/src/Pages/Services/Data & Cloud/ServerPage.jsx";
 import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.jsx";
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
-import Digital from "./Pages/Services/Data & Cloud/digital";
+import Digital from "/src/Pages/Services/Data & Cloud/Digital.jsx";
 
 
 
