@@ -5,7 +5,7 @@ import gsap from "gsap";
 import big from "/src/assets/Logo_5.png";
 
 // Orbit icons
-import content from "/src/assets/digiicons/content marketing.png";
+// import content from "/src/assets/digiicons/content marketing.png";
 import social from "/src/assets/digiicons/social-media-marketing-3d-icon-png-download-12362907.png";
 import influencer from "/src/assets/digiicons/influensermarketing.png";
 import email from "/src/assets/digiicons/emailmarketing.png";
