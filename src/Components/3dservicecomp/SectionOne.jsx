@@ -246,7 +246,7 @@ export default function Threelanding() {
   return (
     <div
       ref={rootRef}
-      className="relative min-h-screen overflow-x-hidden text-white font-sans leading-relaxed antialiased"
+      className="relative min-h-screen overflow-x-hidden text-white mt-20 font-sans leading-relaxed antialiased"
     >
       {/* HERO (no header) */}
       <section className="relative z-20 pt-20 pb-16">
@@ -255,10 +255,10 @@ export default function Threelanding() {
           <div className="w-full lg:w-1/2">
             <h1 ref={heroTextRef} className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight font-semibold extrabold tracking-tight text-center sm:text-left mx-auto sm:mx-0"   style={{ fontFamily: "DeaconTest, sans-serif" }}>
               <span className="block overflow-hidden">
-                <span className="word block transform translate-y-0">ThirdVizion</span>
+                <span className="word block transform translate-y-0">ThirdVizion 3D</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="word block text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-300">3D</span>
+                <span className="word block text-transparent bg-clip-text bg-gradient-to-r from-white to-pink-300"></span>
               </span>
               <span className="block overflow-hidden">
                 <span className="word block text-6xl md:text-8xl text-white">Service</span>

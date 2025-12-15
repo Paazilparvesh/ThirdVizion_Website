@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import processorAnimation from "/src/assets/Processor.json";
 import Lottie from "lottie-react";
+import processorAnimation from "/src/assets/Processor.json";
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
 
@@ -37,74 +37,109 @@ export default function SectionTwo() {
   return (
     <section
       ref={sectionRef}
-      className="w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-16"
+      className="w-full min-h-screen flex items-center px-6 sm:px-12 lg:px-24 "
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-end gap-12">
-        {/* --- Text Content --- */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center md:text-center lg:text-left max-w-2xl">
-          <h2 className="anim-text font-semibold uppercase tracking-wider mb-3 text-base text-[#a8e6a3]">
-            NFC Technology
-          </h2>
-          <h1 className="anim-text font-medium text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-            NFC Chip
-          </h1>
-          <p className="anim-text text-gray-300 max-w-xl text-base sm:text-lg md:text-xl mb-6 leading-relaxed">
-            Customers use their phone to scan a chip embedded in your smart contactless business card. Their phone gets a notification with the link to your VistaConnect experience.
-          </p>
-          
-          {/* NFC Features */}
-          <div className="anim-text mb-8">
-            <h3 className="text-white font-semibold text-lg sm:text-xl mb-4">
-              NFC visiting card features
-            </h3>
-            <ul className="text-gray-300 space-y-2 text-left">
-              <li className="flex items-start">
-                <span className="text-[#a8e6a3] mr-2">•</span>
-                Durable plastic material
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#a8e6a3] mr-2">•</span>
-                Subtle & elegant design
-              </li>
-              <li className="flex items-start">
-                <span className="text-[#a8e6a3] mr-2">•</span>
-                Increasingly popular
-              </li>
-            </ul>
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+        {/* --- Left Side: Lottie Animation --- */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center lg:justify-start">
+          <div className="relative w-full max-w-lg">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 blur-3xl rounded-full"></div>
+            {/* <Lottie 
+              animationData={processorAnimation} 
+              className="relative z-10"
+            /> */}
           </div>
-
-          {/* Price Section */}
-          <div className="anim-text mb-8">
-            <p className="text-white font-semibold text-lg mb-2">
-              Starting at <span className="text-[#a8e6a3]">₹750.00</span>
-            </p>
-          </div>
-
-          <button
-            className="
-              anim-text
-              px-4 py-2 text-sm
-              sm:px-8 sm:py-3 sm:text-base
-              bg-[#a8e6a3] text-gray-900 font-semibold 
-              rounded-full hover:bg-[#98d893]
-              transition-transform hover:scale-105
-              focus:outline-none focus:ring-4 focus:ring-[#a8e6a3]
-              shadow-lg
-            "
-          >
-            Browse NFC visiting card designs
-          </button>
         </div>
 
-        {/* --- Lottie Animation (Commented out as in original) --- */}
-        {/* <div className="flex items-center justify-center w-full lg:w-1/2 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
-          <Lottie
-            animationData={processorAnimation}
-            loop={true}
-            autoplay={true}
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl xl:scale-125"
-          />
-        </div> */}
+        {/* --- Right Side: Enhanced Content --- */}
+        <div className="w-full lg:w-1/2 flex flex-col items-start text-left max-w-2xl">
+          {/* Tagline */}
+          <div className="mb-4">
+           
+          </div>
+          
+          {/* Main Heading */}
+          <h1 className="anim-text font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-tight mb-10"  style={{ fontFamily: "DeaconTest, sans-serif" }}>
+            What Makes <span className="bg-gradient-to-r from-pink-400 to-purple-600 bg-clip-text text-transparent" >ThirdVizion</span> Unique 
+          </h1>
+          
+          {/* Enhanced Specialties Grid */}
+          <div className="anim-text grid grid-cols-1 md:grid-cols-2 gap-5 mb-10 w-full" style={{ fontFamily: "anta, sans-serif" }}>
+            {/* Column 1 */}
+            <div className="space-y-5">
+              <div className="group p-5 rounded-xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 border border-white/5 hover:border-pink-500/30 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-pink-500/10">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-sm">01</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all">
+                      Photoreal Excellence
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      Cinematic PBR models with industry-leading material accuracy for film & visualization.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-5 rounded-xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 border border-white/5 hover:border-purple-500/30 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-sm">02</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all">
+                      Real-time Optimization
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      Performance-optimized assets with automated LOD systems for web & game engines.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2 */}
+            <div className="space-y-5">
+              <div className="group p-5 rounded-xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 border border-white/5 hover:border-pink-500/30 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-pink-500/10">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-sm">03</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all">
+                      Cross-platform AR/VR Ready
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      USDZ & glTF exports optimized for AR Quick Look and metaverse platforms.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-5 rounded-xl bg-gradient-to-br from-gray-900/40 to-gray-800/20 border border-white/5 hover:border-purple-500/30 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-2xl hover:shadow-purple-500/10">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-bold text-sm">04</span>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-purple-300 group-hover:bg-clip-text transition-all">
+                      Production Pipeline Solutions
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      Custom automation scripts and pipeline integration for studio workflows.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced Divider */}
+        
+      
+        </div>
       </div>
     </section>
   );
