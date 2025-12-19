@@ -11,8 +11,8 @@ import retailImage from "/src/assets/industrieshome/exxxx.svg";
 gsap.registerPlugin(ScrollTrigger);
 
 const industries = [
-  { id: 1, number: "01/", name: "Digital Services", color: "indigo-400" },
-  { id: 2, number: "02/", name: "Healthcare Innovation", color: "green-400" },
+  { id: 1, number: "01/", name: "Digital Devices", color: "indigo-400" },
+  { id: 2, number: "02/", name: "Healthcare Sectors", color: "green-400" },
   { id: 3, number: "03/", name: "Education Technology", color: "red-400" },
   { id: 4, number: "04/", name: "Retail & E-commerce Solutions", color: "purple-400" },
 ];
@@ -39,18 +39,18 @@ const colorGradients = {
 };
 
 const mobileColorOverlays = {
-  "indigo-400": "rgba(67, 56, 202, 0.55)",   // Dark indigo
-  "green-400": "rgba(22, 163, 74, 0.55)",    // Dark green
-  "red-400": "rgba(185, 28, 28, 0.55)",      // Dark red
-  "purple-400": "rgba(134, 25, 143, 0.55)",  // Dark purple
+  "indigo-400": "rgba(67, 56, 202, 0.55)",
+  "green-400": "rgba(22, 163, 74, 0.55)",
+  "red-400": "rgba(185, 28, 28, 0.55)",
+  "purple-400": "rgba(134, 25, 143, 0.55)",
 };
-
 
 const Industries = () => {
   const overlayRefs = useRef([]);
   const numberTextRefs = useRef([]);
   const nameTextRefs = useRef([]);
   const imageOverlayRefs = useRef([]);
+  const mobileItemRefs = useRef([]);
 
   const hoverXValues = ["-172%", "-125%", "-125%", "-85%"];
 
@@ -64,6 +64,29 @@ const Industries = () => {
       ease: "power3.out",
       scrollTrigger: { trigger: "#industries" },
     });
+
+    // Mobile animations with alternating directions
+    if (window.innerWidth < 768) {
+      mobileItemRefs.current.forEach((item, index) => {
+        if (item) {
+          // Odd items (1, 3) come from right, even items (2, 4) come from left
+          const fromDirection = index % 2 === 0 ? "100%" : "-100%";
+          
+          gsap.from(item, {
+            x: fromDirection,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 80%",
+              end: "top 50%",
+              toggleActions: "play none none reverse",
+            },
+          });
+        }
+      });
+    }
   }, []);
 
   const handleMouseEnter = (index) => {
@@ -181,12 +204,16 @@ const Industries = () => {
       </div>
 
       {/* -------------------------------------- */}
-      {/* 📱 MOBILE VIEW (Updated as you requested) */}
+      {/* 📱 MOBILE VIEW (Updated with alternating scroll animations) */}
       {/* -------------------------------------- */}
       <div className="block md:hidden">
         {industries.map((industry, index) => (
-          <div key={industry.id} className="">
-            <div className="relative w-full h-25  overflow-hidden">
+          <div 
+            key={industry.id} 
+            ref={(el) => (mobileItemRefs.current[index] = el)}
+            className=""
+          >
+            <div className="relative w-full h-25 overflow-hidden">
 
               {/* Color Overlay */}
               <div
@@ -200,20 +227,16 @@ const Industries = () => {
               <img
                 src={industryImages[index]}
                 alt={industry.name}
-                className="w-full h-full object-cover  scale-95"
+                className="w-full h-full object-cover scale-95"
                 style={{ objectPosition: imagePositions[index] }}
               />
 
               {/* TEXT INSIDE IMAGE */}
               <div className="absolute bottom-8 left-3 z-20">
-              <p className="text-[16px] font-semibold flex gap-32">
-  <span>{industry.number}</span>
-  <span>{industry.name}</span>
-</p>
-
-                
-                  
-             
+                <p className="text-[16px] font-semibold flex gap-32">
+                  <span>{industry.number}</span>
+                  <span>{industry.name}</span>
+                </p>
               </div>
             </div>
           </div>
