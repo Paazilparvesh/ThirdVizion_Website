@@ -71,7 +71,7 @@ export default function OurTeam() {
         />
       </div>
 
-      {/* Desktop Layout - Horizontal Rows */}
+      {/* Desktop Layout - Horizontal Rows - NOT TOUCHED */}
       <div className="hidden md:grid grid-cols-1 gap-8 w-full max-w-7xl px-6">
         {[0, 1].map((row) => (
           <div
@@ -146,19 +146,25 @@ export default function OurTeam() {
         ))}
       </div>
 
-      {/* Mobile Layout - Circular Cards Grid */}
+      {/* ✅ Mobile Layout - WITH SCROLL REVEAL */}
       <div className="md:hidden grid grid-cols-2 gap-6 w-full max-w-md px-6">
         {teamData.map((member, index) => (
           <motion.div
             key={index}
             className="flex flex-col items-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.05 }}
+            // ✅ Mobile-only scroll reveal animation
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{
+              duration: 0.6,
+              delay: index * 0.05,
+              ease: "easeOut",
+            }}
           >
             {/* Circular Image */}
-            {/* <div
-              className="relative w-32 h-32 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg"
+            <div
+              className="relative w-32 h-32 rounded-full border-2 border-yellow-400 overflow-hidden shadow-lg"
               style={{
                 backgroundImage: `url(${member.img})`,
                 backgroundSize: "cover",
@@ -166,19 +172,7 @@ export default function OurTeam() {
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            </div> */}
-
-            <div
-  className="relative w-32 h-32 rounded-full border-2 border-yellow-400 overflow-hidden shadow-lg"
-  style={{
-    backgroundImage: `url(${member.img})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-</div>
-
+            </div>
 
             {/* Name and Role */}
             <div className="mt-3 text-center">

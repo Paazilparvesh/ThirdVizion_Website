@@ -14,6 +14,12 @@ export default function ContactHero() {
   const mobileImageContainerRef = useRef(null);
   const scrollButtonRef = useRef(null);
   const contactFormRef = useRef(null);
+  
+  // Mobile content refs for scroll reveal
+  const mobileBadgeRef = useRef(null);
+  const mobileHeaderRef = useRef(null);
+  const mobileDescRef = useRef(null);
+  
   const [showScrollButton, setShowScrollButton] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -61,7 +67,7 @@ export default function ContactHero() {
 
       ScrollTrigger.matchMedia({
         "(min-width: 1024px)": () => {
-          // Reset all transforms before animation
+          // Desktop animations - NOT TOUCHED
           gsap.set([contactText, getText, touchText], {
             clearProps: "transform,opacity"
           });
@@ -148,7 +154,9 @@ export default function ContactHero() {
         },
 
         "(max-width: 1023px)": () => {
-          // Mobile scroll button animation
+          // ✅ MOBILE SCROLL REVEAL ANIMATIONS
+          
+          // Mobile scroll button
           if (scrollButton) {
             gsap.to(scrollButton, {
               opacity: 0,
@@ -166,24 +174,92 @@ export default function ContactHero() {
             });
           }
 
-          // ContactForm mobile reveal
+          // ✅ Mobile Badge scroll reveal
+          if (mobileBadgeRef.current) {
+            gsap.fromTo(mobileBadgeRef.current,
+              {
+                y: -50,
+                opacity: 0,
+                scale: 0.8,
+              },
+              {
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: mobileBadgeRef.current,
+                  start: "top 85%",
+                  end: "top 60%",
+                  toggleActions: "play none none reverse",
+                }
+              }
+            );
+          }
+
+          // ✅ Mobile Header scroll reveal
+          if (mobileHeaderRef.current) {
+            gsap.fromTo(mobileHeaderRef.current,
+              {
+                y: 60,
+                opacity: 0,
+              },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: mobileHeaderRef.current,
+                  start: "top 85%",
+                  end: "top 60%",
+                  toggleActions: "play none none reverse",
+                }
+              }
+            );
+          }
+
+          // ✅ Mobile Description scroll reveal
+          if (mobileDescRef.current) {
+            gsap.fromTo(mobileDescRef.current,
+              {
+                y: 60,
+                opacity: 0,
+              },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                delay: 0.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: mobileDescRef.current,
+                  start: "top 85%",
+                  end: "top 60%",
+                  toggleActions: "play none none reverse",
+                }
+              }
+            );
+          }
+
+          // ✅ ContactForm mobile reveal
           if (contactForm) {
             gsap.fromTo(contactForm,
               {
                 opacity: 0,
-                y: 50,
+                y: 80,
               },
               {
                 opacity: 1,
                 y: 0,
                 duration: 0.8,
-                ease: "power2.out",
+                ease: "power3.out",
                 scrollTrigger: {
                   trigger: contactForm,
                   start: "top 85%",
                   end: "top 60%",
-                  scrub: 1,
-                  markers: false,
+                  toggleActions: "play none none reverse",
                 }
               }
             );
@@ -211,7 +287,7 @@ export default function ContactHero() {
     };
   }, []);
 
-  // Mobile image drag handlers
+  // Mobile image drag handlers - NOT TOUCHED
   const handleTouchStart = (e) => {
     setIsDragging(true);
     const touch = e.touches[0];
@@ -285,7 +361,7 @@ export default function ContactHero() {
         </div>
       )}
 
-      {/* Desktop Header - Fixed position for laptops */}
+      {/* Desktop Header - NOT TOUCHED */}
       <div
         ref={headerRef}
         className="hidden lg:flex fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex-col justify-center items-center w-full z-30 pointer-events-none min-h-screen"
@@ -294,86 +370,45 @@ export default function ContactHero() {
         <div className="contact-text text-md xl:text-2xl mb-4 font-bold text-center uppercase font-[Inter_Tight]">
           Contact
         </div>
-        {/* <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
-          <div 
+
+        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
+          <div
             className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
-              fontFamily: "Outfit, sans-serif"
+              backgroundImage:
+                "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+              backgroundSize: "200% 100%",
+              backgroundPosition: "left center",
+              WebkitBackgroundClip: "text",
+              fontFamily: "Outfit, sans-serif",
             }}
           >
             Get in
           </div>
-          <div 
+
+          <div
             className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
             style={{
-              backgroundImage: "linear-gradient(135deg, #FFD700 0%, #FFB700 25%, #FFAA00 50%, #FF9900 75%, #E5C100 100%)",
-              fontFamily: "Outfit, sans-serif"
+              backgroundImage:
+                "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
+              backgroundSize: "200% 100%",
+              backgroundPosition: "right center",
+              WebkitBackgroundClip: "text",
+              fontFamily: "Outfit, sans-serif",
             }}
           >
             Touch
           </div>
-        </div> */}
-
-        <div className="flex gap-3 xl:gap-8 mt-2 font-[Inter_Tight]">
-
-  {/* GET IN */}
-  <div
-    className="get-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
-    style={{
-      backgroundImage:
-        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
-      backgroundSize: "200% 100%",          // extends full gradient across both words
-      backgroundPosition: "left center",     // start from yellow at left edge
-      WebkitBackgroundClip: "text",
-      fontFamily: "Outfit, sans-serif",
-    }}
-  >
-    Get in
-  </div>
-
-  {/* TOUCH */}
-  <div
-    className="touch-text text-5xl md:text-[6rem] xl:text-[12rem] font-medium uppercase bg-clip-text text-transparent"
-    style={{
-      backgroundImage:
-        "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
-      backgroundSize: "200% 100%",
-      backgroundPosition: "right center",    // continue gradient (blue → green → red)
-      WebkitBackgroundClip: "text",
-      fontFamily: "Outfit, sans-serif",
-    }}
-  >
-    Touch
-  </div>
-
-</div>
-
+        </div>
       </div>
 
       <div ref={wrapperRef} className="w-full relative">
-        {/* Desktop scroll section - IMAGE SECTION COMMENTED OUT FOR DESKTOP ONLY */}
-        {/* <div className="hidden lg:block min-h-[300vh]">
-          <div className="sticky top-0 w-full min-h-screen z-10">
-            <div
-              ref={imgHolderRef}
-              className="sticky top-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
-            >
-              <img
-                src={ContactHeroimg}
-                alt="Contact Visual"
-                className="w-full h-full object-contain transform-gpu"
-              />
-            </div>
-          </div>
-        </div> */}
-
-        {/* Desktop spacer to allow scroll */}
+        {/* Desktop spacer - NOT TOUCHED */}
         <div className="hidden lg:block min-h-screen"></div>
 
-        {/* Mobile Layout - IMAGE IS ACTIVE FOR MOBILE */}
+        {/* Mobile Layout - WITH SCROLL REVEAL */}
         <div className="lg:hidden w-full bg-black min-h-screen">
-          {/* Hero Image Section - ACTIVE FOR MOBILE */}
+          {/* Hero Image Section */}
           <div 
             ref={mobileImageContainerRef}
             className="relative w-full h-[60vh] bg-gradient-to-br from-gray-900 to-black overflow-x-auto overflow-y-hidden"
@@ -406,25 +441,30 @@ export default function ContactHero() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
           </div>
 
-          {/* Content Section */}
+          {/* Content Section with scroll reveal refs */}
           <div className="relative bg-black rounded-t-3xl pt-12 px-6 pb-16 -mt-20">
-            {/* Company Badge */}
-            <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+            {/* ✅ Company Badge with scroll reveal */}
+            <div 
+              ref={mobileBadgeRef}
+              className="absolute -top-6 left-1/2 transform -translate-x-1/2"
+            >
               <div className="bg-gradient-to-r from-yellow-400 to-red-500 px-6 py-3 rounded-full">
-                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}>Contact Us</span>
+                <span className="text-black font-semibold text-sm tracking-wider" style={{ fontFamily: "'outfit', sans-serif" }}>
+                  Contact Us
+                </span>
               </div>
             </div>
 
-            {/* Minimal Header */}
-            <div className="text-center mb-12">
+            {/* ✅ Minimal Header with scroll reveal */}
+            <div ref={mobileHeaderRef} className="text-center mb-12">
               <h1 className="text-4xl font-light text-white mb-4" style={{ fontFamily: "'outfit', sans-serif" }}>
                 Get In <span className="font-semilight">Touch</span>
               </h1>
               <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-red-500 mx-auto"></div>
             </div>
 
-            {/* Core Description */}
-            <div className="max-w-md mx-auto space-y-6 text-center">
+            {/* ✅ Core Description with scroll reveal */}
+            <div ref={mobileDescRef} className="max-w-md mx-auto space-y-6 text-center">
               <p className="text-gray-300 text-lg leading-relaxed font-light" style={{ fontFamily: "'Work Sans', sans-serif" }}>
                 Ready to bring your vision to life? Let's start a conversation about 
                 your next project and create something extraordinary together.
@@ -434,7 +474,7 @@ export default function ContactHero() {
         </div>
       </div>
 
-      {/* Gap/Spacing before ContactForm - Responsive */}
+      {/* Gap/Spacing before ContactForm */}
       <div className="w-full bg-black py-12 lg:py-20"></div>
 
       {/* ContactForm Component with scroll reveal */}
