@@ -8,6 +8,7 @@ const BlogPage = () => {
   const [visibleCards, setVisibleCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [allBlogs, setAllBlogs] = useState([]); // Store original data
   const [hoveredCard, setHoveredCard] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,7 +40,36 @@ const BlogPage = () => {
           sectionImages: blog.blog_img?.slice(1).map(img => img.url) || [],
           innerContent: blog.blog_desc || 'Content coming soon...'
         }));
+        // Transform API data and construct full image URLs
+        // const transformedBlogs = data.data.map(blog => {
+        //   // Get thumbnail URL or fallback to main image
+        //   const thumbnailUrl = blog.blog_img?.[0]?.formats?.thumbnail?.url;
+        //   const mainImageUrl = blog.blog_img?.[0]?.url;
+          
+        //   // Construct full URLs by prepending base URL
+        //   const thumbnailFullUrl = thumbnailUrl 
+        //     ? `${STRAPI_BASE_URL}${thumbnailUrl}` 
+        //     : null;
+        //   const heroImageFullUrl = mainImageUrl 
+        //     ? `${STRAPI_BASE_URL}${mainImageUrl}` 
+        //     : null;
+
+        //   return {
+        //     id: blog.id,
+        //     title: blog.blog_name || 'Untitled Blog',
+        //     description: blog.blog_desc || 'No description available',
+        //     image: thumbnailFullUrl || heroImageFullUrl || '/placeholder-image.jpg',
+        //     heroImage: heroImageFullUrl || '/placeholder-hero.jpg',
+        //     sectionImages: blog.blog_img?.slice(1).map(img => 
+        //       img.url ? `${STRAPI_BASE_URL}${img.url}` : ''
+        //     ).filter(Boolean) || [],
+        //     innerContent: blog.blog_desc || 'Content coming soon...'
+        //   };
+        // });
         
+        setFilteredBlogs(transformedBlogs);
+        setError(null);
+        setAllBlogs(transformedBlogs);
         setFilteredBlogs(transformedBlogs);
         setError(null);
       } catch (err) {
@@ -56,6 +86,8 @@ const BlogPage = () => {
 
   // Reveal animation with staggered effect
   useEffect(() => {
+    if (filteredBlogs.length === 0) return;
+    
     if (filteredBlogs.length === 0) return;
     
     const revealCard = (index) => {
@@ -85,7 +117,7 @@ const BlogPage = () => {
         blog.description.toLowerCase().includes(term)
     );
     setFilteredBlogs(filtered);
-  }, [searchTerm]);
+  }, [searchTerm, allBlogs]);
 
   // Floating particles background (SSR-safe version)
   const FloatingParticles = () => {
@@ -267,6 +299,10 @@ const BlogPage = () => {
           <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent"
             style={{ fontFamily: "Outfit, sans-serif" }}>
             Welcome to Our Blog
+          <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent"
+            style={{ fontFamily: "Outfit, sans-serif" }}>
+            Welcome to Our Blog
+          </span>
           </span>
         </motion.h1>
         

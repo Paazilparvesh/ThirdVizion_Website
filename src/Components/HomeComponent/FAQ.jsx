@@ -74,7 +74,7 @@ const faqData = {
     {
       question: "How can I contact support?",
       answer:
-        "Via our client portal, email support@thirdvizion.com, or live chat.",
+        "Via our client portal, email [support@thirdvizion.com](mailto:support@thirdvizion.com), or live chat.",
     },
     {
       question: "Do you offer AMCs?",
@@ -119,10 +119,10 @@ const FAQHeader = () => (
       className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#ffffff] drop-shadow-lg font-outfit"
       style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
     >
-      Frequently  Asked Questions
+      Frequently Asked Questions
     </h2>
 
-    <p className="mt-4 text-sm text-yellow-500 max-w-2xl mx-auto  tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>
+    <p className="mt-4 text-sm text-yellow-500 max-w-2xl mx-auto tracking-wide" style={{ fontFamily: "anta, sans-serif" }}>
       Answers about immersive tech, development, cloud, and enterprise solutions.
     </p>
   </header>
@@ -198,10 +198,6 @@ const FAQControls = ({ activeCategory, setActiveCategory, query, setQuery, setOp
         ))}
       </select>
     </div>
-
-      
-      
-    
   </div>
 );
 
@@ -285,25 +281,56 @@ export default function FAQSection() {
     setOpenIndex(null);
   }, [activeCategory, query]);
 
-  // ✅ Animate FAQ list only when category/search changes
+  // ✅ SCROLL REVEAL ANIMATION - MOBILE ONLY
   useEffect(() => {
     if (prefersReducedMotion || !listRef.current) return;
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".faq-card",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "power3.out",
-        }
-      );
+      // Use matchMedia to target ONLY mobile devices (max-width: 768px)
+      const mm = gsap.matchMedia();
+
+      mm.add("(max-width: 768px)", () => {
+        // This code ONLY runs on mobile devices
+        const cards = gsap.utils.toArray(".faq-card");
+        
+        cards.forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            {
+              y: 60,
+              opacity: 0,
+              scale: 0.95,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                end: "top 60%",
+                toggleActions: "play none none reverse",
+                id: `faq-card-mobile-${index}`,
+              },
+            }
+          );
+        });
+      });
+
+      // Desktop: no scroll animations, cards appear immediately
+      mm.add("(min-width: 769px)", () => {
+        const cards = gsap.utils.toArray(".faq-card");
+        gsap.set(cards, { y: 0, opacity: 1, scale: 1 });
+      });
+
     }, listRef);
 
-    return () => ctx.revert();
-  }, [filteredFaqs, activeCategory]);
+    return () => {
+      ctx.revert();
+    };
+  }, [filteredFaqs, prefersReducedMotion]);
 
   const handleToggle = (index) => {
     const prev = openIndex;
@@ -350,8 +377,9 @@ export default function FAQSection() {
 
   return (
     <section
-      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-work-sans overflow-hidden" style={{ fontFamily: "anta, sans-serif" }}>
-
+      className="relative bg-black text-amber-50 min-h-[600px] py-24 px-4 sm:px-6 lg:px-8 font-work-sans overflow-hidden"
+      style={{ fontFamily: "anta, sans-serif" }}
+    >
       <div className="max-w-5xl mx-auto">
         <FAQHeader />
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12 justify-center">
@@ -384,7 +412,9 @@ export default function FAQSection() {
                 ))
               ) : (
                 <div className="rounded-2xl border border-amber-400/20 bg-white/5 backdrop-blur-sm p-10 text-center">
-                  <p className="text-lg text-amber-200/80 font-work-sans font-normal" style={{ fontFamily: "anta, sans-serif" }}>No questions match your search.</p>
+                  <p className="text-lg text-amber-200/80 font-work-sans font-normal" style={{ fontFamily: "anta, sans-serif" }}>
+                    No questions match your search.
+                  </p>
                 </div>
               )}
             </div>

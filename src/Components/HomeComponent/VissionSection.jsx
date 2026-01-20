@@ -24,6 +24,9 @@ const MissionVision = () => {
   const visionLineRef2 = useRef(null);
   const visionTextRef2 = useRef(null);
 
+  // Mobile card refs
+  const mobileCardRefs = useRef([]);
+
   // Detect mobile view
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -32,7 +35,7 @@ const MissionVision = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Only run GSAP if not mobile
+  // Desktop animations - NOT TOUCHED
   useEffect(() => {
     if (isMobile) return;
 
@@ -119,7 +122,44 @@ const MissionVision = () => {
     return () => ctx.revert();
   }, [isMobile]);
 
-  // Mobile View
+  // ✅ MOBILE SCROLL REVEAL ANIMATIONS - NEW
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(max-width: 1023px)", () => {
+      mobileCardRefs.current.forEach((card, index) => {
+        if (card) {
+          gsap.fromTo(
+            card,
+            {
+              y: 80,
+              opacity: 0,
+              scale: 0.9,
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                end: "top 50%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
+        }
+      });
+    });
+
+    return () => mm.revert();
+  }, [isMobile]);
+
+  // Mobile View with scroll reveal
   if (isMobile) {
     const sections = [
       {
@@ -160,10 +200,15 @@ const MissionVision = () => {
     return (
       <section
         className="bg-black text-white py-20 px-6"
-style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}      >
+        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+      >
         <div className="max-w-lg mx-auto space-y-16">
-          {sections.map((section) => (
-            <div key={section.id} className="relative">
+          {sections.map((section, index) => (
+            <div 
+              key={section.id} 
+              ref={(el) => (mobileCardRefs.current[index] = el)}
+              className="relative"
+            >
               {section.type === "vision" ? (
                 // Vision Card
                 <>
@@ -173,7 +218,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}      >
                       <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
                       <h2
                         className="text-4xl font-bold text-[#FFC016]"
-                       style={{ fontFamily: "anta, sans-serif" }}>
+                        style={{ fontFamily: "anta, sans-serif" }}
+                      >
                         {section.title}
                       </h2>
                     </div>
@@ -190,7 +236,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}      >
                     <div className="flex items-center justify-end mb-6">
                       <h2
                         className="text-4xl font-bold text-[#FFC016] mr-4"
-style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                      >
+                        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+                      >
                         {section.title}
                       </h2>
                       <div className="w-3 h-8 bg-[#FFC016] rounded-full"></div>
@@ -202,7 +249,7 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}               
                   </div>
                 </>
               ) : (
-                // Values Card (Vision style but with points)
+                // Values Card
                 <>
                   <div className="absolute -inset-4 bg-gradient-to-r from-[#FFC016]/10 to-transparent rounded-3xl transform -skew-y-3"></div>
                   <div className="relative bg-black rounded-2xl p-8 border-l-4 border-[#FFC016]">
@@ -210,7 +257,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}               
                       <div className="w-3 h-8 bg-[#FFC016] rounded-full mr-4"></div>
                       <h2
                         className="text-4xl font-bold text-[#FFC016]"
-                      style={{ fontFamily: "anta, sans-serif" }}>
+                        style={{ fontFamily: "anta, sans-serif" }}
+                      >
                         {section.title}
                       </h2>
                     </div>
@@ -220,7 +268,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}               
                         <div key={index} className="group">
                           <span
                             className="text-[#FFC016] font-bold text-lg block mb-2"
-            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                          >
+                            style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+                          >
                             {item.title}
                           </span>
                           <p className="text-gray-300 text-base leading-relaxed">
@@ -240,7 +289,7 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}               
     );
   }
 
-  // Desktop View with Vision, Mission, Our Values
+  // Desktop View - NOT TOUCHED - EXACTLY AS BEFORE
   const sections = [
     {
       type: "vision",
@@ -290,7 +339,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}               
     <section
       ref={sectionRef}
       className="bg-black text-white py-16 px-6 md:px-20 space-y-32"
-style={{ fontFamily: "anta, sans-serif" }}>    
+      style={{ fontFamily: "anta, sans-serif" }}
+    >    
       {sections.map((section, index) => (
         <div key={section.id} className="relative">
           {section.type === "vision" ? (
@@ -310,7 +360,8 @@ style={{ fontFamily: "anta, sans-serif" }}>
               <h2
                 ref={section.headingRef}
                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
-style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+              >
                 {section.title}
               </h2>
 
@@ -321,9 +372,9 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
               </div>
             </>
           ) : section.type === "mission" ? (
-            // Mission Section (Right aligned) - FIXED ALIGNMENT
+            // Mission Section (Right aligned)
             <>
-              {/* Decorative right gold line - FIXED POSITION */}
+              {/* Decorative right gold line */}
               <div className="absolute -right-14 top-9 hidden md:block">
                 <div
                   ref={section.lineRef}
@@ -337,7 +388,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
               <h2
                 ref={section.headingRef}
                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider mb-6 flex justify-end text-[#FFC016] pr-76"
-style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+              >
                 {section.title}
               </h2>
 
@@ -350,7 +402,7 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
               </div>
             </>
           ) : (
-            // Values Section (Left aligned - Vision style)
+            // Values Section (Left aligned)
             <>
               {/* Decorative left gold line */}
               <div className="absolute -left-14 top-9 hidden md:block">
@@ -366,7 +418,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
               <h2
                 ref={section.headingRef}
                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl ml-76 font-bold tracking-wider mb-6 flex text-[#FFC016]"
-style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
+                style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+              >
                 {section.title}
               </h2>
 
@@ -376,7 +429,8 @@ style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}              >
                     <p className="text-gray-300 text-[18px] leading-relaxed">
                       <span
                         className="text-yellow-500 font-light"
-        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}                      >
+                        style={{ fontFamily: "DeaconTest, sans-serif", fontWeight: 600 }}
+                      >
                         {point.title}
                       </span>{" "}
                       {point.text}

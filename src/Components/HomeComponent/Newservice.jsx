@@ -892,28 +892,11 @@ import AR_Vedio from "/src/assets/ar/Futuristic_AR_Video_Generation2.mp4";
 import Game_dev from "/src/assets/newserviceehome/Futuristic_Developer_Workspace_POV_Video.mp4";
 import Web_dev from "/src/assets/newserviceehome/Web_Development_Video_Generation 1.mp4";
 import App_dev from "/src/assets/newserviceehome/Firefly 8-Second Video - 3 Clips - Hard Cuts - No Transitions - Realistic Tech Style__Prompt-_C.mp4";
-import Server from "/src/assets/newserviceehome/Data_Center_Server_Management_Video.mp4"
+import Server from "/src/assets/newserviceehome/Data_Center_Server_Management_Video.mp4";
 
-// import Tech_Vedio from "/src/assets/ar/Futuristic_Tech_Video_Generation1.mp4"
-
-
-// Image imports (unchanged)
-import DesignTool from "/src/assets/newserviceehome/ar.png";
-import Layout from "/src/assets/newserviceehome/3d.png";
-import ComponentImg from "/src/assets/newserviceehome/vr.png";
-import Por from "/src/assets/home/mobileapp.jpg";
-import Portal from "/src/assets/newserviceehome/crm.png";
-import Dashboard from "/src/assets/newserviceehome/server.png";
-import Aws from "/src/assets/home/erp.png";
-import Azure from "/src/assets/home/game.jpg";
-import GoogleCloud from "/src/assets/home/web.jpg";
-
-// icons
-import arIcon from "/src/assets/ourserviceicons/ar.png";
 import crmIcon from "/src/assets/ourserviceicons/crm.png";
 import iamIcon from "/src/assets/ourserviceicons/iam.png";
 import vrIcon from "/src/assets/ourserviceicons/vr.png";
-// import threedIcon from "/src/assets/ourserviceicons/3d.png";
 import erpIcon from "/src/assets/ourserviceicons/erp.png";
 import gameIcon from "/src/assets/ourserviceicons/game.png";
 import webIcon from "/src/assets/ourserviceicons/website.png";
@@ -921,12 +904,8 @@ import mobileIcon from "/src/assets/ourserviceicons/mobile.png";
 import Aricon1 from "/src/assets/newserviceehome/ar-app-3d-icon-png-download-10260715.png";
 import threedIcon from "/src/assets/newserviceehome/torus-wireframe-3d-icon-png-download-8447884.png";
 
-/* =========================
-   Data: capabilitiesData
-   - Emerging tech children use video: <import>
-   ========================= */
 const capabilitiesData = [
-    {
+  {
     id: "software-dev",
     title: "software development",
     desc:
@@ -935,7 +914,7 @@ const capabilitiesData = [
       {
         name: "Game Development",
         subname: "Game",
-        video:Game_dev,
+        video: Game_dev,
         icon: gameIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -948,7 +927,7 @@ const capabilitiesData = [
       {
         name: "Website Development",
         subname: "Website",
-        video:Web_dev,
+        video: Web_dev,
         icon: webIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -961,7 +940,7 @@ const capabilitiesData = [
       {
         name: "App Development",
         subname: "Mobile App",
-        video:App_dev,
+        video: App_dev,
         icon: mobileIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -983,7 +962,7 @@ const capabilitiesData = [
       {
         name: "Customer Relationship Management",
         subname: "CRM",
-        video:CRM_Video,
+        video: CRM_Video,
         icon: crmIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -996,7 +975,7 @@ const capabilitiesData = [
       {
         name: "Server Management",
         subname: "Server",
-        video:Server,
+        video: Server,
         icon: iamIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -1006,12 +985,11 @@ const capabilitiesData = [
         size: "h-100",
         link: "/server_management",
       },
-    {
-  name: "Enterprise Resource Planning",
-  subname: "ERP",
-  video: ERP_Video,
-  icon: erpIcon,
-
+      {
+        name: "Enterprise Resource Planning",
+        subname: "ERP",
+        video: ERP_Video,
+        icon: erpIcon,
         imageSettings: {
           position: { objectPosition: "center" },
           transform: "scale(1)",
@@ -1023,7 +1001,7 @@ const capabilitiesData = [
     ],
   },
 
-    {
+  {
     id: "emerging-tech",
     title: "emerging tech",
     desc:
@@ -1032,7 +1010,7 @@ const capabilitiesData = [
       {
         name: "Augmented Reality",
         subname: "AR",
-        video: AR_Vedio, // <-- video used here
+        video: AR_Vedio,
         icon: Aricon1,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -1045,7 +1023,7 @@ const capabilitiesData = [
       {
         name: "3D Modeling",
         subname: "3D",
-        video: D_Modeling, // <-- video used here
+        video: D_Modeling,
         icon: threedIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -1058,7 +1036,7 @@ const capabilitiesData = [
       {
         name: "Virtual Reality",
         subname: "VR",
-        video: VR_Video, // <-- video used here
+        video: VR_Video,
         icon: vrIcon,
         imageSettings: {
           position: { objectPosition: "center" },
@@ -1072,10 +1050,6 @@ const capabilitiesData = [
   },
 ];
 
-/* =========================
-   RollingIcons component
-   - unchanged visual behavior, circular black mask
-   ========================= */
 const RollingIcons = ({ icons, isInView }) => {
   return (
     <div className="flex space-x-3 mt-4 justify-start flex-wrap gap-2">
@@ -1118,10 +1092,6 @@ const RollingIcons = ({ icons, isInView }) => {
   );
 };
 
-/* =========================
-   SlideDownImage component (supports video + image)
-   - accepts src and borderRadius
-   ========================= */
 const SlideDownImage = ({ src, alt, delay = 0, isInView, borderRadius = "18px" }) => {
   const isVideo = typeof src === "string" && src.toLowerCase().endsWith(".mp4");
 
@@ -1163,10 +1133,6 @@ const SlideDownImage = ({ src, alt, delay = 0, isInView, borderRadius = "18px" }
   );
 };
 
-/* =========================
-   SlideUpImage component (supports video + image)
-   - accepts src and borderRadius
-   ========================= */
 const SlideUpImage = ({ src, alt, delay = 0, isInView, borderRadius = "18px" }) => {
   const isVideo = typeof src === "string" && src.toLowerCase().endsWith(".mp4");
 
@@ -1208,12 +1174,6 @@ const SlideUpImage = ({ src, alt, delay = 0, isInView, borderRadius = "18px" }) 
   );
 };
 
-/* =========================
-   ImageCard
-   - passes service.video || service.img as src to slides
-   - keeps overlay, title, hover scale etc.
-   - stores ref in imageRefs for IntersectionObserver
-   ========================= */
 const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidth, animationType }) => {
   const imageId = `${category.id}-${service.name}-image`;
 
@@ -1235,7 +1195,6 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
               <div
                 className="w-full h-full"
                 ref={(el) => {
-                  // attach element reference for IntersectionObserver
                   if (el) {
                     imageRefs.current[imageId] = el;
                   } else {
@@ -1262,7 +1221,6 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
                 )}
               </div>
 
-              {/* Title overlay area */}
               <div className="absolute bottom-0 h-auto w-full">
                 <div
                   className="
@@ -1288,7 +1246,6 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </motion.div>
@@ -1297,16 +1254,11 @@ const ImageCard = ({ service, category, index, inViewImages, imageRefs, fullWidt
   );
 };
 
-/* =========================
-   StructuredImageLayout
-   - uses ImageCard and preserves layout: first full-width, then two side-by-side
-   ========================= */
 const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
   const children = category.children;
 
   return (
     <div className="flex flex-col space-y-4">
-      {/* First row - single full width image - SLIDE DOWN */}
       {children[0] && (
         <div className="w-full">
           <ImageCard
@@ -1321,7 +1273,6 @@ const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
         </div>
       )}
 
-      {/* Second row - two images side by side - SLIDE UP */}
       {children.slice(1, 3).length > 0 && (
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4">
           {children.slice(1, 3).map((service, index) => (
@@ -1342,11 +1293,6 @@ const StructuredImageLayout = ({ category, inViewImages, imageRefs }) => {
   );
 };
 
-/* =========================
-   Main Exported Component: Categories
-   - includes observers for categories, items, images
-   - sticky left info panel on desktop, scroll-right layout for images
-   ========================= */
 export default function Categories() {
   const [activeCategoryId, setActiveCategoryId] = useState(capabilitiesData[0].id);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -1360,7 +1306,6 @@ export default function Categories() {
 
   const activeCategory = capabilitiesData.find((cap) => cap.id === activeCategoryId) || capabilitiesData[0];
 
-  /* Handle scroll detection (window) to track quick scrolls */
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(true);
@@ -1374,7 +1319,6 @@ export default function Categories() {
     };
   }, []);
 
-  /* IntersectionObserver: active category section detection (sets left panel) */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -1405,7 +1349,6 @@ export default function Categories() {
     };
   }, []);
 
-  /* IntersectionObserver: items (for RollingIcons reveal) */
   useEffect(() => {
     const itemObserver = new IntersectionObserver(
       (entries) => {
@@ -1439,7 +1382,6 @@ export default function Categories() {
     };
   }, []);
 
-  /* IntersectionObserver: images (so SlideUp/SlideDown animate when visible) */
   useEffect(() => {
     const imageObserver = new IntersectionObserver(
       (entries) => {
@@ -1459,7 +1401,6 @@ export default function Categories() {
       }
     );
 
-    // Observe all image refs that are currently present
     Object.keys(imageRefs.current).forEach((imageId) => {
       const ref = imageRefs.current[imageId];
       if (ref) {
@@ -1473,7 +1414,7 @@ export default function Categories() {
         if (ref) imageObserver.unobserve(ref);
       });
     };
-  }, [/* We intentionally don't list imageRefs; refs update in-place */]);
+  }, []);
 
   const getCategoryTags = (category) => {
     if (category.id === "data-cloud") {
@@ -1508,11 +1449,28 @@ export default function Categories() {
 
       <section className="bg-black text-white min-h-screen px-4 xl:px-14 py-6 md:py-12" ref={scrollContainerRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-4">
-          {/* MOBILE VIEW */}
+          {/* MOBILE VIEW - WITH SIMPLE FADE IN SCROLL REVEAL */}
           <div className="block md:hidden">
             {capabilitiesData.map((category, index) => (
-              <div key={category.id} className="mb-8">
-                <div className="text-left mb-4 px-2">
+              <motion.div
+                key={category.id}
+                className="mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  duration: 0.7,
+                  ease: "easeOut"
+                }}
+              >
+                {/* Category Header */}
+                <motion.div
+                  className="text-left mb-4 px-2"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                >
                   <h3 className="text-xl font-semibold tracking-wide text-yellow-500 mb-2 uppercase" style={{ fontFamily: "Outfit, sans-serif" }}>
                     {category.title}
                   </h3>
@@ -1522,45 +1480,67 @@ export default function Categories() {
                   <p className="text-white/80 text-sm leading-relaxed font-light tracking-wide max-w-md mx-auto" style={{ fontFamily: "Work Sans, sans-serif" }}>
                     {category.desc.split(". ")[0]}.
                   </p>
-                </div>
+                </motion.div>
 
-                {/* Service Cards */}
+                {/* Service Cards - Simple fade in */}
                 <div className="space-y-3">
                   {category.children.map((service, serviceIndex) => (
-                    <Link key={serviceIndex} to={service.link} className="block">
-                      <div className="group cursor-pointer relative border border-gray-700 rounded-xl p-3 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
-                        <div className="flex items-center space-x-3">
-                          <div className="flex-shrink-0 w-12 h-12">
-                            <div className="w-full h-full bg-black flex items-center justify-center">
-                              <img src={service.icon} alt={service.name} className="w-12 h-12 object-contain" />
+                    <motion.div
+                      key={serviceIndex}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: serviceIndex * 0.1,
+                        ease: "easeOut"
+                      }}
+                    >
+                      <Link to={service.link} className="block">
+                        <div className="group cursor-pointer relative border border-gray-700 rounded-xl p-3 hover:bg-gray-800/80 hover:border-yellow-500/40 transition-all duration-300">
+                          <div className="flex items-center space-x-3">
+                            {/* Icon */}
+                            <motion.div
+                              className="flex-shrink-0 w-12 h-12"
+                              initial={{ opacity: 0, scale: 0.5 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: false }}
+                              transition={{
+                                duration: 0.4,
+                                delay: serviceIndex * 0.1 + 0.2
+                              }}
+                            >
+                              <div className="w-full h-full bg-black flex items-center justify-center">
+                                <img src={service.icon} alt={service.name} className="w-12 h-12 object-contain" />
+                              </div>
+                            </motion.div>
+
+                            <div className="flex-1">
+                              <h4 className="text-white text-sm font-semibold tracking-wide mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
+                                {service.name}
+                              </h4>
+                              <div className="h-px w-8 bg-gradient-to-r from-yellow-500 to-transparent mb-1" />
+                              <p className="text-white/60 text-xs font-light">Explore {service.subname} services</p>
+                            </div>
+
+                            <div className="text-yellow-500 mr-2 transform group-hover:translate-x-1 transition-transform duration-300">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                              </svg>
                             </div>
                           </div>
-
-                          <div className="flex-1">
-                            <h4 className="text-white text-sm font-semibold tracking-wide mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
-                              {service.name}
-                            </h4>
-                            <div className="h-px w-8 bg-gradient-to-r from-yellow-500 to-transparent mb-1" />
-                            <p className="text-white/60 text-xs font-light">Explore {service.subname} services</p>
-                          </div>
-
-                          <div className="text-yellow-500 mr-2 transform group-hover:translate-x-1 transition-transform duration-300">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                              <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                          </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
+                    </motion.div>
                   ))}
                 </div>
 
                 {index < capabilitiesData.length - 1 && <div className="h-px w-full bg-gray-800 mt-6" />}
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* DESKTOP LEFT STICKY PANEL */}
+          {/* DESKTOP LEFT STICKY PANEL - NOT TOUCHED */}
           <div className="hidden md:block md:sticky md:top-40 h-fit mt-6 md:mt-12">
             <motion.div key={activeCategory.id} initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -50 }} transition={{ duration: 0.5 }}>
               <div className="flex flex-col">
@@ -1594,7 +1574,7 @@ export default function Categories() {
             </motion.div>
           </div>
 
-          {/* RIGHT SCROLLING SECTION - Desktop */}
+          {/* RIGHT SCROLLING SECTION - DESKTOP - NOT TOUCHED */}
           <div className="hidden md:flex flex-col">
             {capabilitiesData.map((cap, index) => (
               <div key={cap.id} ref={sectionRefs.current[index]} data-category-id={cap.id} className={`relative ${index < capabilitiesData.length - 1 ? "mb-40" : ""}`}>
@@ -1609,3 +1589,4 @@ export default function Categories() {
     </>
   );
 }
+
