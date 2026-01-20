@@ -23,7 +23,7 @@ import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
 import Digital from "/src/Pages/Services/Data & Cloud/Digital.jsx";
-
+import Policy from "/src/Pages/Policy.jsx";
 
 
 function AnimatedRoutes() {
@@ -37,6 +37,7 @@ function AnimatedRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy_policy" element={<Policy />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<InnerBlog />} />
         <Route path="/virtual_reality" element={<VrPage />} />
@@ -55,7 +56,7 @@ function AnimatedRoutes() {
         <Route path="/web_development" element={<WebsitePage />} />
         <Route path="/app_development" element={<AppPage />} />
         <Route path="/game_development" element={<GamePage />} />
-        <Route path="/digia" element={<Digital/>} />
+        <Route path="/digital_marketing" element={<Digital />} />
       </Routes>
    
   );

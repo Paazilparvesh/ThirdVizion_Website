@@ -55,6 +55,12 @@ const Footer = () => {
               >
                 Contact Us
               </Link>
+              <Link
+                to="/contact"
+                className="hover:text-white cursor-pointer block"
+              >
+                privacy policy
+              </Link>
             </li>
           </ul>
         </div>
@@ -222,36 +228,49 @@ const Footer = () => {
         >
           {/* --- Links --- */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Links</h3>
-            <ul className="space-y-2 text-sm text-gray-300">
-              <li>
-                <Link
-                  to="/"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                  className="hover:text-white cursor-pointer"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white cursor-pointer">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-white cursor-pointer">
-                  Blogs
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white cursor-pointer">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
+  <h3 className="font-semibold text-lg mb-4">Links</h3>
+  <ul className="space-y-2 text-sm text-gray-300">
+    <li>
+      <Link
+        to="/"
+        onClick={() =>
+          window.scrollTo({ top: 0, behavior: "smooth" })
+        }
+        className="hover:text-white cursor-pointer"
+      >
+        Home
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/about" className="hover:text-white cursor-pointer">
+        About Us
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/blog" className="hover:text-white cursor-pointer">
+        Blogs
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/contact" className="hover:text-white cursor-pointer">
+        Contact Us
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/privacy_policy"
+        className="hover:text-white cursor-pointer"
+      >
+        Privacy Policy
+      </Link>
+    </li>
+  </ul>
+</div>
+
 
           {/* --- Services --- */}
           <div>

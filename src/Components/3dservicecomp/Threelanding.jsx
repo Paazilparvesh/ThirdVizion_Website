@@ -327,51 +327,7 @@ export default function Threelanding() {
         </div>
       </section>
 
-      {/* Tools section — lists common 3D tools used */}
-      {/* <section className="relative z-20 py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <h3 className="text-xl font-semibold text-pink-300 mb-6">Tools & formats we use</h3>
-
-          <div className="tools-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <ToolCard name="Blender" desc="Modeling, retopology, export (FBX, GLB)" />
-            <ToolCard name="Autodesk Maya" desc="Animation, rigging, complex scene export" />
-            <ToolCard name="ZBrush" desc="High-res sculpting and displacement maps" />
-            <ToolCard name="Substance 3D Painter" desc="PBR texturing & material authoring" />
-            <ToolCard name="Photoshop" desc="Texture tweaks, masks and composition" />
-            <ToolCard name="Three.js / GLTF" desc="Realtime web integration (glTF/GLB)" />
-          </div>
-
-          <p className="mt-6 text-sm text-slate-400">Common export formats: <strong>FBX, OBJ, GLB/GLTF, USDZ</strong>. We optimize for target platforms — mobile, web or film.</p>
-        </div>
-      </section> */}
-
-      {/* Showcases / code samples */}
-      {/* <section className="relative z-20 py-12 bg-gradient-to-b from-transparent to-white/2">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h4 className="text-2xl font-bold">Tiny code sample</h4>
-            <p className="mt-3 text-slate-300">How to init a small stagger animation using GSAP.</p>
-
-            <pre className="mt-4 bg-[#0b0b0b] p-4 rounded-lg text-sm overflow-auto border border-white/6">
-{`// small example
-useEffect(() => {
-  const tl = gsap.timeline();
-  tl.from('.item', { y: 40, autoAlpha: 0, stagger: 0.08 });
-}, []);
-`}
-            </pre>
-          </div>
-
-          <div>
-            <h4 className="text-2xl font-bold">Design notes</h4>
-            <ul className="list-disc pl-6 mt-3 text-slate-300 space-y-2">
-              <li>Black themed base with neon accents to create depth and contrast.</li>
-              <li>Prefer vector SVGs — crisp on any screen, easy to animate with transform.</li>
-              <li>Keep heavy animations optional for lower-end devices.</li>
-            </ul>
-          </div>
-        </div>
-      </section> */}
+      
 
       {/* LARGE CTA section */}
       <section className="relative z-20 py-20">

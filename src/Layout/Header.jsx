@@ -100,8 +100,8 @@ const Header = () => {
           desc: "Interactive and visually stunning games for multiple platforms.",
         },
         {
-          name: "Marketing",
-          href: "/digia",
+          name: "Digital Marketing",
+          href: "/digital_marketing",
           icon: <FaBullhorn className="w-4 h-4 text-[#BC5FF6]" />,
           desc: "Powerful digital marketing strategies tailored to grow your business.",
         },
