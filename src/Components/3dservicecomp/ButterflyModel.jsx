@@ -313,7 +313,7 @@ export default function MorphParticles() {
     // Load Butterfly
     const loader = new GLTFLoader();
 
-    loader.load("/models/NFC_model.glb", (gltf) => {
+    loader.load("/models/Cards.glb", (gltf) => {
       const butterfly = gltf.scene;
       butterfly.scale.set(12, 12, 12);
       butterfly.position.set(60, -10, 0);
@@ -412,13 +412,7 @@ export default function MorphParticles() {
           },
         })
         .to(butterfly.scale, { x: 7, y: 7, z: 7, duration: 0.5 })
-        // .to(butterfly.rotation, { x: 3, duration: 1 })
-        
-        // .to(butterfly.rotation, { x: 6.4, z: -10, duration: 1 })
-        // .to(butterfly.rotation, { x: 3, y: 3, duration: 0.1 })
-        // .to(butterfly.rotation, { x: 6, y: 5, duration: 0.1 });
-
-      // ... (Other sections omitted for brevity but logic applies)
+       
     });
 
     // Animate

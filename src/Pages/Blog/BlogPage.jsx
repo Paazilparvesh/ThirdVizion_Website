@@ -2,38 +2,51 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const VITE_API_URL = "https://thirdvizion.com/api/blogs?populate=*";
+
 const BlogPage = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [visibleCards, setVisibleCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch blogs from Strapi API
+  // Fetch blogs from API
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:1337/api/blogs?populate=*');
-        const result = await response.json();
+        setLoading(true);
+        const response = await fetch(VITE_API_URL);
         
-        // Transform Strapi data to match your component structure
-        const transformedData = result.data.map((blog) => ({
-          id: blog.documentId,
-          title: blog.blog_name,
-          description: blog.blog_desc.substring(0, 120) + "...", // Show first 120 chars
-          fullDescription: blog.blog_desc, // Full description for inner page
-          videoLink: blog.video_link,
-          HeroImage: `http://localhost:1337${blog.blog_img.url}`,
-          createdAt: blog.createdAt,
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Transform API data to match your component structure
+        const transformedBlogs = data.data.map(blog => ({
+          id: blog.id,
+          title: blog.blog_name || 'Untitled Blog',
+          description: blog.blog_desc || 'No description available',
+          // Use thumbnail image if available, otherwise full image
+          image: blog.blog_img?.[0]?.formats?.thumbnail?.url || 
+                 blog.blog_img?.[0]?.url || 
+                 '/placeholder-image.jpg',
+          heroImage: blog.blog_img?.[0]?.url || '/placeholder-hero.jpg',
+          // Add other fields as needed
+          sectionImages: blog.blog_img?.slice(1).map(img => img.url) || [],
+          innerContent: blog.blog_desc || 'Content coming soon...'
         }));
         
-        setBlogs(transformedData);
-        setFilteredBlogs(transformedData);
-        setLoading(false);
+        setFilteredBlogs(transformedBlogs);
+        setError(null);
       } catch (err) {
-        setError(err.message);
+        console.error('Error fetching blogs:', err);
+        setError('Failed to load blogs. Please try again later.');
+        setFilteredBlogs([]);
+      } finally {
         setLoading(false);
       }
     };
@@ -43,6 +56,8 @@ const BlogPage = () => {
 
   // Reveal animation with staggered effect
   useEffect(() => {
+    if (filteredBlogs.length === 0) return;
+    
     const revealCard = (index) => {
       if (index >= filteredBlogs.length) return;
       setVisibleCards((prev) => {
@@ -58,40 +73,67 @@ const BlogPage = () => {
 
   // Filter blogs based on search term
   useEffect(() => {
+    if (!searchTerm) return;
+    
     const term = searchTerm.toLowerCase();
-    const filtered = blogs.filter(
+    // We need to re-fetch or filter the original data
+    // For now, we'll filter the already fetched data
+    // You might want to implement a search API endpoint
+    const filtered = filteredBlogs.filter(
       (blog) =>
         blog.title.toLowerCase().includes(term) ||
         blog.description.toLowerCase().includes(term)
     );
     setFilteredBlogs(filtered);
-  }, [searchTerm, blogs]);
+  }, [searchTerm]);
 
-  // Floating particles background
-  const FloatingParticles = () => (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-[#FF700A] rounded-full"
-          initial={{
-            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
-          }}
-          animate={{
-            y: [0, -100, 0],
-            x: [0, Math.random() * 50 - 25, 0],
-            opacity: [0, 1, 0],
-          }}
-          transition={{
-            duration: 4 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
-    </div>
-  );
+  // Floating particles background (SSR-safe version)
+  const FloatingParticles = () => {
+    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+
+    useEffect(() => {
+      // Only run on client side
+      if (typeof window !== 'undefined') {
+        const updateDimensions = () => {
+          setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight
+          });
+        };
+        
+        updateDimensions();
+        window.addEventListener('resize', updateDimensions);
+        return () => window.removeEventListener('resize', updateDimensions);
+      }
+    }, []);
+
+    if (dimensions.width === 0 || dimensions.height === 0) return null;
+
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-[#FF700A] rounded-full"
+            initial={{
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 50 - 25, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -165,11 +207,15 @@ const BlogPage = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-500 text-xl mb-4">Error loading blogs</p>
-          <p className="text-gray-400">{error}</p>
-        </div>
+      <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
+        <div className="text-6xl mb-4">⚠️</div>
+        <p className="text-gray-300 text-xl mb-4">{error}</p>
+        <button 
+          onClick={() => window.location.reload()}
+          className="px-6 py-3 bg-[#FF700A] rounded-lg hover:bg-orange-600 transition-colors"
+        >
+          Retry
+        </button>
       </div>
     );
   }
@@ -218,25 +264,55 @@ const BlogPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, type: "spring" }}
         >
-          <span
-            className="font-medium bg-clip-text text-transparent"
-            style={{
-              fontFamily: "DeaconTest, sans-serif",
-              fontWeight: 600,
-              backgroundImage:
-                "linear-gradient(to right, #FDB928 0%, #F38540 25%, #3EA9C1 50%, #5EBC58 75%, #EE3A5C 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Our Blogs
+          <span className="bg-gradient-to-r from-[#FF700A] via-orange-400 to-yellow-400 bg-clip-text text-transparent"
+            style={{ fontFamily: "Outfit, sans-serif" }}>
+            Welcome to Our Blog
           </span>
         </motion.h1>
+        
+        <motion.p
+          className="text-gray-300 text-lg md:text-xl xl:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          Explore insights on immersive tech, VR, AR, 3D, cloud, development, and more.
+        </motion.p>
+
+        {/* Search Bar */}
+        <motion.div
+          className="flex justify-center "
+           style={{ fontFamily: "Outfit, sans-serif" }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        >
+          <div className="relative w-full sm:w-2/3 md:w-1/2 lg:w-1/3">
+            <motion.input
+              type="text"
+              placeholder="Search blogs..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-6 py-4 rounded-2xl bg-gray-900/80 backdrop-blur-sm border-2 border-gray-700 focus:outline-none focus:border-[#FF700A] text-white placeholder-gray-400 transition-all text-xs md:text-lg"
+              whileFocus={{
+                scale: 1.02,
+                boxShadow: "0 0 30px rgba(255, 112, 10, 0.3)"
+              }}
+            />
+            <motion.div
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🔍
+            </motion.div>
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* Cards Grid */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10 justify-items-center"
+        className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -256,8 +332,8 @@ const BlogPage = () => {
               >
                 🔍
               </motion.div>
-              <p className="text-gray-400 text-xs md:text-lg" style={{ fontFamily: "anta, sans-serif" }}>
-                No blogs found. Try a different search term.
+              <p className="text-gray-400 text-xs md:text-lg">
+                {searchTerm ? "No blogs found. Try a different search term." : "No blogs available."}
               </p>
             </motion.div>
           ) : (
@@ -270,7 +346,7 @@ const BlogPage = () => {
                 whileHover="hover"
                 onHoverStart={() => setHoveredCard(i)}
                 onHoverEnd={() => setHoveredCard(null)}
-                className="relative group max-w-md w-full"
+                className="relative group"
               >
                 {/* Card Glow Effect */}
                 <motion.div
@@ -286,19 +362,18 @@ const BlogPage = () => {
                     }}
                   >
                     {/* Blog Image */}
-                    <motion.div
-                      className="mb-6 rounded-xl overflow-hidden"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + i * 0.1 }}
-                    >
-                      <img 
-                        src={blog.HeroImage} 
-                        alt={blog.title}
-                        className="w-full h-48 object-cover rounded-xl hover:scale-110 transition-transform duration-500"
-                      />
-                    </motion.div>
-
+                    {blog.image && (
+                      <div className="mb-6 overflow-hidden rounded-lg">
+                        <motion.img
+                          src={blog.image}
+                          alt={blog.title}
+                          className="w-full h-48 object-cover rounded-lg"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </div>
+                    )}
+                    
                     {/* Hover Gradient Overlay */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-br from-[#FF700A]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -317,13 +392,13 @@ const BlogPage = () => {
                     </motion.div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex-1 flex flex-col" style={{ fontFamily: "anta, sans-serif" }}>
+                    <div className="relative z-10 flex-1 flex flex-col" style={{ fontFamily: "Outfit, sans-serif" }}>
                       {/* Title with animated underline */}
                       <div className="mb-4">
                         <motion.h2
                           className="text-2xl md:text-3xl font-bold mb-3 inline-block"
                           layoutId={`title-${blog.id}`}
-                          style={{ fontFamily: "anta, sans-serif" }}
+                          style={{ fontFamily: "Outfit, sans-serif" }}
                         >
                           {blog.title}
                         </motion.h2>
@@ -332,18 +407,20 @@ const BlogPage = () => {
                           variants={titleVariants}
                           initial="hidden"
                           animate={visibleCards[i] ? "visible" : "hidden"}
+                          style={{ fontFamily: "Outfit, sans-serif" }}
                         />
                       </div>
 
-                      {/* Description - Truncated */}
+                      {/* Description */}
                       <motion.p
                         className="text-gray-300 text-lg leading-relaxed flex-1"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 + i * 0.1 }}
-                        style={{ fontFamily: "anta, sans-serif" }}
                       >
-                        {blog.description}
+                        {blog.description.length > 150 
+                          ? `${blog.description.substring(0, 150)}...` 
+                          : blog.description}
                       </motion.p>
 
                       {/* Read More CTA */}
@@ -393,6 +470,9 @@ const BlogPage = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
+        <p className="text-gray-500">
+          Showing {filteredBlogs.length} blog{filteredBlogs.length !== 1 ? 's' : ''}
+        </p>
       </motion.div>
     </div>
   );
