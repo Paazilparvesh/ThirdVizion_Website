@@ -1,6 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ScrollToTop from "/src/Layout/ScrollToTop";
 import Header from "/src/Layout/Header";
@@ -23,42 +21,42 @@ import WebsitePage from "/src/Pages/Services/Development & Software/WebsitePage.
 import AppPage from "/src/Pages/Services/Development & Software/AppPage.jsx";
 import GamePage from "/src/Pages/Services/Development & Software/GamePage.jsx";
 import Digital from "/src/Pages/Services/Data & Cloud/Digital.jsx";
-import Policy from "/src/Pages/Policy.jsx";
+import PolicyPage from "/src/Pages/PolicyPage.jsx";
 
 
 function AnimatedRoutes() {
-  
+
 
 
 
   return (
-   
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/privacy_policy" element={<Policy />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:id" element={<InnerBlog />} />
-        <Route path="/virtual_reality" element={<VrPage />} />
-        <Route path="/augmented_reality" element={<ArPage />} />
-        <Route path="/3d_services" element={<ThreeDServices />} />
-        <Route
-          path="/client_relationship_management"
-          element={<CRM />}
-        />
-        <Route
-          path="/identity_and_access_management"
-          element={<IAM />}
-        />
-        <Route path="/enterprise_resource_planning" element={<ERP />} />
-        <Route path="/server_management" element={<Server />} />
-        <Route path="/web_development" element={<WebsitePage />} />
-        <Route path="/app_development" element={<AppPage />} />
-        <Route path="/game_development" element={<GamePage />} />
-        <Route path="/digital_marketing" element={<Digital />} />
-      </Routes>
-   
+
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/privacy_policy" element={<PolicyPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:id" element={<InnerBlog />} />
+      <Route path="/virtual_reality" element={<VrPage />} />
+      <Route path="/augmented_reality" element={<ArPage />} />
+      <Route path="/3d_services" element={<ThreeDServices />} />
+      <Route
+        path="/client_relationship_management"
+        element={<CRM />}
+      />
+      <Route
+        path="/identity_and_access_management"
+        element={<IAM />}
+      />
+      <Route path="/enterprise_resource_planning" element={<ERP />} />
+      <Route path="/server_management" element={<Server />} />
+      <Route path="/web_development" element={<WebsitePage />} />
+      <Route path="/app_development" element={<AppPage />} />
+      <Route path="/game_development" element={<GamePage />} />
+      <Route path="/digital_marketing" element={<Digital />} />
+    </Routes>
+
   );
 }
 
